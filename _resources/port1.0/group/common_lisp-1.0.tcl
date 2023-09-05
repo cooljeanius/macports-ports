@@ -36,8 +36,8 @@ options common_lisp.clisp
 default common_lisp.clisp       yes
 
 options common_lisp.ccl
-# CLL doesn't support arm64 yet
-default common_lisp.ccl         [expr { ${os.arch} ne "arm" }]
+# CLL doesn't support arm64 yet, and seems that stable working on 10.10+
+default common_lisp.ccl         [expr { ${os.platform} eq "darwin" && ${os.major} >= 14  && ${os.arch} ne "arm" }]
 
 options common_lisp.abcl
 # ABCL requires java and support OpenJDK 11 before 10.14 fragile
@@ -70,8 +70,12 @@ proc common_lisp::add_dependencies {} {
     global common_lisp.ccl
 
     if {[option common_lisp.sbcl]} {
-        depends_build-delete    port:sbcl
-        depends_build-append    port:sbcl
+        depends_build-delete    port:sbcl \
+                                port:sbcl-devel \
+                                path:bin/sbcl:sbcl \
+                                path:bin/sbcl:sbcl-devel
+
+        depends_build-append    path:bin/sbcl:sbcl
     }
 
     if {[option common_lisp.ecl]} {
