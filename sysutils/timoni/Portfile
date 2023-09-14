@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/stefanprodan/timoni 0.11.1 v
+go.setup            github.com/stefanprodan/timoni 0.13.1 v
 github.tarball_from archive
 revision            0
 
@@ -27,9 +27,9 @@ license             Apache-2
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  8361dba7e6a7067390b6ee84298e24e1569887d6 \
-                    sha256  d85f00fcc14294ea42947d7e46d8fc6b4651c018ef363c813f52ad03c6b6c106 \
-                    size    554517
+checksums           rmd160  49ef33126ea2a6eeac3a8b693f61737752d388c3 \
+                    sha256  c921b75e44d0502844a7566aafabacca6a96a964cd96c1355bfe3e1ef258a154 \
+                    size    590420
 
 go.offline_build no
 

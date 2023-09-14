@@ -4,8 +4,11 @@ PortSystem          1.0
 PortGroup           python 1.0
 PortGroup           github 1.0
 
-github.setup        ansible-community ansible-lint 6.18.0 v
-revision            0
+github.setup        ansible-community ansible-lint 6.19.0 v
+github.tarball_from archive
+revision            1
+# FIXME: Remove in the next relese
+dist_subdir         ${name}/${version}_1
 
 categories          sysutils
 supported_archs     noarch
@@ -19,9 +22,9 @@ description         Best practices checker for Ansible playbooks
 long_description \
     ansible-lint checks playbooks for practices and behaviour that could potentially be improved
 
-checksums           rmd160  cffbcd6382c0422e09da1d6ee7868268231e78a9 \
-                    sha256  975956a1bc5f5bde40056ecc1ae902150bfd38e2428b7115a3028946977a84f5 \
-                    size    433134
+checksums           rmd160  c0e0b72e2e6d40d667e92d11661027d9a012ada4 \
+                    sha256  56e032a951fda04d41944f3610785870ee5fdc677ea63b745d1b042c54bc7aeb \
+                    size    439360
 
 # Keep Python version compatible with yamllint
 python.default_version      311
@@ -29,6 +32,7 @@ python.link_binaries_suffix
 
 depends_build-append \
                     port:py${python.version}-setuptools \
+                    port:py${python.version}-setuptools_scm \
                     port:py${python.version}-toml \
                     port:py${python.version}-wheel
 

@@ -1,11 +1,12 @@
 # -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:filetype=tcl:et:sw=4:ts=4:sts=4
 
 PortSystem          1.0
+PortGroup           legacysupport 1.1
 PortGroup           compiler_blacklist_versions 1.0
 
 name                ecl
-version             21.2.1
-revision            1
+version             23.9.9
+revision            0
 categories          lang
 license             GPL-2+
 maintainers         {easieste @easye} {@catap korins.ky:kirill} openmaintainer
@@ -26,31 +27,14 @@ if {${name} eq ${subport}} {
     extract.suffix  .tgz
 }
 
-checksums           rmd160  631b9427edef67ea3cac91da2031ac4629a6dd33 \
-                    sha256  b15a75dcf84b8f62e68720ccab1393f9611c078fcd3afdd639a1086cad010900 \
-                    size    7875088
-
-# i386 (and presumable PowerPC) has an issue with long double when its compiled
-# by modern compilers. To avoid blacklisting tons of compilers I've pin the last
-# version of ECL which has `disable-longdouble` on such platforms.
-# See: https://gitlab.com/embeddable-common-lisp/ecl/-/issues/705
-if {${os.platform} eq "darwin" && ${configure.build_arch} in [list ppc i386]} {
-    version         16.1.3
-    revision        0
-
-    checksums       rmd160  320e93e4abe62fa1fe9e36688ba040eef8ae8923 \
-                    sha256  76a585c616e8fa83a6b7209325a309da5bc0ca68e0658f396f49955638111254 \
-                    size    7459212
-
-    configure.args-append \
-                    --disable-longdouble
-}
+checksums           rmd160  6ea701b142b78fc4c263e3aee7709f4254a8ccc9 \
+                    sha256  c51bdab4ca6c1173dd3fe9cfe9727bcefb97bb0a3d6434b627ca6bdaeb33f880 \
+                    size    8129105
 
 conflicts           ecl-devel
 
 subport ecl-devel {
     PortGroup       gitlab  1.0
-    PortGroup       legacysupport 1.1
 
     gitlab.setup    embeddable-common-lisp ecl c646799145538997d84ed6d8755be7e7837eb7ef
     version         20230826
@@ -61,10 +45,10 @@ subport ecl-devel {
     checksums       rmd160  2a34a31aeba8c90c44841039f53d1f088ed9bdc0 \
                     sha256  a042e37ccaa383160b96da93c3f9881c4fe45c1f0f0968b021a5fe4fcf03607b \
                     size    6564563
-
-    # requires clock_gettime()
-    legacysupport.newest_darwin_requires_legacy 15
 }
+
+# requires clock_gettime()
+legacysupport.newest_darwin_requires_legacy 15
 
 extract.rename      yes
 
@@ -81,6 +65,16 @@ configure.args-append \
 
 # match libatomic_ops restrictions
 compiler.blacklist-append *gcc-3.* *gcc-4.*
+
+# Clang on i386 can't bootstrap ECL after 16.1.3; blacklist it
+# See:
+#  - https://gitlab.com/embeddable-common-lisp/ecl/-/issues/705
+#  - https://github.com/ivmai/bdwgc/issues/569
+if {${build_arch} eq "i386"} {
+    compiler.blacklist-append   *clang*
+    # I must ban libc++ because it will dismiss gcc
+    configure.cxx_stdlib        libstdc++
+}
 
 patchfiles          patch-macports-xdg-data-dir.diff
 
