@@ -6,7 +6,7 @@ PortGroup           compiler_blacklist_versions 1.0
 
 name                ecl
 version             23.9.9
-revision            0
+revision            1
 categories          lang
 license             GPL-2+
 maintainers         {easieste @easye} {@catap korins.ky:kirill} openmaintainer
@@ -26,7 +26,8 @@ if {${name} eq ${subport}} {
 
     extract.suffix  .tgz
 
-    patchfiles      environ-legacy-darwin.patch
+    patchfiles      environ-legacy-darwin.patch \
+                    handle-fork.patch
 }
 
 checksums           rmd160  6ea701b142b78fc4c263e3aee7709f4254a8ccc9 \
@@ -38,15 +39,15 @@ conflicts           ecl-devel
 subport ecl-devel {
     PortGroup       gitlab  1.0
 
-    gitlab.setup    embeddable-common-lisp ecl c646799145538997d84ed6d8755be7e7837eb7ef
-    version         20230826
+    gitlab.setup    embeddable-common-lisp ecl d1fdd797a84da8b30cfc88bbbca9bad6241c79d8
+    version         20230925
     revision        0
 
     conflicts       ecl
 
-    checksums       rmd160  2a34a31aeba8c90c44841039f53d1f088ed9bdc0 \
-                    sha256  a042e37ccaa383160b96da93c3f9881c4fe45c1f0f0968b021a5fe4fcf03607b \
-                    size    6564563
+    checksums       rmd160  80d1e5035dccdd2e27e4049cf09a2a91153ef254 \
+                    sha256  2205742210856dd3d0e5f23232abddd439978a938b269f76cc6e3b36f1b6b4be \
+                    size    6745052
 }
 
 # requires clock_gettime()

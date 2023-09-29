@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                google-cloud-sdk
-version             446.0.1
+version             448.0.0
 revision            0
 categories          devel python
 license             Apache-2
@@ -21,19 +21,19 @@ supported_archs     i386 x86_64 arm64
 
 if { ${configure.build_arch} eq "i386" } {
     distname        ${name}-${version}-darwin-x86
-    checksums       rmd160  6ef197a4144afb2db29bad8de6019b1e85cdb891 \
-                    sha256  690471f8d29afdedcc902307699a55ac631ba995100785d003c644be324cd065 \
-                    size    101491839
+    checksums       rmd160  40ce1d65aa01fa0589ba16c1f2dca7c18afc6ef9 \
+                    sha256  fb1132f54881af927cb4a4102dffb58d25323592d0d9981d2bfc4b7affd0533e \
+                    size    121017695
 } elseif { ${configure.build_arch} eq "x86_64" } {
     distname        ${name}-${version}-darwin-x86_64
-    checksums       rmd160  f04cba9988205a0bf33f27adafb9315490ab1b68 \
-                    sha256  198f598a6505b6275cef6e8f4343fab084c2be56f3802e07af9e7d845a15d54a \
-                    size    121761867
+    checksums       rmd160  7c9e31635443c5beb32dcd9a264b730d11b9361b \
+                    sha256  17f546644d19eae747078c6a5aaf7672d81df44283bd3173aff0e6c696574979 \
+                    size    122302715
 } elseif { ${configure.build_arch} eq "arm64" } {
     distname        ${name}-${version}-darwin-arm
-    checksums       rmd160  a72b8b5f87dcfc49f660b15b2f805446915caf63 \
-                    sha256  11603be1284875e16f7c287816ade8a6d295f2a5b58fa47c8b26c1ace0206f96 \
-                    size    118916685
+    checksums       rmd160  ce40569fc49527232cb55503901d36b7de89a9cb \
+                    sha256  d71c0b989937a026172331c51a68ba6c4227f15db5969ae92e8d559c68597974 \
+                    size    119405758
 }
 
 homepage            https://cloud.google.com/sdk/

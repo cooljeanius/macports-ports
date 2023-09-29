@@ -93,15 +93,15 @@ subport sbcl-devel {
     PortGroup   github  1.0
 
     github.setup \
-                sbcl sbcl 478629d7c97cec0e8d09b34797e2533d815cac2a
-    version     20230906
+                sbcl sbcl 58d78cbdf279ddf71fdf15751723a12aa2807782
+    version     20230928
     revision    0
 
     conflicts   sbcl
 
-    checksums   rmd160  6b625681e79ae9b760d5066b191caec844c53c8b \
-                sha256  72f4db432ba3d2e31f9bcbb7babe6ab4010f876e159ac8a73a59bcd5c3a1c06a \
-                size    9655641
+    checksums   rmd160  72c233558a3f0e1cf9f1baf08faad5f87b680d3b \
+                sha256  dd5cc585a7466b21e406614f60a415e4967e589978770ae287d47d9be2562323 \
+                size    9662352
 
     pre-build {
         system -W ${worksrcpath} "echo '\"${version}\"' > version.lisp-expr"
