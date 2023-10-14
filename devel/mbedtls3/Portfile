@@ -2,8 +2,12 @@
 
 PortSystem          1.0
 PortGroup           cmake 1.1
-PortGroup           github 1.0
 PortGroup           compiler_blacklist_versions 1.0
+PortGroup           github 1.0
+PortGroup           legacysupport 1.1
+
+# CLOCK_MONOTONIC
+legacysupport.newest_darwin_requires_legacy 15
 
 github.setup        ARMmbed mbedtls 3.5.0 mbedtls-
 name                mbedtls3
@@ -30,8 +34,6 @@ variant python38 conflicts python39 python310 python311 description {Use Python 
 variant python39 conflicts python38 python310 python311 description {Use Python 3.9} {}
 variant python310 conflicts python38 python39 python311 description {Use Python 3.10} {}
 variant python311 conflicts python38 python39 python310 description {Use Python 3.11} {}
-
-set python.branch 3.10
 
 if {![variant_isset python38] && ![variant_isset python39] && ![variant_isset python310]} {
     default_variants +python311
