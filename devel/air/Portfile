@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/cosmtrek/air 1.46.0 v
+go.setup            github.com/cosmtrek/air 1.48.0 v
 github.tarball_from archive
 revision            0
 
@@ -18,9 +18,9 @@ license             GPL-3
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  6bfc52dc534d9bca38cb85dc638d2eecdd15221a \
-                    sha256  7b2e4fbc2467cb4b722590824a9a6649ffd2f91eeaec10c44fcf2e7eee692412 \
-                    size    1034991
+checksums           rmd160  b8b2c4df543dbb714a558ec1cf653a0ab394481e \
+                    sha256  c8a59eaea10b0e7cd4180fbb533408a4405c07f98fc2beaaa4d322a9249ab510 \
+                    size    1035588
 
 patch {
     # Set the build version directly in the Makefile. Do not attempt to
