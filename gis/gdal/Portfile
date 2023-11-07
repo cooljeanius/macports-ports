@@ -8,12 +8,12 @@ PortGroup           legacysupport 1.0
 PortGroup           muniversal 1.0
 
 name                gdal
-version             3.7.2
-revision            1
+version             3.7.3
+revision            0
 
-checksums           rmd160  7b7ef05f3322065516335516932b5668c845c62f \
-                    sha256  40c0068591d2c711c699bbb734319398485ab169116ac28005d8302f80b923ad \
-                    size    8619608
+checksums           rmd160  3c1dfaf2f6abb8d74d728f8479c3bf1f4d432076 \
+                    sha256  e0a6f0c453ea7eb7c09967f50ac49426808fcd8f259dbc9888140eb69d7ffee6 \
+                    size    8625812
 
 categories          gis
 license             MIT BSD
@@ -295,6 +295,11 @@ pre-configure {
     }
 }
 
+if {[variant_isset kea] && ![variant_isset hdf5]} {
+    ui_msg "NOTE: KEA driver support depends on HDF5, +hdf5 variant is added."
+    default_variants +hdf5
+}
+
 # Set target to none
 build.target
 
@@ -389,6 +394,11 @@ variant heif description {Enable HEIF support} {
     depends_lib-append      port:libheif
     configure.args-replace  -DGDAL_USE_HEIF=OFF    -DGDAL_USE_HEIF=ON
     configure.args-append   -DGDAL_ENABLE_DRIVER_HEIF=ON
+}
+
+variant kea description {Enable KEA support} {
+    depends_lib-append      port:kealib
+    configure.args-append   -DGDAL_ENABLE_DRIVER_KEA=ON
 }
 
 variant libarchive description {Enable libarchive support} {
