@@ -5,7 +5,7 @@ PortGroup           clang_dependency 1.0
 
 name                sqlite3
 # don't forget to update the checksums for sqlite3-tools when updating sqlite3
-version             3.43.2
+version             3.44.2
 revision            0
 categories          databases
 platforms           darwin
@@ -29,12 +29,9 @@ master_sites        ${homepage}2023
 set padded_ver      [string range [subst [regsub -all {\.([0-9]+)} "${version}.0.0" {[format %02d \1]}]] 0 6]
 distname            sqlite-autoconf-${padded_ver}
 
-# stealth update
-dist_subdir         ${name}/${version}_1
-
-checksums           rmd160  2da8365b881f30c3ee9566d189bb52fe3b461bb4 \
-                    sha256  6d422b6f62c4de2ca80d61860e3a3fb693554d2f75bb1aaca743ccc4d6f609f0 \
-                    size    3177625
+checksums           rmd160  83172e392e264504704e61261ab7491ca25d6408 \
+                    sha256  1c6719a148bc41cf0f2bbbe3926d7ce3f5ca09d878f1246fcc20767b175bb407 \
+                    size    3204841
 
 depends_lib         port:libedit \
                     port:ncurses \
@@ -124,9 +121,9 @@ subport ${name}-tools {
     long_description        {*}${description}, including the sqldiff program and the \
                             sqlite3_analyzer program.
 
-    checksums       rmd160  d5296d8a8654741aafafe223ccd048370b1bf839 \
-                    sha256  eb6651523f57a5c70f242fc16bc416b81ed02d592639bfb7e099f201e2f9a2d3 \
-                    size    13929567
+    checksums       rmd160  4fbab49903759dd675ef066529e0ff5d9312d9d3 \
+                    sha256  73187473feb74509357e8fa6cb9fd67153b2d010d00aeb2fddb6ceeb18abaf27 \
+                    size    14070781
 
     use_zip                 yes
     depends_lib             port:tcl \

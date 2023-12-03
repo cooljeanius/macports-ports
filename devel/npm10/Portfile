@@ -3,7 +3,7 @@
 PortSystem          1.0
 
 name                npm10
-version             10.2.1
+version             10.2.4
 revision            0
 categories          devel
 platforms           darwin
@@ -27,10 +27,10 @@ extract.suffix      .tgz
 
 # Please keep the sha1 - users can use it to validate sha values
 # published on npmjs.org for the package
-checksums           rmd160  869acb5089917ff24c7f4e0fdc0c70715664f65a \
-                    sha1    41fd6626a08d4167b8639edd272ecf9735e7ceaf \
-                    sha256  9a3a713c07c2a39d375fd8f153d1ef57f8dd7cfe3731ce9d5f02015e993ea69d \
-                    size    2809048
+checksums           rmd160  8514b0cac2d1ad4a1f4416b38616df606e4016ae \
+                    sha1    5ada7389d5f32b7a8e2900a9fd2f5eb5ed7e71c2 \
+                    sha256  36b548120f75f26408d04ff163cd4a699916f1c4b72ebeeab0bbaf054009eb5b \
+                    size    2584508
 
 worksrcdir          "package"
 
@@ -52,15 +52,13 @@ post-patch {
                    ${worksrcpath}/bin/npx-cli.js \
                    ${worksrcpath}/node_modules/@npmcli/arborist/bin/index.js \
                    ${worksrcpath}/node_modules/color-support/bin.js \
+                   ${worksrcpath}/node_modules/cross-spawn/node_modules/which/bin/node-which \
                    ${worksrcpath}/node_modules/cssesc/bin/cssesc \
                    ${worksrcpath}/node_modules/mkdirp/bin/cmd.js \
                    ${worksrcpath}/node_modules/node-gyp/bin/node-gyp.js \
-                   ${worksrcpath}/node_modules/node-gyp/node_modules/nopt/bin/nopt.js \
-                   ${worksrcpath}/node_modules/node-gyp/node_modules/which/bin/node-which \
                    ${worksrcpath}/node_modules/nopt/bin/nopt.js \
                    ${worksrcpath}/node_modules/pacote/lib/bin.js \
                    ${worksrcpath}/node_modules/qrcode-terminal/bin/qrcode-terminal.js \
-                   ${worksrcpath}/node_modules/rimraf/bin.js \
                    ${worksrcpath}/node_modules/semver/bin/semver.js \
                    ${worksrcpath}/node_modules/which/bin/which.js] {
         reinplace "s|/usr/bin/env node|${prefix}/bin/node|" ${f}

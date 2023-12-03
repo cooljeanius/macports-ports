@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/helmfile/helmfile 0.158.0 v
+go.setup            github.com/helmfile/helmfile 0.159.0 v
 github.tarball_from archive
 revision            0
 
@@ -30,9 +30,9 @@ build.pre_args-append \
                     TAG=v${version}
 build.args          build
 
-checksums           rmd160  5dd37c88914405c47bed397c4219041ffac538b5 \
-                    sha256  9c31c506ae802ed0bcabe83218f114861269321fac257f238cedc6c209ff13aa \
-                    size    592373
+checksums           rmd160  33e0791648b4fac79557606210bc0b8b8cb5e62d \
+                    sha256  56a9c510cd5832373468623b2897948b679e09ad090b9e41991b11fecd553360 \
+                    size    1025023
 
 use_parallel_build  no
 

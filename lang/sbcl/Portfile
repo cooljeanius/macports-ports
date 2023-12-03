@@ -11,7 +11,7 @@ name            sbcl
 #
 # Please bump the revision of math/maxima (and when it exists
 # math/maxima-devel) and fricas when this port changes.
-version         2.3.9
+version         2.3.10
 revision        0
 epoch           1
 
@@ -36,9 +36,9 @@ homepage        http://www.sbcl.org
 patchfiles      0001-fix-building-when-root-directory-contain-non-ASCII-c.patch \
                 0002-add-MacPorts-XDG_DATA_DIRS.patch
 
-checksums       rmd160  99f0a5533c60887890775c4df4a6331a4359b432 \
-                sha256  7d289a91232022028bf0128900c32bf00e4c5430c32f28af0594c8a592a98654 \
-                size    7574665
+checksums       rmd160  621122aba4ae1599f3f4f1b85b7fee82b60e2cb7 \
+                sha256  358033315d07e4c5a6c838ee7f22cfc4d49e94848eb71ec1389d494bc32dd2ab \
+                size    7600039
 
 if {${name} eq ${subport}} {
     master_sites \
@@ -56,15 +56,15 @@ subport sbcl-devel {
     PortGroup   github  1.0
 
     github.setup \
-                sbcl sbcl 58d78cbdf279ddf71fdf15751723a12aa2807782
-    version     20230928
+                sbcl sbcl 7e5c8161aeb33a11f6e853c40a7eedb6a6c38971
+    version     20231125
     revision    0
 
     conflicts   sbcl
 
-    checksums   rmd160  72c233558a3f0e1cf9f1baf08faad5f87b680d3b \
-                sha256  dd5cc585a7466b21e406614f60a415e4967e589978770ae287d47d9be2562323 \
-                size    9662352
+    checksums   rmd160  69b87a2a2d6e06d239d0dda2aaedd44a9d6ab4b9 \
+                sha256  c312a4094ae1d3ed6bc6afbdbdd84645afe142f65e647fcc886e043b66ecbcfa \
+                size    9721278
 
     pre-build {
         system -W ${worksrcpath} "echo '\"${version}\"' > version.lisp-expr"

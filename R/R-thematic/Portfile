@@ -1,0 +1,45 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           R 1.0
+
+R.setup             cran rstudio thematic 0.1.4
+revision            0
+categories-append   graphics
+maintainers         nomaintainer
+license             MIT
+description         Unified and automatic theming of R-ggplot2, R-lattice and base R graphics
+long_description    {*}${description}
+homepage            https://rstudio.github.io/thematic
+checksums           rmd160  8c86c8f40fb6ee2615546fbba354b093ea4c50c2 \
+                    sha256  6ec3cc59711a431618115296a5157fb5ca7b446fce71a17bf19e7149cd74e482 \
+                    size    2755162
+supported_archs     noarch
+
+depends_lib-append  port:R-farver \
+                    port:R-ggplot2 \
+                    port:R-rlang \
+                    port:R-rappdirs \
+                    port:R-rstudioapi \
+                    port:R-scales
+
+depends_test-append port:R-bslib \
+                    port:R-Cairo \
+                    port:R-curl \
+                    port:R-gganimate \
+                    port:R-ggiraph \
+                    port:R-htmltools \
+                    port:R-jsonlite \
+                    port:R-knitr \
+                    port:R-ragg \
+                    port:R-rmarkdown \
+                    port:R-showtext \
+                    port:R-shiny \
+                    port:R-svglite \
+                    port:R-sysfonts \
+                    port:R-systemfonts \
+                    port:R-testthat \
+                    port:R-vdiffr \
+                    port:R-withr
+
+test.run            yes

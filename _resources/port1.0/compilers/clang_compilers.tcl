@@ -5,7 +5,7 @@
 # clang_dependency PortGroup, and add it to any new dependencies of the
 # new version.
 
-global os.major os.platform
+global os.platform
 
 # clang is useless on Darwin / PowerPC, let disable it globally
 if {${os.platform} eq "darwin" && [option configure.build_arch] in [list ppc ppc64]} {
@@ -13,8 +13,11 @@ if {${os.platform} eq "darwin" && [option configure.build_arch] in [list ppc ppc
 }
 
 if {${os.major} >= 11 || ${os.platform} ne "darwin"} {
-    if {[option compiler.cxx_standard] >= 2014} {
+    if {[option compiler.cxx_standard] >= 2014 && ${os.major} >= 22} {
         # For now limit exposure of clang-17 to ports needing c++14 or newer
+        # and only on macOS13 or newer due to issues like
+        # https://github.com/macports/macports-ports/pull/21051
+        # https://trac.macports.org/ticket/68640
         lappend compilers macports-clang-17
     }
     lappend compilers macports-clang-16 \
@@ -31,7 +34,7 @@ if {${os.major} >= 11 || ${os.platform} ne "darwin"} {
 
 if {${os.platform} eq "darwin"} {
 
-    if {${os.major} >= 10} {
+    if {${os.major} >= 9} {
         lappend compilers macports-clang-11
         if {[option build_arch] ne "arm64"} {
             lappend compilers macports-clang-10 macports-clang-9.0

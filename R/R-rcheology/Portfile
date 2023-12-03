@@ -3,15 +3,15 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             cran cran rcheology 4.3.1.0
+R.setup             github hughjonesd rcheology 4.3.2.0 v
 revision            0
 maintainers         nomaintainer
 license             public-domain
 description         Data on base packages for current and previous versions of R
 long_description    {*}${description}
-checksums           rmd160  6001c7bc05e41ab6f251e90cdc2de34521c48f79 \
-                    sha256  3d6d2216b942f0185c370fb3f08371a48369e80142773cb7fff03a6c7d085b43 \
-                    size    665403
+checksums           rmd160  f64d2a6b6378e438497219147df7cffb2c720d53 \
+                    sha256  9885857ff25f0c9419a41287bc3d8f369913c1428d7178a50e5e187361e1d92d \
+                    size    9684151
 supported_archs     noarch
 
 test.run            yes

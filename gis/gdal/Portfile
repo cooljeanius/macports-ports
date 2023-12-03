@@ -8,12 +8,12 @@ PortGroup           legacysupport 1.0
 PortGroup           muniversal 1.0
 
 name                gdal
-version             3.7.2
-revision            1
+version             3.8.1
+revision            0
 
-checksums           rmd160  7b7ef05f3322065516335516932b5668c845c62f \
-                    sha256  40c0068591d2c711c699bbb734319398485ab169116ac28005d8302f80b923ad \
-                    size    8619608
+checksums           rmd160  64b2072ea8d97ee3cc331c7d035b932317def9b3 \
+                    sha256  75a20b23879bfa3d8c0db68e1d6f8b924f7f9d97f5fed089b01a72e404293900 \
+                    size    8860344
 
 categories          gis
 license             MIT BSD
@@ -36,11 +36,20 @@ use_xz              yes
 # error: call to 'abs' is ambiguous
 compiler.blacklist-append {clang < 900}
 
-compiler.cxx_standard 2014
+# Enable use of std::shared_mutex on systems that support it (macOS 10.12+),
+# next major GDAL version (>3.8) will require C++17.
+if {${os.platform} eq "darwin" && ${os.major} < 16} {
+    compiler.cxx_standard 2014
+} else {
+    compiler.cxx_standard 2017
+}
 cmake.set_cxx_standard yes
 
 # See https://trac.macports.org/ticket/56908
 compiler.thread_local_storage yes
+
+# https://trac.macports.org/ticket/68716
+patchfiles-append   patch-have_shared_mutex.diff
 
 configure.optflags  -DGDAL_COMPILATION
 
@@ -57,6 +66,7 @@ depends_lib-append \
                     port:giflib \
                     path:include/turbojpeg.h:libjpeg-turbo \
                     port:lerc \
+                    port:libaec \
                     port:libdeflate \
                     port:libpng \
                     port:libxml2 \
@@ -158,6 +168,7 @@ configure.args-append                                        \
                     -DOGR_ENABLE_DRIVER_DXF=ON               \
                     -DOGR_ENABLE_DRIVER_EDIGEO=ON            \
                     -DOGR_ENABLE_DRIVER_FLATGEOBUF=ON        \
+                    -DOGR_ENABLE_DRIVER_JSONFG=ON            \
                     -DOGR_ENABLE_DRIVER_GEOCONCEPT=ON        \
                     -DOGR_ENABLE_DRIVER_GMT=ON               \
                     -DOGR_ENABLE_DRIVER_MAPML=ON             \
@@ -198,6 +209,7 @@ configure.args-append                                        \
                     -DGDAL_ENABLE_DRIVER_RASTERLITE=ON       \
                     -DOGR_ENABLE_DRIVER_GPKG=ON              \
                     -DOGR_ENABLE_DRIVER_OSM=ON               \
+                    -DOGR_ENABLE_DRIVER_PMTILES=ON           \
                     -DOGR_ENABLE_DRIVER_VFK=ON
 
 # These drivers require expat
@@ -247,6 +259,7 @@ configure.args-append                                        \
                     -DGDAL_USE_HEIF=OFF                      \
                     -DGDAL_USE_ICONV=ON                      \
                     -DGDAL_USE_IDB=OFF                       \
+                    -DGDAL_USE_LIBAEC=ON                     \
                     -DGDAL_USE_LIBKML=OFF                    \
                     -DGDAL_USE_LIBLZMA=OFF                   \
                     -DGDAL_USE_MRSID=OFF                     \
@@ -265,10 +278,15 @@ configure.args-append                                        \
                     -DGDAL_USE_QHULL=ON                      \
                     -DGDAL_USE_SPATIALITE=ON                 \
                     -DGDAL_USE_SQLITE3=ON                    \
+                    -DGDAL_USE_TILEDB=OFF                    \
                     -DGDAL_USE_TIFF_INTERNAL=ON              \
                     -DGDAL_USE_WEBP=ON                       \
                     -DGDAL_USE_XERCESC=OFF                   \
                     -DGDAL_USE_ZSTD=ON
+
+configure.args-append                                                       \
+                    -DLIBAEC_INCLUDE_DIR=${prefix}/lib/libaec/include       \
+                    -DLIBAEC_LIBRARY=${prefix}/lib/libaec/lib/libaec.dylib
 
 # Always choose internal libjson code (#44098)
 configure.args-append -DGDAL_USE_JSONC_INTERNAL=ON
@@ -293,6 +311,11 @@ pre-configure {
             lappend worksrcpath_dirs ${worksrcpath}-${arch}
         }
     }
+}
+
+if {[variant_isset kea] && ![variant_isset hdf5]} {
+    ui_msg "NOTE: KEA driver support depends on HDF5, +hdf5 variant is added."
+    default_variants +hdf5
 }
 
 # Set target to none
@@ -389,6 +412,11 @@ variant heif description {Enable HEIF support} {
     depends_lib-append      port:libheif
     configure.args-replace  -DGDAL_USE_HEIF=OFF    -DGDAL_USE_HEIF=ON
     configure.args-append   -DGDAL_ENABLE_DRIVER_HEIF=ON
+}
+
+variant kea description {Enable KEA support} {
+    depends_lib-append      port:kealib
+    configure.args-append   -DGDAL_ENABLE_DRIVER_KEA=ON
 }
 
 variant libarchive description {Enable libarchive support} {
@@ -499,6 +527,12 @@ variant poppler description {Enable Poppler support} {
     depends_lib-append      path:lib/pkgconfig/poppler.pc:poppler
     configure.args-replace  -DGDAL_USE_POPPLER=OFF  -DGDAL_USE_POPPLER=ON
     configure.args-append   -DGDAL_ENABLE_DRIVER_PDF=ON
+}
+
+variant tiledb description {Enable TileDB support} {
+    depends_lib-append      port:tiledb
+    configure.args-replace  -DGDAL_USE_TILEDB=OFF  -DGDAL_USE_TILEDB=ON
+    configure.args-append   -DGDAL_ENABLE_DRIVER_TILEDB=ON
 }
 
 # PostgreSQL variants

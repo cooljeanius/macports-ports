@@ -1,0 +1,22 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           R 1.0
+
+R.setup             cran altumrete RMVL 0.0.4.9
+revision            0
+categories-append   math
+maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
+license             LGPL-2.1
+description         Mappable vector library for handling large datasets
+long_description    Mappable vector library provides convenient way to access large datasets.
+checksums           rmd160  a24a42ffc29826d5f43b6a51802c30def3c57360 \
+                    sha256  ed58216df57f392904af8187e58a130172c2ad1cd4068851227a7816fb73f322 \
+                    size    95131
+
+# On 32-bit there is a warning during the build:
+# RlibMVL.c:1165:16: warning: cast from pointer to integer of different size [-Wpointer-to-int-cast]
+# 1165 |         offset=(LIBMVL_OFFSET64)&(mvl_vector_data(vec));
+#      |                ^
+# However, all tests pass successfully.
+test.run            yes

@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           cargo   1.0
 PortGroup           github  1.0
 
-github.setup        Nukesor pueue 3.3.0 v
+github.setup        Nukesor pueue 3.3.2 v
 github.tarball_from archive
 revision            0
 
@@ -28,9 +28,9 @@ maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
 checksums           ${distname}${extract.suffix} \
-                    rmd160  9e6c1d8727dcf0a7de2b29179323caf3f7bfae74 \
-                    sha256  95f9c2744c6b9c43cf9e78864fcc05478aad65527786cb9ab5c58c2b998547de \
-                    size    179268
+                    rmd160  08750cb70af27c47514285c49d01a7023cfbce77 \
+                    sha256  5d880731b7911dcc01c84ad547d703d4d438a95a64396d3610829d0c05bb1e37 \
+                    size    179806
 
 destroot {
     xinstall -m 0755 \

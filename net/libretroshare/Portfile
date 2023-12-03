@@ -6,8 +6,8 @@ PortGroup               github 1.0
 PortGroup               legacysupport 1.1
 PortGroup               openssl 1.0
 
-github.setup            RetroShare libretroshare a10087b27a804d0a43745aa39e7515dd691740f3
-version                 2023.10.13
+github.setup            RetroShare libretroshare e22b48790d143b5718879d3d72d55e1a3c337304
+version                 2023.11.07
 revision                0
 categories              net devel security
 maintainers             {@barracuda156 gmail.com:vital.had} openmaintainer
@@ -17,9 +17,9 @@ long_description        {*}${description} RetroShare functionalities (file shari
                         are implemented under the hood by libretroshare which offer a documented C++ and JSON API. \
                         While RetroShare is an application on its own, libretroshare is meant to be used as part of other programs.
 homepage                https://retroshare.cc
-checksums               rmd160  410665d5fb48a4e3be11ed2fe6d500243ff318ce \
-                        sha256  cee2752affba51098bff16977b18be06395bdcaf300f410c5c9e23159b7907dc \
-                        size    1925513
+checksums               rmd160  f0ccfe041d2110a1db3f545d785dd8f9df210cc4 \
+                        sha256  1488dd29840e9246e0d53b22b39aa628d76e8daf70454745f4e7c109fade1213 \
+                        size    1928270
 github.tarball_from     archive
 
 # getline, strnlen
@@ -58,3 +58,12 @@ configure.args-append   -DPython_EXECUTABLE=${prefix}/bin/python${py_ver} \
                         -DRS_EXPORT_JNI_ONLOAD=OFF \
                         -DRS_SQLCIPHER=ON \
                         -DRS_WARN_DEPRECATED=OFF
+
+if {${os.platform} eq "darwin" && ${os.major} > 22} {
+    # https://github.com/RetroShare/libretroshare/issues/122
+    # https://trac.macports.org/ticket/68536
+    patchfiles-append   0003-fix-xcode15.patch
+
+    configure.args-append \
+                        -DRS_XCODE15=ON
+}

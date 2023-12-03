@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/nektos/act 0.2.52 v
+go.setup            github.com/nektos/act 0.2.55 v
 github.tarball_from archive
 revision            0
 
@@ -19,9 +19,9 @@ maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 platforms           darwin linux
 
-checksums           rmd160  d8b3bc9144f26d1eb4d735773b6d9a9a4b6a9b7c \
-                    sha256  f0be3a2cf93361a9b012e87962b5e4f99e6b7900957ddb726a360d2527fcc7d0 \
-                    size    9221529
+checksums           rmd160  a9e8dad6fc24d8d32ba5e63ec82cbf3628b668bc \
+                    sha256  29cd5b46551d5db9d59a6eb5781deb444cf283db650b77b39b1914a0b5af8baa \
+                    size    9264852
 
 # Difficulty building with vendored libs.
 # Allow fetching libraries at build time:

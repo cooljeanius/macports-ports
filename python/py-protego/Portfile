@@ -6,11 +6,12 @@ PortGroup               python 1.0
 name                    py-protego
 version                 0.3.0
 maintainers             {khindenburg @kurthindenburg} openmaintainer
-platforms               darwin
+platforms               {darwin any}
+supported_archs         noarch
 
 description             Protego is a pure-Python `robots.txt` parser with support \
                         for modern conventions.
-long_description        ${description}
+long_description        {*}${description}
 license                 BSD
 homepage                https://pypi.python.org/pypi/Protego
 
@@ -27,13 +28,5 @@ if {${name} ne ${subport}} {
     depends_build-append    port:py${python.version}-setuptools
     depends_lib-append      port:py${python.version}-six
 
-    depends_test-append port:py${python.version}-pytest
     test.run            yes
-    test.cmd            py.test-${python.branch}
-    test.target
-    test.env            PYTHONPATH=${worksrcpath}/build/lib
-
-    livecheck.type          none
-} else {
-    livecheck.type          pypi
 }

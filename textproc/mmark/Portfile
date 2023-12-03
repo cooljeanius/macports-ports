@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/mmarkdown/mmark 2.2.36 v
+go.setup            github.com/mmarkdown/mmark 2.2.43 v
 github.tarball_from archive
 revision            0
 
@@ -37,9 +37,9 @@ destroot {
 }
 
 checksums           ${distname}${extract.suffix} \
-                        rmd160  c4bf2b4cf76826569b3ee41ff59c46a5dd7eda8a \
-                        sha256  e4960500a7092767a9424fc8f2c04f9f2604f85570503002b527303e207f06f0 \
-                        size    253599
+                        rmd160  4392e97555eefc1090cfafd4704fcd2516fef955 \
+                        sha256  9f672c36a65dd8013f416ab8e7f85b0143cf7e92af6ba3f965163cffc5299262 \
+                        size    255581
 
 go.vendors          github.com/google/go-cmp \
                         lock    v0.2.0 \

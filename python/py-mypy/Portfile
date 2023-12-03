@@ -5,7 +5,7 @@ PortGroup python 1.0
 PortGroup select 1.0
 
 name                py-mypy
-version             1.6.1
+version             1.7.1
 revision            0
 license             MIT
 platforms           darwin
@@ -20,9 +20,9 @@ long_description    Add type annotations to your Python programs, and use mypy t
 
 homepage            http://www.mypy-lang.org
 
-checksums           rmd160  afabfed345b1434ef67fd07d1d1adc685fa1c34a \
-                    sha256  4d01c00d09a0be62a4ca3f933e315455bde83f37f892ba4b08ce92f3cf44bcc1 \
-                    size    2919965
+checksums           rmd160  040fbdefd0f24f1dba0f345eac79e81836acfc9e \
+                    sha256  fcb6d9afb1b6208b4c712af0dafdc650f518836065df0d4fb1d800f5d6773db2 \
+                    size    2979742
 
 python.versions     37 38 39 310 311 312
 python.pep517       yes

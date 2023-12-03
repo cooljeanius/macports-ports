@@ -7,7 +7,7 @@ PortGroup           select 1.0
 name                py-gdal
 python.rootname     GDAL
 # keep version in sync with gdal; rebuilt after gdal update
-version             3.7.2
+version             3.8.1
 revision            0
 
 categories-append   gis
@@ -20,26 +20,22 @@ long_description    This Python package and extensions are a number of tools for
 
 homepage            https://www.gdal.org
 
-checksums           rmd160  6df0abb7257badf51138d17c45e4d008dc3b920e \
-                    sha256  06feb750247c3704cb2fd895ced5a3c9175d9fd08d9fef48b26b293fecbc01e1 \
-                    size    777018
+checksums           rmd160  2d5d4a09a79920c090a0559cd0f9419c2bec25ae \
+                    sha256  92bab022810bf7e218cfc15cdd58f100b2f15b81bba24e12bb156d67c707bbb3 \
+                    size    802319
 
-python.versions     37 38 39 310 311
+python.versions     38 39 310 311
 
 if {${name} ne ${subport}} {
     compiler.cxx_standard   2011
     compiler.thread_local_storage yes
-    
+
     depends_run-append \
                     port:gdal_select
 
     depends_lib-append \
                     port:gdal \
                     port:py${python.version}-numpy
-
-    post-patch {
-        reinplace "s|\\.\\./\\.\\./apps/|${prefix}/bin/|" ${worksrcpath}/setup.cfg
-    }
 
     post-destroot {
         set docdir ${prefix}/share/doc/${subport}

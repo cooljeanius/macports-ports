@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-tldextract
-version             5.0.1
+version             5.1.1
 revision            0
 categories-append   net
 license             BSD
@@ -19,9 +19,9 @@ platforms           {darwin any}
 
 python.versions     38 39 310 311
 
-checksums           rmd160  f95f986bc0f6ec9411b4d133bdbaf63aded0de30 \
-                    sha256  ac1c5daa02616e9c2608f5fb6dd93049db03d0cf46c7f6fad46e2850a984f019 \
-                    size    111023
+checksums           rmd160  783564eab82c97fbad28cf56eb1e1771f9c2e541 \
+                    sha256  9b6dbf803cb5636397f0203d48541c0da8ba53babaf0e8a6feda2d88746813d4 \
+                    size    112645
 
 if {${name} ne ${subport}} {
     python.pep517   yes

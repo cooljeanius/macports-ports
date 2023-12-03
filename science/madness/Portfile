@@ -1,17 +1,17 @@
 # -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
 
 PortSystem          1.0
-PortGroup           active_variants 1.1
 PortGroup           boost 1.0
 PortGroup           cmake 1.1
+PortGroup           compilers 1.0
 PortGroup           github 1.0
 PortGroup           legacysupport 1.1
 
 boost.version       1.81
 
-github.setup        m-a-d-n-e-s-s madness 04cca03656627bebf8e7d4e54b52d7d101774bd7
-version             2023.09.20
-revision            0
+github.setup        m-a-d-n-e-s-s madness 69ace5826625506fc04f5021d806942b21959d36
+version             2023.11.02
+revision            1
 categories          science math
 license             GPL-2
 maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
@@ -20,9 +20,10 @@ long_description    MADNESS provides a high-level environment for the solution \
                     of integral and differential equations in many dimensions \
                     using adaptive, fast methods with guaranteed precision \
                     based on multi-resolution analysis and novel separated representations.
-checksums           rmd160  2dd850f778b7898d79578cb51cbdc7733bf14771 \
-                    sha256  db36027c369320467afeaacc70b9ef46fd8c58142eeddbc83619f3eb32853750 \
-                    size    29170385
+checksums           rmd160  d7d7933f42608c4af5bafb9f08a6c3a0de9b8506 \
+                    sha256  db8caaad87a5de0b93e150770c9e9f5708d1625feefb0969841e853d483d6749 \
+                    size    36734000
+github.tarball_from archive
 
 set py_ver          3.11
 set py_ver_nodot    [string map {. {}} ${py_ver}]
@@ -30,11 +31,20 @@ depends_build-append \
                     port:python${py_ver_nodot}
 configure.python    ${prefix}/bin/python${py_ver}
 
-# For now, using OpenBLAS instead of PG choice, due to this:
-# https://github.com/m-a-d-n-e-s-s/madness/issues/458
-depends_lib-append  path:lib/libopenblas.dylib:OpenBLAS
-require_active_variants \
+# On new systems finding OpenBLAS is broken with this port for some reason recently,
+# so let them use Accelerate. On non-Darwin OSs there is no Accelerate: OpenBLAS is the only option.
+if {(${os.platform} eq "darwin" && ${os.major} < 20) || ${os.platform} ne "darwin"} {
+    # For now, using OpenBLAS instead of PG choice, due to this:
+    # https://github.com/m-a-d-n-e-s-s/madness/issues/458
+    depends_lib-append \
+                    path:lib/libopenblas.dylib:OpenBLAS
+    require_active_variants \
                     path:lib/libopenblas.dylib:OpenBLAS lapack
+
+    # We need LAPACK_LIBRARIES to be set: https://trac.macports.org/ticket/68721
+    configure.pre_args-append \
+                    -DLAPACK_LIBRARIES=OpenBLAS
+}
 
 depends_lib-append  port:gperftools
 
@@ -57,12 +67,9 @@ post-patch {
                     {*}[glob ${worksrcpath}/src/apps/znemo/*.py]
 }
 
-compiler.cxx_standard 2017
-compiler.thread_local_storage yes
-
-configure.pre_args-append \
-                    -DBLAS_LIBRARIES=${prefix}/lib/libopenblas.dylib \
-                    -DLAPACK_LIBRARIES=${prefix}/lib/libopenblas.dylib
+compiler.cxx_standard           2017
+compiler.thread_local_storage   yes
+compilers.setup                 require_fortran
 
 # oneTBB task backend not yet fixed: https://github.com/m-a-d-n-e-s-s/madness/issues/366
 # It is unclear whether MPI works, therefore disabling for now.
@@ -85,14 +92,11 @@ configure.args-append \
                     -DENABLE_SPINLOCKS=ON \
                     -DENABLE_TCMALLOC_MINIMAL=OFF \
                     -DFORTRAN_INTEGER_SIZE=4 \
-                    -DMADNESS_TASK_BACKEND="Pthreads"
+                    -DMADNESS_TASK_BACKEND="Pthreads" \
+                    -DPython3_EXECUTABLE=${configure.python}
 
 legacysupport.newest_darwin_requires_legacy 16
-
-if {[string match *clang* ${configure.compiler}]} {
-    # Don’t use libcxx with gcc.
-    legacysupport.use_mp_libcxx yes
-}
+legacysupport.use_mp_libcxx yes
 
 platform darwin {
     # dqueue.h:221:17: error: aligned deallocation function
