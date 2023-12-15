@@ -1,10 +1,10 @@
-# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:filetype=tcl:et:sw=4:ts=4:sts=4
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
 
 PortSystem      1.0
 PortGroup       github 1.0
 
 name            libsdl2_image
-github.setup    libsdl-org SDL_image 2.6.3 release-
+github.setup    libsdl-org SDL_image 2.8.1 release-
 categories      devel graphics
 license         zlib
 maintainers     {jmr @jmroot} openmaintainer
@@ -17,8 +17,8 @@ long_description \
 github.tarball_from releases
 distname        SDL2_image-${version}
 
-checksums       rmd160 f2691e370d48d852f929391c419a4b7858f0d74e \
-                sha256 931c9be5bf1d7c8fae9b7dc157828b7eee874e23c7f24b44ba7eff6b4836312c
+checksums       rmd160 924cf43836a9cc332bbf52ff496d2ab4033d278b \
+                sha256 e4cab9a58c347a490c46723c17553b4e12233cd821d3b993a8475a50497f5a3e
 
 depends_build   port:pkgconfig
 depends_lib     port:libsdl2 \

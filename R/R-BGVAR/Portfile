@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             cran mboeck11 BGVAR 2.5.3
+R.setup             cran mboeck11 BGVAR 2.5.5
 revision            0
 categories-append   math
 maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
@@ -11,9 +11,9 @@ license             GPL-3
 description         Bayesian global vector autoregressions
 long_description    {*}${description}
 homepage            https://github.com/mboeck11/BGVAR
-checksums           rmd160  a115c868caae5d94a3e1f0e6126d79a16899e509 \
-                    sha256  a61a94f8b603ba96f9aa703e9fe0d61800849384754f860d60f20683a564573f \
-                    size    3193239
+checksums           rmd160  b3d39385fa2edb0154d7a0daa3d245e255d3a579 \
+                    sha256  4832b69ec9a64a953c8bf8ca2efde675b8cdd526f29363f8aebfc9613a459281 \
+                    size    3193302
 
 depends_lib-append  port:R-abind \
                     port:R-bayesm \
