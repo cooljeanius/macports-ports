@@ -22,6 +22,7 @@ jobs:
       group: ${{ github.ref }}/${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [macos-11, macos-12, macos-13]
 
@@ -52,7 +53,7 @@ jobs:
           echo "/opt/local/sbin" >> $GITHUB_PATH
 
           portlist=$( \
-            git -C ports/ diff --name-only --diff-filter=AM macports/master...@ \
+            git -C ports/ diff --name-only --diff-filter=AM cooljeanius/master...@ \
               | grep -E '^[^._/][^/]*/[^/]+/(Portfile$|files/)' \
               | cut -d/ -f2 \
               | sort -u \
@@ -224,7 +225,7 @@ jobs:
             -exec chmod -R go+rX {} \;
       - name: Archive build logs
         if: always()
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: logs-${{ matrix.os }}.zip
           path: /tmp/mpbb/*/logs
