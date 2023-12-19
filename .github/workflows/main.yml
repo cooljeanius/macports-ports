@@ -53,7 +53,7 @@ jobs:
           echo "/opt/local/sbin" >> $GITHUB_PATH
 
           portlist=$( \
-            git -C ports/ diff --name-only --diff-filter=AM macports/master...@ \
+            git -C ports/ diff --name-only --diff-filter=AM cooljeanius/master...@ \
               | grep -E '^[^._/][^/]*/[^/]+/(Portfile$|files/)' \
               | cut -d/ -f2 \
               | sort -u \
