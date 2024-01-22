@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           perl5 1.0
 
 perl5.branches      5.28 5.30 5.32 5.34
-perl5.setup         Crypt-Passphrase 0.016
+perl5.setup         Crypt-Passphrase 0.018
 revision            0
 license             {Artistic-1 GPL}
 maintainers         nomaintainer
@@ -15,9 +15,9 @@ long_description    {*}${description}
 platforms           {darwin any}
 supported_archs     noarch
 
-checksums           rmd160  6541979136adbd5cbeede0cdb85261d64c0f575d \
-                    sha256  4ceb4f8b54ac33f3d81c9ab47ae4cfa1e8c36f3849efa821703c9c307e3a4fc7 \
-                    size    22855
+checksums           rmd160  f5727d028109b209a727e9e3d49c6a1c21b38306 \
+                    sha256  d13bbc504b669439aebf6badaff517d9bdadd5ec726a31eadffad3a6c7c20f41 \
+                    size    23186
 
 if {${perl5.major} != ""} {
     depends_build-append \

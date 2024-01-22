@@ -5,7 +5,7 @@ PortGroup           legacysupport 1.1
 PortGroup           makefile 1.0
 PortGroup           codeberg 1.0
 
-codeberg.setup      grunfink snac2 2.43
+codeberg.setup      grunfink snac2 2.45
 name                snac
 revision            0
 
@@ -30,9 +30,9 @@ long_description    snac Social Networks Are Crap \
                     - No cookies either \
                     - Not much bullshit
 
-checksums           rmd160  703c112715a9bfbb7f943f06599b5333df304fc1 \
-                    sha256  16764c64694fa5dbb60197d3ed4906aa2e4d218161dca138668a89b727840ac9 \
-                    size    142447
+checksums           rmd160  8ba6cc0bd6ff2a5f5edb294d9b2f2d8d0f88b267 \
+                    sha256  f97a30932741391f7eefb410582688cf0d3fd3f1be16ca8d314e5eb1dd50d08d \
+                    size    153106
 depends_lib         path:lib/libssl.dylib:openssl \
                     port:curl
 

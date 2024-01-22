@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/walles/moar 1.20.0 v
+go.setup            github.com/walles/moar 1.23.3 v
 go.offline_build    no
 github.tarball_from archive
 revision            0
@@ -18,9 +18,9 @@ long_description    Moar should work as a drop-in replacement for Less. \
                     support, incremental search and automatic decompression, \
                     among others.
 
-checksums           rmd160  b3f791e47c198c24c55ec3b38cc770917c37069e \
-                    sha256  3b10f6898b17360344b4dac58111a2328eca5cb19bc246eb56bdddc04aa2b0af \
-                    size    2793794
+checksums           rmd160  1caabb4af3e5edc634480feef95c0a6efac472d2 \
+                    sha256  995ea1a5c03b1cfb530659bf401e93d440425f19828fa3bb2f3cc211d08b22f2 \
+                    size    2801642
 
 categories          textproc
 installs_libs       no
@@ -42,11 +42,13 @@ build.pre_args-append \
     -ldflags \"-X main.versionString=${version}\"
 
 destroot {
-    xinstall -m 0755 ${worksrcpath}/${name} ${destroot}${prefix}/bin/${install_name}
+    xinstall -m 0755 ${worksrcpath}/${name} \
+        ${destroot}${prefix}/bin/${install_name}
 
     xinstall -d ${destroot}${prefix}/share/man/man1
     xinstall -m 0644 \
-        ${worksrcpath}/${name}.1 ${destroot}${prefix}/share/man/man1/${install_name}.1
+        ${worksrcpath}/${name}.1 \
+        ${destroot}${prefix}/share/man/man1/${install_name}.1
 }
 
 notes {

@@ -5,7 +5,7 @@ PortGroup               github 1.0
 
 github.setup            vapoursynth vapoursynth 65 R
 github.tarball_from     archive
-revision                0
+revision                1
 
 description             A video processing framework with simplicity in mind
 
@@ -27,7 +27,7 @@ maintainers             {gmail.com:herby.gillot @herbygillot} \
 compiler.cxx_standard   2014
 compiler.thread_local_storage yes
 
-set python_branch       3.11
+set python_branch       3.12
 set python_version      [string map {. {}} ${python_branch}]
 
 use_autoreconf          yes
@@ -42,7 +42,7 @@ depends_build-append    port:autoconf \
 
 depends_lib-append      path:lib/libavcodec.dylib:ffmpeg \
                         port:ImageMagick \
-                        port:libass \
+                        path:lib/pkgconfig/libass.pc:libass \
                         port:libiconv \
                         port:python${python_version} \
                         port:zimg

@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             cran jbolstad hbamr 1.2.0
+R.setup             cran jbolstad hbamr 2.1.0
 revision            0
 categories-append   math
 maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
@@ -12,9 +12,10 @@ description         Hierarchical Bayesian Aldrich–McKelvey scaling via Stan
 long_description    Perform hierarchical Bayesian Aldrich–McKelvey scaling using Hamiltonian Monte Carlo via Stan. \
                     Aldrich–McKelvey (AM) scaling is a method for estimating the ideological positions \
                     of survey respondents and political actors on a common scale using positional survey data.
-checksums           rmd160  3e1d512ad918911127be0f335102221cc5991039 \
-                    sha256  a5aefa021e2d325dd1aad474367585a32ab08380ba6ae397798de0c27e7ce030 \
-                    size    582669
+homepage            https://jbolstad.github.io/hbamr
+checksums           rmd160  1a25149a7e6139045602538c5517563ae795fa5d \
+                    sha256  b18ea8aa4592725db6251da1164372f36aa51400be62cf555aae100c8a6ceacb \
+                    size    587594
 
 depends_lib-append  port:R-BH \
                     port:R-dplyr \
