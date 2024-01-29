@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           perl5 1.0
 
 perl5.branches      5.28 5.30 5.32 5.34
-perl5.setup         Business-ISBN-Data 20240116.001 ../../authors/id/B/BD/BDFOY
+perl5.setup         Business-ISBN-Data 20240126.001 ../../authors/id/B/BD/BDFOY
 license             Artistic-2
 maintainers         nomaintainer
 description         ISBN data required for use of Business::ISBN
@@ -17,6 +17,6 @@ long_description    This package provides ISBN data used by the \
 platforms           {darwin any}
 supported_archs     noarch
 
-checksums           rmd160  a1c4ec9889b27016f1e403f9a50deb2cdae4db10 \
-                    sha256  04914a6d646740290c9db0d3dbb2203e121917ea8168c3aee71c6bef0c7ee753 \
-                    size    33401
+checksums           rmd160  c2b1197cec840b52aaffd42d9a3dfa5ae658fd62 \
+                    sha256  8423c522a3dfbbc0daeff12d89d815bc2400470827d409f1985b17fd599d526e \
+                    size    33440

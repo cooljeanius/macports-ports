@@ -21,6 +21,7 @@ name                        rust
 #     modify the rust_build PortGroup
 #         add checksums for new MacPorts stage0 compilers
 #         remove checksums for MacPorts stage0 compilers that are no longer used
+
 version                     1.75.0
 revision                    0
 subport rust-src {revision  0}
@@ -97,7 +98,7 @@ foreach arch ${muniversal.architectures} {
 muniversal.run_binaries     yes
 triplet.add_host            all
 triplet.add_build           all
-foreach arch {arm64 x86_64 i386 ppc ppc64} {
+foreach arch ${muniversal.architectures} {
     if { [option muniversal.can_run.${arch}] && [option muniversal.is_cross.${arch}] } {
         muniversal.is_cross.${arch} no
     }

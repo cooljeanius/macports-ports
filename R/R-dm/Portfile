@@ -3,16 +3,16 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             github cynkra dm 1.0.9.9000 v
+R.setup             github cynkra dm 1.0.10.9002 v
 revision            0
 maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
 license             MIT
 description         Relational Data Models
 long_description    {*}${description}
 homepage            https://dm.cynkra.com
-checksums           rmd160  b8b4b9410bfddaa4b936369b7c20463ca70fb68a \
-                    sha256  8c84343846812506ce871ecf83acf8614028cb1d15a27f20c068974715e5788b \
-                    size    3754477
+checksums           rmd160  fa1b8e57095850314b001e8d2ec04648fe51a509 \
+                    sha256  f286678fb7b00d60780f499504055be7a6b1141b0d675834c89a9ce5b600341b \
+                    size    3750031
 supported_archs     noarch
 
 depends_lib-append  port:R-backports \

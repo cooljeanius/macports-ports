@@ -1,0 +1,39 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           R 1.0
+
+R.setup             cran johnaponte repana 2.0.0
+revision            0
+maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
+license             GPL-3+
+description         Repeatable Analysis in R
+long_description    {*}${description}
+homepage            https://johnaponte.github.io/repana
+checksums           rmd160  8e05c72a00a5de48317e2dbd8dacea0156df13f4 \
+                    sha256  5cef7b94813e2db2ab79d5c0961b346b80201db8008956eb95d6e5d28d79b05f \
+                    size    42511
+supported_archs     noarch
+
+depends_lib-append  port:R-config \
+                    port:R-DBI \
+                    port:R-dplyr \
+                    port:R-lubridate \
+                    port:R-magrittr \
+                    port:R-openxlsx \
+                    port:R-pool \
+                    port:R-processx \
+                    port:R-readr \
+                    port:R-rmarkdown \
+                    port:R-rstudioapi \
+                    port:R-yaml
+
+depends_test-append port:R-duckdb \
+                    port:R-knitr \
+                    port:R-pacman \
+                    port:R-RPostgres \
+                    port:R-RSQLite \
+                    port:R-spelling \
+                    port:R-testthat
+
+test.run            yes
