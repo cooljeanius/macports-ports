@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             github mayer79 hstats 1.1.0
+R.setup             github mayer79 hstats 1.1.2
 revision            0
 categories-append   math
 maintainers         nomaintainer
@@ -11,9 +11,9 @@ license             GPL-2+
 description         Interaction statistics
 long_description    {*}${description}
 homepage            https://mayer79.github.io/hstats
-checksums           rmd160  83ad07e8ccd8788a53337e5dd7754e7927c6d2d0 \
-                    sha256  f6cf46bdf14c6adf64cda9ec0845447b03ea0316314a1b815378a736f52451ee \
-                    size    512285
+checksums           rmd160  109258a00107878ef0dfb4bd659ccf12fcc17e4e \
+                    sha256  0f7a5f09b7020284af51fa04be9cdaf6c0f500fca837478bbed3792fc466f93a \
+                    size    512463
 supported_archs     noarch
 
 depends_lib-append  port:R-ggplot2

@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                google-cloud-sdk
-version             455.0.0
+version             462.0.1
 revision            0
 categories          devel python
 license             Apache-2
@@ -21,19 +21,19 @@ supported_archs     i386 x86_64 arm64
 
 if { ${configure.build_arch} eq "i386" } {
     distname        ${name}-${version}-darwin-x86
-    checksums       rmd160  30bea7212c55f75d51fa29342c3b931b564d1562 \
-                    sha256  1c1fa949f7b8a74e6be74b60a57febab6f16adf5fa720391ba4373994cdc9f0d \
-                    size    121519956
+    checksums       rmd160  ce43f97c7b216ac54469fa5f6f8f3c50dc4c2f98 \
+                    sha256  3917c9c7ed3d2ed93f6d0182e2e858d8211730316d436f2998631811d64292e1 \
+                    size    127653951
 } elseif { ${configure.build_arch} eq "x86_64" } {
     distname        ${name}-${version}-darwin-x86_64
-    checksums       rmd160  ca9239c092350e4c10b128ea7c3a9174c850a21c \
-                    sha256  bd4213d15f7e9173e1420567d5d73f3439219294e863d6fe475f1e261cb57093 \
-                    size    122806645
+    checksums       rmd160  661c14d0c9cce743b108c861dbbd9e96ba803001 \
+                    sha256  8a8c4feaf9c0b3e43ad391805f5122b836a1b1246eaf6c1c1af96e259641812d \
+                    size    128939919
 } elseif { ${configure.build_arch} eq "arm64" } {
     distname        ${name}-${version}-darwin-arm
-    checksums       rmd160  51095eb190a08f7734bd8318eccbecb53f409771 \
-                    sha256  07b01cebf47b162612d6589d427dc868fe69666dc91ba2221210d2050676ab43 \
-                    size    119890163
+    checksums       rmd160  f31684a939760dc36014350c5bb6ebf5d57664f6 \
+                    sha256  cbe69148cea749e42f1b1e70b59ec7dcbd6097763358c3c45e1f6a9c17b80178 \
+                    size    126001745
 }
 
 homepage            https://cloud.google.com/sdk/
@@ -42,7 +42,7 @@ master_sites        https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/
 worksrcdir          ${name}
 
 # Most recent supported Python version according to https://cloud.google.com/sdk/docs/install#mac
-python.default_version 311
+python.default_version 312
 
 post-patch {
     # Default to the MacPorts Python binary
@@ -148,29 +148,20 @@ destroot {
     }
     ln -s ../libexec/${name}/bin/git-credential-gcloud.sh ${destroot}${prefix}/bin/git-credential-gcloud
 
-    if {[variant_isset bash_completion]} {
-        # set completions_path ${prefix}/share/bash-completion/completions
-        set completions_path ${prefix}/etc/bash_completion.d
-        xinstall -d ${destroot}${completions_path}
-        xinstall -m 644 ${worksrcpath}/completion.bash.inc ${destroot}${completions_path}/google-cloud-sdk
-    }
+    # bash completion
+    set bash_completions_path ${prefix}/etc/bash_completion.d
+    xinstall -d ${destroot}${bash_completions_path}
+    xinstall -m 644 ${worksrcpath}/completion.bash.inc ${destroot}${bash_completions_path}/google-cloud-sdk
 
-    if {[variant_isset zsh_completion]} {
-        set gcloud_libexec ${destroot}${prefix}/libexec/google-cloud-sdk
-        xinstall -m 644 ${worksrcpath}/completion.zsh.inc ${gcloud_libexec}
-    }
+    # zsh completion
+    set gcloud_libexec ${destroot}${prefix}/libexec/google-cloud-sdk
+    xinstall -m 644 ${worksrcpath}/completion.zsh.inc ${gcloud_libexec}
 }
 
-variant bash_completion {
-    depends_run-append path:etc/bash_completion:bash-completion
-}
-
-variant zsh_completion description {Enable completion support for zsh} {
-    notes "
-        google-cloud-sdk zsh completions aren't loaded automatically.
-        You must source them manually in your .zshrc:
-            source '${prefix}/libexec/google-cloud-sdk/completion.zsh.inc'"
-}
+notes "
+    google-cloud-sdk zsh completions aren't loaded automatically.
+    You must source them manually in your .zshrc:
+        source '${prefix}/libexec/google-cloud-sdk/completion.zsh.inc'"
 
 livecheck.url       https://cloud.google.com/sdk/docs/install-sdk
 livecheck.regex     {google-cloud-cli-([\d\.]+)-darwin}

@@ -3,15 +3,15 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             cran snodg031 cpfa 1.0-9
+R.setup             cran snodg031 cpfa 1.1-1
 revision            0
 maintainers         nomaintainer
 license             GPL-2+
 description         Classification with Parallel Factor Analysis
 long_description    {*}${description}
-checksums           rmd160  f614cc9843ae7c0ecf7fc881351813ebcc1fa7d5 \
-                    sha256  9cfac177fc9fb1e3d70867fe6bcc0bda8c66b985297a634982cfa6a21615d09b \
-                    size    27506
+checksums           rmd160  04982602f093aa9e44819ffa3a91999244c0db98 \
+                    sha256  ecf03213d06eae385b55709819b9f55f0965634a2fbfdb423e8e4254ad96cce3 \
+                    size    28084
 supported_archs     noarch
 
 depends_lib-append  port:R-doParallel \

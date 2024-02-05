@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           github 1.0
 
-github.setup        xwmx nb 7.9.0
+github.setup        xwmx nb 7.10.3
 github.tarball_from archive
 revision            0
 
@@ -31,9 +31,9 @@ maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 supported_archs     noarch
 
-checksums           rmd160  d98fdbd22603a44f02ce3478dd42fb1a2c064524 \
-                    sha256  213c1138d9a87ebc4e0e6e956cf19812d10e8ddd2373fd97cab15437a46e6f1b \
-                    size    739299
+checksums           rmd160  2a79a6d0a58697dec695051899cc17ff17fe3fd9 \
+                    sha256  fd4e049b6727368c762ed42a9690d2af6affe06ed8a03a084ee3548feef0d10f \
+                    size    741869
 
 depends_lib-append  port:bash
 
@@ -53,6 +53,7 @@ build {}
 destroot {
     xinstall -m 0755 ${worksrcpath}/${name}         ${destroot}${prefix}/bin/
     xinstall -m 0755 ${worksrcpath}/bin/bookmark    ${destroot}${prefix}/bin/
+    xinstall -m 0755 ${worksrcpath}/bin/notes       ${destroot}${prefix}/bin/
 
     xinstall -d ${destroot}${prefix}/share/bash-completion/completions
     copy ${worksrcpath}/etc/${name}-completion.bash \
