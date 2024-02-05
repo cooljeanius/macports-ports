@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           cargo   1.0
 PortGroup           github  1.0
 
-github.setup        rust-analyzer rust-analyzer 2024-01-22
+github.setup        rust-analyzer rust-analyzer 2024-02-05
 github.tarball_from archive
 version             [string map { {-} {} } ${github.version}]
 revision            0
@@ -25,9 +25,9 @@ maintainers         @fabius \
                     openmaintainer
 
 checksums           ${distname}${extract.suffix} \
-                        rmd160  27f70491916d6b54f50bedfbd7f7db49c4ac933f \
-                        sha256  123dd2af4e49d85ab0291622418ae895fac98b0c479b61bb0f29ffbdd512a75c \
-                        size    2773984
+                        rmd160  5a5e5a419ca4a9420b0350d2a509dd5d47d6622b \
+                        sha256  3ce30cbd657fbf34697cf53a7d2775fc41c40a9d4e48cf716fa8bec7fdc41ded \
+                        size    2763845
 
 destroot {
     xinstall -m 0755 \
@@ -39,7 +39,7 @@ destroot {
 cargo.crates \
     addr2line                       0.19.0  a76fd60b23679b7d19bd066031410fb7e458ccc5e958eb5c325888ce4baedc97 \
     adler                            1.0.2  f26201604c87b1e01bd3d98f8d5d9a8fcbb815e8cedb41ffccbeb4bf593a35fe \
-    always-assert                    0.1.3  4436e0292ab1bb631b42973c61205e704475fe8126af845c8d923c0996328127 \
+    always-assert                    0.2.0  a1078fa1ce1e34b1872d8611ad921196d76bdd7027e949fbe31231abde201892 \
     anyhow                          1.0.75  a4668cab20f66d8d020e1fbc0ebe47217433c1b6c8f2040faf858554e394ace6 \
     arbitrary                        1.3.2  7d5a26814d8dcb93b0e5a0ff3c6d80a8843bafb21b39e8e18a6f05471870e110 \
     arrayvec                         0.7.4  96d30a06541fbafbc7f82ed10c06164cfbd2c401138f6addd8404629c4b16711 \
@@ -67,6 +67,7 @@ cargo.crates \
     crossbeam-utils                 0.8.16  5a22b2d63d4d1dc0b7f1b6b2747dd0088008a9be28b6ddf0b1e7d335e3037294 \
     ctrlc                            3.4.1  82e95fbd621905b854affdc67943b043a0fbb6ed7385fd5a25650d19a8a6cfdf \
     dashmap                          5.5.3  978747c1d849a7d2ee5e8adc0159961c48fb7e5db2f06af6723b80123bb53856 \
+    derivative                       2.2.0  fcc3dd5e9e9c0b295d6e1e4d811fb6f157d5ffd784b8d202fc62eac8035a770b \
     derive_arbitrary                 1.3.2  67e77553c4162a157adbf834ebae5b415acbecbeafc7a74b0e886657506a7611 \
     dissimilar                       1.0.7  86e3bdc80eee6e16b2b6b0f87fbc98c04bee3455e35174c0de1a125d0688c632 \
     dot                              0.1.4  a74b6c4d4a1cff5f454164363c16b72fa12463ca6b31f4b5f2035a65fa3d5906 \
@@ -137,23 +138,27 @@ cargo.crates \
     pulldown-cmark                   0.9.3  77a1a2f1f0a7ecff9c31abbe177637be0e97a0aef46cf8738ece09327985d998 \
     pulldown-cmark-to-cmark         10.0.4  0194e6e1966c23cc5fd988714f85b18d548d773e81965413555d96569931833d \
     quote                           1.0.28  1b9ab9c7eadfd8df19006f1cf1a4aed13540ed5cbc047010ece5826e10825488 \
-    ra-ap-rustc_abi                 0.21.0  7816f980fab89e878ff2e916e2077d484e3aa1c619a3cc982c8a417c3dfe45fa \
-    ra-ap-rustc_index               0.21.0  8352918d61aa4afab9f2ed7314cf638976b20949b3d61d2f468c975b0d251f24 \
-    ra-ap-rustc_index_macros        0.21.0  66a9424018828155a3e3596515598f90e68427d8f35eff6df7f0856c73fc58a8 \
-    ra-ap-rustc_lexer               0.21.0  dc741c7a78103efab416b562e35bd73c8d4967478575010c86c6062f8d3cbf29 \
-    ra-ap-rustc_parse_format        0.21.0  d557201d71792487bd2bab637ab5be9aa6fff59b88e25e12de180b0f9d2df60f \
+    ra-ap-rustc_abi                 0.35.0  3c0baa423a2c2bfd6e4bd40e7215f7ddebd12a649ce0b65078a38b91068895aa \
+    ra-ap-rustc_index               0.33.0  5e5313d7f243b63ef9e58d94355b11aa8499f1328055f1f58adf0a5ea7d2faca \
+    ra-ap-rustc_index               0.35.0  322b751895cc4a0a2ee0c6ab36ec80bc8abf5f8d76254c482f96f03c27c92ebe \
+    ra-ap-rustc_index_macros        0.33.0  a83108ebf3e73dde205b9c25706209bcd7736480820f90ded28eabaf8b469f25 \
+    ra-ap-rustc_index_macros        0.35.0  054e25eac52f0506c1309ca4317c11ad4925d7b99eb897f71aa7c3cbafb46c2b \
+    ra-ap-rustc_lexer               0.35.0  c8da0fa51a1a97ba4296a1c78fa454815a153b472e2546b6338a0902ad59e015 \
+    ra-ap-rustc_parse_format        0.35.0  3851f930a54adcb76889983dcd5c00a0c4e206e190e1384dbc00d49b82dfb45e \
+    ra-ap-rustc_pattern_analysis    0.33.0  6c4085e0c771fd4b883930b599ef42966b855762bbe4052c17673b3253421a6d \
     rayon                            1.8.0  9c27db03db7734835b3f53954b534c91069375ce6ccaa2e065441e07d9b6cdb1 \
     rayon-core                      1.12.0  5ce3fb6ad83f861aac485e76e1985cd109d9a3713802152be56c3b1f0e0658ed \
     redox_syscall                    0.3.5  567664f262709473930a4bf9e51bf2ebf3348f2e748ccc50dea20646858f8f29 \
     redox_syscall                    0.4.1  4722d768eff46b75989dd134e5c353f0d6296e5aaa3132e776cbdb56be7731aa \
     rowan                          0.15.15  32a58fa8a7ccff2aec4f39cc45bf5f985cec7125ab271cf681c279fd00192b49 \
-    rust-analyzer-salsa       0.17.0-pre.5  ca9d387a9801f4fb9b366789ad1bfc08448cafc49cf148d907cfcd88ab665d7f \
-    rust-analyzer-salsa-macros 0.17.0-pre.5 a2035f385d7fae31e9b086f40b272ee1d79c484472f31c9a10348a406e841eaf \
+    rust-analyzer-salsa       0.17.0-pre.6  719825638c59fd26a55412a24561c7c5bcf54364c88b9a7a04ba08a6eafaba8d \
+    rust-analyzer-salsa-macros 0.17.0-pre.6 4d96498e9684848c6676c399032ebc37c52da95ecbefa83d71ccc53b9f8a4a8e \
     rustc-demangle                  0.1.23  d626bb9dae77e28219937af045c257c28bfd3f69333c512553507f5f9798cb76 \
     rustc-hash                       1.1.0  08d43f7aa6b08d49f382cde6a7982047c3426db949b1424bc4b7ec9ae12c6ce2 \
+    rustc_apfloat  0.2.0+llvm-462a31f5a5ab  465187772033a5ee566f69fe008df03628fce549a0899aae76f0a0c2e34696be \
     ryu                             1.0.13  f91339c0467de62360649f8d3e185ca8de4224ff281f66000de5eb2a77a79041 \
     same-file                        1.0.6  93fc1dc3aaa9bfed95e02e6eadabb4baf7e3078b0bd1b4d7b6b0b68378900502 \
-    scip                             0.3.1  3e84d21062a3ba08d58870c8c36b0c005b2b2261c6ad1bf7042585427c781883 \
+    scip                             0.3.3  e5dc1bd66649133af84ab62436ddd2856c2605182b02dec2cd197f684dfe15ef \
     scoped-tls                       1.0.1  e1cf6437eb19a8f4a6cc0f7dca544973b0b78843adbfeb3683d1a94a0024a294 \
     scopeguard                       1.1.0  d29ab0c6d3fc0ee92fe66e2d99f700eab17a8d57d1c1d3b748380fb20baa78cd \
     semver                          1.0.17  bebd363326d05ec3e2f532ab7660680f3b02130d780c299bca73469d521bc0ed \
@@ -162,11 +167,12 @@ cargo.crates \
     serde_json                     1.0.108  3d1c7e3eac408d115102c4c24ad393e0821bb3a5df4d506a80f85f7a742a526b \
     serde_repr                      0.1.12  bcec881020c684085e55a25f7fd888954d56609ef363479dc5a1305eb0d40cab \
     sharded-slab                     0.1.4  900fba806f70c630b0a382d0d825e17a0f19fcd059a2ade1ff237bcddf446b31 \
-    smallvec                        1.10.0  a507befe795404456341dfab10cef66ead4c041f62b8b11bbb92bffe5d0953e0 \
+    smallvec                        1.12.0  2593d31f82ead8df961d8bd23a64c2ccf2eb5dd34b0a34bfb4dd54011c72009e \
     smol_str                         0.2.1  e6845563ada680337a52d43bb0b29f396f2d911616f6573012645b9e3d048a49 \
     snap                             1.1.0  5e9f0ab6ef7eb7353d9119c170a436d1bf248eea575ac42d19d12f4e34130831 \
     stable_deref_trait               1.2.0  a8f112729512f8e442d81f95a8a7ddf2b7c6b8a1a6f509a95864142b30cab2d3 \
     static_assertions                1.1.0  a2eb9349b6444b326872e140eb1cf5e7c522154d69e7a0ffb0fb81c06b37543f \
+    syn                            1.0.109  72b64191b275b66ffe2469e8af2c1cfe3bafa67b529ead792a6d0160888b4237 \
     syn                             2.0.39  23e78b90f2fcf45d3e842032ce32e3f2d1545ba6636271dcbf24fa306d87be7a \
     synstructure                    0.13.0  285ba80e733fac80aa4270fbcdf83772a79b80aa35c97075320abfee4a915b06 \
     text-size                        1.1.1  f18aa187839b2bdb1ad2fa35ead8c4c2976b64e4363c386d45ac0f7ee85c9233 \

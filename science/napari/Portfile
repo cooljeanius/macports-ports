@@ -5,7 +5,7 @@ PortGroup           app 1.0
 PortGroup           python 1.0
 
 name                napari
-version             0.4.19rc5
+version             0.4.19
 revision            0
 categories-prepend  science
 license             BSD
@@ -19,9 +19,9 @@ long_description    {*}${description} It's designed for browsing, annotating, an
 supported_archs     noarch
 homepage            https://github.com/napari/napari
 
-checksums           rmd160  0fe601df7e00b6120cc47cd4409018b960a82c86 \
-                    sha256  6ad63d2924c3f5dae3153ece4d25796abf4f88c322171f3cb3e1291ae96b9c46 \
-                    size    10592165
+checksums           rmd160  a8d88071df93a21a098296128c767cbddca03fd5 \
+                    sha256  083468ebbdb3e91c6bba6ed60bc75747adcba622376caf8a1a6490378cea0f6d \
+                    size    10630645
 
 variant python38 conflicts python39 python310 python311 python312 description {Use Python 3.8} {}
 variant python39 conflicts python38 python310 python311 python312 description {Use Python 3.9} {}
