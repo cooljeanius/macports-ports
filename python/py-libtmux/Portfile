@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-libtmux
-version             0.25.0
+version             0.27.1
 revision            0
 
 categories-append   devel
@@ -19,9 +19,9 @@ long_description    {*}${description}
 
 homepage            https://github.com/tmux-python/libtmux
 
-checksums           rmd160  963b421b7d546934abd9e258929f65ffa0936a5e \
-                    sha256  54037f57c7411d2896bcfdb6085d4b1d0eed411e1ff72ba258ecf5d2e803f0b0 \
-                    size    239500
+checksums           rmd160  9b45078fb91273b98dc5858164afb7ec8fa70b81 \
+                    sha256  d6e3a4ebaf74f29cc477792cbb4f170d553930a73d492aa8bf68b43385466c56 \
+                    size    242534
 
 python.versions     39 310 311 312
 python.pep517       yes
