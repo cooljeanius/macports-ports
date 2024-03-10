@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/docker/cli 24.0.7 v
+go.setup            github.com/docker/cli 25.0.4 v
 revision            0
 name                docker
 categories          devel
@@ -16,9 +16,9 @@ long_description    Docker is an open source project to pack, ship \
                     This port contains command line utilities for interacting \
                     with Docker, but not the core daemon.
 
-checksums           rmd160  8c600588f89a4f48c2d43150f2e1545734296b16 \
-                    sha256  77bead764ac523e50fbe185cbfcc52e1b9e7de595994da515f4ae90d558a7e6b \
-                    size    6451562
+checksums           rmd160  28cac9133601aab74df71a3f01f8d1ac10884062 \
+                    sha256  c83bbba33fbc1a83a873dd3009f0a56f44a20c4ad128d701c34af1721d519419 \
+                    size    6863246
 
 build.target        github.com/docker/cli/cmd/docker
 
