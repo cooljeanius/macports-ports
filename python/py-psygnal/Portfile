@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-psygnal
-version             0.10.0
+version             0.10.2
 revision            0
 license             BSD
 platforms           {darwin any}
@@ -17,9 +17,9 @@ homepage            https://github.com/tlambert03/psygnal
 
 python.versions     38 39 310 311 312
 
-checksums           rmd160  4b985776e233778aeac1fcdf12bd7b8653fdc722 \
-                    sha256  db51c7efb8d92873ea2113356c0cbdca75383684d3e55c315a84071c46d0a0b0 \
-                    size    93599
+checksums           rmd160  5b11be52eef6d5761d46069239860855bb2d1e3c \
+                    sha256  adb2c38d5cecfdb1212970a3123079f6d97241ac0e772c3db79418a5cabef079 \
+                    size    96090
 
 if {${name} ne ${subport}} {
     python.pep517           yes

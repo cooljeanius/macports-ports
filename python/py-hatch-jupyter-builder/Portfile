@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-hatch-jupyter-builder
-version             0.8.3
+version             0.9.1
 revision            0
 
 categories-append   devel
@@ -23,9 +23,9 @@ long_description    {*}${description}
 homepage            https://github.com/jupyterlab/hatch-jupyter-builder
 distname            hatch_jupyter_builder-${version}
 
-checksums           rmd160  ab30666a9afe4efbeef5f94581c2bbbecf40b4cc \
-                    sha256  0dbd14a8aef6636764f88a8fd1fcc9a91921e5c50356e6aab251782f264ae960 \
-                    size    54754
+checksums           rmd160  4d0df96ed339e608ca21fc81f5610c0737482403 \
+                    sha256  79278198d124c646b799c5e8dca8504aed9dcaaa88d071a09eb0b5c2009a58ad \
+                    size    55953
 
 if {${name} ne ${subport}} {
     depends_run-append  port:py${python.version}-hatchling
