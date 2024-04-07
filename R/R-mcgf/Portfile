@@ -3,17 +3,18 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             cran tianxia-jia mcgf 1.0.0
+R.setup             cran tianxia-jia mcgf 1.1.0
 revision            0
 categories-append   math
 maintainers         nomaintainer
 license             MIT
-description         Markov Chain Gaussian Fields simulation and parameter estimation
+description         Markov Chain Gaussian Fields simulation \
+                    and parameter estimation
 long_description    {*}${description}
 homepage            https://github.com/tianxia-jia/mcgf
-checksums           rmd160  f358557a412b07e311eb0d9370bb4d58abec5265 \
-                    sha256  4d0a6c11aa2f4c41274441a7766c8d1132d3f0f352374414291c2d1138dfb8b0 \
-                    size    484964
+checksums           rmd160  7e39fc89f6cf84cf30881d816d47c3a1a1d827dc \
+                    sha256  2e68bd493977ad0267819ccb13318a7415d400acb5e0f4195b593cbf626afb51 \
+                    size    525410
 supported_archs     noarch
 
 depends_lib-append  port:R-sp

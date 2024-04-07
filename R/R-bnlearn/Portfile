@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             cran scutari bnlearn 4.9.1
+R.setup             cran scutari bnlearn 4.9.3
 revision            0
 categories-append   math
 maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
@@ -11,9 +11,9 @@ license             GPL-2+
 description         Bayesian network structure learning, parameter learning and inference
 long_description    {*}${description}
 homepage            https://www.bnlearn.com
-checksums           rmd160  fe4a0b77be9e04a85a0ec29faa407504efe49f3b \
-                    sha256  51e1f40ac947fb1b43bc178bc5d82e23facaaefe6c66acbddf715165e1f5ee08 \
-                    size    1321011
+checksums           rmd160  40f5bb0062687ec534837a381f00e762179404b0 \
+                    sha256  d47b89bb7147f263288d284a4183c9d5f8bdc445590ff5aaee497101fe4afe61 \
+                    size    1321206
 
 compilers.setup     require_fortran
 

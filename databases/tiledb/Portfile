@@ -13,7 +13,7 @@ legacysupport.newest_darwin_requires_legacy 19
 # See discussion in: https://github.com/macports/macports-ports/pull/19686
 legacysupport.use_mp_libcxx yes
 
-github.setup        TileDB-Inc TileDB 2.19.1
+github.setup        TileDB-Inc TileDB 2.21.1
 name                tiledb
 revision            0
 categories          databases
@@ -22,9 +22,9 @@ maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
 description         The universal storage engine
 long_description    {*}${description}
 homepage            https://tiledb.com
-checksums           rmd160  5090fbe9f0b49a499e3a1a313e49b5b25e58ca7e \
-                    sha256  b6a73b1b7d2ee5305f919d9f94883abc68e8c948257e22ce8771a72a22b46d95 \
-                    size    4386342
+checksums           rmd160  3bae6a0b8ecca420641f8fce9d15930e5afc900c \
+                    sha256  24d50ebd5ac211d92a328be3f2988aed5c91c82123583ad6833e2ab7b6bdb454 \
+                    size    4418056
 github.tarball_from archive
 
 # Notice that 32-bit platforms are not supported by upstream, and there are reports elsewhere
@@ -69,13 +69,6 @@ if {${os.platform} eq "darwin" && ${os.major} < 20} {
         reinplace "s,@PREFIX@,${prefix},g" ${worksrcpath}/cmake/Modules/FindMagic_EP.cmake
     }
 }
-
-# This should be dropped with the next release.
-# Fixes here are either already in upstream/dev or to-become-irrelevant.
-patchfiles-append   patch-2.19.1.diff
-
-# https://github.com/TileDB-Inc/TileDB/pull/4690
-patchfiles-append   patch-random.diff
 
 # Verify if still broken in the next release. Relevant only for build with +tests:
 # https://github.com/TileDB-Inc/TileDB/issues/4590

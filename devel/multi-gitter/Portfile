@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/lindell/multi-gitter 0.50.0 v
+go.setup            github.com/lindell/multi-gitter 0.51.0 v
 go.offline_build    no
 revision            0
 
@@ -23,9 +23,9 @@ license             Apache-2
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  c862b903373c3980b9a53782e4804bef0d89f5b4 \
-                    sha256  a495f2af6f0b77025a4b83d88689dcda361a36b8374d18cd3b71badd3cd4e9fe \
-                    size    303044
+checksums           rmd160  a80e4a4a85ffb53bba4a77645c369c90fb143631 \
+                    sha256  a4776bc86de496fed79e87f1724c57d926bacec3ece31a1b30d39de464cbcdd6 \
+                    size    303636
 
 github.tarball_from archive
 

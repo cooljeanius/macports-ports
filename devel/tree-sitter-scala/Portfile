@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           github 1.0
 PortGroup           tree_sitter 1.0
 
-github.setup        tree-sitter tree-sitter-scala 0.20.2 v
+github.setup        tree-sitter tree-sitter-scala 0.21.0 v
 revision            0
 
 description         A tree-sitter parser for Scala
@@ -15,8 +15,11 @@ categories          devel
 license             MIT
 maintainers         {amake @amake} openmaintainer
 
-checksums           rmd160  75b60a7a986600e40d9e321298b208e2029cc6b2 \
-                    sha256  c2da2e6b06f06ba01aefbef4346371734dab9babfc3b5e499b4f27fd7a31f406 \
-                    size    1305209
+checksums           rmd160  9eb0216c58b6249781e31518dd570ea6c33a63f5 \
+                    sha256  f6a72995dc35a8ae51d92b4c03b454d8f349d4888db0fe80c56dc2aa486be862 \
+                    size    1339091
 
 worksrcdir          ${worksrcdir}/src
+
+# stack.h: error: ‘for’ loop initial declaration used outside C99 mode
+configure.cflags-append -std=c99

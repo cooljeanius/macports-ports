@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           R 1.0
 
 # Revert to GitHub once updated there.
-R.setup             cran shikokuchuo nanonext 0.12.0
+R.setup             cran shikokuchuo nanonext 0.13.2
 revision            0
 categories-append   devel
 maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
@@ -12,9 +12,9 @@ license             GPL-3+
 description         NNG (Nanomsg Next Gen) lightweight messaging library
 long_description    {*}${description}
 homepage            https://shikokuchuo.net/nanonext
-checksums           rmd160  fd124b4c63e4fc83a3b5b042220fe1260a46ea74 \
-                    sha256  b6223e907e001e2d3e58e9c82dca80f28a69ff4155eb83b93bc08c0c1625ea13 \
-                    size    768038
+checksums           rmd160  dab72cb549f642ae842cf835e350cae02941d701 \
+                    sha256  8d16fd0cfc9735318e9c82adacc758f735f72d912dc37ef3f5f35fa533468efa \
+                    size    768862
 
 depends_build-append \
                     path:bin/cmake:cmake \

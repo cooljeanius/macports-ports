@@ -3,16 +3,17 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             github dbosak01 libr 1.2.9 v
+# Revert to GitHub once updated there.
+R.setup             cran dbosak01 libr 1.3.1 v
 revision            0
 maintainers         nomaintainer
 license             public-domain
 description         Libraries, data dictionaries and a data step for R
 long_description    {*}${description}
 homepage            https://libr.r-sassy.org
-checksums           rmd160  3992bd193fe9f3a163c9b305f013821f885be542 \
-                    sha256  b40c2c61d8af6dd9eb1cbb69db8bd5bec94319dc84638d9492c660473264d0f5 \
-                    size    4162914
+checksums           rmd160  81d777280808e530dda8a89cb6828c6d8e2ca25c \
+                    sha256  eec5df7d211be934ec8dde7bbc824053368f41819a3e36c608105163ef449a99 \
+                    size    3829171
 
 depends_lib-append  port:R-common \
                     port:R-crayon \

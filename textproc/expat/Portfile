@@ -6,11 +6,11 @@ PortSystem          1.0
 PortGroup           muniversal 1.0
 
 name                expat
-version             2.5.0
+version             2.6.2
 revision            0
-checksums           rmd160  493d4d0b5ed08e2037fd44977218d36c80768392 \
-                    sha256  6f0e6e01f7b30025fa05c85fdad1e5d0ec7fd35d9f61b22f34998de11969ff67 \
-                    size    569205
+checksums           rmd160  0edda5812b1d7f19d4c75f19df8d9a488d613931 \
+                    sha256  9c7c1b5dcbc3c237c500a8fb1493e14d9582146dd9b42aa8d3ffb856a3b927e0 \
+                    size    613092
 
 categories          textproc devel
 platforms           darwin freebsd
@@ -39,10 +39,16 @@ if {${os.platform} eq "darwin" && ${os.major} < 11} {
 
 configure.args      --without-docbook
 
-use_parallel_build  yes
+if {${os.platform} eq "darwin" && ${os.major} < 13} {
+    configure.args-append \
+                    --without-tests
+} else {
+    compiler.cxx_standard \
+                    2011
 
-test.run            yes
-test.target         check
+    test.run        yes
+    test.target     check
+}
 
 post-destroot {
     set docdir ${destroot}${prefix}/share/doc/${name}

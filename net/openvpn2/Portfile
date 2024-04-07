@@ -3,7 +3,7 @@
 PortSystem          1.0
 
 name                openvpn2
-version             2.6.8
+version             2.6.10
 revision            0
 distname            openvpn-${version}
 categories          net security
@@ -20,9 +20,9 @@ long_description    \
 homepage            https://openvpn.net
 master_sites        https://swupdate.openvpn.net/community/releases/
 
-checksums           rmd160  7e4b8b0f6bf6c51fdaf3b05fad924aeb4537353e \
-                    sha256  5ede1565c8a6d880100f7f235317a7ee9eea83d5052db5547f13a9e76af7805d \
-                    size    1896563
+checksums           rmd160  75107bd1e0ed260427830d6384d43da9546a4cd8 \
+                    sha256  1993bbb7b9edb430626eaa24573f881fd3df642f427fcb824b1aed1fca1bcc9b \
+                    size    1907280
 
 depends_build       port:pkgconfig
 depends_lib         port:lzo2 \
@@ -45,11 +45,6 @@ post-destroot {
     }
     file copy ${worksrcpath}/contrib ${docdir}/
     xinstall -m 644 -W ${worksrcpath} AUTHORS ${docdir}/
-    reinplace -E {s/^;[[:space:]]*((user|group) nobody)/\1/g} \
-        ${destroot}${prefix}/share/examples/${name}/sample-config-files/server.conf \
-        ${destroot}${prefix}/share/examples/${name}/sample-config-files/client.conf \
-        ${destroot}${prefix}/share/examples/${name}/sample-config-files/tls-home.conf \
-        ${destroot}${prefix}/share/examples/${name}/sample-config-files/tls-office.conf
 }
 
 post-activate {

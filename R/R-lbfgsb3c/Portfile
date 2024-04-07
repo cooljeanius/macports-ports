@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             cran nlmixr2 lbfgsb3c 2020-3.3
+R.setup             cran nlmixr2 lbfgsb3c 2024-3.4
 revision            0
 categories-append   math
 maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
@@ -11,9 +11,9 @@ license             GPL-2
 description         Solving and optimizing large-scale non-linear systems
 long_description    {*}${description}
 homepage            https://nlmixr2.github.io/lbfgsb3c
-checksums           rmd160  5c8a9104d580962448b96e1aae554e3c96e6f673 \
-                    sha256  60e4a4d5266b88c716679e6841f825aaa7eebf3e8ab42265f1b2e54cd2946372 \
-                    size    124293
+checksums           rmd160  166ea165af5f007a56ae0549c9c0d259c0deadbe \
+                    sha256  f531b12d92ecbb0680fcf4ba29276428ee4a88184850ab52046f667da0624ab7 \
+                    size    121207
 
 depends_lib-append  port:R-numDeriv \
                     port:R-Rcpp \
@@ -21,7 +21,8 @@ depends_lib-append  port:R-numDeriv \
 
 compilers.setup     require_fortran
 
-depends_test-append port:R-knitr \
+depends_test-append port:R-adagio \
+                    port:R-knitr \
                     port:R-microbenchmark \
                     port:R-optimx \
                     port:R-pkgbuild \

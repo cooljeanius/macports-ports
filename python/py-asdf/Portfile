@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-asdf
-version             3.0.1
+version             3.2.0
 revision            0
 license             BSD
 platforms           {darwin any}
@@ -14,11 +14,11 @@ description         The Advanced Scientific Data Format (ASDF) is a next-generat
 long_description    {*}${description} This package contains the Python implementation of the ASDF Standard. 
 homepage            https://github.com/asdf-format/asdf
 
-checksums           rmd160  04e5074efff59921e56f32f44dee9a6f1d5e1b64 \
-                    sha256  cabadc624efab760daaa49412bdf50ab2530a8dd622089800294805ec93a53cb \
-                    size    789472
+checksums           rmd160  5442c9ec56028a5caa2cf9ebde94a98f011d5f05 \
+                    sha256  f92de7246f8f12bb24e813c73784d3cd455d021d083c58723497bf129e2945f2 \
+                    size    794661
 
-python.versions     39 310 311
+python.versions     38 39 310 311 312
 
 if {${name} ne ${subport}} {
     depends_build-append \
@@ -35,3 +35,4 @@ if {${name} ne ${subport}} {
                     port:py${python.version}-semantic_version \
                     port:py${python.version}-yaml
 }
+

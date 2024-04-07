@@ -3,9 +3,9 @@
 PortSystem          1.0
 
 name                dotnet-sdk-devel
-set main_version    8.0.100
-# See patch version in https://dotnet.microsoft.com/en-us/download/dotnet/8.0
-set patch_version   7.23376.3
+set main_version    9.0.100
+# See patch version in https://dotnet.microsoft.com/en-us/download/dotnet/9.0
+set patch_version   2.24157.14
 version             ${main_version}-preview.${patch_version}
 revision            0
 categories          dotnet devel
@@ -28,16 +28,18 @@ supported_archs     x86_64 arm64
 
 switch ${build_arch} {
     x86_64 {
+        set dotnet_rid osx-x64
         distname            dotnet-sdk-${version}-osx-x64
-        checksums           rmd160  06a8dbae5f5240c76848a2e5a6972c3162caea5b \
-                            sha256  135b1001206d7e331905a870b9eb187a6de682cdb5c0be8f4cde2a0522202c7e \
-                            size    211398318
+        checksums           rmd160  246144479f7131fe5127f4cc238b02ef42728c35 \
+                            sha256  d85795f6ce9bfa7ea1c15c4befdcdedb8aa04c9797251c6d275b68ba561be7c5 \
+                            size    237235992
     }
     arm64 {
+        set dotnet_rid osx-arm64
         distname            dotnet-sdk-${version}-osx-arm64
-        checksums           rmd160  87d38a58cbdea2c5c51b934334fd1c36735ff1bf \
-                            sha256  a33411054c0bca32e3a08d77c30e6a73f7e9bacb6a7780da9f32212b45ce46ac \
-                            size    206394113
+        checksums           rmd160  104c30f8db5b41dfb23e7f3859cf752aa8890338 \
+                            sha256  1bf785585e04ae3b644fb6fd978058f5870c4f22d4825f742367aaebafdee161 \
+                            size    232054435
     }
     default {
         known_fail yes
@@ -62,28 +64,46 @@ depends_run         port:dotnet-cli \
 build {}
 
 destroot {
-    set dotnet_manifest_version 8.0.100-preview.7
-    set dotnet_templates_version 8.0.0-preview.7.23375.9
     set dotnet_home ${prefix}/share/dotnet
+    set dotnet_runtime_version 9.0.0-preview.2.24128.5
 
-    # Create the target directory
+    # ASP.NET Core Targeting Pack
+    set aspnet_target_dir /packs/Microsoft.AspNetCore.App.Ref
+    set aspnet_target_version 9.0.0-preview.2.24128.4
+    xinstall -d ${destroot}${dotnet_home}${aspnet_target_dir}
+    move ${worksrcpath}${aspnet_target_dir}/${aspnet_target_version} ${destroot}${dotnet_home}${aspnet_target_dir}
+
+    # .NET AppHost Pack
+    set dotnet_apphost_dir /packs/Microsoft.NETCore.App.Host.${dotnet_rid}
+    set dotnet_apphost_version ${dotnet_runtime_version}
+    xinstall -d ${destroot}${dotnet_home}${dotnet_apphost_dir}
+    move ${worksrcpath}${dotnet_apphost_dir}/${dotnet_apphost_version} ${destroot}${dotnet_home}${dotnet_apphost_dir}
+
+    # .NET Targeting Pack
+    set dotnet_target_dir /packs/Microsoft.NETCore.App.Ref
+    set dotnet_target_version ${dotnet_runtime_version}
+    xinstall -d ${destroot}${dotnet_home}${dotnet_target_dir}
+    move ${worksrcpath}${dotnet_target_dir}/${dotnet_target_version} ${destroot}${dotnet_home}${dotnet_target_dir}
+
+    # SDK
     xinstall -d ${destroot}${dotnet_home}/sdk
-    xinstall -d ${destroot}${dotnet_home}/sdk-manifests
-    xinstall -d ${destroot}${dotnet_home}/templates
-
     move ${worksrcpath}/sdk/${version} ${destroot}${dotnet_home}/sdk
+
+    # SDK-Manifests
+    set dotnet_manifest_version 8.0.100
+    xinstall -d ${destroot}${dotnet_home}/sdk-manifests
     move ${worksrcpath}/sdk-manifests/${dotnet_manifest_version} ${destroot}${dotnet_home}/sdk-manifests
+    # remove these once all out of preview
+    move ${worksrcpath}/sdk-manifests/9.0.100-preview.1 ${destroot}${dotnet_home}/sdk-manifests
+    move ${worksrcpath}/sdk-manifests/9.0.100-preview.2 ${destroot}${dotnet_home}/sdk-manifests
+
+    # Templates
+    set dotnet_templates_version 9.0.0-preview.2.24128.4
+    xinstall -d ${destroot}${dotnet_home}/templates
     move ${worksrcpath}/templates/${dotnet_templates_version} ${destroot}${dotnet_home}/templates
-
-    # FIXME: add multiple directories for sdk-manifests
-    set dotnet_manifest_version 8.0.100-preview.6
-    move ${worksrcpath}/sdk-manifests/${dotnet_manifest_version} ${destroot}${dotnet_home}/sdk-manifests
 }
-
-notes ".NET 8 has become a steady version so please use `dotnet-sdk-8` port instead.
-The maintenance of this port will be suspended until a new preview version is released."
 
 livecheck.version   [join [lrange [split ${patch_version} .] 0 0] .]
 livecheck.type      regex
-livecheck.url       https://dotnet.microsoft.com/en-us/download/dotnet/8.0
+livecheck.url       https://dotnet.microsoft.com/en-us/download/dotnet/9.0
 livecheck.regex     "SDK ${main_version}-preview.(\\d)"

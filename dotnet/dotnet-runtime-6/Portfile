@@ -3,7 +3,7 @@
 PortSystem          1.0
 
 name                dotnet-runtime-6
-version             6.0.26
+version             6.0.28
 revision            0
 categories          dotnet
 license             MIT
@@ -25,15 +25,15 @@ supported_archs     x86_64 arm64
 switch ${build_arch} {
     x86_64 {
         distname            dotnet-runtime-${version}-osx-x64
-        checksums           rmd160  aed6cc9b2c8d40edabb0ba5b8e3fb57d18063ad4 \
-                            sha256  3f1590cd4d0e2da0c8f510236bed78a4b757559864cfb2714999116d9e3cef1f \
-                            size    30089817
+        checksums           rmd160  56770f337209ab448675bb4400eb31de9631f454 \
+                            sha256  944e1a0b57b4e5e5f03d5f534ceb43a49e04f6fb0249597546cb71d21c978ca0 \
+                            size    30090033
     }
     arm64 {
         distname            dotnet-runtime-${version}-osx-arm64
-        checksums           rmd160  c4eb452ea64128111a291fd6e1d19002816fc167 \
-                            sha256  4e59c49945604c7cfc63530385b84bcd544e7163b1bcc38b6b9682e7fa9e3499 \
-                            size    28192172
+        checksums           rmd160  c81e71d47035e0d05c07fa341e2ddd20c961849f \
+                            sha256  b2f250e3918f53f7dfb3167dd8e49d4961296145305b8e49aaf799922e8b2a7b \
+                            size    28192781
     }
     default {
         known_fail yes

@@ -7,7 +7,7 @@ PortGroup           python 1.0
 # TODO: Test port on the macOS 10.12 - macOS 10.15. Because kitty replaces the
 # librsync with libxxhash, new versions can work
 # correctly again.
-github.setup        kovidgoyal kitty 0.32.0 v
+github.setup        kovidgoyal kitty 0.33.1 v
 github.tarball_from releases
 revision            0
 
@@ -23,9 +23,9 @@ homepage            https://sw.kovidgoyal.net/kitty/
 use_xz              yes
 
 checksums           ${distfiles} \
-                    rmd160  0ae4fd998fa67c75ac541a27165113c16e8f7a2e \
-                    sha256  7881a95c1a43d03b230b6ff817e4b5cfec267bac3dbd6dcbbf6c095d476d776d \
-                    size    8122660
+                    rmd160  a4e49aa50fb9c662cd6bcd8a46e7c839e4847470 \
+                    sha256  b7c9af1bdac066099142d3cdf212bf36b83d5610a22c648b66f27b95d5537c7c \
+                    size    8166164
 
 if {${os.major} <= 15} {
     # See https://github.com/kovidgoyal/kitty/issues/2700
@@ -45,6 +45,7 @@ if {${os.major} <= 15} {
 }
 
 patchfiles-append   patch-kitty-no-deprecated-declarations.diff
+patchfiles-append   patch-kitty-incorrect-prefix-in-arm-neon-vshrn-intrinsic.diff
 
 python.default_version \
                     311
@@ -60,8 +61,9 @@ depends_lib-append  \
                     path:lib/pkgconfig/harfbuzz.pc:harfbuzz \
                     port:lcms2 \
                     port:libpng \
-                    port:zlib \
-                    port:xxhashlib
+                    port:simde \
+                    port:xxhashlib \
+                    port:zlib
 
 build.cmd           "${python.bin} setup.py"
 build.target        kitty.app

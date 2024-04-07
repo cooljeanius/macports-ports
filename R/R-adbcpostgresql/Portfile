@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             cran apache adbcpostgresql 0.9.0.1
+R.setup             cran apache adbcpostgresql 0.11.0
 revision            0
 categories-append   databases
 maintainers         nomaintainer
@@ -11,9 +11,9 @@ license             Apache-2
 description         Arrow Database Connectivity (ADBC) SQLite driver
 long_description    {*}${description}
 homepage            https://github.com/apache/arrow-adbc
-checksums           rmd160  713c723362969416d93e0f35627c43fe80834f9b \
-                    sha256  3531f0bad1331c73a99824cebee82e9fb7138834ea787f9cc288fbdd518faa77 \
-                    size    123323
+checksums           rmd160  082df2e1bf1773e447eed208177082d437cbc4da \
+                    sha256  d737504776c8b4f91366bc9dca28ccfca32075ae90d02e6ec4ffa7558e7d68db \
+                    size    273002
 
 # Keep in sync with R-RPostgreSQL, so that we do not need multiple postgresql ports.
 # Make sure a chosen version is supported for all archs, including powerpc.
@@ -23,7 +23,7 @@ depends_lib-append  port:${pgsql} \
                     port:R-adbcdrivermanager
 
 # PKG_LIBS is not redundant here:
-destroot.cmd-append --configure-vars=' \
+build.args-append   --configure-vars=' \
                         PKG_LIBS=-lpq \
                         INCLUDE_DIR=${prefix}/include/${pgsql} \
                         LIB_DIR=${prefix}/lib/${pgsql} '

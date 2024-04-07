@@ -3,7 +3,8 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/batchcorp/plumber 2.5.2 v
+go.setup            github.com/batchcorp/plumber 2.6.1 v
+go.offline_build    no
 github.tarball_from archive
 revision            0
 
@@ -27,14 +28,18 @@ license             MIT
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  8283e26cf63a9aa1c4f5e3d15ee8848456a42ea8 \
-                    sha256  a5861751558725167976d31345df6bcef100276033bd60dc2d3396d2f84c5bc7 \
-                    size    24724342
+checksums           rmd160  d352e82a7fb346b609741781ec49d54fc695650f \
+                    sha256  4155723bcabcedd8fdb43fb2365fe19662d2380cf260f723f00a78fe2f687f77 \
+                    size    26205997
 
 build.cmd           make
 build.pre_args-append \
                     VERSION=${github.tag_prefix}${version}
 build.args          build/darwin-${goarch}
+
+pre-build {
+    system -W ${worksrcpath} "${go.bin} mod vendor"
+}
 
 destroot {
     xinstall -m 0755 \

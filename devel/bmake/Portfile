@@ -3,11 +3,11 @@
 PortSystem          1.0
 
 name                bmake
-version             20240108
+version             20240314
 revision            0
-checksums           rmd160  b50ebbae8798a32417f97156edf9d31fe3aca3a4 \
-                    sha256  3772578820616e999916f4c51dbd2415b06f7281f68ccccc5e1d38ed238e3107 \
-                    size    861205
+checksums           rmd160  0040b5b92fdc285dac9cf8fd0892fefabc9d3fe0 \
+                    sha256  f9a906d7487699c9e0d2c135700c2d088da5fcd0f2f6761267a57aabfea31feb \
+                    size    858436
 
 categories          devel
 maintainers         {ryandesign @ryandesign} openmaintainer

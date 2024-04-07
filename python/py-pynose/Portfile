@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-pynose
-version             1.4.8
+version             1.5.1
 revision            0
 
 categories-append   devel
@@ -19,8 +19,8 @@ long_description    {*}${description}
 
 homepage            https://github.com/mdmintz/pynose
 
-checksums           rmd160  b5429e35d9fec65d959fd170a923160501f2f4b0 \
-                    sha256  c8c1d500f5b64693432520438124c0fd016bfe30826cc3d34848e83e11dd0d02 \
-                    size    109283
+checksums           rmd160  437a4c1d236324e7c0746f613c202108ebc71da3 \
+                    sha256  68d5730959b0c9630e22671bdd3e48e5c421cf296108e9c04a40fdd7d5a9691c \
+                    size    109805
 
 python.versions     312

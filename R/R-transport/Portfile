@@ -3,15 +3,15 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             cran cran transport 0.14-6
+R.setup             cran dominic.schuhmacher transport 0.15-0
 revision            0
 maintainers         nomaintainer
 license             GPL-2+
 description         Computation of optimal transport plans and Wasserstein distances
 long_description    {*}${description}
-checksums           rmd160  f325292dc3b941e89b4719fb618e2b387fb27b2d \
-                    sha256  c6119b577df7c8748b35c74ad4613627a3efa0b758e6cfd046d216658de10620 \
-                    size    379371
+checksums           rmd160  e97b60a2755edf357ec8145f4aa4092e0d2efb2a \
+                    sha256  8aa9d5daec455586fe6fab3db5b1bfa85d1157ff55af98d936bc654c20f33829 \
+                    size    382427
 
 depends_lib-append  port:R-data.table \
                     port:R-Rcpp \

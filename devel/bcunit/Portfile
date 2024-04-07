@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           cmake 1.1
 PortGroup           github 1.0
 
-github.setup        BelledonneCommunications bcunit 5.3.5
+github.setup        BelledonneCommunications bcunit 5.3.36
 github.tarball_from archive
 revision            0
 
@@ -18,8 +18,8 @@ long_description    {*}${description} \
     for C. It's lightweight system for writing, administering, and running \
     unit tests in C
 
-checksums           rmd160 3ea441a7f0ab22cb3403e6bc1ba50d5a884c030b \
-                    sha256 92e06a3e04bb0e93388e16978111e81f58d5bb385c730fcdff9fa537624e6802 \
+checksums           rmd160 54ae754d4c0f2cadde7322c6c8e0ce56e33711a6 \
+                    sha256 ace4706ac88aa9734c7c99e6821e212e79362a9a2d763b32c93341320a41654d \
                     size 378817
 
 post-patch {
@@ -32,3 +32,5 @@ configure.args-append \
                     -DCMAKE_INSTALL_BINDIR=${prefix} \
                     -DCMAKE_INSTALL_LIBDIR=${prefix}/lib \
                     -DCMAKE_INSTALL_INCLUDEDIR=${prefix}/include
+
+github.livecheck.regex  {([0-9.]+)}

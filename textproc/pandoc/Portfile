@@ -3,8 +3,8 @@
 PortSystem          1.0
 PortGroup           github 1.0
 
-github.setup        jgm pandoc 3.1.11.1
-revision            1
+github.setup        jgm pandoc 3.1.12.3
+revision            0
 categories          textproc haskell
 license             GPL-3
 maintainers         {judaew @judaew} openmaintainer
@@ -27,24 +27,45 @@ homepage            https://pandoc.org
 
 installs_libs       no
 
-# See https://trac.macports.org/ticket/48971
-notes-append       "For PDF support, please install the texlive-latex and texlive-fonts-recommended packages."
+checksums           rmd160  48d25968949d35c50289889f53ab8657a0c90bfe \
+                    sha256  14f7c29964a3b3f0f3a124134221e3e60269bda860aad93342e5b1612be46af9 \
+                    size    7657171
 
-set minimum_major_version_for_source 21
+depends_lib-append  port:zlib
 
-# set build_arch/os.arch/os.major by hand to get binary x86_64/arm64 checksums
-# sudo port -d checksum pandoc os.arch=arm os.major=20 build_arch=arm64
-# sudo port -d checksum pandoc os.arch=i386 os.major=20 build_arch=x86_64
-# run `sudo port clean --all pandoc` afterwards
+depends_run-append  port:groff
+
+# https://github.com/jgm/pandoc/blob/main/tools/latex-package-dependencies.lua
+# comm -23 <(pandoc lua ${worksrcpath}/tools/latex-package-dependencies.lua | xargs -I{} find ${prefix}/share/texmf-texlive -name {} | sort -u | xargs -I{} find {} -depth 1 -type f | xargs port provides | awk '{print $NF}' | sort -u) <(port echo rdepof:texlive-xetex rdepends:texlive-fonts-recommended | grep texlive | sort -u)
+variant texlive \
+    description {Use TeXLive; see "port notes" for more information.} {
+    depends_run-append \
+                    port:latexmk \
+                    port:texlive-fonts-recommended \
+                    port:texlive-xetex
+}
+
+variant full_latex_dependencies \
+    requires texlive \
+    description {Install all LaTeX dependencies.} {
+    depends_run-append \
+                    port:texlive-bin-extra \
+                    port:texlive-context \
+                    port:texlive-latex-extra \
+                    port:texlive-luatex
+}
+
+notes-append       "${name} uses LaTeX to create PDFs.
+
+The (minimized) variant +texlive uses MacPorts TeXLive.
+
+For full LaTeX PDF support, please use the variant +full_latex_dependencies."
+
+set minimum_major_version_for_source 20
 
 if {(${os.platform} eq {darwin}
-     && ${os.major} >= ${minimum_major_version_for_source})
-    || ${os.platform} ne {darwin}} {
-
-    checksums       rmd160  db179bb241ff7a7c017dbb638b49411f2cc19889 \
-                    sha256  a486bc7eb78f32ea080e033d29a78659bdbe5fcb77e9277e0af5944f29196d90 \
-                    size    7626371
-
+        && ${os.major} >= ${minimum_major_version_for_source})
+        || ${os.platform} ne {darwin}} {
     compiler.blacklist-append \
                    {clang < 900}
 
@@ -53,6 +74,7 @@ if {(${os.platform} eq {darwin}
         description {Use stack to build.} {}
     if { [variant_isset "stack"] } {
         PortGroup   haskell_stack 1.0
+
     } else {
         PortGroup   haskell_cabal 1.0
 
@@ -103,21 +125,23 @@ if {(${os.platform} eq {darwin}
     # binary support for older macOS versions
     github.tarball_from releases
     use_zip         yes
+    distfiles       pandoc-${version}-${build_arch}-macOS${extract.suffix}
+    set worksrcpath ${workpath}/pandoc-${version}-${build_arch}
 
+    # set build_arch/os.arch/os.major to get binary arm64/x86_64 checksums
+    # sudo port -d checksum pandoc os.arch=arm os.major=18 build_arch=arm64
+    # sudo port -d checksum pandoc os.arch=i386 os.major=18 build_arch=x86_64
+    # run `sudo port clean --all pandoc` afterwards
     switch ${build_arch} {
-        x86_64 {
-            distfiles       pandoc-${version}-x86_64-macOS${extract.suffix}
-            checksums       rmd160  5d101a09cd57bf6fcefad62be021b1a6e16e6ef7 \
-                            sha256  0018eddd489389ac4e6cf6f4711c1ad49574361c04282e075400fad2c0050084 \
-                            size    21209103
-            set worksrcpath ${workpath}/pandoc-${version}-x86_64
-        }
         arm64 {
-            distfiles       pandoc-${version}-arm64-macOS${extract.suffix}
-            checksums       rmd160  5c9a2ce62cf19b779be6593194aadc9d1fe482a5 \
-                            sha256  fa38ad91d8f1f09549ae16830ade3a26650b03cb9a29c68b41b55ea7fab0aa2d \
-                            size    34443762
-            set worksrcpath ${workpath}/pandoc-${version}-arm64
+            checksums       rmd160  35b4e308078541b184be314e5933028792003a99 \
+                            sha256  7c67ba6e481a27bcd1dbed3f4de982f2efff6a781c706aee27002e46dee95cce \
+                            size    34709166
+        }
+        x86_64 {
+            checksums       rmd160  0416252bac8250427940d5f4ffa0e1eab26dd92d \
+                            sha256  108c7adc9ffdbfa976eae4f78d33feb9a9b3f1fbb75045306e9ce50f493c6252 \
+                            size    21592305
         }
         default {
             known_fail  yes

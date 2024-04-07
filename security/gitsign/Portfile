@@ -3,7 +3,8 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/sigstore/gitsign 0.8.0 v
+go.setup            github.com/sigstore/gitsign 0.10.1 v
+go.offline_build    no
 github.tarball_from archive
 revision            0
 
@@ -17,11 +18,9 @@ license             Apache-2
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  988a91bdd297eca9b7d2098bb8d3350ba8e80d8e \
-                    sha256  3087506ef7811f2d26b6eb8612d4d0a4d8d8eec6258bca4f25247bb7a49e297c \
-                    size    286048
-
-go.offline_build no
+checksums           rmd160  f12e1df3f5f5c671da14dd0b1e8c0302fde8e8df \
+                    sha256  e08d3ff93fdd551683b40028bc05a9bc34e077c44bfb88099db9b1027a27131e \
+                    size    273906
 
 build.cmd           make
 build.pre_args-append \

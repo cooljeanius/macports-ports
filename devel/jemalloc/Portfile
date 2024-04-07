@@ -33,20 +33,20 @@ if {${subport} eq ${name}} {
 }
 
 subport jemalloc-devel {
-    github.setup        jemalloc jemalloc f96010b7fa8ce5f83802144bdebf2bb7a6679649
-    version             2024.01.24
+    github.setup        jemalloc jemalloc 92aa52c0625d35ca1c30e7fc913d7c92c9518f9e
+    version             2024.03.15
     conflicts           jemalloc
-    checksums           rmd160  803128a4cd13f06e708023b832dff33c2c014f11 \
-                        sha256  876c695ce41da086461b6a4585d3788edcec890a8ce355a832a4f4ee7fae2583 \
-                        size    834513
+    checksums           rmd160  167ca7cb6975cbdfde50ce5c2028ce1c8b3af9f3 \
+                        sha256  162509976d5391d96f5337e061e760986fd49acaf25024a713030eef6c45b681 \
+                        size    835321
     github.tarball_from archive
 
     use_autoreconf      yes
 }
 
-compiler.cxx_standard 2014
+compiler.cxx_standard   2014
 
-configure.args-append --with-jemalloc-prefix=
+configure.args-append   --with-jemalloc-prefix=
 
 # provide a compatibility symlink with the older name
 post-destroot {

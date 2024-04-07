@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             cran doccstat fastcpd 0.10.3
+R.setup             cran doccstat fastcpd 0.13.1
 revision            0
 categories-append   math
 maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
@@ -11,9 +11,9 @@ license             GPL-3+
 description         Fast change point detection via sequential gradient descent
 long_description    {*}${description}
 homepage            https://fastcpd.xingchi.li
-checksums           rmd160  f734fb253c1bb47885aeadfefeb2eed4089119a1 \
-                    sha256  70c6e732d8e443064dee66bffff4a4990e93d5efc6777e8f476c2772b3949654 \
-                    size    3185428
+checksums           rmd160  039f50032ca12bac3842bb98f8a12b4adbac1382 \
+                    sha256  8c65484fbd9c9c4d4fcd750ff8d9bbbbf5bfa3d9ab452d99709c6005fceb7a3a \
+                    size    4046105
 
 depends_lib-append  port:R-fastglm \
                     port:R-forecast \
@@ -24,19 +24,30 @@ depends_lib-append  port:R-fastglm \
                     port:R-testthat \
                     port:R-tseries
 
+patchfiles          patch-drop-missing-deps.diff
+
 compilers.setup     require_fortran
 
-depends_test-append port:R-abind \
-                    port:R-bcp \
+variant tests description "Enable testing" {
+    # https://github.com/doccstat/fastcpd/issues/8
+    patchfiles-append \
+                    patch-tests-no-parallel.diff
+
+    depends_test-append \
+                    port:R-abind \
                     port:R-breakfast \
                     port:R-changepoint \
                     port:R-cpm \
+                    port:R-CptNonPar \
                     port:R-ecp \
                     port:R-fpop \
+                    port:R-gfpop \
                     port:R-ggplot2 \
                     port:R-gridExtra \
+                    port:R-InspectChangepoint \
                     port:R-knitr \
                     port:R-lubridate \
+                    port:R-matrixStats \
                     port:R-mcp \
                     port:R-mockthat \
                     port:R-mosum \
@@ -52,4 +63,5 @@ depends_test-append port:R-abind \
                     port:R-xml2 \
                     port:R-zoo
 
-test.run            yes
+    test.run        yes
+}

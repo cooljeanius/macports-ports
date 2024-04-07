@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             cran duckdb duckdb 0.9.2-1
+R.setup             cran duckdb duckdb 0.10.1
 revision            0
 categories-append   databases
 maintainers         nomaintainer
@@ -11,9 +11,9 @@ license             MIT
 description         DBI package for the DuckDB database management system
 long_description    {*}${description}
 homepage            https://github.com/duckdb/duckdb-r
-checksums           rmd160  51543211eeb93fcc913830bcb8dd772d922acd82 \
-                    sha256  441c7be8141947dec67292a2c7c4090e9cf49449de4e1ae67c2fcff4bc0bc796 \
-                    size    3766705
+checksums           rmd160  159a0ae3ac18f72a7b648996d129121f18b8f37a \
+                    sha256  e3b1bfd4c31d9f8d624fb954681cd24351c19713093af21361b6b599e56e48ec \
+                    size    4147117
 
 depends_lib-append  port:R-DBI
 
@@ -25,7 +25,9 @@ if {[string match macports-gcc* ${configure.compiler}] && (${configure.build_arc
                     patch-libatomic.diff
 }
 
-depends_test-append port:R-adbcdrivermanager \
+variant tests description "Enable testing" {
+    depends_test-append \
+                    port:R-adbcdrivermanager \
                     port:R-arrow \
                     port:R-bit64 \
                     port:R-callr \
@@ -38,7 +40,8 @@ depends_test-append port:R-adbcdrivermanager \
                     port:R-vctrs \
                     port:R-withr
 
-# FIXME: some functionality for Big-endian platforms is missing, see:
-# https://github.com/duckdblabs/duckplyr/issues/51
-# Upstream not interested to fix anything: https://github.com/duckdb/duckdb/issues/9714
-test.run            yes
+    # FIXME: some functionality for Big-endian platforms is missing, see:
+    # https://github.com/duckdblabs/duckplyr/issues/51
+    # Upstream not interested to fix it: https://github.com/duckdb/duckdb/issues/9714
+    test.run        yes
+}

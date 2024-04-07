@@ -30,20 +30,20 @@ checksums       rmd160  e221dc4200d30b8644cfe1f2c8d5e7bccac8aca0 \
 subport ${name} {
     conflicts   ${name}-devel
 
-    patchfiles      patch-lib-system-certs.c.old.diff
+    patchfiles  patch-lib-system-certs.c.old.diff
 }
 
 subport ${name}-devel {
     conflicts   ${name}
     
-    version     3.8.3
+    version     3.8.5
     revision    0
 
-    checksums   rmd160  3f59071b2537c37319da27317fadf159e894013c \
-                sha256  f74fc5954b27d4ec6dfbb11dea987888b5b124289a3703afcada0ee520f4173e \
-                size    6463720
+    checksums   rmd160  cf13fdf6723cbd2a32fc33568840d3546095715b \
+                sha256  66269a2cfe0e1c2dabec87bdbbd8ab656f396edd9a40dd006978e003cfa52bfc \
+                size    6491504
 
-    patchfiles      patch-lib-system-certs.c.diff
+    patchfiles  patch-lib-system-certs.c.diff
 }
 
 if {${build_arch} ne "ppc" || ${build_arch} ne "ppc64"} {

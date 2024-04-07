@@ -4,7 +4,7 @@ PortSystem          1.0
 
 name                cabal
 version             3.10.2.0
-revision            1
+revision            2
 categories          lang haskell devel
 platforms           darwin
 license             BSD
@@ -24,6 +24,8 @@ long_description    Cabal is a system for building and packaging \
 homepage            https://www.haskell.org/cabal
 
 master_sites        https://downloads.haskell.org/~${name}/${name}-install-${version}/:haskell
+
+installs_libs       no
 
 platform arm {
     set cabal_build_arch    aarch64
@@ -109,7 +111,7 @@ if {[exists extract.rename]} {
 
     # use these to specify python versions, python3 required
     # use ${prefix}/var/macports/sources/rsync.macports.org/macports/release/tarballs/ports/_resources/port1.0/group/python-1.0.tcl
-    set python3_version 310
+    set python3_version 312
     set python3_branch  [string index ${python3_version} 0].[string range ${python3_version} 1 end]
     set python3_prefix  ${frameworks_dir}/Python.framework/Versions/${python3_branch}
     set python3_bin     ${python3_prefix}/bin/python${python3_branch}
@@ -118,6 +120,7 @@ if {[exists extract.rename]} {
                     port:python${python3_version} \
                     port:py${python3_version}-importlib-metadata \
                     port:py${python3_version}-parsing \
+                    port:py${python3_version}-setuptools \
                     port:py${python3_version}-sphinx \
                     port:py${python3_version}-sphinx-jsonschema \
                     port:py${python3_version}-sphinx_rtd_theme \

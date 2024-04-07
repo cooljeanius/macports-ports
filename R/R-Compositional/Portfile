@@ -3,16 +3,16 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             cran mtsagris Compositional 6.6
+R.setup             cran mtsagris Compositional 6.8
 revision            0
 categories-append   math
 maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
 license             GPL-2+
 description         Compositional data analysis
 long_description    {*}${description}
-checksums           rmd160  e04651bc753e37eb39fe42e71302deb8517b52d7 \
-                    sha256  33a59f4ad4c8eaa522173611403e44daa1146ba51dacd23c8bc39f6d6698b09e \
-                    size    178885
+checksums           rmd160  fca1abc639e5b4834fb10cbca82889488917e154 \
+                    sha256  ecbcb5de98adc7e16fe9b3c5184f48382e280396f6f3122e35fff566b1b1ce18 \
+                    size    189733
 supported_archs     noarch
 
 depends_lib-append  port:R-codalm \

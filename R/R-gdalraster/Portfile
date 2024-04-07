@@ -3,8 +3,7 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-# GitHub version lags behind.
-R.setup             cran USDAForestService gdalraster 1.8.0
+R.setup             github USDAForestService gdalraster 1.10.0 v
 revision            0
 categories-append   gis
 maintainers         nomaintainer
@@ -12,27 +11,28 @@ license             MIT
 description         Bindings to the Geospatial Data Abstraction Library Raster API
 long_description    {*}${description}
 homepage            https://usdaforestservice.github.io/gdalraster
-checksums           rmd160  da283ebdb278c2c3bb3f13dbec875d8bdf5387f4 \
-                    sha256  bbc000ed465fe89d88b852372e633a7065c4cc494e0167ea6ca18a7c83bdd8af \
-                    size    1777981
+checksums           rmd160  385b0dbc2cfbeeaa1b7c4eb0ba2b7425f0c8d2ad \
+                    sha256  78364efba3c2393e9ee3a7d3bafe00e86901d8b9ea58fbf64f685326ca768e1e \
+                    size    15750847
+github.tarball_from archive
 
 set proj_v          proj9
 
 depends_build-append \
                     port:pkgconfig
-depends_lib-append  path:lib/${proj_v}/lib/pkgconfig/proj.pc:${proj_v} \
-                    port:gdal \
+depends_lib-append  port:gdal \
                     port:libxml2 \
+                    path:lib/${proj_v}/lib/pkgconfig/proj.pc:${proj_v} \
                     port:R-Rcpp \
                     port:R-xml2 \
                     port:sqlite3
 
-# configure fails to do its job: https://github.com/r-spatial/sf/issues/2292
+# https://github.com/USDAForestService/gdalraster/issues/259
 build.env-append    CPPFLAGS=-I${prefix}/lib/${proj_v}/include
 
 build.args-append   --configure-args="--with-proj-include=${prefix}/lib/${proj_v}/include \
                         --with-proj-lib=${prefix}/lib/${proj_v}/lib \
-                        --with-proj-share=${prefix}/lib/${proj_v}/share/proj"
+                        --with-proj-data=${prefix}/lib/${proj_v}/share/proj"
 
 depends_test-append port:R-gt \
                     port:R-knitr \

@@ -30,8 +30,8 @@ subport                 libomp-devel {}
 
 if {${os.platform} eq "darwin" && ${configure.cxx_stdlib} ne "libstdc++"} {
 
-    version             17.0.6
-    revision            0
+    version             18.1.2
+    revision            1
 
     if { ${subport} eq "libomp-devel" } {
         # Marked obsolete 10/25/2022
@@ -46,13 +46,13 @@ if {${os.platform} eq "darwin" && ${configure.cxx_stdlib} ne "libstdc++"} {
 
     checksums \
         openmp-${version}.src.tar.xz \
-                    rmd160  2c0c70b0cb662f2d74a53d90be72986723f4d221 \
-                    sha256  74334cbb4dc8b73a768448a7561d5a3540404940b2267b1fb9813a6464b320de \
-                    size    1273412 \
+                    rmd160  f2cb436ddf5fef965cab48b28f44c3899b9a713e \
+                    sha256  742dce34394d26f0916b5d3041cc737d4e41f5ee821d9fb054057f6f71cf9a2b \
+                    size    1318944 \
         cmake-${version}.src.tar.xz \
-                    rmd160  025868efa2006d5b7365b279169c52fe28f8060e \
-                    sha256  807f069c54dc20cb47b21c1f6acafdd9c649f3ae015609040d6182cab01140f4 \
-                    size    8712
+                    rmd160  ab9ff8018440bc7c494813e231c65c9ae470c6ac \
+                    sha256  b55a1eed9fe9c5d86c9f73c8aabde3e2407e603e737e1555545c3d136655955b \
+                    size    8704
 
     if {${os.major} <= 12} {
         # kmp_alloc.c includes <atomic> but libc++ is not the default on
@@ -139,7 +139,7 @@ if {${os.major} <= 10} {
     set hnames              {omp.h}
     configure.args-append   -DLIBOMP_OMPT_SUPPORT=FALSE
 } else {
-    set hnames              {omp-tools.h omp.h ompt.h}
+    set hnames              {omp-tools.h omp.h ompt.h ompx.h}
 }
 
 variant top_level description \

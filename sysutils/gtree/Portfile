@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/ddddddO/gtree 1.10.7 v
+go.setup            github.com/ddddddO/gtree 1.10.10 v
 github.tarball_from archive
 revision            0
 
@@ -34,9 +34,9 @@ destroot {
 }
 
 checksums           ${distname}${extract.suffix} \
-                        rmd160  d3e761dbcdb04bdac1a7c88e6415eeb8ebd1c9e5 \
-                        sha256  076b3ece0fca0b39bdc8a48154e0b089bb3b4a3f2001256535fd415385da5a5b \
-                        size    2346098
+                        rmd160  55b3a682a914cd415177de989bde6f9e0b5517ef \
+                        sha256  b0bd0b14f8253f2966f6ae3e4af438f9d7a6c927f883ce9cc5265bec0e9c326b \
+                        size    2358254
 
 go.vendors          gopkg.in/yaml.v3 \
                         lock    v3.0.1 \
@@ -54,10 +54,10 @@ go.vendors          gopkg.in/yaml.v3 \
                         sha256  9407ff6fbe0423f2559a99f7ad55479e1eb20201c5dfb9e885abb83c7b44bfc4 \
                         size    1442384 \
                     golang.org/x/sync \
-                        lock    v0.5.0 \
-                        rmd160  510a82f4888a99756ad7287f8129821003540e2b \
-                        sha256  7941823efeb75c83632f4a652286074917418f2539a05abf8fee6c09329711b3 \
-                        size    17575 \
+                        lock    v0.6.0 \
+                        rmd160  f9a1a924a702fc4a3679db3dc36c58ca5b2eba0a \
+                        sha256  b4e9aa29dbb296cc2ebfd679927b1789078d5743385b26c0656a24da89fdcee9 \
+                        size    17596 \
                     go.uber.org/goleak \
                         repo    github.com/uber-go/goleak \
                         lock    v1.3.0 \
@@ -70,15 +70,15 @@ go.vendors          gopkg.in/yaml.v3 \
                         sha256  996b007cfb8fd8308b8f1912bf3863a108edeb07e1e705b8294e13c7a3a662cb \
                         size    1823438 \
                     github.com/urfave/cli \
-                        lock    v2.27.0 \
-                        rmd160  07decd811ad2ec43f5a1c5cebd5d314b5cdc0bbe \
-                        sha256  746c8a605833106495c0363ca3bced59e0f1ab75e23ceed87b286621f08b9348 \
-                        size    3484533 \
+                        lock    v2.27.1 \
+                        rmd160  5ed423283f063a24972ad7ba2dec285e244a25fa \
+                        sha256  ca879821f57d546acad456afaee27cb3d49e68068e37005e777acf3712d9458d \
+                        size    3484663 \
                     github.com/stretchr/testify \
-                        lock    v1.8.4 \
-                        rmd160  8e1645055c9b1d8e117df7974034e74b7f600d27 \
-                        sha256  6d0a77075bbe0f8f1c0cbed51dd4d174579db976fef39d9ae6b500aab8917d6a \
-                        size    104469 \
+                        lock    v1.9.0 \
+                        rmd160  59147e117812fdf8270ec79e46a229c472caf08d \
+                        sha256  e6fa4f530cad5bac94bf08af05ddd1f569aeac8db4017ab4330ab7fe2802a6a3 \
+                        size    108716 \
                     github.com/russross/blackfriday \
                         lock    v2.1.0 \
                         rmd160  c42a9332a2c2f3074c6f7e8d37a58d6148d2af08 \
@@ -90,10 +90,10 @@ go.vendors          gopkg.in/yaml.v3 \
                         sha256  7cd492737641847266115f3060489a67f63581e521a8ec51efbc280c33fc991f \
                         size    11409 \
                     github.com/pelletier/go-toml \
-                        lock    v2.1.1 \
-                        rmd160  dacec5899ff851652ec35f748bdf43583bb79bde \
-                        sha256  8fdf2569f95143ecf2509fe07d5820ee842a6785e4d54c164ec4591a7405d9af \
-                        size    906921 \
+                        lock    v2.2.0 \
+                        rmd160  034e3138b7f4d4a21a5401155955cdae5f14efc1 \
+                        sha256  06e3ad17a1f7039c7061e4b880aa4fa68f3027f6e7bb92ed255f473cf373da05 \
+                        size    909002 \
                     github.com/mattn/go-isatty \
                         lock    v0.0.20 \
                         rmd160  ef20ccdf87de8b704c0c7118625b2beb31d8f1b4 \
@@ -125,7 +125,7 @@ go.vendors          gopkg.in/yaml.v3 \
                         sha256  e85d6afa83e64962e0d63dd4812971eccf2b9b5445eda93f46a4406f0c177d5f \
                         size    42171 \
                     github.com/cpuguy83/go-md2man \
-                        lock    v2.0.2 \
-                        rmd160  23c11486c5bc6f87cb13d2cb2aa7c2c68fd28f96 \
-                        sha256  c0fe49af2717cef631621cbbf010c7ee69b7e5c8afcde33779e07ecece9c00cc \
-                        size    64382
+                        lock    v2.0.3 \
+                        rmd160  f44cb99228e4f418c00979bf850d568837755b76 \
+                        sha256  712375b6a4472b6eff9225cdf3e01a4d33e1e0753f713874ecd67a0d0c74bfea \
+                        size    64980

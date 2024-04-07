@@ -6,12 +6,12 @@ PortGroup           compiler_blacklist_versions  1.0
 PortGroup           github                       1.0
 PortGroup           legacysupport                1.1
 
-github.setup        xrootd xrootd 5.6.6 v
+github.setup        xrootd xrootd 5.6.9 v
 revision            0
 
-checksums           rmd160  fcdd5ff7b7797f60deff2ebba302c9d160c71b0f \
-                    sha256  68205fa0756cb6380455617f39a558ab3a29235f082970e738f1c0363be12086 \
-                    size    6743106
+checksums           rmd160  a833852d359df20ad1363e10ffa5d7b0af37217a \
+                    sha256  bbae6bbd2cfffac3c55299d664933790eefb496c946252b3ed651e839f6d6c7f \
+                    size    6745190
 
 categories          science
 maintainers         {jonesc @cjones051073} openmaintainer

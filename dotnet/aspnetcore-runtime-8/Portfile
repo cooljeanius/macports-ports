@@ -3,7 +3,7 @@
 PortSystem          1.0
 
 name                aspnetcore-runtime-8
-version             8.0.1
+version             8.0.3
 revision            0
 categories          dotnet
 license             MIT
@@ -26,15 +26,15 @@ supported_archs     x86_64 arm64
 switch ${build_arch} {
     x86_64 {
         distname            aspnetcore-runtime-${version}-osx-x64
-        checksums           rmd160  eb8227b6c16cca831a0f76e67e989c96551fe980 \
-                            sha256  41dbbee8a1ae52304a6cd9a36801cbf8f58fa42c9d389626a7edf94bf2fa9b04 \
-                            size    41349715
+        checksums           rmd160  f4ca814d1957b399e57dc6da5e45805eaa5a2b45 \
+                            sha256  f4c35e6e067d3ddcd39d595e5e7186e0a255ba59b78f4f1d9d8ea1aabd413cad \
+                            size    41377185
     }
     arm64 {
         distname            aspnetcore-runtime-${version}-osx-arm64
-        checksums           rmd160  a594338c421bd92194f91b5801714c8037360cea \
-                            sha256  07f9f16a7c15d984bfd8bbd991e03fa2e875b8a20e46de5dc9faa83490ac6b6e \
-                            size    39420290
+        checksums           rmd160  db3759158a8a25e9075cf0db679248a29c53f5b5 \
+                            sha256  66a0d6f841683b8f30299e7042a0dbd1eb491e64a9720ce403716f7373d98806 \
+                            size    39433719
     }
     default {
         known_fail yes

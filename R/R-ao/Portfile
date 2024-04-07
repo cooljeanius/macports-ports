@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           R 1.0
 
 # GitHub version lags behind.
-R.setup             cran loelschlaeger ao 0.3.1
+R.setup             cran loelschlaeger ao 0.3.3
 revision            0
 categories-append   math
 maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
@@ -12,12 +12,14 @@ license             GPL-3
 description         Alternating Optimization
 long_description    {*}${description}
 homepage            https://loelschlaeger.de/ao
-checksums           rmd160  082c42d75e23e75599863cd1a28a6313b46c520b \
-                    sha256  6f4b92c03694e242159b3728eebd7665d1f455be23ee75fa6ef99747f3707b0f \
-                    size    60184
+checksums           rmd160  76077fcac42f0a9a65b98fc70ef960974d81666c \
+                    sha256  4dc7be2dd062515b04a3a78c7a68cc5f315d03538569ab57357d8df00f9f054a \
+                    size    60606
 supported_archs     noarch
 
 depends_lib-append  port:R-checkmate \
+                    port:R-cli \
+                    port:R-oeli \
                     port:R-optimizeR
 
 depends_test-append port:R-knitr \

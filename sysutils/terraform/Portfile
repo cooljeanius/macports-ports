@@ -38,19 +38,19 @@ proc terraformDistBase {} {
 }
 
 subport terraform-1.7 {
-    set patchNumber     2
+    set patchNumber     5
     revision            0
 
     set armAvailable    yes
 
     checksums           [terraformDistBase]_amd64.zip \
-                        rmd160  9f312755d91bab1cfa73c9ac2d0fa46be20c3938 \
-                        sha256  dad2fd54b3dda89b39978dcd27c8c62e13010efdc0507a04b6ad57257b57085e \
-                        size    27538796 \
+                        rmd160  e275422df8da1d6a44f84713131842e2b16e07b0 \
+                        sha256  0eaf64e28f82e2defd06f7a6f3187d8cea03d5d9fcd2af54f549a6c32d6833f7 \
+                        size    27560118 \
                         [terraformDistBase]_arm64.zip \
-                        rmd160  f7cda0e74134518e7017990629127da5021e7434 \
-                        sha256  d8c7b8b1aa7f0b38a2e437d9c9e4e632b2b258e3bf48bb6de4626f3b0afea5e4 \
-                        size    25891861
+                        rmd160  fe2bd475f4f3dd1e568fae5fcb1aeea2440a441e \
+                        sha256  99c4d4feafb0183af2f7fbe07beeea6f83e5f5a29ae29fee3168b6810e37ff98 \
+                        size    25902918
 
     set customDistSubDir no
 }
@@ -92,40 +92,40 @@ subport terraform-1.5 {
 }
 
 subport terraform-1.4 {
-    set patchNumber     6
+    set patchNumber     7
     revision            0
 
     set armAvailable    yes
 
     checksums           [terraformDistBase]_amd64.zip \
-                        rmd160  769eb093caebb50fffaee0f824580fd6ffd2332d \
-                        sha256  5d8332994b86411b049391d31ad1a0785dfb470db8b9c50617de28ddb5d1f25d \
-                        size    22051279 \
+                        rmd160  c8b0bfb7af57bad9d02d8823b7fb9efff6ca4588 \
+                        sha256  603764c07862bd3a87fce193f8b9823383df22626b254f353c83511635763301 \
+                        size    22051376 \
                         [terraformDistBase]_arm64.zip \
-                        rmd160  ff4e4ddd2bf37638228ac0da9836f27f9a7ac0f0 \
-                        sha256  30a2f87298ff9f299452119bd14afaa8d5b000c572f62fa64baf432e35d9dec1 \
-                        size    20613318
+                        rmd160  b6df404982deb2d117e9b61abb263cfc7ab78e80 \
+                        sha256  4b2ae04467469b923d038e6720ae1f92cb2adaa96b7ab08199c2fffee8b45baa \
+                        size    20612022
 
     set customDistSubDir no
 }
 
 subport terraform-1.3 {
-    set patchNumber     9
-    revision            1
+    set patchNumber     10
+    revision            0
 
     set armAvailable    yes
     # Keep dist_subdir since version has been stealth updated and there might be conflicts with the checksums.
     # It is not needed for other subports since there are no conflicts.
-    dist_subdir         ${name}/[terraformDistBase]_1
+    dist_subdir         ${name}/[terraformDistBase]
 
     checksums           [terraformDistBase]_amd64.zip \
-                        rmd160  0683c695a7c3c40bdb5949a7a021e1c38a89880a \
-                        sha256  a73326ea8fb06f6976597e005f8047cbd55ac76ed1e517303d8f6395db6c7805 \
-                        size    21194871 \
+                        rmd160  b8f26c8d223d6994cbab22bc83bb7190ba807386 \
+                        sha256  e5cf68ef9b259503abf515a1716fcfe21d46af22e24b8ebbbe7849fbfafb428c \
+                        size    21195636 \
                         [terraformDistBase]_arm64.zip \
-                        rmd160  3a13916d9c3722586242daeda5536ca20e75f2ec \
-                        sha256  d8a59a794a7f99b484a07a0ed2aa6520921d146ac5a7f4b1b806dcf5c4af0525 \
-                        size    19793371
+                        rmd160  400bb1a0fa0ee0c09257ffe51e58508737ff74cf \
+                        sha256  39cf7882108034f78c0d9144153271efb11ba99924170828eda9b0196f3da6fd \
+                        size    19794701
 
     set customDistSubDir no
 }
@@ -227,7 +227,7 @@ if {${subport} eq ${name}} {
     PortGroup           obsolete 1.0
 
     replaced_by         ${latestVersion}
-    version             1.7.2
+    version             1.7.5
     revision            0
 
 } elseif {${subport} eq "terraform_select"} {

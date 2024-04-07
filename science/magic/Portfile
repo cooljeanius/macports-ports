@@ -5,11 +5,11 @@ PortGroup           active_variants 1.1
 PortGroup           conflicts_build 1.0
 
 name                magic
-version             8.3.459
+version             8.3.468
 revision            0
-checksums           rmd160  3c5565780d5b2a677a16f948b0614605307851af \
-                    sha256  12b34564766227e0b0f1039044463da6ce7ff16a196045308fc688bb8d9d4fd4 \
-                    size    4237442
+checksums           rmd160  bc0827a278214b0008ad8cf46dc882f4a67ff163 \
+                    sha256  5b5b7abcd4e2ce9a05af6c8a25e413b5d71ae05e456b2473d7ef6a52f15aa385 \
+                    size    4239560
 
 set branch          [join [lrange [split ${version} .] 0 1] .]
 categories          science
@@ -46,8 +46,6 @@ require_active_variants tk x11
 universal_variant   no
 
 conflicts_build     gnome-keyring
-
-patchfiles          python312.patch
 
 configure.dir       ${worksrcpath}/scripts
 

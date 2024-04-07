@@ -8,12 +8,12 @@ PortGroup           legacysupport 1.0
 PortGroup           muniversal 1.0
 
 name                gdal
-version             3.8.3
-revision            1
+version             3.8.5
+revision            0
 
-checksums           rmd160  55ef2f3940680fcbda1d3934b1e2b652610acaad \
-                    sha256  ae2d160f65016e208eca34ff14490ec4511f1fa03fd386ac130449d15e82929d \
-                    size    8865180
+checksums           rmd160  295a15ae2621b0dfb7592fead8d19290858f108b \
+                    sha256  e8b4df2a8a7d25272f867455c0c230459545972f81f0eff2ddbf6a6f60dcb1e4 \
+                    size    8871404
 
 categories          gis
 license             MIT BSD

@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-lxml
-version             4.9.3
+version             5.2.1
 revision            0
 
 categories-append   devel
@@ -21,23 +21,41 @@ long_description    lxml is a Pythonic binding for the libxml2 and \
 
 homepage            https://lxml.de/
 
-checksums           rmd160  e298e965c9786ddcd2bbc428cccbb9bcde25858c \
-                    sha256  48628bd53a426c9eb9bc066a923acaa0878d1e86129fd5359aee99285f4eed9c \
-                    size    3572158
+checksums           rmd160  a051e048283c68dbf6eeccbcaf9fbc0619a71e79 \
+                    sha256  3f7765e69bbce0906a7c74d5fe46d2c7a7596147318dbc08e4a2431f3060e306 \
+                    size    3675336
 
 python.versions     27 35 36 37 38 39 310 311 312
 
-# https://trac.macports.org/ticket/56666
-patchfiles-append   patch-setupinfo-remove-xcrun-call.diff
-
 if {${name} ne ${subport}} {
-    depends_build-append \
+    if {${python.version} < 36} {
+        version     5.0.2
+        revision    0
+        checksums   rmd160  edd377fe2e214c69db4e468583ac507cf71853a7 \
+                    sha256  6399703c40ba53e2c3b72fdb56cb908d2b83c08082ecf17de839b27e68d1e598 \
+                    size    3862433
+
+        depends_build-append \
                     port:py${python.version}-setuptools
+    }
+
+    depends_build-append \
+                    port:py${python.version}-cython
 
     depends_lib-append \
                     port:zlib \
                     port:libxml2 \
                     port:libxslt
+
+    # https://trac.macports.org/ticket/56666
+    patchfiles-append   patch-setupinfo-remove-xcrun-call.diff
+
+    # https://trac.macports.org/ticket/69386
+    # As of 5.1.1, it does not build with gcc-4.2 anymore,
+    # even if pragmas are patched out:
+    # etree.h: error: wrong number of arguments specified for ‘__deprecated__’ attribute
+    compiler.blacklist-append \
+                    {*gcc-[34].*}
 
     test.run        yes
     python.test_framework

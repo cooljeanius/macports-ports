@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/golang/tools 0.17.0 v
+go.setup            github.com/golang/tools 0.20.0 v
 github.tarball_from archive
 epoch               7
 revision            0
@@ -17,9 +17,9 @@ maintainers         {ciserlohn @ci42} {@enckse voidedtech.com:enckse} \
 description         Various packages and tools that support the Go programming language.
 long_description    ${description}
 
-checksums           rmd160  01ca90d0200d01d896996d4bd7f0ab860c261cb8 \
-                    sha256  cfa2b81b912142f1c923e3afb4c18618b3d28b0fa053abc3e67b75965c2e71c7 \
-                    size    3640573
+checksums           rmd160  df23bb8ce64c5693d5a13fb4dcb0eaaec2cfd724 \
+                    sha256  0582c331c678881debc5e7109e503a709fe0a627468dc3c36f526adb351c0452 \
+                    size    3779878
 
 # FIXME: This port currently can't be built without allowing go mod to fetch
 # dependencies during the build phase. See

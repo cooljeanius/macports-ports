@@ -10,7 +10,7 @@ compilers.choose    fc f77 f90
 compilers.setup     require_fortran -g95
 compiler.blacklist-append {clang < 900}
 
-github.setup        JuliaLang julia 1.10.0 v
+github.setup        JuliaLang julia 1.10.2 v
 revision            0
 categories-append   lang math science
 maintainers         {ieee.org:s.t.smith @essandess} \
@@ -30,9 +30,9 @@ github.tarball_from releases
 distfiles           ${name}-${version}-full${extract.suffix}
 
 checksums           ${name}-${version}-full${extract.suffix} \
-                    rmd160  eb03ef721bf5f24cadb0cefac715155bf027e42f \
-                    sha256  a5f8c0ce08cf132bdd919ca0b5b3b2b66c89e0e5f7e7fb2a81ffa7f225e3db4c \
-                    size    318571431
+                    rmd160  9b37eb6d0a06e5ab517455e910b15e360a2f3190 \
+                    sha256  62468720afbc410eb4f262ed2433a92132627872c9f690b704dc045ccb155401 \
+                    size    318584736
 
 extract.only        ${distfiles}
 

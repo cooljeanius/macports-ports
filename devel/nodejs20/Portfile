@@ -11,7 +11,7 @@ configure.cxx_stdlib    libc++
 compiler.cxx_standard   2014
 
 name                    nodejs20
-version                 20.11.0
+version                 20.12.1
 revision                0
 
 categories              devel net
@@ -32,9 +32,9 @@ homepage                https://nodejs.org/
 master_sites            ${homepage}dist/v${version}
 use_xz                  yes
 
-checksums               rmd160  c648ac98f6cbf17eb861c1a3325f7c6411f5b4bc \
-                        sha256  31807ebeeeb049c53f1765e4a95aed69476a4b696dd100cb539ab668d7950b40 \
-                        size    42162348
+checksums               rmd160  c8fd0b2d92f798e0dcacd1d965a24f6555ac9bc9 \
+                        sha256  6840d490ba4d1d51655e0fbe1209956a15db405510d7ea166bad98a8c9d37a4e \
+                        size    41743360
 
 distname                node-v${version}
 

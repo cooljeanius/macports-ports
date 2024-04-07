@@ -1,0 +1,10 @@
+--- DESCRIPTION	2024-03-30 20:19:55.000000000 +0800
++++ DESCRIPTION	2024-03-31 19:34:18.000000000 +0800
+@@ -125,7 +125,6 @@
+     tinysnapshot,
+     tinytest,
+     tinytex,
+-    webshot2,
+     wesanderson
+ License: GPL-3
+ Encoding: UTF-8

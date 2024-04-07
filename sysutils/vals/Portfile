@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/variantdev/vals 0.33.1 v
+go.setup            github.com/variantdev/vals 0.37.0 v
 go.offline_build    no
 github.tarball_from archive
 revision            0
@@ -23,9 +23,9 @@ license             Apache-2
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  4f1dcee2ec5460743343bb6f47e99a5c76b36ff2 \
-                    sha256  79a68e89916022fe9ec857fd51247b4fe3e11cf8e6be27204a67bc15a6cc3fa9 \
-                    size    94049
+checksums           rmd160  6db88deb7dc2460f936d36618ce3382dea15b612 \
+                    sha256  d1e319060d487cf89d4a5bb6c335d8d08140f67d6f5d42ce29360b3fcf6c2584 \
+                    size    104673
 
 build.cmd           "go mod tidy && go build"
 

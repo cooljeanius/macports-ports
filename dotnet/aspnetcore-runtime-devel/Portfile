@@ -3,9 +3,9 @@
 PortSystem          1.0
 
 name                aspnetcore-runtime-devel
-set main_version    8.0.0
-# See patch version in https://dotnet.microsoft.com/en-us/download/dotnet/8.0
-set patch_version   7.23375.9
+set main_version    9.0.0
+# See patch version in https://dotnet.microsoft.com/en-us/download/dotnet/9.0
+set patch_version   2.24128.4
 version             ${main_version}-preview.${patch_version}
 revision            0
 categories          dotnet
@@ -29,15 +29,15 @@ supported_archs     x86_64 arm64
 switch ${build_arch} {
     x86_64 {
         distname            aspnetcore-runtime-${version}-osx-x64
-        checksums           rmd160  52d8ecc8a0691eb32bc16e59a1a1ef27c3652467 \
-                            sha256  daf0785ad85eadbf13d408c0cf05262fce9e269d4492b2824adabf72ac664153 \
-                            size    40715535
+        checksums           rmd160  966beac820852f4eb7a6b40612f9612a783cd521 \
+                            sha256  6b9ac75a5c6a3dfc44048834ca4ece00d07671c8f28db1aea130f16df1696896 \
+                            size    42312456
     }
     arm64 {
         distname            aspnetcore-runtime-${version}-osx-arm64
-        checksums           rmd160  587eb6bcf5285de871772d64207535db40641266 \
-                            sha256  85ebd8c4abcb67aca5380ae33a20e3c5e3c7ea242949130c68575bb488a5e26f \
-                            size    38839832
+        checksums           rmd160  4529e4c7205bc80b91b69be975bc9d7660171256 \
+                            sha256  3892291cd4e906096cb44ef11e4004b60484366e7906a6e1b010963289e2a40c \
+                            size    40299410
     }
     default {
         known_fail yes
@@ -55,7 +55,8 @@ extract.mkdir       yes
 
 use_configure       no
 
-depends_run         port:dotnet-cli
+depends_run         port:dotnet-cli \
+                    port:dotnet-runtime-devel
 
 build {}
 
@@ -67,10 +68,7 @@ destroot {
     move ${worksrcpath}${runtime_dir}/${version} ${destroot}${dotnet_home}${runtime_dir}
 }
 
-notes ".NET 8 has become a steady version so please use `aspnetcore-runtime-8` port instead.
-The maintenance of this port will be suspended until a new preview version is released."
-
 livecheck.version   [join [lrange [split ${patch_version} .] 0 0] .]
 livecheck.type      regex
-livecheck.url       https://dotnet.microsoft.com/en-us/download/dotnet/8.0
+livecheck.url       https://dotnet.microsoft.com/en-us/download/dotnet/9.0
 livecheck.regex     "ASP.NET Core Runtime ${main_version}-preview.(\\d)"

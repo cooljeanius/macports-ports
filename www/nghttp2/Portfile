@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           github 1.0
 PortGroup           legacysupport 1.1
 
-github.setup        nghttp2 nghttp2 1.59.0 v
+github.setup        nghttp2 nghttp2 1.61.0 v
 revision            0
 categories          www
 maintainers         {mps @Schamschula} openmaintainer
@@ -18,15 +18,16 @@ homepage            https://${name}.org
 github.tarball_from releases
 use_xz              yes
 
-checksums           rmd160  ce0927eb35e6280f958a62345c47ced4880b1721 \
-                    sha256  fdc9bd71f5cf8d3fdfb63066b89364c10eb2fdeab55f3c6755cd7917b2ec4ffb \
-                    size    1546956
+checksums           rmd160  9ec993858c63da62ed7cda761ce5f855c2965aa5 \
+                    sha256  c0e660175b9dc429f11d25b9507a834fb752eea9135ab420bb7cb7e9dbcc9654 \
+                    size    1645808
 
 depends_build       port:pkgconfig
 
 # See: https://trac.macports.org/ticket/57960
 # See: https://github.com/nghttp2/nghttp2/issues/1309
 # See: https://github.com/nghttp2/nghttp2/pull/1319
+# See: https://github.com/nghttp2/nghttp2/pull/2086
 patchfiles-append   patch-src-shrpx_client_handler.cc.diff \
                     patch-src-shrpx_downstream_connection_pool.cc.diff \
                     src-shrpx_config.diff
@@ -81,22 +82,5 @@ subport nghttp2-tools {
         # remove files contained in the main port
         delete ${destroot}${prefix}/lib
         delete ${destroot}${prefix}/include
-    }
-}
-
-set pyversions {38 39 310}
-
-foreach pyversion ${pyversions} {
-    subport py${pyversion}-${name} {
-        PortGroup           python 1.0
-        PortGroup           obsolete 1.0
-
-        version             1.51.0
-        revision            1
-
-        categories          www python
-        homepage            https://nghttp2.org/documentation/python-apiref.html
-
-        # remove after 2024-02-13
     }
 }

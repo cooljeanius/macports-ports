@@ -3,15 +3,15 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             cran nwaller fungible 2.4.2
+R.setup             cran nwaller fungible 2.4.4
 revision            0
 maintainers         nomaintainer
 license             GPL-2+
 description         Psychometric functions from the Waller Lab
 long_description    {*}${description}
-checksums           rmd160  93515b3dcb3a24cc9dc752b3446d92bb17cc794c \
-                    sha256  028bd2c16eddf991913c13dae69f27d39412c585da01d2d59ee2e892f071376c \
-                    size    793751
+checksums           rmd160  f68ca3b85c8c80c142a8bcaf087f7e328f0b36a9 \
+                    sha256  aaedf45aa62a66926ed0cdaa6849bb04a6cd07ccfc9df60d8ae28311f0b104a2 \
+                    size    821732
 supported_archs     noarch
 
 depends_lib-append  port:R-clue \
