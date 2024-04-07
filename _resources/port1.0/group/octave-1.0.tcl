@@ -17,6 +17,9 @@
 #   where module is the name of the module w/o the octave- prefix
 #   (e.g. communications)
 
+# see octave Portfile
+set package_version 9.x.x
+
 options octave.author octave.module octave.config_h
 
 # do not use this option unless absolutely necessary
@@ -136,6 +139,9 @@ proc octave.add_env {} {
     configure.env-delete DL_LD=${configure.cxx}
     configure.env-append DL_LD=${configure.cxx}
 }
+# this is needed for octave 9.x.x
+configure.env-append    LDFLAGS=-L${prefix}/lib/octave/${package_version}
+
 port::register_callback octave.add_env
 
 post-extract {
@@ -220,17 +226,22 @@ pre-destroot {
 
     destroot.pre_args -q -f -H --eval
 
-    if { ${os.arch} eq "i386" } {
-        if { ${os.major} >= 9 && ![catch {sysctl hw.cpu64bit_capable} result] && $result == 1 } {
-            set short_host_name x86_64-apple-${os.platform}${os.major}.x.x
-        } else {
-            set short_host_name i686-apple-${os.platform}${os.major}.x.x
-        }
-    } else {
-        if { ${os.major} >= 9 && ![catch {sysctl hw.cpu64bit_capable} result] && $result == 1 } {
-            set short_host_name powerpc64-apple-${os.platform}${os.major}.x.x
-        } else {
+    platform darwin {
+        # Keep ppc before i386, so that Rosetta builds for ppc.
+        # Also, use build_arch and not sysctl:
+        # https://trac.macports.org/ticket/69573
+        if { ${configure.build_arch} eq "arm64" } {
+            set short_host_name aarch64-apple-${os.platform}${os.major}.x.x
+        } elseif { ${configure.build_arch} eq "ppc" } {
             set short_host_name powerpc-apple-${os.platform}${os.major}.x.x
+        } elseif { ${configure.build_arch} eq "ppc64" } {
+            set short_host_name powerpc64-apple-${os.platform}${os.major}.x.x
+        } elseif { ${os.arch} eq "i386" } {
+            if { ${os.major} >= 9 && [sysctl hw.cpu64bit_capable] == 1 } {
+                set short_host_name x86_64-apple-${os.platform}${os.major}.x.x
+            } else {
+                set short_host_name i686-apple-${os.platform}${os.major}.x.x
+            }
         }
     }
 

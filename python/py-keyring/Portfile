@@ -4,8 +4,8 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-keyring
-version             24.3.1
-revision            0
+version             25.1.0
+revision            1
 
 categories-append   security
 platforms           {darwin any}
@@ -21,9 +21,9 @@ long_description    The Python keyring lib provides a easy way to access the sys
 
 homepage            https://github.com/jaraco/keyring
 
-checksums           rmd160  d5ee8d179da496a7ad0406776d186d119e8f70f9 \
-                    sha256  c3327b6ffafc0e8befbdb597cacdb4928ffe5c1212f7645f186e6d9957a898db \
-                    size    60454
+checksums           rmd160  9cbdf3aab15a2ca07b54eea22555fe4dc17e5881 \
+                    sha256  7230ea690525133f6ad536a9b5def74a4bd52642abe594761028fc044d7c7893 \
+                    size    60191
 
 python.versions     38 39 310 311 312
 
@@ -32,8 +32,19 @@ if {${name} ne ${subport}} {
                     port:py${python.version}-setuptools_scm
 
     depends_lib-append \
-                    port:py${python.version}-importlib-metadata \
-                    port:py${python.version}-jaraco.classes
+                    port:py${python.version}-jaraco.classes \
+                    port:py${python.version}-jaraco.functools \
+                    port:py${python.version}-jaraco.context
+
+    if {${python.version} < 312} {
+        depends_lib-append \
+                    port:py${python.version}-importlib-metadata
+    }
+
+    if {${python.version} < 39} {
+        depends_lib-append \
+                    port:py${python.version}-importlib-resources
+    }
 
     post-destroot {
         set docdir ${prefix}/share/doc/${subport}

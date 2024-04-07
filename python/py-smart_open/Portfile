@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-smart_open
-version             7.0.1
+version             7.0.4
 revision            0
 categories-append   textproc
 license             MIT
@@ -20,9 +20,9 @@ long_description    {*}${description}
 
 homepage            https://github.com/piskvorky/smart_open
 
-checksums           rmd160  0dd0121c450b231a27d99ca52201399cb039f35d \
-                    sha256  c03d00e49483d8e5375720d4d6c1402107f23584bf96505db0b4e17f92339e56 \
-                    size    70456
+checksums           rmd160  5dae56a6fbe1eba4284a6c41064b2b3d05e532f4 \
+                    sha256  62b65852bdd1d1d516839fcb1f6bc50cd0f16e05b4ec44b52f43d38bcb838524 \
+                    size    71149
 
 if {${name} ne ${subport}} {
     depends_lib-append  port:py${python.version}-wrapt

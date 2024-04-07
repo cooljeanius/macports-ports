@@ -22,7 +22,7 @@ long_description    {*}${description}
 epoch               1
 
 # Primary release version
-set release_ver     1.2.1
+set release_ver     1.2.2
 
 # Binary compatibility version
 set compat_ver      1.0.0
@@ -31,20 +31,20 @@ subport ${name} {
     conflicts           ${name}-devel
     github.setup        macports macports-legacy-support ${release_ver} v
     revision            0
-    checksums           rmd160  e25e45cc5d747c6a710aa085ffbcfbaffb547935 \
-                        sha256  971ed22e77f1b3ab34eb3f306a9a792f5b2f912534976b6c3e261dcc8f9512e2 \
-                        size    72500
+    checksums           rmd160  86aa4edf8de2fd011549fe4868a5d51bb6ce9d6d \
+                        sha256  3fd9e012755359db44f3173d2c3eddae0021a778993661e345596d56e2085bb7 \
+                        size    74875
 }
 
 subport ${name}-devel {
     conflicts           ${name}
-    github.setup        macports macports-legacy-support ae88daa43c2b0dddb855bb0bf1e6ef4a0f9e8c53
-    version             20240303
-    revision            0
+    github.setup        macports macports-legacy-support f457175dc7393794aab9cb78af3bb20be9cc0474
+    version             20240326
+    revision            1
     livecheck.type      none
-    checksums           rmd160  e25e45cc5d747c6a710aa085ffbcfbaffb547935 \
-                        sha256  971ed22e77f1b3ab34eb3f306a9a792f5b2f912534976b6c3e261dcc8f9512e2 \
-                        size    72500
+    checksums           rmd160  86aa4edf8de2fd011549fe4868a5d51bb6ce9d6d \
+                        sha256  3fd9e012755359db44f3173d2c3eddae0021a778993661e345596d56e2085bb7 \
+                        size    74875
     set v_split         [split ${release_ver} .]
     set release_ver     [lindex ${v_split} 0].[lindex ${v_split} 1].99
 }

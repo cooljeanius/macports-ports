@@ -4,8 +4,8 @@ PortSystem              1.0
 PortGroup               python 1.0
 
 name                    osxphotos
-version                 0.67.6
-revision                1
+version                 0.67.10
+revision                0
 
 categories              graphics python
 
@@ -26,9 +26,9 @@ long_description        {*}${description}
 
 homepage                https://github.com/RhetTbull/osxphotos
 
-checksums               rmd160  a15e2475633eb6108957e9a797153f900421687d \
-                        sha256  0720392a02639c2b9170564547305ae639ea9c912d775f37d4bb7b04905c3fae \
-                        size    2098571
+checksums               rmd160  9cdf7c9c75053e4ae46252d89670c2b7badf8ebc \
+                        sha256  96ae4830cd09b1cc40491c06269ddf8c7d96cf492cd4468cd0c88bdad91601bb \
+                        size    2104706
 
 python.default_version  312
 
@@ -37,6 +37,7 @@ depends_build-append    port:py${python.version}-setuptools
 depends_lib-append      port:py${python.version}-bitmath \
                         port:py${python.version}-bpylist2 \
                         port:py${python.version}-click \
+                        port:py${python.version}-mac-alias \
                         port:py${python.version}-mako \
                         port:py${python.version}-more-itertools \
                         port:py${python.version}-objexplore \
@@ -65,3 +66,8 @@ post-destroot {
     xinstall -m 644 -W ${worksrcpath} LICENSE README.md README.rst \
        ${destroot}${prefix}/share/doc/${subport}
 }
+
+test.run    yes
+test.cmd    osxphotos
+test.target
+test.args   version
