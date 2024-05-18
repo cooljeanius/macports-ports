@@ -5,11 +5,11 @@ PortGroup           compiler_blacklist_versions 1.0
 
 name                freetds
 epoch               1
-version             1.4.11
+version             1.4.13
 revision            0
-checksums           rmd160  d35f220917e279b668b606416caf6fed7f9d53f1 \
-                    sha256  567f7ce913f222191dda7e1c221d5e272a387152fef6cacbd97767fea68b613e \
-                    size    2394685
+checksums           rmd160  fa4226c0e899f1a4a4ca36d425f87a7e2bef8fef \
+                    sha256  4530ba865cc5bcefc7b69095ad6538d7e3aaf1c7315185edd1b5b0241bf7aa0b \
+                    size    2401434
 
 categories          databases
 maintainers         {ryandesign @ryandesign} openmaintainer

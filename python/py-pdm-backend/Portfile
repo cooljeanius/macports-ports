@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-pdm-backend
-version             2.1.8
+version             2.3.0
 revision            0
 
 categories-append   devel
@@ -20,9 +20,9 @@ long_description    {*}${description}
 homepage            https://github.com/pdm-project/pdm-backend
 distname            pdm_backend-${version}
 
-checksums           rmd160  2af778b427c50a2c69bb4934f03aaa81776ad83c \
-                    sha256  2487dfbd13f69d80fb4e6a08006a3ee68272833970813047dc5fcfacdfdc0151 \
-                    size    98038
+checksums           rmd160  969cfaf1a3332505a657ab2ac92cf032c5c01313 \
+                    sha256  e39ed2da206d90d4a6e9eb62f6dce54ed4fa65ddf172a7d5700960d0f8a09e09 \
+                    size    107318
 
 python.versions     38 39 310 311 312
 python.pep517_backend

@@ -5,7 +5,7 @@ PortGroup       legacysupport 1.0
 PortGroup       compiler_blacklist_versions 1.0
 
 name            bind9
-version         9.18.25
+version         9.18.27
 categories      net
 maintainers     {geeklair.net:dluke @danielluke} {jmr @jmroot}
 platforms       darwin freebsd sunos
@@ -29,9 +29,9 @@ homepage        https://www.isc.org/
 distname        bind-${version}
 master_sites    isc:${name}/${version}
 
-checksums       rmd160    dab40c534e917f9c2fd672264aba392f63a12d4b \
-                sha256    5a4a70432a33d009f0e6e9dbb328aae7a5e27507e98e28bf3c0c6b250ccb2ab3 \
-                size      5514064
+checksums       rmd160    d0b37d54d745c9870a801d13809e66fecf3da88a \
+                sha256    ea3f3d8cfa2f6ae78c8722751d008f54bc17a3aed2be3f7399eb7bf5f4cda8f1 \
+                size      5524000
 
 use_xz          yes
 

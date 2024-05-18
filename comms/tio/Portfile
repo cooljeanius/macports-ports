@@ -4,7 +4,7 @@ PortSystem              1.0
 PortGroup               github  1.0
 PortGroup               meson   1.0
 
-github.setup            tio tio 2.7 v
+github.setup            tio tio 3.3 v
 github.tarball_from     releases
 revision                0
 
@@ -23,11 +23,18 @@ long_description        tio is a simple serial device tool which \
                         connect to serial TTY devices for basic \
                         I/O operations.
 
-checksums               rmd160  247cf32c440e54633f16ac1972511a16bd40fa32 \
-                        sha256  bf8fe434848c2c1b6540af0b42503c986068176ddc1a988cf02e521e7de5daa5 \
-                        size    3432332
+checksums               rmd160  52d2926847d5fffa2e610cb0c425d18206b8adc5 \
+                        sha256  506635b2e922306be3ded980d0b6fd8bb74647b1561b01015b769041f7ddca8d \
+                        size    3453004
 
 depends_build-append    port:pkgconfig
-depends_lib-append      port:inih
+depends_lib-append      port:glib2  \
+                        port:inih   \
+                        port:lua54
 
 use_xz                  yes
+
+post-destroot {
+    xinstall -d ${destroot}${prefix}/share/${name}
+    copy ${worksrcpath}/examples ${destroot}${prefix}/share/${name}
+}

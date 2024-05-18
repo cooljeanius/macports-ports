@@ -13,7 +13,7 @@ name                gtk3-devel
 conflicts           gtk3
 set my_name         gtk3
 version             3.24.41
-revision            0
+revision            1
 epoch               0
 
 set proj_name       gtk+
@@ -38,6 +38,9 @@ master_sites        gnome:sources/${proj_name}/${branch}/
 checksums           rmd160  779c36a8ea9a2f81ce6709e70d8af7628c47406e \
                     sha256  47da61487af3087a94bc49296fd025ca0bc02f96ef06c556e7c8988bd651b6fa \
                     size    13188312
+
+# Disable unexpected download of subprojects
+meson.wrap_mode     nodownload
 
 minimum_xcodeversions {9 3.1}
 
@@ -259,6 +262,11 @@ variant tests description {Enable tests} {
     test.target             test
 }
 
+variant broadway description {Enable the broadway (HTML5) gdk backend} {
+    configure.args-append \
+                            -Dbroadway_backend=true
+}
+
 variant demos description {Build demos and examples} {
     configure.args-replace \
                             -Ddemos=false \
@@ -271,6 +279,7 @@ variant demos description {Build demos and examples} {
 variant quartz conflicts x11 {
     require_active_variants path:lib/pkgconfig/cairo.pc:cairo quartz
     require_active_variants path:lib/pkgconfig/pango.pc:pango quartz
+    require_active_variants path:lib/pkgconfig/glib-2.0.pc:glib2 quartz
 
     configure.args-append \
                             -Dx11_backend=false \
@@ -281,6 +290,7 @@ variant quartz conflicts x11 {
 variant x11 conflicts quartz {
     require_active_variants path:lib/pkgconfig/cairo.pc:cairo x11
     require_active_variants path:lib/pkgconfig/pango.pc:pango x11
+    require_active_variants path:lib/pkgconfig/glib-2.0.pc:glib2 x11
 
     depends_lib-append \
                             port:at-spi2-atk \

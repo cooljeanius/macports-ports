@@ -10,6 +10,7 @@ set my_name         gobject-introspection
 
 version             1.78.1
 revision            2
+epoch               1
 
 categories          gnome
 # library under LGPL-2+, tools under GPL-2+
@@ -38,8 +39,8 @@ set py_ver          3.12
 set py_ver_nodot    [string map {. {}} ${py_ver}]
 
 depends_build-append \
-                    port:pkgconfig \
                     port:bison \
+                    port:pkgconfig \
                     port:python${py_ver_nodot} \
                     port:py${py_ver_nodot}-cython
 
@@ -99,6 +100,7 @@ platform darwin 8 {
     patchfiles-append patch-girscanner-tiger-no-rpath.diff
 
     build.env-append DYLD_LIBRARY_PATH=${workpath}/build/girepository
+    destroot.env-append DYLD_LIBRARY_PATH=${workpath}/build/girepository
 }
 
 #--------------------------------------------------------------------------------------------------

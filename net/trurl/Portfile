@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           github      1.0
 PortGroup           makefile    1.0
 
-github.setup        curl trurl 0.10 trurl-
+github.setup        curl trurl 0.13 trurl-
 github.tarball_from archive
 revision            0
 
@@ -20,9 +20,9 @@ license             MIT
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  1a96a5478b21a2b1b93dcad0ccea2cfb11b41f8a \
-                    sha256  e54ee05a1a39f2547fbb39225f9cf5e2608eeaf07ad3f7dbff0a069d060d3c46 \
-                    size    45268
+checksums           rmd160  93454064f1c277a9cd962f567599a534af90c06a \
+                    sha256  8ceeb09d0e08dc677897f26651aa625d9ad18021f881f9d5f31e5a95bb3cc047 \
+                    size    46408
 
 depends_build-append \
                     port:gmake

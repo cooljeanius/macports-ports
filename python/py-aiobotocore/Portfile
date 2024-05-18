@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-aiobotocore
-version             2.12.1
+version             2.12.3
 revision            0
 categories-append   devel
 platforms           {darwin any}
@@ -20,9 +20,9 @@ long_description    {*}${description}
 
 homepage            https://github.com/aio-libs/aiobotocore
 
-checksums           rmd160  285e4f7eb1dd0346f2c0464d510437dafb75badd \
-                    sha256  8706b28f16f93c541f6ed50352115a79d8f3499539f8d0bb70aa0f7a5379c1fe \
-                    size    103243
+checksums           rmd160  f5c65e8bc6271b9f3b8687856b105d12ff19d71c \
+                    sha256  e2a2929207bc5d62eb556106c2224c1fd106d5c65be2eb69f15cc8c34c44c236 \
+                    size    103754
 
 if {${name} ne ${subport}} {
     depends_lib-append  port:py${python.version}-botocore \

@@ -5,9 +5,8 @@ PortGroup           compilers 1.0
 PortGroup           active_variants 1.1
 
 name                gildas
-version             202403a
+version             202405b
 set my_version      [string tolower [clock format [clock scan 2000-[string range ${version} 4 5]-10] -format %b]][string range ${version} 2 3][string range ${version} 6 end]
-revision            1
 
 supported_archs     arm64 x86_64
 categories          science
@@ -33,11 +32,11 @@ master_sites        https://www.iram.fr/~gildas/dist/ \
 distname            ${name}-src-${my_version}
 use_xz              yes
 
-checksums           rmd160  365d6f7518a022474ae2d0d4af6c2a4f6e1936fa \
-                    sha256  c7e3331c1819b64bbd210691508e57a0faf852f3dd9a530aeeb7ff2970c1f403 \
-                    size    46271084
+checksums           rmd160  e605d720a8d771b415cd8c5026d5565cb56154c9 \
+                    sha256  020705beab9105d3bdb629e70b16931489b74a38fb552412819ce4b55bcdd8d0 \
+                    size    46292368
 
-patch.pre_args      -p1
+patch.pre_args-replace  -p0 -p1
 patchfiles          patch-admin-Makefile.def.diff \
                     patch-admin-Makefile.python.diff \
                     patch-admin-Makefile.build.diff \

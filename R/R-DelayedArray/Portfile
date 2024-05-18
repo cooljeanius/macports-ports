@@ -3,18 +3,17 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             github Bioconductor DelayedArray d9565290ceedba5cd34774273fad039bc76ebac2
-version             0.29.0
+R.setup             bioconductor Bioconductor DelayedArray 0.30.1
 revision            0
-categories-append   devel
+categories-append   bioconductor devel
 maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
 license             Artistic-2
-description         Unified framework for working transparently with on-disk and in-memory array-like datasets
+description         Unified framework for working transparently \
+                    with on-disk and in-memory array-like datasets
 long_description    {*}${description}
-homepage            https://bioconductor.org/packages/${R.package}
-checksums           rmd160  3ed7dd061cb40243a0f11b3764a7ae332140b387 \
-                    sha256  e1d640275b0f16cda82d0cbb6f9ef53261df4774a6e6b53044167342a7bf098f \
-                    size    150617
+checksums           rmd160  0a36b0e49a9493462eb0ea0d137963c5d6cd447a \
+                    sha256  a66af4adea2ab37be5b7bbc1322bb5d9c7f1f18a9171f6f2e3e839f1b3bad758 \
+                    size    634929
 
 depends_lib-append  port:R-BiocGenerics \
                     port:R-IRanges \

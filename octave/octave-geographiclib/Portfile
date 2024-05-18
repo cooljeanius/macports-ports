@@ -1,0 +1,28 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           octave 1.0
+
+octave.setup        sourceforge geographiclib geographiclib 2.2
+revision            0
+license             MIT
+maintainers         {mps @Schamschula} openmaintainer
+description         Native Octave/MATLAB implementations of a subset of the C++ library, \
+                    GeographicLib.
+long_description    {*}${description} "Key components of this toolbox are: (a) Geodesics,\
+                    direct, inverse, area calculations; (b) Projections,\
+                    transverse Mercator, polar stereographic, etc; (c) Grid systems,\
+                    UTM, UPS, MGRS; (d) Geoid lookup, egm84, egm96, egm2008 geoids\
+                    supported; (e) Geometric transformations, geocentric, local\
+                    cartesian; (f) Great ellipse, direct, inverse, area calculations."
+
+# not part of the sourceforge octave package repository
+master_sites        sourceforge:project/geographiclib/distrib-Octave
+distname            geographiclib-octave-${version}
+
+supported_archs     noarch
+platforms           {darwin any}
+
+checksums           rmd160  6f3420b344b40cbc39a976b08161d5a50110e2d1 \
+                    sha256  807d7eeeb184b3690e86fa4cd5cc956c45a609009458931adb8af1c11a278d02 \
+                    size    87702

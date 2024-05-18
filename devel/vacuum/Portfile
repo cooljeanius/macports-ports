@@ -3,9 +3,8 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/daveshanley/vacuum 0.9.10 v
+go.setup            github.com/daveshanley/vacuum 0.9.15 v
 go.offline_build    no
-github.tarball_from archive
 revision            0
 
 homepage            https://quobix.com/vacuum
@@ -25,9 +24,9 @@ license             MIT
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  4fe13843d966dfdc07fb8cb6a6516ff0a5d600d3 \
-                    sha256  a25deb831f1bb5fc75fc554943fdff6d08a6a0f82993c96cb5763d469c1654ac \
-                    size    2458184
+checksums           rmd160  702aee40de23803729702d65b7b827b5d1f7a632 \
+                    sha256  d1e752bd3139759a7e732b88526e79e8c56e16fa11a7bb6a8395c23dc9c24372 \
+                    size    2613557
 
 build.pre_args-append \
     -ldflags \" -X main.version=v${version} \"

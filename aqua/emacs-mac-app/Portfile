@@ -8,8 +8,9 @@ set emacs_mac_ver   10.0
 
 bitbucket.setup     mituharu emacs-mac emacs-${emacs_version}-mac-${emacs_mac_ver}
 name                emacs-mac-app
+conflicts           emacs-app emacs-app-devel
 version             ${emacs_mac_ver}
-revision            0
+revision            1
 categories          aqua editors
 maintainers         {amake @amake} openmaintainer
 
@@ -18,7 +19,7 @@ description         Emacs Mac port
 long_description    ${name} is the \"Mac port\" of GNU Emacs ${emacs_version}. \
                     This provides a native GUI with tight OS integration.
 
-platforms           darwin
+platforms           {darwin >= 14}
 license             GPL-3+
 
 checksums           rmd160  616d3c3d3dd1e175af7f06423f106b1534264d45 \
@@ -35,7 +36,7 @@ depends_lib         port:ncurses \
 patchfiles          patch-src_emacs.c.diff
 
 if {${subport} eq ${name}} {
-    conflicts       emacs-mac-app-devel
+    conflicts-prepend   emacs-mac-app-devel
 }
 
 post-patch {
@@ -51,7 +52,7 @@ autoreconf.args     all
 depends_build       port:autoconf \
                     port:automake \
                     port:libtool \
-                    port:pkgconfig \
+                    path:bin/pkg-config:pkgconfig \
                     port:texinfo \
                     port:sqlite3 \
                     port:webp
@@ -83,13 +84,9 @@ platform darwin {
     configure.cflags-append -fobjc-arc
 }
 
-if {${os.major} <= 13} {
-    known_fail  yes
-}
-
 subport ${name}-devel {
-    set emacs_version   29.1
-    set date            2023-11-16
+    set emacs_version   29.3
+    set date            2024-03-25
 
     version         [string map {- {}} ${date}]
     revision        0
@@ -100,14 +97,14 @@ subport ${name}-devel {
 
     fetch.type      git
     git.url         --shallow-since=${date}T00:00:00 --branch work https://bitbucket.org/mituharu/emacs-mac.git
-    git.branch      f07ef590bae37bfbe9fc13767288bd9614587335
+    git.branch      0386c590892066c4b58388848c2c93c61a505b31
 
     # --shallow-since needs a newer version of git than on some older systems,
     # so use MacPorts version
     depends_fetch-append port:git
     git.cmd         ${prefix}/bin/git
 
-    conflicts       emacs-mac-app
+    conflicts-prepend   emacs-mac-app
 
     livecheck.version   ${git.branch}
     bitbucket.livecheck work
@@ -116,11 +113,12 @@ subport ${name}-devel {
 destroot.destdir {}
 
 post-destroot {
-    # Rename the app bundle to avoid a conflict with emacs-app
-    move ${worksrcpath}/Emacs.app ${destroot}${applications_dir}/EmacsMac.app
+    set appname [expr {[variant_isset renameapp] ? "EmacsMac" : "Emacs"}]
+
+    move ${worksrcpath}/Emacs.app ${destroot}${applications_dir}/${appname}.app
 
     # Install site-start.el
-    set site_lisp ${destroot}${applications_dir}/EmacsMac.app/Contents/Resources/site-lisp
+    set site_lisp ${destroot}${applications_dir}/${appname}.app/Contents/Resources/site-lisp
     xinstall -d ${site_lisp}
     file copy ${filespath}/site-start.el ${site_lisp}
     reinplace "s|__PREFIX__|${prefix}|g" ${site_lisp}/site-start.el
@@ -132,7 +130,7 @@ post-destroot {
 }
 
 variant multitty description {Enable Multi-TTY support} {
-    patchfiles-append   patch-multi-tty
+    patchfiles-append   ${subport}-multi-tty.patch
 }
 
 variant rsvg description {Enable librsvg bindings} {
@@ -148,7 +146,7 @@ variant imagemagick description {Enable ImageMagick bindings} {
 }
 
 variant nativecomp description {Builds emacs with native compilation support} {
-    set gcc_v                      12
+    set gcc_v                      13
     depends_lib-append             port:gcc${gcc_v}
     configure.args-append          --with-native-compilation=aot
     compiler.cpath-prepend         ${prefix}/include/gcc${gcc_v}
@@ -186,7 +184,11 @@ variant metal description {Enable experimental Metal support} {
     configure.args-append  --with-mac-metal
 }
 
-default_variants-append +nativecomp +treesitter
+variant renameapp description {Rename app bundle to avoid conflict with emacs-app} {
+    conflicts-delete    emacs-app emacs-app-devel
+}
+
+default_variants-append +nativecomp +treesitter +renameapp
 
 if {${subport} eq ${name}} {
     livecheck.regex     {"emacs-[0-9.]+-mac-([0-9.]+)"}

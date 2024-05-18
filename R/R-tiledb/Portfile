@@ -3,16 +3,16 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             cran TileDB-Inc tiledb 0.25.0
+R.setup             cran TileDB-Inc tiledb 0.27.0
 revision            0
 categories-append   databases
 maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
 license             MIT
 description         Universal storage engine for sparse and dense multidimensional arrays
 long_description    {*}${description}
-checksums           rmd160  9a5be9b1d973265b35453eb3ac3743c234acd997 \
-                    sha256  02005bd3c1c535eb772f1179836b9560a95dc16514d083b36192d598a0fcec2b \
-                    size    532209
+checksums           rmd160  578e4aa519945986dc9198217447b098eadef4e8 \
+                    sha256  fee6a9a94faa7a1919500e46f30813db57e7d1e61a5a44cf17fe5ecfc42d3bba \
+                    size    530719
 
 depends_build-append \
                     port:pkgconfig

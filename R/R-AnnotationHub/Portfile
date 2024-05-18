@@ -3,25 +3,26 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             bioconductor Bioconductor AnnotationHub 3.10.0
+R.setup             bioconductor Bioconductor AnnotationHub 3.12.0
 revision            0
-categories-append   www
+categories-append   bioconductor www
 maintainers         nomaintainer
 license             Artistic-2
 description         Client to access AnnotationHub resources
 long_description    {*}${description}
-checksums           rmd160  4a9134dccb8ca56c7410eb358b4aa56aa972ffe0 \
-                    sha256  795a7e03540ee4ab07eebb20ceebf39b60aba79ff5f66937c0b4f41c6edca3d7 \
-                    size    994592
+checksums           rmd160  1571886c70a3738d15fe1fafc7f48e8a724e9094 \
+                    sha256  a138dc289305b598fa7c7ea732c1b5947a54bfd127fe7242b3da772147b042b5 \
+                    size    992371
 supported_archs     noarch
+platforms           {darwin any}
 
 depends_lib-append  port:R-AnnotationDbi \
                     port:R-BiocFileCache \
                     port:R-BiocGenerics \
                     port:R-BiocManager \
                     port:R-BiocVersion \
-                    port:R-dplyr \
                     port:R-curl \
+                    port:R-dplyr \
                     port:R-httr \
                     port:R-interactiveDisplayBase \
                     port:R-rappdirs \

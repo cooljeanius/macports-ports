@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           cargo   1.0
 PortGroup           github  1.0
 
-github.setup        wasmerio wasmer 4.2.7 v
+github.setup        wasmerio wasmer 4.3.0 v
 github.tarball_from archive
 revision            0
 
@@ -24,9 +24,9 @@ license             MIT
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  5de068dca1005da33c3373ccd869a4e6bb38db08 \
-                    sha256  c4a4c0249b048b846293a79009b59183f2da4abedf14e88e5a9f8d1a689a84d8 \
-                    size    108146489
+checksums           rmd160  df3baaedab68eeba960430faee22a335d52da67b \
+                    sha256  f975b852e0774d8c5ea0a184c6a39836a37dbf669c417a4c5ed2775805b505d7 \
+                    size    102223733
 
 build.cmd           make
 build.pre_args      {}
@@ -47,6 +47,12 @@ destroot {
     xinstall \
         ${worksrcpath}/target/[cargo.rust_platform]/release/lib${name}.a \
         ${destroot}${prefix}/lib/
+
+    xinstall -m 0444 \
+        ${worksrcpath}/lib/c-api/tests/wasm-c-api/include/wasm.h \
+        ${worksrcpath}/lib/c-api/wasmer.h \
+        ${worksrcpath}/lib/c-api/wasmer_wasm.h \
+        ${destroot}${prefix}/include/
 }
 
 post-destroot {

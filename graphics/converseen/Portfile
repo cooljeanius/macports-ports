@@ -6,8 +6,8 @@ PortGroup           cmake 1.0
 PortGroup           github 1.0
 PortGroup           qt5 1.0
 
-github.setup        Faster3ck converseen 0.12.2.1 v
-revision            1
+github.setup        Faster3ck converseen 0.12.2.3 v
+revision            0
 categories          graphics
 license             GPL-3
 maintainers         {mps @Schamschula} openmaintainer
@@ -15,9 +15,9 @@ description         Converseen is an open source batch image converter and resiz
 long_description    {*}${description} Thanks to the Magick++ image libraries it supports \
                     more than 100 image formats.
 
-checksums           rmd160  eef18c24fd3a52e32f220841a43f2c8a089bf6a6 \
-                    sha256  ac0e476bfaf5b480cf55cf9868790c09b89a5b4e77446e290d97ac202ca46f38 \
-                    size    940040
+checksums           rmd160  9f91a8cc8b620055a4541bea65b5c6b63d95d715 \
+                    sha256  3db08796dd75ec95da46c3b482062797b6b9024ec20c13e5338060b76f544c67 \
+                    size    943415
 
 depends_lib-append  port:ImageMagick
 

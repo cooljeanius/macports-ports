@@ -3,9 +3,7 @@
 PortSystem              1.0
 
 name                    mysql8
-version                 8.0.35
-
-set boost_version       1.77.0
+version                 8.4.0
 
 categories              databases
 
@@ -15,13 +13,11 @@ maintainers             {gmail.com:herby.gillot @herbygillot} \
                         openmaintainer
 
 # Set revision_client and revision_server to 0 on version bump.
-set revision_client     1
-set revision_server     0
+set revision_client     2
+set revision_server     2
 
 set name_mysql          ${name}
 set version_branch      [join [lrange [split ${version} .] 0 1] .]
-set boost_distver       [join [split ${boost_version} .] _]
-set boost_distname      boost_${boost_distver}
 
 # Undefined symbols for architecture x86_64:
 #   "std::bad_optional_access::~bad_optional_access()", referenced from:
@@ -49,31 +45,30 @@ if {$subport eq $name} {
 
     revision            ${revision_client}
 
-    master_sites        mysql:MySQL-${version_branch}:mysql \
-                        sourceforge:project/boost/boost/${boost_version}:boost
+    master_sites        mysql:MySQL-${version_branch}:mysql
 
     distname            mysql-${version}
 
-    distfiles           ${distname}${extract.suffix}:mysql \
-                        ${boost_distname}${extract.suffix}:boost
+    distfiles           ${distname}${extract.suffix}:mysql
 
     checksums           ${distname}${extract.suffix} \
-                        rmd160  63a1d772b72939d5c499061da6bdde26bc1f7bbb \
-                        sha256  917c5ed38704e99211185ce4be24e33a8c19c91241ed73af4181a6f38d1574c2 \
-                        size    430457500 \
-                        ${boost_distname}${extract.suffix} \
-                        rmd160  850588f968a2086ff27ec7b8224ca8890a74601e \
-                        sha256  5347464af5b14ac54bb945dc68f1dd7c56f0dad7262816b956138fc53bcc0131 \
-                        size    130620992
+                        rmd160  cfa0538c1bf0d5496589f7ec291bf145084bbee0 \
+                        sha256  47a5433fcdd639db836b99e1b5459c2b813cbdad23ff2b5dd4ad27f792ba918e \
+                        size    413221068
 
     depends_build-append \
+                        port:pkgconfig  \
                         port:bison
 
-    depends_lib-append  port:cyrus-sasl2 \
-                        path:lib/pkgconfig/icu-uc.pc:icu \
-                        port:libedit \
-                        port:libevent \
-                        port:zlib \
+    depends_lib-append  path:lib/pkgconfig/icu-uc.pc:icu \
+                        port:curl           \
+                        port:cyrus-sasl2    \
+                        port:libedit        \
+                        port:libfido2       \
+                        port:libevent       \
+                        port:openldap       \
+                        port:protobuf3-cpp  \
+                        port:zlib           \
                         port:zstd
 
     depends_run-append  port:mysql_select
@@ -83,7 +78,7 @@ if {$subport eq $name} {
 
     use_parallel_build  yes
 
-    compiler.cxx_standard 2017
+    compiler.cxx_standard 2020
 
     # /usr/include/c++/v1/optional:960:34: note: candidate function not viable: no known conversion from 'optional<...>' to 'const optional<...>' for object argument
     compiler.blacklist-append {clang < 1100}
@@ -124,38 +119,30 @@ if {$subport eq $name} {
     configure.args-append \
         -DBISON_EXECUTABLE="${prefix}/bin/bison" \
         -DFORCE_UNSUPPORTED_COMPILER=ON \
-        -DDOWNLOAD_BOOST=0 \
         -DINSTALL_LAYOUT:STRING=MACPORTS \
         -DMYSQL_DATADIR:PATH="${prefix}/var/db/${name_mysql}" \
         -DMYSQL_UNIX_ADDR:PATH="${prefix}/var/run/${name_mysql}/mysqld.sock" \
         -DSYSCONFDIR:PATH="${prefix}/etc/${name_mysql}" \
-        -DWITH_BOOST:PATH="${worksrcpath}/../${boost_distname}" \
-        -DWITH_EDITLINE=system \
-        -DWITH_ICU:PATH="${prefix}" \
-        -DWITH_INNODB_MEMCACHED=1 \
-        -DWITH_LIBEVENT=system \
-        -DLIBEVENT_INCLUDE_PATH:PATH="${prefix}/include" \
-        -DLIBEVENT_LIB_PATHS:PATH="${prefix}/lib" \
-        -DWITH_PROTOBUF=bundled \
-        -DWITH_SASL:PATH="${prefix}" \
-        -DWITH_ZLIB:PATH=system \
+        -DWITH_UNIT_TESTS=OFF   \
+        -DWITH_CURL=system      \
+        -DWITH_EDITLINE=system  \
+        -DWITH_FIDO=system      \
+        -DWITH_ICU=system       \
+        -DWITH_LDAP=system      \
+        -DWITH_LZ4=system       \
+        -DWITH_PROTOBUF=system  \
+        -DWITH_SASL=system      \
+        -DWITH_SSL=[openssl::install_area] \
+        -DWITH_ZLIB=system      \
         -DWITH_ZSTD=system
 
-    # FIXME: Disable building MySQL Router until we resolve link issues
     configure.args-append \
         -DWITH_ROUTER:BOOL=OFF
-#       -DROUTER_INSTALL_LIBDIR="lib/${name_mysql}" \
-#       -DROUTER_INSTALL_PLUGINDIR="lib/${name_mysql}/mysqlrouter"
 
-    patch.pre_args  -p1
-    patchfiles      patch-cmake-install_macros-protobuf-path.cmake.diff \
-                    patch-cmake-install_layout.cmake.diff \
-                    patch-cmake-sasl-disable-platform-check.diff \
-                    patch-cmake-ssl-include.diff \
+    patch.pre_args-replace  -p0 -p1
+    patchfiles      patch-cmake-install_layout.cmake.diff \
                     patch-readline.cmake.diff \
-                    patch-scripts-cmakelists.diff \
-                    patch-sql-local-boost.diff \
-                    patch-mysql8-ffsll-apple.diff
+                    patch-scripts-cmakelists.diff
 
     post-extract {
         file mkdir ${cmake.build_dir}/macports
@@ -165,15 +152,9 @@ if {$subport eq $name} {
     }
 
     post-patch {
-        # https://trac.macports.org/ticket/67324
-        ui_info "$UI_PREFIX Applying patch-boost-clang16-cpp17-compat.diff"
-        system -W ${workpath}/${boost_distname} \
-            "/usr/bin/patch -p0 < ${filespath}/patch-boost-clang16-cpp17-compat.diff"
 
         reinplace "s|@NAME@|${name_mysql}|g" \
             ${worksrcpath}/cmake/install_layout.cmake
-#       reinplace "s|@NAME@|${name_mysql}|g" \
-#           ${worksrcpath}/router/cmake/set_rpath.cmake
         reinplace "s|@NAME@|${name_mysql}|g" \
             ${cmake.build_dir}/macports/macports-default.cnf \
             ${cmake.build_dir}/macports/my.cnf
@@ -209,16 +190,6 @@ if {$subport eq $name} {
 
         copy ${cmake.build_dir}/macports/my.cnf \
             ${destroot}${prefix}/share/${name_mysql}/support-files/macports/
-
-#       move ${destroot}${prefix}/README.router \
-#           ${destroot}${prefix}/doc/${name_mysql}/
-
-#       move ${destroot}${prefix}/LICENSE.router \
-#           ${destroot}${prefix}/doc/${name_mysql}/
-
-        # workaround for https://trac.macports.org/ticket/63456
-        ln -s -f ../mysql/libprotobuf-lite.3.19.4.dylib \
-            ${destroot}${prefix}/lib/${name_mysql}/plugin/libprotobuf-lite.3.19.4.dylib
 
         # Work around bad zlib linker flags in `mysql_config`.
         # https://bugs.mysql.com/bug.php?id=111011

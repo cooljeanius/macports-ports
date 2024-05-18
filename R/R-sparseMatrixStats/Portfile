@@ -3,16 +3,16 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             bioconductor const-ae sparseMatrixStats 1.14.0
+R.setup             bioconductor const-ae sparseMatrixStats 1.16.0
 revision            0
+categories-append   bioconductor
 maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
 license             MIT
 description         Summary statistics for rows and columns of sparse matrices
 long_description    {*}${description}
-homepage            https://github.com/const-ae/sparseMatrixStats
-checksums           rmd160  f5a2452cf6975340a04c65b8cd6c115f825e2e05 \
-                    sha256  39b1f8dd13df7222e5de6bd1fa0ea1bb931577d10551757c445776a120ef5264 \
-                    size    703089
+checksums           rmd160  9d0dabb36aac2a09fb5e32757feb5e86d6127de7 \
+                    sha256  eed13a7335ef09168ece41481484a5e43c5281644d1e296af76d20a84d4e1312 \
+                    size    703132
 
 depends_lib-append  port:R-MatrixGenerics \
                     port:R-matrixStats \

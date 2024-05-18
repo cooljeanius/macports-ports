@@ -4,17 +4,18 @@ PortSystem          1.0
 PortGroup           R 1.0
 
 # GitHub version lags behind.
-R.setup             cran ocbe-uio BayesMallows 2.1.1
-revision            0
+R.setup             cran ocbe-uio BayesMallows 2.2.1
+revision            1
 categories-append   math
-maintainers         nomaintainer
+maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
 license             GPL-3
 description         Bayesian preference learning with the Mallows rank model
-long_description    {*}${description}
+long_description    An implementation of the Bayesian version \
+                    of the Mallows rank model.
 homepage            https://ocbe-uio.github.io/BayesMallows
-checksums           rmd160  9e39601bc83b0117b10741e9e068a9a0fc270575 \
-                    sha256  ca4e3dc6d1288829fe76f702798ada440b49d3931385d9ac69a29e75ef1743c0 \
-                    size    4370607
+checksums           rmd160  2794d166cd84a1abe5a6528beb45ff6618b38271 \
+                    sha256  247b6b6aaee38f43ddd23d0a8ab67f30a211dceac60dbf3999a15e85d1122245 \
+                    size    4376710
 
 depends_lib-append  port:R-ggplot2 \
                     port:R-igraph \
