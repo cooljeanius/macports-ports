@@ -92,9 +92,8 @@ jobs:
       name: Manual build
       shell: bash
       run: |
-        find . -name '*.c' -type f -print0 | xargs -0 file
         # shellcheck disable=SC2001,2086
-        for cfile in $(find . -name '*.c' -type f -print0 | xargs -0 file | grep "c program text" | cut -d: -f1); do \
+        for cfile in $(find . -name '*.c' -type f -print0 | xargs -0 file | grep "C source" | cut -d: -f1); do \
           cobjfile="$(echo "${cfile}" | sed "s/\.c/.o/g")"; \
           cfiledir="$(dirname "${cfile}")"; \
           if test ! -e "${cobjfile}"; then \
@@ -105,9 +104,8 @@ jobs:
             cp -v "${cobjfile}" "${cfiledir}" || cp -v "${cobjfile}" . || cp -v "${cobjfile}" .. || (if test -d /tmp && test -w /tmp; then cp -v "${cobjfile}" /tmp; fi) || stat -t "${cobjfile}"; \
           fi; \
         done
-        find . -name '*.cpp' -type f -print0 | xargs -0 file
         # shellcheck disable=SC2001,2086
-        for cppfile in $(find . -name '*.cpp' -type f -print0 | xargs -0 file | grep "c program text" | cut -d: -f1); do \
+        for cppfile in $(find . -name '*.cpp' -type f -print0 | xargs -0 file | grep "C source" | cut -d: -f1); do \
           cppobjfile="$(echo "${cppfile}" | sed "s/\.cpp/.o/g")"; \
           cppfiledir="$(dirname "${cppfile}")"; \
           if test ! -e "${cppobjfile}"; then \
@@ -118,9 +116,8 @@ jobs:
             cp -v "${cppobjfile}" "${cppfiledir}" || cp -v "${cppobjfile}" . || cp -v "${cppobjfile}" .. || (if test -d /tmp && test -w /tmp; then cp -v "${cppobjfile}" /tmp; fi) || stat -t "${cppobjfile}"; \
           fi; \
         done
-        find . -name '*.cc' -type f -print0 | xargs -0 file
         # shellcheck disable=SC2001,2086
-        for ccfile in $(find . -name '*.cc' -type f -print0 | xargs -0 file | grep "c program text" | cut -d: -f1); do \
+        for ccfile in $(find . -name '*.cc' -type f -print0 | xargs -0 file | grep "C source" | cut -d: -f1); do \
           ccobjfile="$(echo "${ccfile}" | sed "s/\.cc/.o/g")"; \
           ccfiledir="$(dirname "${ccfile}")"; \
           if test ! -e "${ccobjfile}"; then \
@@ -131,8 +128,7 @@ jobs:
             cp -v "${ccobjfile}" "${ccfiledir}" || cp -v "${ccobjfile}" . || cp -v "${ccobjfile}" .. || (if test -d /tmp && test -w /tmp; then cp -v "${ccobjfile}" /tmp; fi) || stat -t "${ccobjfile}"; \
           fi; \
         done
-        find . -name Makefile -type f -print0 | xargs -0 file
-        for mfile in $(find . -name Makefile -type f -print0 | xargs -0 file | grep "makefile script text" | cut -d: -f1); do \
+        for mfile in $(find . -name Makefile -type f -print0 | xargs -0 file | grep "makefile script" | cut -d: -f1); do \
           make -C "$(dirname "${mfile}")" || stat -t "${mfile}"; \
         done
 
