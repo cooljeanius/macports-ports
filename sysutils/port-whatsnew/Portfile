@@ -28,6 +28,8 @@ dist_subdir         macports-contrib
 use_configure       no
 
 build {
+    # Please leave this; it's good to inform users when overriding steps:
+    ui_debug "${name} has no build step"
 }
 
 destroot {
