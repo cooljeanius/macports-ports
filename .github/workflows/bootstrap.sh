@@ -99,7 +99,11 @@ endgroup
 
 begingroup "Configuring MacPorts"
 # Set PATH for portindex
-source /opt/local/share/macports/setupenv.bash
+if test -r /opt/local/share/macports/setupenv.bash; then
+    source /opt/local/share/macports/setupenv.bash
+else
+    echo "/opt/local/share/macports/setupenv.bash is missing!" >&2 && exit 1
+fi
 # Set ports tree to $PWD/ports
 sudo sed -i "" "s|rsync://rsync.macports.org/macports/release/tarballs/ports.tar|file://${PWD}/ports|; /^file:/s/default/nosync,default/" /opt/local/etc/macports/sources.conf
 # CI is not interactive
@@ -111,7 +115,9 @@ echo "archive_site_local https://packages-private.macports.org/:tbz2" | sudo tee
 # Prefer to get archives from the public server instead of the private server
 # preferred_hosts has no effect on archive_site_local
 # See https://trac.macports.org/ticket/57720
-#echo "preferred_hosts packages.macports.org" | sudo tee -a /opt/local/etc/macports/macports.conf >/dev/null
+if test "${TRAC_57720_IS_FIXED}" = "yes"; then
+    echo "preferred_hosts packages.macports.org" | sudo tee -a /opt/local/etc/macports/macports.conf >/dev/null
+fi
 endgroup
 
 
