@@ -104,6 +104,30 @@ jobs:
             cp -v "${cobjfile}" "${cfiledir}" || cp -v "${cobjfile}" . || cp -v "${cobjfile}" .. || (if test -d /tmp && test -w /tmp; then cp -v "${cobjfile}" /tmp; fi) || stat -t "${cobjfile}"; \
           fi; \
         done
+        # shellcheck disable=SC2001,2086
+        for cppfile in $(find . -name '*.cpp' -type f -print0 | xargs -0 file | grep "c program text" | cut -d: -f1); do \
+          cppobjfile="$(echo "${cppfile}" | sed "s/\.cpp/.o/g")"; \
+          cppfiledir="$(dirname "${cppfile}")"; \
+          if test ! -e "${cppobjfile}"; then \
+            echo "g++ -c -w -Wno-error -Wfatal-errors -I\"${cppfiledir}\" -iquote \"${cppfiledir}\" ${cppfile}"; \
+            g++ -c -w -Wno-error -Wfatal-errors -I"${cppfiledir}" -iquote "${cppfiledir}" ${cppfile} || stat -t "${cppfile}" || echo "cppfile is ${cppfile}"; \
+          else \
+            echo "object file ${cppobjfile} already exists for ${cppfile}."; \
+            cp -v "${cppobjfile}" "${cppfiledir}" || cp -v "${cppobjfile}" . || cp -v "${cppobjfile}" .. || (if test -d /tmp && test -w /tmp; then cp -v "${cppobjfile}" /tmp; fi) || stat -t "${cppobjfile}"; \
+          fi; \
+        done
+        # shellcheck disable=SC2001,2086
+        for ccfile in $(find . -name '*.cc' -type f -print0 | xargs -0 file | grep "c program text" | cut -d: -f1); do \
+          ccobjfile="$(echo "${ccfile}" | sed "s/\.cc/.o/g")"; \
+          ccfiledir="$(dirname "${ccfile}")"; \
+          if test ! -e "${ccobjfile}"; then \
+            echo "g++ -c -w -Wno-error -Wfatal-errors -I\"${ccfiledir}\" -iquote \"${ccfiledir}\" ${ccfile}"; \
+            g++ -c -w -Wno-error -Wfatal-errors -I"${ccfiledir}" -iquote "${ccfiledir}" ${ccfile} || stat -t "${ccfile}" || echo "ccfile is ${ccfile}"; \
+          else \
+            echo "object file ${ccobjfile} already exists for ${ccfile}."; \
+            cp -v "${ccobjfile}" "${ccfiledir}" || cp -v "${ccobjfile}" . || cp -v "${ccobjfile}" .. || (if test -d /tmp && test -w /tmp; then cp -v "${ccobjfile}" /tmp; fi) || stat -t "${ccobjfile}"; \
+          fi; \
+        done
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
