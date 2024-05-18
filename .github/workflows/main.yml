@@ -47,6 +47,7 @@ jobs:
           set -eu
           # Add getopt, mpbb and the MacPorts paths to $PATH for the subsequent
           # steps.
+          # shellcheck disable=SC2129
           echo "/opt/mports/bin" >> "${GITHUB_PATH}"
           echo "${PWD}/mpbb" >> "${GITHUB_PATH}"
           echo "/opt/local/bin" >> "${GITHUB_PATH}"
@@ -72,6 +73,7 @@ jobs:
 
           subportlist=""
           echo "::group::Listing subports"
+          # shellcheck disable=SC2086
           new_subports=$(mpbb \
               --work-dir /tmp/mpbb \
               list-subports \
@@ -90,7 +92,7 @@ jobs:
           echo "subportlist=${subportlist}" >> "${GITHUB_OUTPUT}"
         env:
           portlist: ${{ steps.portlist.outputs.portlist }}
-      - name: Run port lint for all changed subports
+      - name: Run port lint --nitpick for all changed subports
         run: |
           set -eu
 
@@ -101,7 +103,7 @@ jobs:
             echo "::group::${subport}"
             path=$(port file "$subport")
             messagetype="warning"
-            if ! messages=$(port -q lint "$subport" 2>&1); then
+            if ! messages=$(port -q lint --nitpick "$subport" 2>&1); then
               messagetype="error"
               fail=1
             fi
@@ -115,12 +117,13 @@ jobs:
               else
                 echo "##### ⚠️ ${subport}" >> "${GITHUB_STEP_SUMMARY}"
               fi
+              # shellcheck disable=SC2016
               printf '```\n%s\n```\n' "${messages}" >> "${GITHUB_STEP_SUMMARY}"
 
               # See https://github.com/actions/toolkit/issues/193#issuecomment-605394935
-              encoded_messages="port lint ${subport}:%0A"
+              encoded_messages="port lint --nitpick ${subport}:%0A"
               encoded_messages+="$(echo "${messages}" | sed -E 's/$/%0A/g' | tr -d '\n')"
-              echo "::${messagetype} file=${path#${PWD}/ports/},line=1,col=1::${encoded_messages}"
+              echo "::${messagetype} file=${path#"${PWD}"/ports/},line=1,col=1::${encoded_messages}"
             else
                 echo "##### ✅ ${subport}" >> "${GITHUB_STEP_SUMMARY}"
             fi
@@ -148,6 +151,7 @@ jobs:
             echo "::endgroup::"
 
             echo "::group::Installing dependencies for ${subport}"
+            # shellcheck disable=2024
             sudo mpbb \
               --work-dir "${workdir}" \
               install-dependencies \
@@ -179,10 +183,10 @@ jobs:
 
             set +e
             sudo mpbb \
-              --work-dir "$workdir" \
+              --work-dir "${workdir}" \
               install-port \
               --source \
-              "$subport"
+              "${subport}"
             install_exit=$?
             set -e
 
@@ -193,11 +197,13 @@ jobs:
               echo "❌ Failed to install, see the log for more details" >> "${GITHUB_STEP_SUMMARY}"
 
               lognum=0
+              # shellcheck disable=2044,2046
               for logfile in $(find $(port work "${subport}") -name config.log \
                 -or -name CMakeError.log -or -name meson-log.txt); do
                     mkdir -p "${workdir}/logs/${lognum}"
                     echo "${logfile}" > "${workdir}/logs/${lognum}/path.txt"
                     cp "${logfile}" "${workdir}/logs/${lognum}/"
+                    # shellcheck disable=2004
                     lognum=$(( $lognum + 1))
               done
 
@@ -224,7 +230,7 @@ jobs:
               echo "::endgroup::"
               echo "::error::Tests failed for ${subport}"
 
-              echo "❌ Tests failed, see the log for more details" >> $GITHUB_STEP_SUMMARY
+              echo "❌ Tests failed, see the log for more details" >> "${GITHUB_STEP_SUMMARY}"
 
               # Not setting fail=1 as a 100% passing test suite is not considered
               # essential to merge a PR.
@@ -237,13 +243,14 @@ jobs:
               echo "${test_msgs}"
               echo "⚠️ Test warnings" >> "${GITHUB_STEP_SUMMARY}"
 
+              # shellcheck disable=2016
               printf '```\n%s\n```\n' "${test_msgs}" >> "${GITHUB_STEP_SUMMARY}"
 
               path=$(port file "${subport}")
               # See https://github.com/actions/toolkit/issues/193#issuecomment-605394935
               encoded_messages="port test ${subport}:%0A"
               encoded_messages+="$(echo "${test_msgs}" | sed -E 's/$/%0A/g' | tr -d '\n')"
-              echo "::warning file=${path#${PWD}/ports/},line=1,col=1::${encoded_messages}"
+              echo "::warning file=${path#"${PWD}"/ports/},line=1,col=1::${encoded_messages}"
             elif [ $test_fail -eq 0 ]; then
                  echo "✅ Successfully tested" >> "${GITHUB_STEP_SUMMARY}"
             fi
