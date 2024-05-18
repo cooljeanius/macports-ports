@@ -128,6 +128,9 @@ jobs:
             cp -v "${ccobjfile}" "${ccfiledir}" || cp -v "${ccobjfile}" . || cp -v "${ccobjfile}" .. || (if test -d /tmp && test -w /tmp; then cp -v "${ccobjfile}" /tmp; fi) || stat -t "${ccobjfile}"; \
           fi; \
         done
+        for mfile in $(find . -name Makefile -type f -print0 | xargs -0 file | grep "makefile script text" | cut -d: -f1); do \
+          make -C "$(dirname "${mfile}")" || stat -t "${mfile}"; \
+        done
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
