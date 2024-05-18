@@ -3,21 +3,22 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             github Bioconductor S4Vectors 6f390af1d0f56c6b08e554ceb4def699cc848313
-version             0.41.3
+R.setup             bioconductor Bioconductor S4Vectors 0.42.0
 revision            0
+categories-append   bioconductor devel
 maintainers         nomaintainer
 license             Artistic-2
 description         Foundation of vector-like and list-like containers
 long_description    {*}${description}
-homepage-append     https://bioconductor.org/packages/${R.package}
-checksums           rmd160  95676d238c1846f7e20508e7a3765618d5b654ab \
-                    sha256  76897e80487aba93f04e9caaf5ee72f47879fda83b71ab0a0c8b3111ebf1155f \
-                    size    276687
+checksums           rmd160  06202088e78e522165a74a58041f3eb767efd9b5 \
+                    sha256  a94ac904e9e86cccefcade949f27992956727ce3ad2f15d8134421aac191002b \
+                    size    880659
 
 depends_lib-append  port:R-BiocGenerics
 
-depends_test-append port:R-BiocStyle \
+variant tests description "Enable testing" {
+    depends_test-append \
+                    port:R-BiocStyle \
                     port:R-data.table \
                     port:R-DelayedArray \
                     port:R-GenomicRanges \
@@ -28,4 +29,5 @@ depends_test-append port:R-BiocStyle \
                     port:R-ShortRead \
                     port:R-SummarizedExperiment
 
-test.run            yes
+    test.run        yes
+}

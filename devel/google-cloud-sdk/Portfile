@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                google-cloud-sdk
-version             471.0.0
+version             476.0.0
 revision            0
 categories          devel python
 license             Apache-2
@@ -21,19 +21,19 @@ supported_archs     i386 x86_64 arm64
 
 if { ${configure.build_arch} eq "i386" } {
     distname        ${name}-${version}-darwin-x86
-    checksums       rmd160  a5ec90ca01ea890ddb2d3dccf3df35c41aecf9ae \
-                    sha256  158f1651f458a98f44ca8f61106621eab8e333f9a9ed1bd3b77013685c2e35ad \
-                    size    123408791
+    checksums       rmd160  4dbffec0718eb55f24ecc1eaa4fbb601c0d04957 \
+                    sha256  dd3d9a4049754b07b641b9c4edea646a56623119714f112104fe03112a161bfd \
+                    size    124878580
 } elseif { ${configure.build_arch} eq "x86_64" } {
     distname        ${name}-${version}-darwin-x86_64
-    checksums       rmd160  d5cde031adadc63a23ea0bcd955ac12a7be042ad \
-                    sha256  5f49aad1487334efc1c0a7b89d99ad334417cdff1d85d49dda896de61861cffa \
-                    size    124694562
+    checksums       rmd160  44ae8eaabb0ff314820c6c073fa7a46e3580b532 \
+                    sha256  4d066403c15debb61934de3a8c946691480659d94c09358e0fd7a4452d7e9bfd \
+                    size    126164859
 } elseif { ${configure.build_arch} eq "arm64" } {
     distname        ${name}-${version}-darwin-arm
-    checksums       rmd160  ef87974ed75a4bd52c1d119875e5d2995858525c \
-                    sha256  9e2bd6acbc258c301fbad5f0ad0d73dc33e283f127a17ba83c6e498c68920164 \
-                    size    121762731
+    checksums       rmd160  2e064f2702ab816c02e3d2a3eb90d400319a07ee \
+                    sha256  6c26b5a608a6a317cda672cead7da520cdca59f758350532f8d7adca6240c677 \
+                    size    122487959
 }
 
 homepage            https://cloud.google.com/sdk/
@@ -90,6 +90,7 @@ variant datalab description {Add Cloud Datalab Command Line Tool} { dict set var
 variant docker_credential_gcr description {Add Google Container Registry's Docker credential helper} { dict set variant_to_component docker_credential_gcr docker-credential-gcr }
 variant enterprise_certificate_proxy description {Add Enterprise certificate proxy} { dict set variant_to_component enterprise_certificate_proxy enterprise-certificate-proxy }
 variant gke_gcloud_auth_plugin description {Add GKE Google Cloud auth plugin} { dict set variant_to_component gke_gcloud_auth_plugin gke-gcloud-auth-plugin }
+variant istioctl description {Add istioctl} { dict set variant_to_component istioctl istioctl }
 variant kpt description {Add kpt} { dict set variant_to_component kpt kpt }
 variant kubectl description {Add kubectl} { dict set variant_to_component kubectl kubectl }
 variant kubectl_oidc description {Add kubectl-oidc} { dict set variant_to_component kubectl_oidc kubectl-oidc }

@@ -10,7 +10,7 @@ github.livecheck.regex  (\[0-9]+\\.\[0-9]+(\\.\[0-9]+)?)
 
 categories          devel
 license             MIT
-maintainers         {outlook.com:mohd.akram @mohd-akram} \
+maintainers         {makr @mohd-akram} \
                     openmaintainer
 
 description         Safe C Library
@@ -24,6 +24,8 @@ checksums           rmd160  0a05b06d0fbbc1477025dd943dd8f99cda420158 \
                     size    981870
 
 compiler.c_standard 1999
+# safe_mem_constraint.c: error: thread-local storage not supported for this target
+compiler.thread_local_storage   yes
 
 worksrcdir          ${name}-${version}.0-gdfea26
 

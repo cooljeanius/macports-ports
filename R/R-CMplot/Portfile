@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           R 1.0
 
 R.setup             cran YinLiLin CMplot 4.5.1
-revision            0
+revision            1
 maintainers         nomaintainer
 license             GPL-2+
 description         Circle Manhattan plot
@@ -14,5 +14,6 @@ checksums           rmd160  506f611b6a7f45c59a2b60d2beee1eb1ebd0edb9 \
                     sha256  684661df212f9f7d2e4ec4263da39a759b5aa9bc304a41c008d8e62e79b08656 \
                     size    1763453
 supported_archs     noarch
+platforms           {darwin any}
 
 test.run            yes

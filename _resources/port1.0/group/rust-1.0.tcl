@@ -282,14 +282,6 @@ proc rust::old_macos_compatibility {cname cversion} {
     global cargo.home subport
 
     switch ${cname} {
-        "kqueue" {
-            if { [vercmp ${cversion} < 1.0.5] && "i386" in [option muniversal.architectures] } {
-                # see https://gitlab.com/worr/rust-kqueue/-/merge_requests/10
-                reinplace {s|all(target_os = "freebsd", target_arch = "x86")|all(any(target_os = "freebsd", target_os = "macos"), any(target_arch = "x86", target_arch = "powerpc"))|g} \
-                    ${cargo.home}/macports/${cname}-${cversion}/src/time.rs
-                cargo.offline_cmd-replace --frozen --offline
-            }
-        }
         "curl-sys" {
             if { [vercmp ${cversion} < 0.4.56] } {
                 # on Mac OS X 10.6, clang exists, but `clang --print-search-dirs` returns an empty library directory
@@ -304,6 +296,14 @@ proc rust::old_macos_compatibility {cname cversion} {
                 #
                 reinplace "s|Command::new(\"clang\")|cc::Build::new().get_compiler().to_command()|g" \
                     ${cargo.home}/macports/${cname}-${cversion}/build.rs
+            }
+        }
+        "kqueue" {
+            if { [vercmp ${cversion} < 1.0.5] && "i386" in [option muniversal.architectures] } {
+                # see https://gitlab.com/worr/rust-kqueue/-/merge_requests/10
+                reinplace {s|all(target_os = "freebsd", target_arch = "x86")|all(any(target_os = "freebsd", target_os = "macos"), any(target_arch = "x86", target_arch = "powerpc"))|g} \
+                    ${cargo.home}/macports/${cname}-${cversion}/src/time.rs
+                cargo.offline_cmd-replace --frozen --offline
             }
         }
         "rustix" {
@@ -359,10 +359,6 @@ proc rust::old_macos_compatibility {cname cversion} {
     }
 
     switch ${cname} {
-        "notify" {
-            reinplace {s|default = \["macos_fsevent"\]|default = \["macos_kqueue"\]|g} \
-                ${cargo.home}/macports/${cname}-${cversion}/Cargo.toml
-        }
         "cargo-util" {
             reinplace {s|#\[cfg(not(target_os = "macos"))\]|#\[cfg(not(target_os = "macos_temp"))\]|g} \
                 ${cargo.home}/macports/${cname}-${cversion}/src/paths.rs
@@ -370,6 +366,10 @@ proc rust::old_macos_compatibility {cname cversion} {
                 ${cargo.home}/macports/${cname}-${cversion}/src/paths.rs
             reinplace {s|#\[cfg(not(target_os = "macos_temp"))\]|#\[cfg(target_os = "macos")\]|g} \
                 ${cargo.home}/macports/${cname}-${cversion}/src/paths.rs
+        }
+        "notify" {
+            reinplace {s|default = \["macos_fsevent"\]|default = \["macos_kqueue"\]|g} \
+                ${cargo.home}/macports/${cname}-${cversion}/Cargo.toml
         }
     }
 }
@@ -542,19 +542,6 @@ proc rust::rust_pg_callback {} {
             # Use libMacportsLegacySystem.B.dylib since it is able to use the `__asm("$ld$add$os10.5$...")` trick for symbols that are part of legacy-support *only* on older systems.
             set legacyLib               libMacportsLegacySystem.B.dylib
             set dep_type                lib
-
-            # code should mimic legacy-support
-            # see https://github.com/macports/macports-ports/blob/master/devel/legacy-support/Portfile
-            set max_darwin_reexport 19
-            if { [option configure.build_arch] eq "arm64" || [option os.major] > ${max_darwin_reexport} } {
-                # ${prefix}/lib/libMacportsLegacySystem.B.dylib does not exist
-                # see https://trac.macports.org/ticket/65255
-                known_fail              yes
-                pre-fetch {
-                    ui_error "${subport} requires libMacportsLegacySystem.B.dylib, which is provided by legacy-support"
-                    return -code error "incompatible system configuration"
-                }
-            }
         } else {
             # Use the static library since the Rust compiler looks up certain symbols at *runtime* (e.g. `openat`).
             # Normally, we would want the additional functionality provided by MacPorts.

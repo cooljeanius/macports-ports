@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/rancher/k3d 5.6.0 v
+go.setup            github.com/rancher/k3d 5.6.3 v
 github.tarball_from archive
 revision            0
 
@@ -23,9 +23,9 @@ license             MIT
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  570dfbd8141bfff7d94bc3ffe2719d5475549cc0 \
-                    sha256  b9eb05c5fa213c8ec6d34a25e00ae07abeb23d70c94f55c1f32fbc16ea4e480e \
-                    size    8022281
+checksums           rmd160  50e2a05eb2658195814f9414a0a8046b2a31651f \
+                    sha256  9cda377d81d20c2b059863d94f6cd94ce9299329d3239c91a25a926eb3202b0e \
+                    size    8971877
 
 # Allow Go to fetch dependencies during build
 go.offline_build no

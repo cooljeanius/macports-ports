@@ -15,13 +15,13 @@ legacysupport.newest_darwin_requires_legacy 14
 # ruby/openssl since ruby-3.2 supports openssl-3
 openssl.branch      3
 
-github.setup        ruby ruby 9d0a5148ae062a0481a4a18fbeb9cfd01dc10428
+github.setup        ruby ruby d4a6d0c17781821d967063613fab5992231a5158
 
 set ruby_ver        3.4
 set ruby_patch      0
 set ruby_ver_nodot  [string map {. {}} ${ruby_ver}]
 name                ruby-devel
-version             2024.03.31
+version             2024.05.03
 revision            0
 
 categories          lang ruby
@@ -37,9 +37,9 @@ long_description    Ruby is the interpreted scripting language \
 homepage            https://www.ruby-lang.org
 license             {Ruby BSD}
 
-checksums           rmd160  178fbbe5a79d1732cd3d6b1ee425a356a4df8eb5 \
-                    sha256  08dcaae8b9ec156a0ad3bd59c29963382fb69ef5592c23926120cfd94317d279 \
-                    size    16383034
+checksums           rmd160  98d297667c2d6343486bc5577d0ef2fc0fc91c29 \
+                    sha256  173ca1d63e868ae3805a06ff2f3052290b659379a23d67d66cfbff42b0bf9c33 \
+                    size    16432403
 github.tarball_from archive
 
 universal_variant   no
@@ -77,7 +77,7 @@ depends_skip_archcheck pkgconfig
 select.group        ruby
 select.file         ${filespath}/ruby${ruby_ver_nodot}
 
-patch.pre_args      -p1
+patch.pre_args-replace  -p0 -p1
 patchfiles-append   0001-Use-numerical-macOS-versions.patch
 
 post-patch {

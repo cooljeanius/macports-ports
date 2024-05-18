@@ -11,8 +11,8 @@ configure.cxx_stdlib    libc++
 compiler.cxx_standard   2014
 
 name                    nodejs21
-version                 21.7.2
-revision                0
+version                 21.7.3
+revision                1
 
 categories              devel net
 platforms               darwin
@@ -26,15 +26,15 @@ long_description        Node's goal is to provide an easy way to build scalable 
                         Machine or Python's Twisted. Node takes the event model a bit further-it \
                         presents the event loop as a language construct instead of as a library.
 
-conflicts               nodejs8 nodejs10 nodejs12 nodejs13 nodejs14 nodejs15 nodejs16 nodejs17 nodejs18 nodejs19 nodejs20
+conflicts               nodejs8 nodejs10 nodejs12 nodejs13 nodejs14 nodejs15 nodejs16 nodejs17 nodejs18 nodejs19 nodejs20 nodejs22
 
 homepage                https://nodejs.org/
 master_sites            ${homepage}dist/v${version}
 use_xz                  yes
 
-checksums               rmd160  7273ceed1dd1f24bc0023fc95f3457206b32ec6c \
-                        sha256  b4b1e2a07e96f85f6ce34a2fbfea348691aefe5cb219aa6951e23ccc991f9e2f \
-                        size    42378944
+checksums               rmd160  0c5e20deb23a08d5f5fd2eaafce49e17b8486de4 \
+                        sha256  668b26fb1bfc1cff60622bbcf3d715843e16f50c8f30e9f64fb4141814d79a21 \
+                        size    42376664
 
 distname                node-v${version}
 
@@ -164,6 +164,7 @@ destroot {
     xinstall -d ${libndir}
     xinstall -d ${libddir}
     xinstall -d ${incdir}
+    xinstall -d ${incdir}/uv
     xinstall -d ${docdir}
 
     # install binaries
@@ -175,6 +176,7 @@ destroot {
     xinstall -m 644 {*}[glob ${worksrcpath}/src/*.h]                ${incdir}
     xinstall -m 644 {*}[glob ${worksrcpath}/deps/v8/include/*.h]    ${incdir}
     xinstall -m 644 {*}[glob ${worksrcpath}/deps/uv/include/*.h]    ${incdir}
+    xinstall -m 644 {*}[glob ${worksrcpath}/deps/uv/include/uv/*.h] ${incdir}/uv
     xinstall -m 644 {*}[glob ${worksrcpath}/deps/cares/include/*.h] ${incdir}
 
     # install manpage
@@ -195,4 +197,4 @@ destroot {
 
 livecheck.url       ${homepage}dist/
 livecheck.type      regex
-livecheck.regex     {v(\d+\.\d+\.\d+)}
+livecheck.regex     {v(21\.\d+\.\d+)}

@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           cargo   1.0
 PortGroup           github  1.0
 
-github.setup        bgkillas kalc 1.1.0 v
+github.setup        bgkillas kalc 1.1.3 v
 github.tarball_from archive
 revision            0
 
@@ -21,9 +21,9 @@ maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
 checksums           ${distname}${extract.suffix} \
-                    rmd160  95375af57c7e9f71bfecb8aadc0da42fe72d7010 \
-                    sha256  9a2f8ace3bbb48eb540a389b61e6b2fcbbfc9f76d64e989042fbdd444462505e \
-                    size    109833
+                    rmd160  07f0cff6fb10684681317f61af9b1370b349d9e0 \
+                    sha256  3135ef6abb12c8ae1b6a4742e581954ade0118ffa60b8fe9a5af2a8da2b65012 \
+                    size    117880
 
 destroot {
     xinstall -m 0755 \
@@ -45,28 +45,40 @@ cargo.crates \
     cfg-if                           1.0.0  baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd \
     crossterm                       0.27.0  f476fe445d41c9e991fd07515a6f463074b782242ccf4a5b7b1d1012e70824df \
     crossterm_winapi                 0.9.1  acdd7c62a3665c7f6830a51635d9ac9b23ed385797f70a83bb8bafe9c572ab2b \
+    dirs                             5.0.1  44c45a9d03d6676652bcb5e724c7e988de1acad23a711b5217ab9cbecbec2225 \
+    dirs-sys                         0.4.1  520f05a5cbd335fae5a99ff7a6ab8627577660ee5cfd6a94a6a929b52ff0321c \
     errno                            0.3.8  a258e46cdc063eb8519c00b9fc845fc47bcfca4130e2f08e88665ceda8474245 \
     fastrand                         2.0.2  658bd65b1cf4c852a3cc96f18a8ce7b5640f6b703f905c7d74532294c2a63984 \
+    getrandom                       0.2.14  94b22e06ecb0110981051723910cbf0b5f5e09a2062dd7663334ee79a9d1286c \
     gmp-mpfr-sys                     1.6.2  362a6cc3cbe9f41aebe49c03b91aee8fa8fc69d32fb90533f6ed965a882e08e3 \
     gnuplot                         0.0.43  9ce70b22788c02857a6436b96744f9030dd89e17c8482ddf674523c0a1f8ab6c \
     libc                           0.2.153  9c198f91728a82281a64e1f4f9eeb25d82cb32a5de251c6bd1b5154d63a8e7bd \
     libm                             0.2.8  4ec2a862134d2a7d32d7983ddcdd1c4923530833c9f2ea1a44fc5fa473989058 \
+    libredox                         0.1.3  c0ff37bd590ca25063e35af745c343cb7a0271906fb7b37e4813e8f79f00268d \
     linux-raw-sys                   0.4.13  01cda141df6706de531b6c46c3a33ecca755538219bd484262fa09410c13539c \
     lock_api                        0.4.11  3c168f8615b12bc01f9c17e2eb0cc07dcae1940121185446edc3744920e8ef45 \
     log                             0.4.21  90ed8c1e510134f979dbc4f070f87d4313098b704861a105fe34231c70a3901c \
     mio                             0.8.11  a4a650543ca06a924e8b371db273b2756685faae30f8487da1b56505a8f78b0c \
+    option-ext                       0.2.0  04744f49eae99ab78e0d5c0b603ab218f515ea8cfe5a456d7629ad883a3b6e7d \
     parking_lot                     0.12.1  3742b2c103b9f06bc9fff0a37ff4912935851bee6d36f3c02bcc755bcfec228f \
     parking_lot_core                 0.9.9  4c42a9226546d68acdd9c0a280d17ce19bfe27a46bf68784e4066115788d008e \
+    proc-macro2                     1.0.81  3d1597b0c024618f09a9c3b8655b7e430397a36d23fdafec26d6965e9eec3eba \
+    quote                           1.0.36  0fa76aaf39101c457836aec0ce2316dbdc3ab723cdda1c6bd4e6ad4208acaca7 \
     redox_syscall                    0.4.1  4722d768eff46b75989dd134e5c353f0d6296e5aaa3132e776cbdb56be7731aa \
+    redox_users                      0.4.5  bd283d9651eeda4b2a83a43c1c91b266c40fd76ecd39a50a8c630ae69dc72891 \
     rug                             1.24.1  a8df4099c6fa90a1a7f5ddc0c7fba50991080fa2084d5a78808a5a3cab406bb9 \
-    rustix                         0.38.32  65e04861e65f21776e67888bfbea442b3642beaa0138fdb1dd7a84a52dffdb89 \
+    rustix                         0.38.34  70dc5ec042f7a43c4a73241207cecc9873a06d45debb38b329f8541d85c2730f \
     scopeguard                       1.2.0  94143f37725109f92c262ed2cf5e59bce7498c01bcc1502d7b9afe439a4e9f49 \
     signal-hook                     0.3.17  8621587d4798caf8eb44879d42e56b9a93ea5dcd315a6487c357130095b62801 \
     signal-hook-mio                  0.2.3  29ad2e15f37ec9a6cc544097b78a1ec90001e9f71b81338ca39f430adaca99af \
-    signal-hook-registry             1.4.1  d8229b473baa5980ac72ef434c4415e70c4b5e71b423043adb4ba059f89c99a1 \
+    signal-hook-registry             1.4.2  a9e9e0b4211b72e7b8b6e85c807d36c212bdb33ea8587f7569562a84df5465b1 \
     smallvec                        1.13.2  3c5e1a9a646d36c3599cd173a41282daf47c44583ad367b8e6837255952e5c67 \
+    syn                             2.0.60  909518bc7b1c9b779f1bbf07f2929d35af9f0f37e47c6e9ef7f9dddc1e1821f3 \
     tempfile                        3.10.1  85b77fafb263dd9d05cbeac119526425676db3784113aa9295c88498cbf8bff1 \
     term_size                        0.3.2  1e4129646ca0ed8f45d09b929036bafad5377103edd06e50bf574b353d2b08d9 \
+    thiserror                       1.0.59  f0126ad08bff79f29fc3ae6a55cc72352056dfff61e3ff8bb7129476d44b23aa \
+    thiserror-impl                  1.0.59  d1cd413b5d558b4c5bf3680e324a6fa5014e7b7c067a51e69dbdf47eb7148b66 \
+    unicode-ident                   1.0.12  3354b9ac3fae1ff6755cb6db53683adb661634f67557942dea4facebec0fee4b \
     wasi     0.11.0+wasi-snapshot-preview1  9c8d87e72b64a3b4db28d11ce29237c246188f4f51057d65a7eab63b7987e423 \
     winapi                           0.3.9  5c839a674fcd7a98952e593242ea400abe93992746761e38641405d28b00f419 \
     winapi-i686-pc-windows-gnu       0.4.0  ac3b87c63620426dd9b991e5ce0329eff545bccbbb34f3be09ff6fb6ab51b7b6 \
@@ -74,18 +86,19 @@ cargo.crates \
     windows-sys                     0.48.0  677d2418bec65e3338edb076e806bc1ec15693c5d0104683f2efe857f61056a9 \
     windows-sys                     0.52.0  282be5f36a8ce781fad8c8ae18fa3f9beff57ec1b52cb3de0789201425d9a33d \
     windows-targets                 0.48.5  9a2fa6e2155d7247be68c096456083145c183cbbbc2764150dda45a87197940c \
-    windows-targets                 0.52.4  7dd37b7e5ab9018759f893a1952c9420d060016fc19a472b4bb20d1bdd694d1b \
+    windows-targets                 0.52.5  6f0713a46559409d202e70e28227288446bf7841d3211583a4b53e3f6d96e7eb \
     windows_aarch64_gnullvm         0.48.5  2b38e32f0abccf9987a4e3079dfb67dcd799fb61361e53e2882c3cbaf0d905d8 \
-    windows_aarch64_gnullvm         0.52.4  bcf46cf4c365c6f2d1cc93ce535f2c8b244591df96ceee75d8e83deb70a9cac9 \
+    windows_aarch64_gnullvm         0.52.5  7088eed71e8b8dda258ecc8bac5fb1153c5cffaf2578fc8ff5d61e23578d3263 \
     windows_aarch64_msvc            0.48.5  dc35310971f3b2dbbf3f0690a219f40e2d9afcf64f9ab7cc1be722937c26b4bc \
-    windows_aarch64_msvc            0.52.4  da9f259dd3bcf6990b55bffd094c4f7235817ba4ceebde8e6d11cd0c5633b675 \
+    windows_aarch64_msvc            0.52.5  9985fd1504e250c615ca5f281c3f7a6da76213ebd5ccc9561496568a2752afb6 \
     windows_i686_gnu                0.48.5  a75915e7def60c94dcef72200b9a8e58e5091744960da64ec734a6c6e9b3743e \
-    windows_i686_gnu                0.52.4  b474d8268f99e0995f25b9f095bc7434632601028cf86590aea5c8a5cb7801d3 \
+    windows_i686_gnu                0.52.5  88ba073cf16d5372720ec942a8ccbf61626074c6d4dd2e745299726ce8b89670 \
+    windows_i686_gnullvm            0.52.5  87f4261229030a858f36b459e748ae97545d6f1ec60e5e0d6a3d32e0dc232ee9 \
     windows_i686_msvc               0.48.5  8f55c233f70c4b27f66c523580f78f1004e8b5a8b659e05a4eb49d4166cca406 \
-    windows_i686_msvc               0.52.4  1515e9a29e5bed743cb4415a9ecf5dfca648ce85ee42e15873c3cd8610ff8e02 \
+    windows_i686_msvc               0.52.5  db3c2bf3d13d5b658be73463284eaf12830ac9a26a90c717b7f771dfe97487bf \
     windows_x86_64_gnu              0.48.5  53d40abd2583d23e4718fddf1ebec84dbff8381c07cae67ff7768bbf19c6718e \
-    windows_x86_64_gnu              0.52.4  5eee091590e89cc02ad514ffe3ead9eb6b660aedca2183455434b93546371a03 \
+    windows_x86_64_gnu              0.52.5  4e4246f76bdeff09eb48875a0fd3e2af6aada79d409d33011886d3e1581517d9 \
     windows_x86_64_gnullvm          0.48.5  0b7b52767868a23d5bab768e390dc5f5c55825b6d30b86c844ff2dc7414044cc \
-    windows_x86_64_gnullvm          0.52.4  77ca79f2451b49fa9e2af39f0747fe999fcda4f5e241b2898624dca97a1f2177 \
+    windows_x86_64_gnullvm          0.52.5  852298e482cd67c356ddd9570386e2862b5673c85bd5f88df9ab6802b334c596 \
     windows_x86_64_msvc             0.48.5  ed94fce61571a4006852b7389a063ab983c02eb1bb37b47f8272ce92d06d9538 \
-    windows_x86_64_msvc             0.52.4  32b752e52a2da0ddfbdbcc6fceadfeede4c939ed16d13e648833a61dfb611ed8
+    windows_x86_64_msvc             0.52.5  bec47e5bfd1bff0eeaf6d8b485cc1074891a197ab4225d504cb7a1ab88b02bf0

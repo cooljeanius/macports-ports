@@ -5,7 +5,7 @@ PortGroup           python 1.0
 PortGroup           select 1.0
 
 name                py-panel
-version             1.4.0
+version             1.4.2
 revision            0
 categories-append   graphics devel
 license             BSD
@@ -20,9 +20,9 @@ homepage            https://panel.holoviz.org
 
 python.versions     39 310 311 312
 
-checksums           rmd160  c1a3d86a2a59fba7b12b89f6fe29bfdcdceeef3d \
-                    sha256  c2129d9d387423fa9f385600b945fe5279d0772f2ffa65c953e7139aee8ea01a \
-                    size    37823559
+checksums           rmd160  bd048a2b1ae0ba07fce22d86153a4896532493e1 \
+                    sha256  e4f4bf83fbda02cc8f5b4cd67676fa84c8816624daf3b004a6fe8e119792ee49 \
+                    size    38419271
 
 if {${name} ne ${subport}} {
     python.pep517   yes

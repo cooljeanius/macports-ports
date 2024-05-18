@@ -1,0 +1,37 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           R 1.0
+
+R.setup             cran MaudeWagner nlive 0.5.0
+revision            0
+categories-append   math
+maintainers         nomaintainer
+license             MIT
+description         Automated estimation of sigmoidal and piece-wise \
+                    linear mixed models
+long_description    {*}${description}
+homepage            https://github.com/MaudeWagner/nlive
+checksums           rmd160  f1f2cb81ea95d2230e15923c5ed0444df4b3e351 \
+                    sha256  f6d8a5d7d27f1bb9ad5996565171518e5947954681dce5080374aee465115230 \
+                    size    86362
+supported_archs     noarch
+
+depends_lib-append  port:R-dplyr \
+                    port:R-fastDummies \
+                    port:R-ggplot2 \
+                    port:R-knitr \
+                    port:R-lcmm \
+                    port:R-nlraa \
+                    port:R-Rmisc \
+                    port:R-saemix \
+                    port:R-sitar \
+                    port:R-sqldf
+
+# Despite claimed dependency on R-testthat,
+# there are no tests provided.
+# https://github.com/MaudeWagner/nlive/issues/1
+depends_test-append port:R-rmarkdown \
+                    port:R-testthat
+
+test.run            yes

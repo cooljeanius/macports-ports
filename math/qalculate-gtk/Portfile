@@ -2,8 +2,12 @@
 
 PortSystem          1.0
 PortGroup           github 1.0
+PortGroup           legacysupport 1.1
 
-github.setup        qalculate qalculate-gtk 5.0.0 v
+# LegacySupport only used for providing wrappers here.
+legacysupport.newest_darwin_requires_legacy 0
+
+github.setup        qalculate qalculate-gtk 5.1.0 v
 github.tarball_from releases
 revision            0
 
@@ -21,13 +25,21 @@ long_description    Qalculate! is a multi-purpose desktop calculator. \
                     customizable functions, units, arbitrary precision, \
                     plotting, and a user-friendly interface.
 
-checksums           rmd160  10196e3b17523268c866fcca474b6ecfc04451db \
-                    sha256  4fb840a42a2246a98db81431baf4622504a226b1d3cbbe36da5649926ad177a9 \
-                    size    2855414
+checksums           rmd160  23cabb2dc33cf3a3d6d0d1a44569a2fccc896918 \
+                    sha256  173339cce04a6f0ba4c56c233987a30188ef10170da7cc545a8876c3d5c42185 \
+                    size    2898798
 
 # autoreconf to reconfigure for intltool
 use_autoreconf      yes
 autoreconf.args     -fvi
+
+# callbacks.cc: error: invalid suffix "b0001" on integer constant
+# /usr/include/c++/4.2.1/ext/hashtable.h: error: no match for call to ‘(const __gnu_cxx::hash<Unit*>) (Unit* const&)’
+# error: no match for call to ‘(const __gnu_cxx::hash<long long unsigned int>) (const long long unsigned int&)’
+compiler.cxx_standard   2011
+
+# qalculate-gtk(58160,0x2180408) malloc: *** error for object 0x1e85700: Non-aligned pointer being freed (2)
+legacysupport.redirect_bins qalculate-gtk
 
 depends_build-append \
                     port:intltool \

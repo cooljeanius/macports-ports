@@ -11,7 +11,7 @@ PortGroup           perl5 1.0
 
 name                pulseaudio
 version             17.0
-revision            0
+revision            3
 license             {BSD LGPL-2.1+ MIT}
 categories          audio
 maintainers         {ionic @Ionic} openmaintainer
@@ -37,6 +37,7 @@ perl5.branches      5.34
 
 depends_build-append \
                     port:gettext \
+                    port:m4 \
                     port:p${perl5.major}-xml-parser \
                     path:bin/pkg-config:pkgconfig
 
@@ -75,15 +76,22 @@ platform darwin {
 patchfiles-append   patch-src_modules_macosx_module_coreaudio_device.c-respect-PA_NAME_MAX.diff \
                     patch-src_daemon_default.pa.in-skip-consolekit-and-systemdlogin.diff \
                     patch-src_pulsecore_shm.c_Static_assert.diff \
-                    perl.patch
+                    patch-fix-modules.diff \
+                    patch-fix-coreaudio-crash.diff
 
 platform darwin 8 {
     patchfiles-append   patch-src_modules_macosx_module_coreaudio_device.c-tiger-compat.diff
 }
 
-post-patch {
-    reinplace "s|@PERL@|${perl5.bin}|g" ${worksrcpath}/man/meson.build
+platform darwin powerpc {
+    # This fixes a segfault on launch of pulseaudio on ppc.
+    patchfiles-append \
+                    patch-avoid-segfault-on-powerpc.diff
 }
+
+meson.native.binaries-append \
+                    m4=${prefix}/bin/gm4 \
+                    perl=${perl5.bin}
 
 compiler.c_standard 2011
 # orc uses stdatomic.h

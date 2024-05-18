@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             cran tdhock atime 2024.3.5
+R.setup             cran tdhock atime 2024.4.23
 revision            0
 categories-append   devel
 maintainers         nomaintainer
@@ -11,9 +11,9 @@ license             GPL-3
 description         Asymptotic timing
 long_description    {*}${description}
 homepage            https://github.com/tdhock/atime
-checksums           rmd160  f22f8dd9df34dd16f81dac24f43039226c656301 \
-                    sha256  9650d66d1b67dc995e9fcf41cb562c91118e56714421cb7675f2d64c89b88cdc \
-                    size    2270232
+checksums           rmd160  b4f0a622fa31dc493deeab008faa10fa03e4b569 \
+                    sha256  de1aa3e2ab0379ae8d61a0ca52692896aa0d220ccff0a7e5ff8292fab747096a \
+                    size    2290360
 supported_archs     noarch
 
 depends_lib-append  port:R-bench \

@@ -4,7 +4,7 @@ PortSystem              1.0
 PortGroup               github 1.0
 PortGroup               cmake 1.1
 
-github.setup            neovim neovim 0.9.5 v
+github.setup            neovim neovim 0.10.0 v
 revision                0
 categories              editors
 maintainers             {raimue @raimue} \
@@ -24,9 +24,9 @@ long_description \
 homepage                https://neovim.io
 
 github.tarball_from     archive
-checksums               rmd160  419fefb665764a319a93b27d4c8b838a90c79081 \
-                        sha256  fe74369fc30a32ec7a086b1013acd0eacd674e7570eb1acc520a66180c9e9719 \
-                        size    11590180
+checksums               rmd160  a573b99de81e23f37ba6114a7cd669d6e62a4c1a \
+                        sha256  372ea2584b0ea2a5a765844d95206bda9e4a57eaa1a2412a9a0726bab750f828 \
+                        size    12792034
 
 depends_build-append    port:pkgconfig
 
@@ -49,14 +49,14 @@ configure.args-append   -DUSE_BUNDLED=OFF \
                         -DLUA_PRG=${prefix}/bin/luajit
 
 subport neovim-devel {
-    github.setup    neovim neovim f4df49a9598151343af3fc4a30b8a42608c52bb6
-    version         20240331-[string range ${github.version} 0 6]
+    github.setup    neovim neovim efaf37a2b9450d56acbf48a44c3c791d00d70199
+    version         20240501-[string range ${github.version} 0 6]
     revision        0
 
     github.tarball_from tarball
-    checksums       rmd160  811b980a60033afcbd07bd12185dc1d35439cfc1 \
-                    sha256  27e6b487165ab3d58c2f27e3cc4c9e81bda22039ad8b08b5494cf038c033ecaa \
-                    size    12727466
+    checksums       rmd160  1e4dce0c64f3d793120c64555a60050daed5e504 \
+                    sha256  fa4babe9705a246c5d0db4acb41d816225b562cac3edf9953bf1f9ad8009bf17 \
+                    size    12774557
 
     conflicts       neovim
 

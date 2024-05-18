@@ -3,10 +3,10 @@
 PortSystem          1.0
 
 name                openjdk11
-# See https://github.com/openjdk/jdk11u/tags for the version and build number that matches the latest tag that ends with '-ga'
-version             11.0.22
-set build 7
-revision            0
+# See https://openjdk-sources.osci.io/openjdk11/ for the version and build number that matches the latest '-ga' version
+version             11.0.23
+set build 9
+revision            1
 categories          java devel
 supported_archs     x86_64 arm64
 license             GPL-2+
@@ -15,13 +15,14 @@ description         OpenJDK 11
 long_description    JDK 11 builds of OpenJDK, the Open-Source implementation \
                     of the Java Platform, Standard Edition, and related projects.
 homepage            https://openjdk.org/projects/jdk/11/
-master_sites        https://github.com/openjdk/jdk11u/archive/refs/tags
-distname            jdk-${version}-ga
-worksrcdir          jdk11u-${distname}
+master_sites        https://openjdk-sources.osci.io/openjdk11/
+distname            openjdk-${version}-ga
+use_xz              yes
+worksrcdir          jdk-${version}+${build}
 
-checksums           rmd160  99ff7e4128c9082f7da5e29059015fe4a6604c69 \
-                    sha256  5ed47173679cdfefa0cb9fc92d443413e05ab2e157a29bb86e829d7f6a80913a \
-                    size    116235391
+checksums           rmd160  0b31aa900cefffb02d0fea57c81e49ed7e442484 \
+                    sha256  f51be67721f6cb8d14b0cd75cc9b53634e7d83e808148940d64e67c8b77accfc \
+                    size    71402820
 
 depends_lib         port:freetype \
                     port:libiconv
@@ -174,6 +175,6 @@ export JAVA_HOME=${jdk}/Contents/Home
 "
 
 livecheck.type      regex
-livecheck.url       https://github.com/openjdk/jdk11u/tags
-livecheck.regex     jdk-(\[0-9.\]+)-ga
+livecheck.url       https://openjdk-sources.osci.io/openjdk11/
+livecheck.regex     openjdk-(\[0-9.\]+)-ga
 

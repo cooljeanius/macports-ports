@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           R 1.0
 
 R.setup             cran cran HSAUR3 1.0-14
-revision            1
+revision            2
 maintainers         nomaintainer
 license             GPL-2
 description         A Handbook of Statistical Analyses Using R (3rd Edition)
@@ -13,3 +13,4 @@ checksums           rmd160  0c640085c01d9c1be0bcac6bccdcfbeed0838d14 \
                     sha256  97af7c47ec07604e9adc48c91300cc6285852c82c5f0742d722e1c4d2ca151bb \
                     size    3386675
 supported_archs     noarch
+platforms           {darwin any}

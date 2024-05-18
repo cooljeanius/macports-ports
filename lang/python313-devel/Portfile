@@ -5,7 +5,7 @@ PortSystem 1.0
 name                python313-devel
 
 # Remember to keep py313-tkinter and py313-gdbm's versions sync'd with this
-version             3.13.0a5
+version             3.13.0b1
 
 set branch          [join [lrange [split ${version} .] 0 1] .]
 categories          lang
@@ -22,9 +22,9 @@ master_sites        ${homepage}ftp/python/3.13.0/
 
 distname            Python-${version}
 use_xz              yes
-checksums           md5 e8545674d2e726533273376f93f38f69 \
-                    rmd160 6ea42f514489868ebd084fe7cff3f6cdf7f9b184 \
-                    sha256 1e89b5355183e7c898a5a01b2f601728fe49fdb89d9c9781f13360847aaefa62
+checksums           md5 e1208b22c67c77de72a5e20025b2fb53 \
+                    rmd160 77e8c34974ac217ce036e28f3ce55c241e14f0b7 \
+                    sha256 ba716ac56b039b545ad4a90ce586a57aa97869364553746ef2445728ceec198e
 
 patchfiles          patch-configure.diff \
                     patch-Lib-ctypes-macholib-dyld.py.diff \
@@ -44,6 +44,7 @@ depends_lib         port:bzip2 \
                     port:gettext-runtime \
                     port:libedit \
                     port:libffi \
+                    port:mpdecimal \
                     port:ncurses \
                     path:lib/libssl.dylib:openssl \
                     port:sqlite3 \

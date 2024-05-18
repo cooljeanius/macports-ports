@@ -1,0 +1,31 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           R 1.0
+
+R.setup             cran rhartmano labelr 0.1.5
+revision            0
+maintainers         nomaintainer
+license             GPL-3+
+description         Label data frames, variables and values
+long_description    {*}${description}
+homepage            https://github.com/rhartmano/labelr
+checksums           rmd160  9d2abbf2a84043a1c7edd3d7c8bb8dea217a1405 \
+                    sha256  8500dc7e737438613d09c642797f1d1ed466535d18b138f51c7968e87147187b \
+                    size    301110
+supported_archs     noarch
+
+depends_test-append port:R-car \
+                    port:R-collapse \
+                    port:R-dplyr \
+                    port:R-ggplot2 \
+                    port:R-haven \
+                    port:R-knitr \
+                    port:R-modelr \
+                    port:R-nycflights13 \
+                    port:R-rmarkdown \
+                    port:R-tibble
+
+test.run            yes
+# https://github.com/rhartmano/labelr/issues/2
+test.args-append    --ignore-vignettes

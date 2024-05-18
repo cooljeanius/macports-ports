@@ -17,7 +17,7 @@ maintainers             {emcrisostomo @emcrisostomo} \
                         openmaintainer
 
 # *NOTE* Remember to update `latestVersion` on a version upgrade.
-set latestVersion       terraform-1.7
+set latestVersion       terraform-1.8
 
 set armAvailable        no
 set customDistSubDir    yes
@@ -35,6 +35,24 @@ proc terraformVersion {} {
 proc terraformDistBase {} {
     global name
     return ${name}_[terraformVersion]_darwin
+}
+
+subport terraform-1.8 {
+    set patchNumber     3
+    revision            0
+
+    set armAvailable    yes
+
+    checksums           [terraformDistBase]_amd64.zip \
+                        rmd160  8fe891c3de9f62cfad4c640d4b9897c7dfc64555 \
+                        sha256  a4f695e64948ad66fe05e2f589cfe5221b8597ff16173ebed8055d3a90aaa739 \
+                        size    27637539 \
+                        [terraformDistBase]_arm64.zip \
+                        rmd160  e87d29c54c1f2076e1a1d2cbf913b80b452b9bdb \
+                        sha256  2622426fd6e8483db6d62605f52ea6eddb0e88a09e8cea1c24b9310879490227 \
+                        size    25439736
+
+    set customDistSubDir no
 }
 
 subport terraform-1.7 {
@@ -227,7 +245,7 @@ if {${subport} eq ${name}} {
     PortGroup           obsolete 1.0
 
     replaced_by         ${latestVersion}
-    version             1.7.5
+    version             1.8.3
     revision            0
 
 } elseif {${subport} eq "terraform_select"} {

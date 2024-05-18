@@ -1,0 +1,28 @@
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           R 1.0
+
+R.setup             github HenrikBengtsson future.mirai 0.2.1
+revision            0
+categories-append   devel parallel
+maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
+license             GPL-3+
+description         R-future API for parallel processing using R-mirai
+long_description    {*}${description}
+homepage            https://future.mirai.futureverse.org
+checksums           rmd160  36ca6899f6ae9afbbf7390823c1e4940ded48270 \
+                    sha256  60af7226fc03ebb32a607151499214bb479a23cd4b714a8ad8d6b1e42e272098 \
+                    size    27379
+github.tarball_from archive
+supported_archs     noarch
+
+depends_lib-append  port:R-future \
+                    port:R-mirai \
+                    port:R-parallelly
+
+depends_test-append port:R-future.apply \
+                    port:R-future.tests \
+                    port:R-listenv
+
+test.run            yes

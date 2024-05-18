@@ -4,17 +4,17 @@ PortSystem          1.0
 PortGroup           R 1.0
 
 # Revert to GitHub once updated there.
-R.setup             cran rstudio reticulate 1.35.0
-revision            0
+R.setup             cran rstudio reticulate 1.36.1
+revision            1
 categories-append   python
 maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
 license             Apache-2
 description         Interface to Python
 long_description    {*}${description}
 homepage            https://rstudio.github.io/reticulate
-checksums           rmd160  8266e6355be8d78a999682f085418c6a06be574d \
-                    sha256  5e13f302859a265c198bb12d6e237b7ea35c2631661e90f5c7a4c378d67f2319 \
-                    size    1624633
+checksums           rmd160  d349eaae46284201ae728e5d1c87734c231fd58e \
+                    sha256  7c7d37f4a483d70152870895ed80574dc51b0015c176d18b6c84e38baa33dd30 \
+                    size    1637384
 
 set py_ver          3.11
 set py_ver_nodot    [string map {. {}} ${py_ver}]
