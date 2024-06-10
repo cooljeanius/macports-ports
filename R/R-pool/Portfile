@@ -15,15 +15,14 @@ checksums           rmd160  5c6282eb45e96b66e14c5e77ecda4e771acada42 \
                     sha256  c461f96928c3e524a52018160d2406f3a1f5ef5abbae54ae89fe7ecd4c1a1cec \
                     size    40887
 supported_archs     noarch
+platforms           {darwin any}
 
 depends_lib-append  port:R-DBI \
                     port:R-later \
                     port:R-R6 \
                     port:R-rlang
 
-# Making this a variant for now, since mariadb is broken on CI.
-variant tests description "Enable tests" {
-    depends_test-append port:R-covr \
+depends_test-append port:R-covr \
                     port:R-dbplyr \
                     port:R-dplyr \
                     port:R-knitr \
@@ -34,5 +33,4 @@ variant tests description "Enable tests" {
                     port:R-testthat \
                     port:R-tibble
 
-    test.run        yes
-}
+test.run            yes
