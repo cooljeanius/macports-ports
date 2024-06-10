@@ -5,7 +5,7 @@ PortGroup           python 1.0
 PortGroup           select 1.0
 
 name                py-panel
-version             1.4.2
+version             1.4.4
 revision            0
 categories-append   graphics devel
 license             BSD
@@ -20,9 +20,9 @@ homepage            https://panel.holoviz.org
 
 python.versions     39 310 311 312
 
-checksums           rmd160  bd048a2b1ae0ba07fce22d86153a4896532493e1 \
-                    sha256  e4f4bf83fbda02cc8f5b4cd67676fa84c8816624daf3b004a6fe8e119792ee49 \
-                    size    38419271
+checksums           rmd160  b43837b7f77eed64bbcf6174247aab5f30305dd8 \
+                    sha256  659e9fc5b495e6519c5d07e8148fa5eeed9bc648356ec83fc299381ba5a726ef \
+                    size    38429637
 
 if {${name} ne ${subport}} {
     python.pep517   yes
@@ -31,7 +31,8 @@ if {${name} ne ${subport}} {
                     port:npm10
 
     depends_run-append \
-                    path:bin/node:nodejs20 \
+                    path:bin/node:nodejs22 \
+                    port:panel_select \
                     port:py${python.version}-bleach \
                     port:py${python.version}-bokeh \
                     port:py${python.version}-linkify-it-py \
@@ -49,9 +50,6 @@ if {${name} ne ${subport}} {
                     port:py${python.version}-tzdata \
                     port:py${python.version}-xyzservices
 
-    depends_run-append \
-                    port:panel_select
-
     select.group    panel
     select.file     ${filespath}/py${python.version}-panel
 
@@ -62,7 +60,7 @@ if {${name} ne ${subport}} {
                     port:npm8
 
             depends_run-replace \
-                    path:bin/node:nodejs20 \
+                    path:bin/node:nodejs22 \
                     path:bin/node:nodejs14
         }
 
@@ -72,7 +70,7 @@ if {${name} ne ${subport}} {
                     port:npm9
 
             depends_run-replace \
-                    path:bin/node:nodejs20 \
+                    path:bin/node:nodejs22 \
                     path:bin/node:nodejs18
         }
     }

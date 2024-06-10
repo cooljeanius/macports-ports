@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           R 1.0
 
 R.setup             bioconductor grimbough rhdf5filters 1.16.0
-revision            0
+revision            1
 categories-append   bioconductor
 maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
 license             BSD
@@ -29,14 +29,11 @@ platform darwin 10 {
     }
 }
 
-variant tests description "Enable testing" {
-    depends_test-append \
-                    port:R-BiocStyle \
+depends_test-append port:R-BiocStyle \
                     port:R-knitr \
                     port:R-rhdf5 \
                     port:R-rmarkdown \
                     port:R-testthat
 
-    # Tests may fail to run due to: https://trac.macports.org/ticket/67059
-    test.run        yes
-}
+# Tests may fail to run due to: https://trac.macports.org/ticket/67059
+test.run            no

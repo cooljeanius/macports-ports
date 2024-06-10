@@ -4,16 +4,19 @@ PortSystem          1.0
 PortGroup           R 1.0
 
 # Revert to GitHub once updated there.
-R.setup             cran rstudio rsconnect 1.2.2
-revision            1
+R.setup             cran rstudio rsconnect 1.3.1
+revision            0
+categories-append   devel
+platforms           {darwin any}
 maintainers         nomaintainer
 license             GPL-2
-description         Deployment interface for R-rmarkdown documents and R-shiny applications
+description         Deployment interface for R-rmarkdown documents \
+                    and R-shiny applications
 long_description    {*}${description}
 homepage            https://github.com/rstudio/rsconnect
-checksums           rmd160  18d10f90b5d02563d42c95582f429a6f0721df4d \
-                    sha256  257bc0fe17d9d6749d66982f044133f7b45059f8b4e8f7cbc585782fde91c0a6 \
-                    size    473136
+checksums           rmd160  efdfc4256ff2506b7525cf011e3f19c02c657a2f \
+                    sha256  47de8a832da493e2a1b3243fb42459a53eb193f75a1143348b7d8c7478cb5557 \
+                    size    477146
 supported_archs     noarch
 
 depends_lib-append  port:R-cli \

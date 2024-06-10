@@ -5,7 +5,7 @@ PortGroup       compiler_blacklist_versions 1.0
 PortGroup       github    1.0
 PortGroup       perl5     1.0
 
-github.setup    timescale timescaledb 2.15.0
+github.setup    timescale timescaledb 2.15.2
 revision        0
 license         Apache-2
 description     A time-series database that integrates with PostreSQL.
@@ -23,9 +23,9 @@ long_description \
                 as well as full SQL support. TimescaleDB is packaged \
                 as a PostgreSQL extension.
 
-checksums       rmd160  cca6de93bf365050e49df79ae825fddbfe30ebf0 \
-                sha256  4235130f7d803976976eb0ed7089f5cc2f605e19b27a2c6600d18144a3b0331c \
-                size    7428229
+checksums       rmd160  b031b7f33a11dad6b8e37b794ebf4939cc179ab6 \
+                sha256  67620d44efc8320818aa28cd31a7fab7902527dc495b05465597a059b7194926 \
+                size    7440657
 
 depends_build   path:bin/cmake:cmake \
                 port:perl${perl5.major} \

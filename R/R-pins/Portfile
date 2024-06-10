@@ -18,6 +18,7 @@ checksums           rmd160  d1bafcf2b7ca40d3c74d5e2b5591d25513fffe8e \
                     sha256  57b6a80976d0eec75f1bf16b94e25ba0907552ca62b51bcc133105a64cf279c9 \
                     size    248249
 supported_archs     noarch
+platforms           {darwin any}
 
 depends_lib-append  port:R-cli \
                     port:R-digest \
@@ -37,11 +38,9 @@ depends_lib-append  port:R-cli \
                     port:R-withr \
                     port:R-yaml
 
-variant tests description "Enable testing" {
-    # We omit a few deps below,
-    # as those are not yet in Macports.
-    depends_test-append \
-                    port:R-archive \
+# We omit a few deps below,
+# as those are not yet in Macports.
+depends_test-append port:R-archive \
                     port:R-arrow \
                     port:R-covr \
                     port:R-data.table \
@@ -65,9 +64,8 @@ variant tests description "Enable testing" {
                     port:R-xml2 \
                     port:R-zip
 
-    # FIXME: one test fails at the moment:
-    # fs::file_access(path, "write") is not FALSE
-    # https://github.com/rstudio/pins-r/issues/825
-    # [ FAIL 1 | WARN 0 | SKIP 58 | PASS 163 ]
-    test.run        yes
-}
+# FIXME: one test fails at the moment:
+# fs::file_access(path, "write") is not FALSE
+# https://github.com/rstudio/pins-r/issues/825
+# [ FAIL 1 | WARN 0 | SKIP 58 | PASS 163 ]
+test.run            yes
