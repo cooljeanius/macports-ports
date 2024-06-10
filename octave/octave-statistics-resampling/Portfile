@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           octave 1.0
 
-octave.setup        github gnu-octave statistics-resampling 5.5.13
+octave.setup        github gnu-octave statistics-resampling 5.5.18
 revision            0
 license             GPL-3+
 maintainers         {mps @Schamschula} openmaintainer
@@ -12,8 +12,8 @@ description         Estimate bias, uncertainty (standard errors and confidence \
                     methods.
 long_description    {*}${description}
 
-checksums           rmd160  227c2d030ff44d0976ffbb5b7376ad06265d4314 \
-                    sha256  2b2a7c8eda74a61294cfcbcd270d789903f7f5317d69e2659bea4f5ecb5d74f3 \
-                    size    2217251
+checksums           rmd160  90dc9028e79a24068bdadd4f618e8c3d375351ac \
+                    sha256  003bb8316878d4d82bf624f7a64e3f9c5177cbf6175d62a57eed301e647322b3 \
+                    size    2167943
 
 depends_lib-append  port:octave-statistics

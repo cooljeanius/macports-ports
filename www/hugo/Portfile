@@ -3,13 +3,14 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/gohugoio/hugo 0.126.1 v
+go.setup            github.com/gohugoio/hugo 0.127.0 v
+go.offline_build    no
 github.tarball_from archive
 revision            0
 
-checksums           rmd160  e5cc847809cb51949dcbaa244398cecded4d9e4b \
-                    sha256  b7e1f393977bdf6275cf33dfff6d1bcd3bab4895e7302c8fd30f05556b13a6ad \
-                    size    21128076
+checksums           rmd160  26bcbf9ba0080de6b0dddc123a1c030ac8bc172a \
+                    sha256  549c7ebdf2ee6b3107ea10a9fbd9932a91bb3f30f7e8839245f6d8e318aca88c \
+                    size    21132608
 
 categories          www
 installs_libs       no
@@ -21,10 +22,6 @@ maintainers         {isi.edu:calvin @cardi} \
 description         A Fast and Flexible Static Site Generator built with love in GoLang
 long_description    {*}${description}
 
-# FIXME: This port currently can't be built without allowing go mod to fetch
-# dependencies during the build phase. See
-# https://trac.macports.org/ticket/61192
-go.offline_build    no
 
 build.pre_args-append \
     -ldflags \"-X ${go.package}/common/hugo.vendorInfo=macports\"

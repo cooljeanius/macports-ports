@@ -6,7 +6,8 @@ PortGroup           R 1.0
 R.setup             github rempsyc lavaanExtra 0.2.0 v
 revision            1
 categories-append   math
-maintainers         nomaintainer
+platforms           {darwin any}
+maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
 license             MIT
 description         Convenience functions for R-lavaan
 long_description    {*}${description}
@@ -18,3 +19,27 @@ supported_archs     noarch
 
 depends_lib-append  port:R-insight \
                     port:R-lavaan
+
+# Some optional deps are omitted.
+depends_test-append port:R-covr \
+                    port:R-flextable \
+                    port:R-knitr \
+                    port:R-lavaanPlot \
+                    port:R-markdown \
+                    port:R-png \
+                    port:R-psych \
+                    port:R-rempsyc \
+                    port:R-rmarkdown \
+                    port:R-rsvg \
+                    port:R-sjlabelled \
+                    port:R-spelling \
+                    port:R-stringdist \
+                    port:R-testthat \
+                    port:R-tibble \
+                    port:R-tidySEM \
+                    port:R-tmvnsim \
+                    port:R-webshot
+
+# Enable tests once this issue is resolved:
+# https://github.com/rempsyc/lavaanExtra/issues/35
+# test.run            yes

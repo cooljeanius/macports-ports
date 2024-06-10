@@ -15,6 +15,7 @@ checksums           rmd160  2049860d0c007f99ea630267f1cc62ba3a633483 \
                     sha256  d7099586fcf80de89ca8598d6fad3ec9b05ea953228a8e4180b15cfd8179804e \
                     size    993509
 supported_archs     noarch
+platforms           {darwin any}
 
 depends_lib-append  port:R-bslib \
                     port:R-callr \
@@ -37,10 +38,7 @@ depends_lib-append  port:R-bslib \
                     port:R-xml2 \
                     port:R-yaml
 
-# As a variant, since one test case presently fails.
-variant tests description "Enable testing" {
-    depends_test-append \
-                    port:R-covr \
+depends_test-append port:R-covr \
                     port:R-diffviewer \
                     port:R-evaluate \
                     port:R-gert \
@@ -57,5 +55,4 @@ variant tests description "Enable testing" {
                     port:R-sass \
                     port:R-testthat
 
-    test.run        yes
-}
+test.run            yes
