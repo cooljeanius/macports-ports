@@ -101,9 +101,9 @@ jobs:
           fail=0
           for subport in ${subportlist}; do
             echo "::group::${subport}"
-            path=$(port file "$subport")
+            path=$(port file "${subport}")
             messagetype="warning"
-            if ! messages=$(port -q lint --nitpick "$subport" 2>&1); then
+            if ! messages=$(port -q lint --nitpick "${subport}" 2>&1); then
               messagetype="error"
               fail=1
             fi
@@ -251,7 +251,7 @@ jobs:
               encoded_messages="port test ${subport}:%0A"
               encoded_messages+="$(echo "${test_msgs}" | sed -E 's/$/%0A/g' | tr -d '\n')"
               echo "::warning file=${path#"${PWD}"/ports/},line=1,col=1::${encoded_messages}"
-            elif [ $test_fail -eq 0 ]; then
+            elif [ ${test_fail} -eq 0 ]; then
                  echo "✅ Successfully tested" >> "${GITHUB_STEP_SUMMARY}"
             fi
 
