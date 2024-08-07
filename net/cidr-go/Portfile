@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/bschaatsbergen/cidr 2.0.0 v
+go.setup            github.com/bschaatsbergen/cidr 2.2.0 v
 name                cidr-go
 categories          net
 maintainers         {i0ntempest @i0ntempest} openmaintainer
@@ -13,9 +13,9 @@ description         CLI to perform various actions on CIDR ranges
 long_description    ${description}
 
 checksums           ${distname}${extract.suffix} \
-                        rmd160  722755679b7809552d874173cd47e73b55b3e5de \
-                        sha256  a082ff815314a4ce7fcdc1b6d9fb5f845234577ae5768c9ff7bb25938af38fa6 \
-                        size    13055
+                        rmd160  48ebbd1a1e9cb249f9656df0069605e5624c988f \
+                        sha256  f4f853ea89104583aacf3b217242776cb07f62796277be73bc802a6a577a6696 \
+                        size    15000
 
 go.vendors          gopkg.in/yaml.v3 \
                         lock    v3.0.1 \
@@ -27,16 +27,11 @@ go.vendors          gopkg.in/yaml.v3 \
                         rmd160  412aa0d109919182ff84259e9b5bbc9f24d78117 \
                         sha256  233f8faf427ce6701ac3427f85c28bc6b6ae7cdc97a303a52873c69999223325 \
                         size    30360 \
-                    golang.org/x/text \
-                        lock    v0.14.0 \
-                        rmd160  e26a72d542901d19f6dde4e07746f72206fb8701 \
-                        sha256  ef54709caaafdd8b27ce3d5f7c53408f11bc5fd1688c1c4f328de8ed268b3188 \
-                        size    8972503 \
                     golang.org/x/sys \
-                        lock    v0.14.0 \
-                        rmd160  d36195a767e48169c413eb77843e71fa014e7ac2 \
-                        sha256  9407ff6fbe0423f2559a99f7ad55479e1eb20201c5dfb9e885abb83c7b44bfc4 \
-                        size    1442384 \
+                        lock    v0.18.0 \
+                        rmd160  f2df5cddcd4f72d2eb7f75309ed3c1c821e05d66 \
+                        sha256  d8d4c0874ddc66e9fb0c1264b4eeb8b8625153740b751eae59220eb5ff17eacb \
+                        size    1448593 \
                     github.com/stretchr/testify \
                         lock    v1.9.0 \
                         rmd160  59147e117812fdf8270ec79e46a229c472caf08d \
@@ -48,10 +43,10 @@ go.vendors          gopkg.in/yaml.v3 \
                         sha256  7f41acdcba65b1fab5b9b633947a139f9915b60f94bdab486cdbe9d90c54f61e \
                         size    50815 \
                     github.com/spf13/cobra \
-                        lock    v1.8.0 \
-                        rmd160  d506ddb57519970c8227ded6411adb8153fc8278 \
-                        sha256  f35c4dd06645b4bca315c7d7f9a245f9d8851bb5fd43331fcb2aadbd585149e9 \
-                        size    189731 \
+                        lock    v1.8.1 \
+                        rmd160  a735ec73fa26b66076a971e066513fff3eb7e367 \
+                        sha256  49ca05093e0452e1b56be8a0765e23fd74be819228f0e1870c759b2e2e8178da \
+                        size    192387 \
                     github.com/pmezard/go-difflib \
                         lock    v1.0.0 \
                         rmd160  fc879bfbdef9e3ff50844def58404e2b5a613ab8 \
@@ -73,10 +68,10 @@ go.vendors          gopkg.in/yaml.v3 \
                         sha256  f69af10ff08c0e87f92dac3ee5172d8ed02463725b74edfc8943ef018a1a632d \
                         size    5343 \
                     github.com/fatih/color \
-                        lock    v1.16.0 \
-                        rmd160  e366491b67c4f4afbc5d3a26f2b76585d06f8381 \
-                        sha256  968744e2d5468beab9fe694143737c0c9e5cebfe860211c521a8424320cfa910 \
-                        size    12112 \
+                        lock    v1.17.0 \
+                        rmd160  9d0962ae868c99aad71d9f8ad21b58a219fca1cc \
+                        sha256  861f4ff9c6566b6e097ad4fe53248461dcad57fbb2c201413d64206f7d2b02b2 \
+                        size    12339 \
                     github.com/davecgh/go-spew \
                         lock    v1.1.1 \
                         rmd160  7c02883aa81f81aca14e13a27fdca9e7fbc136f7 \

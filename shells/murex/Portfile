@@ -3,7 +3,8 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/lmorg/murex 6.0.1000 v
+go.setup            github.com/lmorg/murex 6.2.4000 v
+go.offline_build    no
 github.tarball_from archive
 revision            0
 
@@ -30,15 +31,12 @@ license             GPL-2
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  064cb47c4479de30376c0e97e957d8326ac6a4c9 \
-                    sha256  82c54d54a75b5a3f29d88d006a7614f61cb6464ffe78784f5f1e97cd6c6937dd \
-                    size    3271152
+checksums           rmd160  0e826c5d7f4fd88fdccbf6834a4b04920a540a6e \
+                    sha256  c5e04bf1a43c6a3c326e302f8739df1440a5cee164f47ec8b1b549a8c5e5cfb4 \
+                    size    8588716
 
 depends_run-append  port:aspell \
                     port:aspell-dict-en
-
-# Enable download deps at build time.
-go.offline_build no
 
 set mx_doc_dir      ${prefix}/share/doc/${name}
 set mx_share_dir    ${prefix}/share/${name}

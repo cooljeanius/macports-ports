@@ -5,7 +5,7 @@ PortGroup           python 1.0
 
 name                py-pyqt-builder
 python.rootname     PyQt-builder
-version             1.16.2
+version             1.16.4
 revision            0
 
 categories-append   devel
@@ -21,9 +21,9 @@ homepage            https://www.riverbankcomputing.com/software/pyqt-builder/
 
 distname            pyqt_builder-${version}
 
-checksums           rmd160  4528d3ca9ad52dee6016fbda18db41e241d3793b \
-                    sha256  bf723cdb7cd23d2512e2acda7bc6b81f00fb05ccc5e9a8846bd34d47514cddb9 \
-                    size    3671133
+checksums           rmd160  ebd4b4c643cf98d02ab06584addd140a10ddac37 \
+                    sha256  4515e41ae379be2e54f88a89ecf47cd6e4cac43e862c4abfde18389c2666afdf \
+                    size    3672095
 
 python.versions     35 36 37 38 39 310 311 312
 
