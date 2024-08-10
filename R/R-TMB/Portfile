@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           R 1.0
 
 # Does not install from GitHub, use CRAN.
-R.setup             cran kaskr TMB 1.9.12
+R.setup             cran kaskr TMB 1.9.14
 revision            0
 categories-append   math
 maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
@@ -12,9 +12,9 @@ license             GPL-2
 description         Template Model Builder
 long_description    {*}${description}
 homepage            https://github.com/kaskr/adcomp/wiki
-checksums           rmd160  ff536ea538de56b6c07fad191bb752b6be3b4813 \
-                    sha256  db5801f43e55fdeea520355628286c491c694f1165e8567eecd5f3d864cfc7f0 \
-                    size    759327
+checksums           rmd160  5a41e312b0c58f37478e1842e0004d021bb4dcc4 \
+                    sha256  4d9c5ac2fac814104bc344a7495ba5b056c270e0eacf1d38e7ca54c4d3976bd3 \
+                    size    759301
 
 depends_lib-append  port:R-RcppEigen
 
