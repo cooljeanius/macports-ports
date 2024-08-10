@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           R 1.0
 
 # Revert to GitHub once updated there.
-R.setup             cran donotdespair bsvars 3.0 v
+R.setup             cran donotdespair bsvars 3.1 v
 revision            0
 categories-append   math
 maintainers         {@barracuda156 gmail.com:vital.had} openmaintainer
@@ -12,9 +12,9 @@ license             GPL-3
 description         Bayesian estimation of structural vector autoregressive models
 long_description    {*}${description}
 homepage            https://bsvars.github.io/bsvars
-checksums           rmd160  289075869753611b545053e115085cbce5c7bd7a \
-                    sha256  875614c640a245c852a2fd8558618e2818b4487989a3cb6f83bf376f48076842 \
-                    size    175947
+checksums           rmd160  3359262b6eaeba3163cb18eaa9fd2c04ae06fa7e \
+                    sha256  aab8a8cc4dda2fda89dfdbdab7f1668e89a6c7f5ba40b67e751478000608088d \
+                    size    195179
 
 depends_lib-append  port:R-GIGrvg \
                     port:R-R6 \

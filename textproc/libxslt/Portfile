@@ -3,10 +3,12 @@
 PortSystem      1.0
 
 name            libxslt
-version         1.1.40
-checksums       rmd160  856e884edb3cd96cb4afb7e3b9d9f2d2cfc3aa9d \
-                sha256  194715db023035f65fb566402f2ad2b5eab4c29d541f511305c40b29b1f48d13 \
-                size    1577512
+version         1.1.42
+revision        0
+
+checksums       rmd160  e1511ec57d0001aada859dcdbdc873640a47d71d \
+                sha256  85ca62cac0d41fc77d3f6033da9df6fd73d20ea2fc18b0a3609ffb4110e1baeb \
+                size    1573668
 
 set branch      [join [lrange [split ${version} .] 0 1] .]
 categories      textproc
@@ -29,7 +31,6 @@ use_xz          yes
 depends_build   path:bin/pkg-config:pkgconfig
 
 patchfiles      dynamic_lookup-11.patch \
-                tests.patch \
                 no-doc.patch
 
 configure.args  --without-python \
