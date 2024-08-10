@@ -3,7 +3,7 @@
 PortSystem              1.0
 PortGroup               golang 1.0
 
-go.setup                github.com/blacktop/ipsw 3.1.532 v
+go.setup                github.com/blacktop/ipsw 3.1.534 v
 github.tarball_from     archive
 revision                0
 categories              security devel
@@ -18,9 +18,9 @@ long_description        {*}${description}. Everything you need to start \
 
 homepage                https://blacktop.github.io/ipsw
 
-checksums               rmd160  ffa1d8f02bbc5a3ed4cb2d5d2a48a550d41ad9de \
-                        sha256  3e2c313c82615f7c3a2014572c136ef710b807d288a76d56dae794d17f4ee096 \
-                        size    10354428
+checksums               rmd160  a6b419f00f9fca884d20977971d288e1ee7a682c \
+                        sha256  e0b5a4145d9e952593fdc6b008ef3a7e3295f5cc4d4053746a81a952864ee890 \
+                        size    10356845
 
 depends_build-append    path:bin/pkg-config:pkgconfig
 
