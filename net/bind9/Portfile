@@ -5,8 +5,8 @@ PortGroup       legacysupport 1.0
 PortGroup       compiler_blacklist_versions 1.0
 
 name            bind9
-version         9.20.0
-revision        3
+version         9.20.2
+revision        0
 categories      net
 maintainers     {geeklair.net:dluke @danielluke} {jmr @jmroot}
 platforms       {darwin >= 11} freebsd sunos
@@ -31,13 +31,13 @@ homepage        https://www.isc.org/bind/
 distname        bind-${version}
 master_sites    isc:${name}/${version}
 
-checksums       rmd160    a8aa369a644bc7b4cc6f53189e5beae5b2485645 \
-                sha256    cc580998017b51f273964058e8cb3aa5482bc785243dea71e5556ec565a13347 \
-                size      5760416
+checksums       rmd160    7c3dd41590087f46a041ef78d304179640bdd9cd \
+                sha256    a31dba2aaa1b371902dd0474eb3963f47b7ffed2bd9ece7da4834e23210d6067 \
+                size      5865060
 
 use_xz          yes
 
-depends_build   port:pkgconfig
+depends_build   path:bin/pkg-config:pkgconfig
 
 depends_lib     path:lib/libssl.dylib:openssl  \
                 path:lib/pkgconfig/libuv.pc:libuv \

@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-keyring
-version             25.2.1
+version             25.4.1
 revision            0
 
 categories-append   security
@@ -21,9 +21,9 @@ long_description    The Python keyring lib provides a easy way to access the sys
 
 homepage            https://github.com/jaraco/keyring
 
-checksums           rmd160  07a6a6bb52d535f5d5cac0552dd6f361ea4e3f7f \
-                    sha256  daaffd42dbda25ddafb1ad5fec4024e5bbcfe424597ca1ca452b299861e49f1b \
-                    size    60797
+checksums           rmd160  21c800c7de210a9c79e440f2d51ef5d65fc26ada \
+                    sha256  b07ebc55f3e8ed86ac81dd31ef14e81ace9dd9c3d4b5d77a6e9a2016d0d71a1b \
+                    size    62491
 
 python.versions     38 39 310 311 312
 

@@ -5,11 +5,11 @@ PortGroup           active_variants 1.1
 PortGroup           conflicts_build 1.0
 
 name                magic
-version             8.3.488
+version             8.3.492
 revision            0
-checksums           rmd160  e3e41ea0b30ffa11696e5747e9d819b6b36dafec \
-                    sha256  efbff4d3f5b519180c1019966e40d757bf3c011046d2aee4bbaab1db91445291 \
-                    size    4242622
+checksums           rmd160  77a15231369966d99411d0eea3eb4f3e1d9b7351 \
+                    sha256  e886e3658dbc9332317a0522ed74878a23dd7321115bd1ec551025c5c5d9aa65 \
+                    size    4241819
 
 set branch          [join [lrange [split ${version} .] 0 1] .]
 categories          science

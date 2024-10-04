@@ -25,6 +25,10 @@ long_description    {*}${description}, including front ends for \
 # Remember to reset all revision increments below to 0 on new versions
 version             ${gcc_major_v}.2.0
 revision            1
+# Remove OS dependent revision bump on next version update
+if { ${os.platform} eq "darwin" && ${os.major} >= 23 } {
+    revision [ expr ${revision} + 2 ]
+}
 
 set libgccname      lib${name}
 subport             ${libgccname} { revision [ expr ${revision} + 0 ] }
@@ -177,6 +181,18 @@ if { ${os.platform} eq "darwin" } {
     if { ${os.major} == 18 } {
         patchfiles-append  patch-OSX10.14-ucred-atomic-define.diff
     }
+
+    # Additional macOS 15 (and macOS 14 with Xcode 16) compatibility patches
+    # from https://github.com/iains/gcc-14-branch, after tag gcc-14.2-darwin-r1.
+    # See https://trac.macports.org/ticket/70641,
+    # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=116794,
+    # https://gcc.gnu.org/bugzilla/show_bug.cgi?id=116809, and
+    # https://github.com/iains/gcc-darwin-arm64/issues/136.
+    if { ${os.major} >= 23 } {
+        patchfiles-append  0001-Darwin-Allow-for-as-versions-that-need-for-std-in.patch \
+                           0002-libgcc-Darwin-Drop-the-legacy-library-build-for-macO.patch \
+                           0003-libgcc-Darwin-Don-t-build-legacy-libgcc_s.1-on-macOS.patch
+    }
 }
 
 # Since GCC 7.4.0, during configure, it detects features supported by target-as.
@@ -211,7 +227,8 @@ configure.env-append \
                     OTOOL64=${prefix}/bin/otool
 
 if {${os.platform} eq "darwin" && ${os.major} >= 22} {
-    if { [vercmp ${xcodeversion} >= 15.0] || [vercmp ${xcodecltversion} >= 15.0] } {
+    if { ([vercmp ${xcodeversion}    >= 15.0] && [vercmp ${xcodeversion}    < 16.0]) ||
+         ([vercmp ${xcodecltversion} >= 15.0] && [vercmp ${xcodecltversion} < 16.0]) } {
         # On macOS13 and newer ensure the 'legacy' linker is used as GCC currently has problems
         # with the new default linker in Xcode 15. See e.g.
         # https://developer.apple.com/documentation/xcode-release-notes/xcode-15-release-notes#Linking
@@ -256,7 +273,11 @@ subport ${libcxxname} {
         if { ${os.platform} eq "darwin" && ${os.major} < 11 } {
             default_variants-append +clang11
         } else {
-            default_variants-append +clang17
+            if { ${os.major} < 24 } {
+                default_variants-append +clang17
+            } else {
+                default_variants-append +clang18
+            }
         }
     }
     revision                [ expr ${revision} + 0 ]
@@ -568,23 +589,22 @@ if { ${subport} ne ${libcxxname} } {
         }
     }
 
-    platform powerpc {
-        configure.universal_archs ppc ppc64
-    }
-    if { ${os.platform} eq "darwin" && ${os.major} >= 20 } {
-        platform i386 {
-            configure.universal_archs x86_64 arm64
+    if {${os.platform} eq "darwin" && ${os.major} <= 18} {
+        switch -- $build_arch {
+            i386 -
+            x86_64 {
+                configure.universal_archs i386 x86_64
+            }
+            ppc -
+            ppc64 {
+                configure.universal_archs ppc ppc64
+            }
         }
-        platform arm {
-            configure.universal_archs x86_64 arm64
+        variant universal {
+            configure.args-delete --disable-multilib
         }
     } else {
-        platform i386 {
-            configure.universal_archs i386 x86_64
-        }
-    }
-    variant universal {
-        configure.args-delete --disable-multilib
+        universal_variant   no
     }
     # the generated compiler doesn't accept -arch
     configure.env-append \
