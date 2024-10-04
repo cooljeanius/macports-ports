@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             github r-lib httr2 1.0.2 v
+R.setup             github r-lib httr2 1.0.5 v
 revision            0
 categories-append   devel net
 platforms           {darwin any}
@@ -12,9 +12,9 @@ license             MIT
 description         Perform HTTP requests and process the responses
 long_description    {*}${description}
 homepage            https://httr2.r-lib.org
-checksums           rmd160  73789667219351ab7cf20e620ed827a01a1509f6 \
-                    sha256  78d784f594d572a76a0695d3bd0f3122ae8dafabc712c3127f65d6230714b03b \
-                    size    309856
+checksums           rmd160  53d2c859ab9e1955e4d221699f9171718bf1b1a4 \
+                    sha256  5974a716302e857e522eb1760d08929f0be366c6ae8bab67d7db18a309e74bb4 \
+                    size    326759
 github.tarball_from archive
 supported_archs     noarch
 
@@ -39,6 +39,8 @@ depends_test-append port:R-askpass \
                     port:R-jose \
                     port:R-jsonlite \
                     port:R-knitr \
+                    port:R-later \
+                    port:R-promises \
                     port:R-rmarkdown \
                     port:R-testthat \
                     port:R-tibble \

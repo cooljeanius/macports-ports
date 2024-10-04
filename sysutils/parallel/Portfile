@@ -3,11 +3,11 @@
 PortSystem          1.0
 
 name                parallel
-version             20240722
+version             20240922
 revision            0
-checksums           rmd160  abe7c31d1e5ae9a30a171960e9d9a72559b31675 \
-                    sha256  c7335471f776af28bea9464ad85a50f2ed120f78fbf75ead6647aeea8e0e53f0 \
-                    size    2617475
+checksums           rmd160  d7cf4fd6277999a57ddb2f2e817e53f15c8b9241 \
+                    sha256  63210715e8b7c5e129e098f333cd7cdd5fc7a2f325e8e0fb9ed6edba9f1acbc4 \
+                    size    2675612
 
 categories          sysutils
 license             GPL-3+

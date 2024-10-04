@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/Tufin/oasdiff 1.10.23 v
+go.setup            github.com/Tufin/oasdiff 1.10.25 v
 go.offline_build    no
 github.tarball_from archive
 revision            0
@@ -20,9 +20,9 @@ license             Apache-2
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  b7980aa5d8f0cd5157abd7baa535a086cb438d8c \
-                    sha256  9ca3a65885ed2cd69a001f04081f1b9902b6662334ea30eda31cc4dfef0a5c7e \
-                    size    320117
+checksums           rmd160  ab14e3b2b7c59fbd42630adff2af2faa408fc056 \
+                    sha256  878018d77b349d76811da8ff677ebc1e195581a1e148ff38d81c42d7c4d56b93 \
+                    size    331041
 
 destroot {
     xinstall -m 0766 ${worksrcpath}/${name} ${destroot}${prefix}/bin/

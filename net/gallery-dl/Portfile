@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           github 1.0
 PortGroup           python 1.0
 
-github.setup        mikf gallery-dl 1.27.2 v
+github.setup        mikf gallery-dl 1.27.5 v
 github.tarball_from releases
 distname            gallery_dl-${github.version}
 
@@ -12,9 +12,9 @@ categories          net
 maintainers         {@akierig fastmail.de:akierig} openmaintainer
 revision            0
 
-checksums           rmd160  bc5b348611f1a538d1e3e4c5b4ad3997aabe9bd9 \
-                    sha256  09373a081005231397e4177f872ddeeb931b5b2236c059fe6ba863e24b6e063a \
-                    size    470677
+checksums           rmd160  f32b1af7bcba6fb37acb055bb4c5039eb9582346 \
+                    sha256  abf6f2591bdbceb57a2a33c80e32495a5d1f92b96e18472fac848f2b3f1227ee \
+                    size    485694
 
 description         command-line program to download image galleries and \
                     collections from several image hosting sites
@@ -35,10 +35,6 @@ depends_lib-append  port:py${python.version}-brotli \
 
 variant ffmpeg description {Add ffmpeg dependency to enable Pixiv Ugoira to WebM conversion} {
     depends_run-append path:bin/ffmpeg:ffmpeg
-}
-
-variant youtubedl description {Add youtube-dl dependency to enable video downloads} {
-     depends_run-append port:youtube-dl
 }
 
 variant ytdlp description {Add yt-dlp dependency to enable video downloads} {

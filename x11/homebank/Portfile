@@ -3,7 +3,7 @@
 PortSystem          1.0
 
 name                homebank
-version             5.8.1
+version             5.8.3
 revision            0
 categories          x11 finance
 license             GPL-2+
@@ -20,9 +20,9 @@ long_description    HomeBank is the free software you have always wanted to \
 homepage            https://www.gethomebank.org
 master_sites        ${homepage}/public/sources/
 
-checksums           rmd160  191858e3952d203623f41b38c969d9dc15c53652 \
-                    sha256  60c35feafe341aec8fed9de4b0a875dc0f5c1674c5f5804ff7190a6c6c53dc01 \
-                    size    3722739
+checksums           rmd160  e80a8f4dde94ea0a529a0b50e7869e7a7a662f58 \
+                    sha256  e4083d52301dc53e51e9c615e954fb92d6951ea7749334282c2a5f4b9ab9c4c2 \
+                    size    3773027
 
 depends_build       port:intltool \
                     port:pkgconfig
@@ -32,11 +32,6 @@ depends_lib         port:gettext \
                     port:libofx \
                     path:lib/pkgconfig/librsvg-2.0.pc:librsvg \
                     path:lib/pkgconfig/libsoup-2.4.pc:libsoup
-
-# rep-budget.c:262:22: error: use of undeclared identifier 'name'
-# https://bugs.launchpad.net/homebank/+bug/2067543
-# backported from https://github.com/NixOS/nixpkgs/commit/5b15ea1e00e33223d52c3aabb821de402265b326
-patchfiles          patch-fix-clang-build.diff
 
 # https://bugs.launchpad.net/intltool/+bug/1197875
 use_autoreconf      yes

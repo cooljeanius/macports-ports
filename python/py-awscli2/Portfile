@@ -6,7 +6,7 @@ PortGroup           select 1.0
 PortGroup           github 1.0
 
 name                py-awscli2
-github.setup        aws aws-cli 2.17.13
+github.setup        aws aws-cli 2.17.54
 revision            0
 
 categories          python devel
@@ -20,11 +20,11 @@ long_description    {*}${description}
 
 homepage            https://aws.amazon.com/cli/
 
-checksums           rmd160  2c39e6120f7c9ca91a237d971bc05309028f616d \
-                    sha256  fd11b2463d0074ffc30ff2d9124f5b891def2b75908676b967a4a0bfe06d32bb \
-                    size    14835395
+checksums           rmd160  b4e318c9877b755822e24adf8d280963c7ef2278 \
+                    sha256  ec26b86352e9b68958dfc3ab3d81a162fbda51a465756673df2e4f0a10152f6d \
+                    size    15061792
 
-python.versions     39 310 311
+python.versions     39 310 311 312
 python.pep517       yes
 python.pep517_backend \
                     flit
@@ -65,7 +65,8 @@ if {${name} ne ${subport}} {
     }
 
     patch.pre_args-replace  -p0 -p1
-    patchfiles          patch-requirements.diff
+    patchfiles          patch-requirements.diff \
+                        0001-py-awscli2-Support-empty-PAGER.patch
 
     post-patch {
         reinplace \

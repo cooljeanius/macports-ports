@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/homeport/dyff 1.9.0 v
+go.setup            github.com/homeport/dyff 1.9.2 v
 go.offline_build    no
 github.tarball_from archive
 revision            0
@@ -17,9 +17,9 @@ license             MIT
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  e21595d630c37e5947f235c85be6e90d9b4fdce8 \
-                    sha256  3a6842d46d2cd71b24d7e11096786da4d7574535674428975bd4d2cad0e6e0b7 \
-                    size    1213298
+checksums           rmd160  5ea6b887a7defa9bd87001af89d84d36ea1bd6f6 \
+                    sha256  ed96bd4f06d8f788dcb9f3afa1d600e0fb9a7987748e336a5a9e33fcfa511760 \
+                    size    1213312
 
 build.pre_args-append \
     -ldflags \"-X ${go.package}/internal/cmd.version=${version}\"

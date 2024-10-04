@@ -9,7 +9,7 @@ PortGroup           legacysupport 1.1
 
 legacysupport.newest_darwin_requires_legacy 14
 
-github.setup        tree-sitter tree-sitter-cpp 0.22.3 v
+github.setup        tree-sitter tree-sitter-cpp 0.23.1 v
 revision            0
 
 description         A tree-sitter parser for C++
@@ -20,9 +20,9 @@ categories          devel
 license             MIT
 maintainers         {amake @amake} openmaintainer
 
-checksums           rmd160  89b31d9a6531020e33e8e99014bc97d5de6daa2b \
-                    sha256  b62df26f0d3b94dca1d73a0f668e56d07269a7dacc6b61eeed5c5261a3afa62f \
-                    size    1051770
+checksums           rmd160  e01d1db25cd27cc1ab944fff255e13979a81f856 \
+                    sha256  448e64b9ffb321e3a625f931fb7d40b6315b991a3618fc1b937bb78df1effd6c \
+                    size    1135266
 
 worksrcdir          ${worksrcdir}/src
 

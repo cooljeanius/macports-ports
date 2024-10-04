@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           R 1.0
 
-R.setup             cran easystats insight 0.20.2
+R.setup             cran easystats insight 0.20.4
 revision            0
 categories-append   math
 platforms           {darwin any}
@@ -12,9 +12,9 @@ license             GPL-3
 description         Easy access to model information for various model objects
 long_description    {*}${description}
 homepage            https://easystats.github.io/insight
-checksums           rmd160  d63e01c6e055c1f1a603749c2aa4fdd14076ce1e \
-                    sha256  11da89050e84884208c5386a35a64f26e114b530284dcd9ba6fa9a3194bd95a1 \
-                    size    976043
+checksums           rmd160  1a07a81a9bb665decc9388dc976daf73bf98f3ff \
+                    sha256  de734f529de628a3f3d2ad88035ec687e757937443a7985c0f0f4d9117094b32 \
+                    size    983436
 supported_archs     noarch
 
 depends_test-append port:R-AER \
@@ -127,6 +127,7 @@ depends_test-append port:R-AER \
                     port:R-truncreg \
                     port:R-tweedie \
                     port:R-VGAM \
+                    port:R-WeightIt \
                     port:R-withr
 
 test.run            yes
