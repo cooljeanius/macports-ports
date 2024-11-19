@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           github  1.0
 
-github.setup        Un1q32 pfetch 1.4.0
+github.setup        Un1q32 pfetch 1.6.0
 github.tarball_from archive
 revision            0
 
@@ -22,9 +22,9 @@ maintainers         {gmail.com:herby.gillot @herbygillot} \
 supported_archs     noarch
 platforms           any
 
-checksums           rmd160  fe6f231ebc5fba01d5782a5675d0c4fcb394c915 \
-                    sha256  9e46ead16beee9059807a9e576a9e48d1df7c2e21fd99ca351ffab498081e7af \
-                    size    24481
+checksums           rmd160  09aabae77468039a2f896522897287a0e8a18561 \
+                    sha256  06190a043677ae7c6d3fbdd2049e32cee440e733cc50117d56f96d14bf3918b5 \
+                    size    25773
 
 use_configure       no
 

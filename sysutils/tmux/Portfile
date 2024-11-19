@@ -7,15 +7,15 @@ PortGroup       legacysupport 1.1
 # Availability.h
 legacysupport.newest_darwin_requires_legacy 8
 
-github.setup    tmux tmux 3.5
+github.setup    tmux tmux 3.5a
 if {${subport} eq ${name}} {
-    revision        0
+    revision        1
     conflicts       tmux-devel
 }
 subport tmux-devel {
     github.setup    tmux tmux 7c30056d96689cc8a66c748e7a18e180665b7d14
     version         20240927-[string range ${github.version} 0 6]
-    revision        0
+    revision        1
     conflicts       tmux
 }
 categories      sysutils
@@ -39,9 +39,9 @@ configure.args-append \
 
 if {${subport} eq ${name}} {
     github.tarball_from     releases
-    checksums               rmd160  801d41ad5a161428456dfd3fc0f485d787ff1f2b \
-                            sha256  2fe01942e7e7d93f524a22f2c883822c06bc258a4d61dba4b407353d7081950f \
-                            size    715322
+    checksums               rmd160  5eb06d152f3fcdeff725e922f2647df5be86ffac \
+                            sha256  16216bd0877170dfcc64157085ba9013610b12b082548c7c9542cc0103198951 \
+                            size    715619
 }
 subport tmux-devel {
     checksums               rmd160  8f12630da75e816dcec96566b50606a39a8a760d \
@@ -93,6 +93,12 @@ post-destroot {
     xinstall -m 0755 -d ${destroot}${prefix}/share/vim/vimfiles/ftdetect
     xinstall -m 0644 ${filespath}/ftdetect-tmux.vim ${destroot}${prefix}/share/vim/vimfiles/ftdetect/tmux.vim
 }
+
+variant sixel description {Support SIXEL graphics} {
+    configure.args-append   --enable-sixel
+}
+
+default_variants-append +sixel
 
 notes {
     On legacy systems, consider installing port tmux-pasteboard to\
