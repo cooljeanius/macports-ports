@@ -3,7 +3,7 @@
 PortSystem      1.0
 PortGroup       github 1.0
 
-github.setup    micronaut-projects micronaut-starter 4.6.2 v
+github.setup    micronaut-projects micronaut-starter 4.7.0 v
 revision        0
 name            micronaut
 categories      java
@@ -57,14 +57,14 @@ github.tarball_from releases
 
 if {${configure.build_arch} eq "x86_64"} {
     distname     mn-darwin-amd64-v${version}
-    checksums    rmd160  51b21a4164c23b78d006e92f036e7ca7d723c0f4 \
-                 sha256  9824806be6df9be9c265f2c778f3e3535c199b88194afa73cb24f8aeef65e43c \
-                 size    25508107
+    checksums    rmd160  3f5535e0cfdebfed368f5b1c55625cace50f7686 \
+                 sha256  8f66f1f857ad0f85bbfe37bf0d59926e1e8dada6d54ec2a8ac3566b2daf691a0 \
+                 size    27587239
 } elseif {${configure.build_arch} eq "arm64"} {
     distname     mn-darwin-aarch64-v${version}
-    checksums    rmd160  6340e75533fe4c8f388b7acbc6d03dfbbec22439 \
-                 sha256  461edcdb44fd68973186b599aa2ab5a5ce0c0af30b483788e0e32b17dedddf48 \
-                 size    25311055
+    checksums    rmd160  67cd4e4c82dcc328f5606eefbd3a9570b1e45ddb \
+                 sha256  7d29ada613a50d2f59b8e5986b3698612a89ac7f80b44d707e94caac9b80c46d \
+                 size    27587836
 }
 
 use_zip         yes

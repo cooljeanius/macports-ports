@@ -5,7 +5,7 @@ PortGroup           python 1.0
 
 name                py-asv
 version             0.6.4
-revision            0
+revision            1
 
 categories-append   devel
 license             BSD
@@ -20,7 +20,7 @@ checksums           rmd160  9d3bae0508b2fedda38b48d89aa8cee4482573cc \
                     sha256  1d124184171cfe106e3e57ac04e3221b8d4571c9bd6ca2c6498a8c7407339df1 \
                     size    389611
 
-python.versions     38 39 310 311 312
+python.versions     39 310 311 312 313
 
 if {${name} ne ${subport}} {
     depends_build-append \
@@ -30,6 +30,10 @@ if {${name} ne ${subport}} {
                     port:py${python.version}-asv-runner \
                     port:py${python.version}-json5 \
                     port:py${python.version}-tabulate \
-                    port:py${python.version}-tomli \
                     port:py${python.version}-virtualenv
+
+    if {${python.version} < 311} {
+        depends_lib-append \
+                    port:py${python.version}-tomli
+    }
 }
