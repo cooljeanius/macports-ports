@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/ddev/ddev 1.23.5 v
+go.setup            github.com/ddev/ddev 1.24.1 v
 go.offline_build    no
 fetch.type          git
 
@@ -37,6 +37,8 @@ if {${build_arch} eq "x86_64"} {
     set go_arch "amd64"
 } elseif {${build_arch} eq "arm64"} {
     set go_arch "arm64"
+} else {
+    set go_arch "unsupported"
 }
 
 build.target    darwin_${go_arch}

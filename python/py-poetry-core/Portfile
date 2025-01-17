@@ -8,14 +8,14 @@ PortGroup           select 1.0
 # compatible with this port. py-poetry-core is closely coupled to poetry,
 # both in terms of APIs but also the version pinning.
 name                py-poetry-core
-version             1.9.0
+version             2.0.0
 revision            0
 
 distname            poetry_core-${version}
 
-checksums           rmd160  c42f182a805e3874558f927fcd0114dd0b1a99f0 \
-                    sha256  fa7a4001eae8aa572ee84f35feb510b321bd652e5cf9293249d62853e1f935a2 \
-                    size    337190
+checksums           rmd160  f459b32c5dcacbb46c60ccd7bbd0378854c98d0a \
+                    sha256  3317a3cc3932011a61114236b2d49883f4fb1403d2f5e97771ac0d077cfa396f \
+                    size    353980
 
 categories-append   devel
 supported_archs     noarch
@@ -43,7 +43,8 @@ if {${name} ne ${subport}} {
                     sha256  0f9b0de39665f36d6594657e7d57b6f463cc10f30c28e6d1c3b9ff54c26c9ac3 \
                     size    443618
         depends_lib-append  port:py${python.version}-importlib-metadata
-    } elseif {${python.version} == 313} {
+    }
+    if {${python.version} == 38} {
         version     1.9.1
         revision    0
         distname    poetry_core-${version}

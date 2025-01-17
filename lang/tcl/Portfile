@@ -3,7 +3,7 @@
 PortSystem          1.0
 
 name                tcl
-version             8.6.14
+version             8.6.16
 revision            0
 # Tk (x11/tk) port depends on this version
 categories          lang
@@ -21,9 +21,10 @@ long_description    \
 homepage            https://www.tcl-lang.org/
 master_sites        sourceforge:project/tcl/Tcl/${version}
 
-checksums           rmd160  9de599069a0fba1efe28951a010486bce793c80a \
-                    sha256  5880225babf7954c58d4fb0f5cf6279104ce1cd6aa9b71e9a6322540e1c4de66 \
-                    size    11627322
+checksums           md5 eaef5d0a27239fb840f04af8ec608242 \
+                    sha1 6af9c6fd2642aa87eae4442d617d87c0193a9791 \
+                    rmd160 1cef250020be5091ae24435630bd878d01d88c2c \
+                    sha256 91cb8fa61771c63c262efb553059b7c7ad6757afa5857af6265e4b0bdc2a14a5
 
 distname            ${name}${version}-src
 worksrcdir          ${name}${version}/unix
@@ -83,7 +84,7 @@ platform darwin {
     configure.args-append tcl_cv_type_64bit="long long"
 }
 
-default_variants +threads
+default_variants-append +threads
 
 platform darwin 8 {
     # See http://trac.macports.org/ticket/32930 for why this is needed.

@@ -14,7 +14,7 @@ set major_v         3
 epoch               1
 github.setup        openssl openssl ${major_v}.4.0 openssl-
 name                openssl3
-revision            0
+revision            1
 
 github.tarball_from releases
 checksums           rmd160  d300c74dce877d7099bd59fa82d8f0691f13cc97 \
@@ -60,7 +60,7 @@ if {${os.platform} eq "darwin" && ${os.major} < 18} {
 # OpenSSL 3.4.0 implements new intrinsic code that increases compiler
 # requirements. We can only use bootstrap Clang because the newer
 # one depends on openssl by default and causes a dependency cycle.
-if {${os.platform} eq "darwin" && ${os.major} < 18} {
+if {${os.platform} eq "darwin" && ${os.major} < 18 && ${os.major} > 8} {
     if {${configure.build_arch} in {"x86_64" "i386"}} {
         depends_build-append port:clang-11-bootstrap
         depends_skip_archcheck-append clang-11-bootstrap
@@ -93,6 +93,10 @@ if {${os.platform} eq "darwin" && ${os.major} < 18} {
 # OS versions with slightly less code.
 #
 patchfiles-append   patch-use-timegm.diff
+
+# Backport fix for negative caching issue with 3rd party providers, see
+# https://trac.macports.org/ticket/71760
+patchfiles-append   5549fcd4783cb6c2a7f07e74505a2eea4939e5b1.patch
 
 if {${os.platform} eq "darwin" && ${os.major} < 11} {
     # Having the stdlib set to libc++ on 10.6 causes a dependency on a
