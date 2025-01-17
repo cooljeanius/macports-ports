@@ -4,28 +4,38 @@ PortSystem          1.0
 PortGroup           cargo   1.0
 PortGroup           github  1.0
 
-github.setup        jqnatividad qsv 0.131.0
+github.setup        dathere qsv 2.0.0
 github.tarball_from archive
 revision            0
+
+homepage            https://qsv.dathere.com
 
 description         Ultra-fast CSV data-wrangling CLI toolkit
 
 long_description    \
-    qsv is a command line program for indexing, slicing, analyzing, \
-    splitting, enriching, validating & joining CSV files.  Commands are \
-    simple, fast and composable.
+    qsv is a blazing fast, pleasingly parallel, CPU-accelerated, data \
+    wrangling toolkit that\'s built on Rust and Polars to slice, dice, and \
+    analyze your data in seconds from the command line. It's designed to \
+    handle very large datasets without specialized programming skills.
 
 categories          textproc
 installs_libs       no
-license             public-domain
+license             {public-domain MIT}
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  984b940badee7e62e21d4926067819acda9bff12 \
-                    sha256  547e26a7708869a43df7c9390c12996456c80e85e7b695ddd0aa8be8726b722d \
-                    size    10738475
+checksums           rmd160  df52e23a8f2ec5241aa35aab212ba68a56317a1d \
+                    sha256  499820c938e2c9cdb9686cdd02ab7a31e207e9fd803ccc720b5e5ce09dfd7cd6 \
+                    size    11066335
 
-build.args-append   --features=feature_capable --bin ${name}
+depends_build-append \
+                    bin:cmake:cmake
+
+depends_lib-append port:python312
+
+build.env-append    PYO3_PYTHON=${prefix}/bin/python3.12
+build.args-append   --features=distrib_features --bin ${name}
+
 cargo.offline_cmd
 
 destroot {

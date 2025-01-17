@@ -4,7 +4,9 @@ PortSystem          1.0
 PortGroup           github 1.0
 PortGroup           tree_sitter 1.0
 
-github.setup        tree-sitter tree-sitter-scala 0.22.5 v
+github.setup        tree-sitter tree-sitter-scala 0.23.4 v
+# Change github.tarball_from to 'releases' or 'archive' next update
+github.tarball_from tarball
 revision            0
 
 description         A tree-sitter parser for Scala
@@ -15,9 +17,9 @@ categories          devel
 license             MIT
 maintainers         {amake @amake} openmaintainer
 
-checksums           rmd160  974c218038f9d4d2f149b0ab49a63f062280d68c \
-                    sha256  0610d7c7975ef472b6c206d16f13b234107740a57f019119bad63af1f2544f98 \
-                    size    1304311
+checksums           rmd160  634506075b1d9512796c1eefba969df44a69566f \
+                    sha256  31aaa513f5169349a418e67ab883b109edd5b87120b5e1f39b648ae8931cd9ff \
+                    size    1325857
 
 worksrcdir          ${worksrcdir}/src
 

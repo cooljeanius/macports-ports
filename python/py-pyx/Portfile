@@ -12,7 +12,7 @@ categories-append   tex
 supported_archs     noarch
 platforms           {darwin any}
 license             GPL-2+
-maintainers         {@catap korins.ky:kirill} openmaintainer
+maintainers         nomaintainer
 
 description         Python package for the creation of PostScript, PDF, and SVG files
 long_description    PyX is a ${description}. It combines an abstraction of the PostScript \
@@ -26,7 +26,7 @@ checksums           rmd160  f744331f506969deb31a529cdaccda8f2809d63d \
                     size    626703
 
 # Note: py27-scapy depends on py27-pyx
-python.versions     27 37 38 39 310 311 312
+python.versions     27 39 310 311 312
 
 if {${name} ne ${subport}} {
     if {${python.version} == 27} {

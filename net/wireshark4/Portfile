@@ -9,7 +9,6 @@ license             {GPL-2 GPL-3}
 maintainers         {darkart.com:opendarwin.org @ghosthound}
 description         Graphical network analyzer and capture tool
 homepage            https://www.wireshark.org/
-platforms           darwin
 
 long_description    A network analyzer that lets you capture and \
                     interactively browse Ethernet frames. \
@@ -30,12 +29,12 @@ if { ${os.platform} eq "darwin" && ${os.major} < 16 } {
     }
 }
 
-version         4.2.5
+version         4.4.3
 revision        0
 
-checksums       sha256  55e793ab87a9a73aac44336235c92cb76c52180c469b362ed3a54f26fbb1261f \
-                sha1    03293699260d2492166ac805ef0c10b8a6b531e6 \
-                size    45014156
+checksums       sha256  2abb53b958a7701c239093706d373e199ac183550904d490e173b91195e2fab6 \
+                sha1    c398de5098d10570a3d522ac837f512fc24575f2 \
+                size    46769200
 
 livecheck.type  regex
 livecheck.url   ${homepage}download/src/
@@ -61,6 +60,7 @@ depends_lib         path:lib/pkgconfig/glib-2.0.pc:glib2 \
                     port:libgcrypt \
                     port:libpcap \
                     port:libssh \
+                    port:libxml2 \
                     port:lz4 \
                     port:nghttp2 \
                     port:nghttp3 \
@@ -74,7 +74,7 @@ configure.args-append \
                     -DENABLE_APPLICATION_BUNDLE=OFF \
                     -DENABLE_GNUTLS=OFF \
                     -DENABLE_KERBEROS=OFF \
-                    -DENABLE_LIBXML2=OFF \
+                    -DENABLE_LIBXML2=ON \
                     -DENABLE_LUA=OFF \
                     -DENABLE_LZ4=ON \
                     -DENABLE_MINIZIP=OFF \
@@ -161,7 +161,7 @@ variant chmodbpf description {Enable Wireshark to access macOS capture devices} 
     depends_run             port:wireshark-chmodbpf
 }
 
-set pythons_suffixes {38 39 310 311 312}
+set pythons_suffixes {39 310 311 312 313}
 
 set pythons_ports {}
 foreach py_ver_nodot ${pythons_suffixes} {
@@ -191,7 +191,7 @@ foreach py_ver_nodot ${pythons_suffixes} {
 ## if no python3* variant is specified, add +python311
 ## XYZZY: it would be better to detect which python3* is already installed and use that...
 if {!${python_isset}} {
-    default_variants-append +python312
+    default_variants-append +python313
 }
 
 

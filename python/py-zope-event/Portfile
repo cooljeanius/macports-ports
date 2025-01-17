@@ -22,15 +22,13 @@ platforms           {darwin any}
 
 homepage            https://github.com/zopefoundation/zope.event
 
-python.versions     27 35 36 37 38 39 310 311 312
+python.versions     27 37 38 39 310 311 312 313
 
 checksums           rmd160  b18ff29ee3dfd489a8f3f20025a845c38aa2ceaf \
                     sha256  bac440d8d9891b4068e2b5a2c5e2c9765a9df762944bda6955f96bb9b91e67cd \
                     size    17350
 
 if {${name} ne ${subport}} {
-    depends_build       port:py${python.version}-setuptools
-
     if {${python.version} <= 36} {
         version             4.6
         revision            0
@@ -40,13 +38,5 @@ if {${name} ne ${subport}} {
                             size    17430
 
         livecheck.type none
-    }
-
-    variant tests description {Add dependencies needed to run tests} {
-        test.run        yes
-        depends_build   port:py${python.version}-nose
-        test.cmd        nosetests-${python.branch}
-        test.args
-        test.target
     }
 }

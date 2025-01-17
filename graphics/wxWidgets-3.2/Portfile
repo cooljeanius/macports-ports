@@ -18,7 +18,7 @@ set branch          [join [lrange [split ${version} .] 0 1] .]
 
 categories          graphics devel
 license             wxwidgets-3.1
-maintainers         {mojca @mojca} openmaintainer
+maintainers         nomaintainer
 
 description         C++ framework for cross-platform GUI development
 long_description    wxWidgets ${branch} is an open-source cross-platform C++ \
@@ -35,6 +35,9 @@ checksums           rmd160  77df801aa2344874ff789ae9530a0849913d9413 \
 
 # see https://trac.macports.org/ticket/62087
 platforms           {darwin >= 16}
+platform darwin 24 {
+    macosx_deployment_target 14.0
+}
 
 dist_subdir         wxWidgets/${version}
 worksrcdir          ${distname}/build

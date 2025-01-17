@@ -7,12 +7,12 @@ PortGroup           app 1.0
 PortGroup           compiler_blacklist_versions 1.0
 PortGroup           muniversal 1.0
 
-github.setup        joncampbell123 dosbox-x 2024.07.01 dosbox-x-v
+github.setup        joncampbell123 dosbox-x 2025.01.01 dosbox-x-v
 revision            0
 
-checksums           rmd160  7af611ad251dae78923d757fe5128b0234100c3d \
-                    sha256  23462a3398303f8558e86973af9ba5d3d6d53bdaf324ec749610f2baf1dd449b \
-                    size    119702042
+checksums           rmd160  80c87a6dcd276d7f961d513c7e7d98ae7b8fc73d \
+                    sha256  40290a073f6b8894d9c2b8c3d9c39a410f84fe89837c87148653ea03e89cf7b2 \
+                    size    121975330
 
 categories          emulators
 license             GPL-2+
@@ -35,7 +35,7 @@ patchfiles          patch-futimens.diff \
 
 supported_archs     i386 x86_64 arm64
 
-set ffmpeg_ver      6
+set ffmpeg_ver      7
 
 # build also looks for nasm, but doesn't use it even if it is found
 depends_build-append \

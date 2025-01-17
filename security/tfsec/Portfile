@@ -3,7 +3,8 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/tfsec/tfsec 1.28.10 v
+go.setup            github.com/tfsec/tfsec 1.28.13 v
+go.offline_build    no
 github.tarball_from archive
 revision            0
 
@@ -18,12 +19,10 @@ license             MIT
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  569e99829aa87c554ccbdf04efa01c73232ca6ae \
-                    sha256  7eb194c8e489f198126a3e322e8b4a43226a50e544c43b6aefb6f6c4ae836e21 \
-                    size    6544318
+checksums           rmd160  4c10354b1704b3f9a4125711feec3c758f4b3988 \
+                    sha256  da61798e226a98e3d13de9d8c3b46d304834098e56422e6481cf58ef17891dd9 \
+                    size    6547648
 
-# Allow Go to fetch dependencies at build time
-go.offline_build no
 build.env-append    TRAVIS_TAG=${version}
 build.cmd           "go mod vendor && make build"
 

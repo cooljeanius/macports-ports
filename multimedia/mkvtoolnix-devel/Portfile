@@ -15,7 +15,7 @@ name                mkvtoolnix-devel
 conflicts           mkvtoolnix mkvtoolnix-legacy
 set my_name         mkvtoolnix
 
-version             86.0
+version             89.0
 revision            0
 categories          multimedia
 maintainers         {ryandesign @ryandesign} {mascguy @mascguy} {i0ntempest @i0ntempest} openmaintainer
@@ -30,14 +30,14 @@ homepage            https://mkvtoolnix.download
 master_sites        ${homepage}/sources/
 use_xz              yes
 
-checksums           rmd160  01b31d541c8a386b05d78ede38a9860515158f3c \
-                    sha256  29a9155fbba99f9074de2abcfbdc4e966ea38c16d9f6f547cf2d8d9a48152c97 \
-                    size    11369476
+checksums           rmd160  2b1245b7dcd00e2ddbd2659091e9711a1e0cb9f5 \
+                    sha256  6127b694b088e53270a946c178b6816da756200bdf672abdf65cfe0b50b260b2 \
+                    size    11253572
 
 distname            ${my_name}-${version}
 dist_subdir         ${my_name}
 
-set version_ruby    3.2
+set version_ruby    3.3
 set version_ruby_mp [join [split $version_ruby "."] ""]
 
 qt6.depends_lib     qtmultimedia \
@@ -45,7 +45,7 @@ qt6.depends_lib     qtmultimedia \
 
 depends_build       port:ruby${version_ruby_mp} \
                     port:docbook-xsl-nons \
-                    port:pkgconfig \
+                    path:bin/pkg-config:pkgconfig \
                     port:libxslt \
                     port:po4a
 

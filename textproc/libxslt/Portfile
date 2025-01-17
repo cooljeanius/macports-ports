@@ -40,10 +40,7 @@ configure.args  --without-python \
 if {${name} eq ${subport}} {
     revision            0
 
-    depends_lib-append  path:lib/pkgconfig/icu-uc.pc:icu \
-                        port:libiconv \
-                        port:libxml2 \
-                        port:zlib
+    depends_lib-append  port:libxml2
 
 test.run        yes
 test.target     check
@@ -79,7 +76,7 @@ variant debug description {Enable debug support} {
     livecheck.type  none
 }
 
-foreach v {2.7 3.8 3.9 3.10 3.11 3.12} {
+foreach v {2.7 3.9 3.10 3.11 3.12} {
     set v_nodot [string map {. {}} $v]
     subport py${v_nodot}-${name} "
         set python.version $v_nodot

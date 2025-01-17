@@ -6,8 +6,9 @@ PortGroup           compiler_blacklist_versions 1.0
 PortGroup           conflicts_build 1.0
 PortGroup           legacysupport 1.1
 
-# CImg.h: error: 'strnlen' was not declared in this scope; did you mean 'strlen'?
-legacysupport.newest_darwin_requires_legacy 10
+# https://trac.macports.org/ticket/70676 
+# fatal error: use of undeclared identifier 'AT_FDCWD'
+legacysupport.newest_darwin_requires_legacy 13
 
 if {${subport} eq "gmic-gimp" || ${subport} eq "gmic-qt"} {
     PortGroup       cmake           1.1
@@ -20,8 +21,8 @@ if {${subport} eq "gmic-gimp" || ${subport} eq "gmic-qt"} {
 }
 
 name                gmic
-version             3.4.0
-revision            1
+version             3.5.0
+revision            0
 license             CeCILL
 categories          science graphics
 maintainers         {mps @Schamschula} openmaintainer
@@ -38,12 +39,9 @@ long_description    G'MIC stands for GREYC's Magic Image Converter. It is \
 homepage            https://gmic.eu
 master_sites        https://gmic.eu/files/source/
 
-# stealth update
-dist_subdir         ${name}/${version}_${revision}
-
-checksums           rmd160  0e9737eb464cbb4f1f16465fc58a9e5be5752f98 \
-                    sha256  df6f087af3db935d5788f7fa20c4fc46a426991919db91853b0db1c9e7cd792a \
-                    size    18020463
+checksums           rmd160  d4f98a44677e63a4730c055e7845be0eb09f3d70 \
+                    sha256  847ddf438bbe73ec1447a8d98916571c75664bed050ac11212e45b2eb4c1cad0 \
+                    size    19705183
 
 distfiles           ${name}_${version}${extract.suffix}
 

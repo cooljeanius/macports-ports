@@ -9,7 +9,7 @@ PortGroup           legacysupport 1.1
 legacysupport.newest_darwin_requires_legacy 10
 
 name                erlang
-version             27.0
+version             27.2
 revision            0
 
 set doc_version     ${version}
@@ -46,17 +46,17 @@ distfiles           otp_src_${version}${extract.suffix}                    \
                     otp_doc_html_${doc_version}${extract.suffix}
 
 checksums           otp_src_${version}.tar.gz \
-                    rmd160  b3d8528389c497ee547bf94b0ad2c33cbb0290de \
-                    sha256  56412677466b756740fb2dbf4a8019e7c7cc38f01bd30c4cac5210214cafeef6 \
-                    size    101038198 \
+                    rmd160  05a539d1e30d7cae4d2d718d1a81de2c1de099a1 \
+                    sha256  b66c2cc4fa2c87211b668e4486d4f3e5b1b6705698873ea3e6d9850801ac992d \
+                    size    101364008 \
                     otp_doc_man_${doc_version}.tar.gz \
-                    rmd160  14a6963ba477eabdd3e27324afa839686b07c364 \
-                    sha256  95a2ea0e22ea4b7d58e74df145b52e2c85b642434391c814300824204a107c38 \
-                    size    1764909 \
+                    rmd160  50cbc2462937de2708620c6cd1247d7f9619526f \
+                    sha256  e6ee8aca110d239f45df289a5e9d3ba670f6574df363c291444e7d6f20e77189 \
+                    size    44960 \
                     otp_doc_html_${doc_version}.tar.gz \
-                    rmd160  a769c4f2f72019e00978a60a1ac002cd993a81f7 \
-                    sha256  69c926bbf1b3fed93f361317a481910dae98f9700f58765b36c4875044bcc9d7 \
-                    size    29506649
+                    rmd160  95815e7f95554240b1b94d034f1464a8f31f1bd5 \
+                    sha256  b403ba1fb75ea7769242b00cd2480919c46d7fc9a5ebab14a553d86cb00d3f07 \
+                    size    29949824
 
 worksrcdir          otp_src_${version}
 
@@ -83,9 +83,8 @@ post-destroot   {
     system "tar -C ${destroot}${prefix}/lib/erlang -zxvf [shellescape ${distpath}/otp_doc_html_${doc_version}${extract.suffix}]"
     system "tar -C ${destroot}${prefix}/lib/erlang -zxvf [shellescape ${distpath}/otp_doc_man_${doc_version}${extract.suffix}]"
 
-    set erts_dir            erts-12.2
-    set erl_interface_dir   erl_interface-5.1
-    set wx_dir              wx-2.1.1
+    set erts_dir            [glob -tails -directory ${destroot}${prefix}/lib/erlang/lib/ erts-*]
+    set erl_interface_dir   [glob -tails -directory ${destroot}${prefix}/lib/erlang/lib/ erl_interface-*]
 
     foreach x {dialyzer ear ecc elink epmd erl erlc escript run_erl start to_erl typer} {
         delete ${destroot}${prefix}/bin/${x}
@@ -120,6 +119,10 @@ platform darwin {
         # also "-framework Appkit"?
         configure.ldflags-append -framework CoreFoundation
     }
+
+    # asmjit fix for Sonoma annoying popup with JIT on amd64
+    # Upstream didn't want to include it yet
+    patchfiles-append           patch-asmjit-dualmap.diff
 }
 
 # FIXME: allow building with wxGTK on older systems.
@@ -151,5 +154,5 @@ default_variants    +ssl
 
 livecheck.type      regex
 livecheck.version   ${version}
-livecheck.url       ${homepage}download/
+livecheck.url       ${homepage}downloads/
 livecheck.regex     "otp_src_(\[0-9\]+\\.\[0-9\]+(\\.\[0-9\])?)\\.tar\\.gz"

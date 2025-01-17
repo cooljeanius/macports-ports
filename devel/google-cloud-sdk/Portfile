@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                google-cloud-sdk
-version             487.0.0
+version             506.0.0
 revision            0
 categories          devel python
 license             Apache-2
@@ -21,19 +21,19 @@ supported_archs     i386 x86_64 arm64
 
 if { ${configure.build_arch} eq "i386" } {
     distname        ${name}-${version}-darwin-x86
-    checksums       rmd160  ec1a0900dfefd74cef180c5b35cbfb1c7fba5297 \
-                    sha256  c1391fb84a9a07475e570bf4c62d099dd029d88e3abdbc54b6dc864c7ee44d93 \
-                    size    51394284
+    checksums       rmd160  45ffd0c83823de108e48b7ad517f1e8b509cbbad \
+                    sha256  28fa6360cc7ff4394a065f0bb2aa10591a4f7fb0ff1e6fab9a80c53593e0181d \
+                    size    53417128
 } elseif { ${configure.build_arch} eq "x86_64" } {
     distname        ${name}-${version}-darwin-x86_64
-    checksums       rmd160  c7bb5f817271c50513979272327b531f4073c251 \
-                    sha256  376c6c8f2991c70d2a93b2cff1a6539dcb0377a15080b7349d4bf35850f1ea2d \
-                    size    52749882
+    checksums       rmd160  e6398cb85078a7658237ef984d12dbe017ae8ab0 \
+                    sha256  ba858537ca7c00d6d131935593321bcb4af457501398954a0f5b9673a8f570d7 \
+                    size    54883799
 } elseif { ${configure.build_arch} eq "arm64" } {
     distname        ${name}-${version}-darwin-arm
-    checksums       rmd160  e64ba93ce2157449db52a686e3a44e2ae3e60639 \
-                    sha256  493d0f44b9838bbdee4a18c31034b3f17f18b675b77b78dadf8dd344dd4a65e5 \
-                    size    52698156
+    checksums       rmd160  db34582a6d3ea133d2905d5a17c41faa46ed768f \
+                    sha256  15a50df6b58c5b27b159e84cef87b9b477419feb5edd8d987a2b8707c907fb42 \
+                    size    54825568
 }
 
 homepage            https://cloud.google.com/sdk/
@@ -41,7 +41,9 @@ master_sites        https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/
 
 worksrcdir          ${name}
 
-# Most recent supported Python version according to https://cloud.google.com/sdk/docs/install#mac
+# Most recent Python version that supports to both
+# glcoud (https://cloud.google.com/sdk/docs/install#mac) and
+# gsutil (https://cloud.google.com/storage/docs/gsutil_install#specifications)
 python.default_version 312
 
 post-patch {
@@ -97,6 +99,7 @@ variant kubectl_oidc description {Add kubectl-oidc} { dict set variant_to_compon
 variant kustomize description {Add Kustomize} { dict set variant_to_component kustomize kustomize }
 variant local_extract description {Add On-Demand Scanning API extraction helper} { dict set variant_to_component local_extract local-extract }
 variant log_streaming description {Add Log Streaming} { dict set variant_to_component log_streaming log-streaming }
+variant managed_flink_client description {Add managed Flink client} { dict set variant_to_component managed_flink_client managed-flink-client }
 variant minikube description {Add Minikube} { dict set variant_to_component minikube minikube }
 variant nomos description {Add Nomos CLI} { dict set variant_to_component nomos nomos }
 variant package_go_module description {Add Artifact Registry Go Module Package Helper} { dict set variant_to_component package_go_module package-go-module }

@@ -1,11 +1,11 @@
-Don't force -stdlib=libc++ on macOS. MacPorts will set the right lib to use.
---- build/cmake/CompilerOptions.cmake.orig	2023-09-23 15:55:24
-+++ build/cmake/CompilerOptions.cmake	2023-09-23 15:55:32
-@@ -1,6 +1,6 @@
- # Set default compile options for supported compilers
+--- CMakeLists.txt.old	2025-01-07 14:49:30
++++ CMakeLists.txt	2025-01-07 14:49:39
+@@ -54,7 +54,7 @@
+ # compiler options:
+ 
  if(APPLE)
--    target_compile_options( astyle PRIVATE -W -Wall -fno-rtti -fno-exceptions -std=c++17 -stdlib=libc++)
-+    target_compile_options( astyle PRIVATE -W -Wall -fno-rtti -fno-exceptions -std=c++17)
+-    target_compile_options( astyle PRIVATE -W -Wall -fno-rtti -fno-exceptions -stdlib=libc++)
++    target_compile_options( astyle PRIVATE -W -Wall -fno-rtti -fno-exceptions)
  elseif(NOT WIN32)   # Linux
-     target_compile_options(astyle PRIVATE -Wall -Wextra -fno-rtti -fno-exceptions -std=c++17)
+     target_compile_options(astyle PRIVATE -Wall -Wextra -fno-rtti -fno-exceptions)
      if ("${CMAKE_CXX_COMPILER_ID}" STREQUAL "gnu")

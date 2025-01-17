@@ -9,7 +9,7 @@ version             5.34.3
 categories          lang
 platforms           darwin freebsd linux
 license             {Artistic-1 GPL}
-maintainers         {mojca @mojca} openmaintainer
+maintainers         nomaintainer
 
 homepage            https://www.perl.org/
 master_sites        https://www.cpan.org/src/5.0/
@@ -162,6 +162,12 @@ foreach {perl5.v perl5.subversion perl5.revision perl5.rmd160 perl5.sha256 perl5
             # https://trac.macports.org/ticket/63022
             patchfiles-append \
                             ${perl5.major}/patch-want-implicit-errors.diff
+        }
+        if {${perl5.major} >= 5.36} {
+            # Do not override deployment target
+            # https://trac.macports.org/ticket/71152
+            patchfiles-append \
+                            ${perl5.major}/remove-deployment-target-override.diff
         }
 
         post-patch {

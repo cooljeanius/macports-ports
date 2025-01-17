@@ -4,12 +4,14 @@ PortSystem          1.0
 PortGroup           github 1.0
 
 github.setup        eklitzke demangle dc2d82d0b282cd1fad6870ff64edd5b3657846fc
+# Change github.tarball_from to 'releases' or 'archive' next update
+github.tarball_from tarball
 version             20160204
 revision            1
 
 categories          devel
 license             GPL-3+
-maintainers         {@catap korins.ky:kirill} openmaintainer
+maintainers         nomaintainer
 
 description         Tool to demangle C++ symbols.
 long_description    This is a tool to help you demangle C++ symbols. \

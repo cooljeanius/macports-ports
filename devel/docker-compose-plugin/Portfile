@@ -3,11 +3,10 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/docker/compose 2.26.1 v
+go.setup            github.com/docker/compose 2.32.1 v
 revision            0
 name                docker-compose-plugin
 categories          devel
-platforms           darwin
 license             Apache-2
 maintainers         {danchr @danchr} \
                     openmaintainer
@@ -20,9 +19,9 @@ long_description    A tool for running multi-container applications on \
                     create and start your application with a single \
                     command: docker compose up.
 
-checksums           rmd160  ac7a5c7a9f879ec03d7f8ee8a1f3ea7ced7f8007 \
-                    sha256  2f6dbacea8e1378f54ee847503390500c64b38862e5fa70ef71e4b27958fec19 \
-                    size    361153
+checksums           rmd160  6111331e38acb33a35f382ba7cb41f3faf286f74 \
+                    sha256  22c3cfb1a61e455d4c1931389c21821a91d40233ba10d3255cd5b023ac24a7ff \
+                    size    381849
 
 go.offline_build    no
 

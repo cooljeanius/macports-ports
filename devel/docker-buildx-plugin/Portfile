@@ -3,11 +3,10 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/docker/buildx 0.13.1 v
+go.setup            github.com/docker/buildx 0.19.3 v
 revision            0
 name                docker-buildx-plugin
 categories          devel
-platforms           darwin
 license             Apache-2
 maintainers         {danchr @danchr} \
                     openmaintainer
@@ -26,9 +25,9 @@ long_description    {*}{
     * In-container driver support (both Docker and Kubernetes)
 }
 
-checksums           rmd160  6ac76746a4f520c5b8dd0c4f21bad1abc7c2daad \
-                    sha256  aa7345da1cb6ad373ce404d44af604880387687c521b6b5e43b1343920748004 \
-                    size    11078546
+checksums           rmd160  432aa191153460f2c0bd578d4f55608ebfaeee32 \
+                    sha256  1e92fab30587a6a34d26e1cc62fe9f1410737c7df4cdf1111d8c8a8cdca83bf8 \
+                    size    11697181
 
 go.offline_build    no
 

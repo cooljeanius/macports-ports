@@ -4,20 +4,21 @@ PortSystem          1.0
 PortGroup           perl5 1.0
 
 perl5.branches      5.28 5.30 5.32 5.34
-perl5.setup         Module-Pluggable 5.2
+perl5.setup         Module-Pluggable 6.3
+revision            0
 license             {Artistic-1 GPL}
 maintainers         nomaintainer
-description         automatically give your module the ability to have plugins
-long_description    ${description}
+description         Module::Pluggable - automatically give your module the ability to have plugins
+long_description    {*}${description}
 
 platforms           {darwin any}
+supported_archs     noarch
 
-checksums           rmd160  e0996969435a09e8d9c45549248d4ebe86056b14 \
-                    sha256  b3f2ad45e4fd10b3fb90d912d78d8b795ab295480db56dc64e86b9fa75c5a6df
+checksums           rmd160  3c7ed6aba077b0934b962615d2f22ef540919ddd \
+                    sha256  58512bb9c654746d0937770b98b559b30872d85ac24073485e5830890dd1b2a0 \
+                    size    29053
 
 if {${perl5.major} != ""} {
     depends_lib-append \
                     port:p${perl5.major}-module-runtime
-
-    supported_archs noarch
 }

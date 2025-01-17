@@ -5,7 +5,7 @@ PortGroup           python 1.0
 PortGroup           select 1.0
 
 name                py-pytest
-version             7.4.3
+version             8.3.4
 revision            0
 
 categories-append   devel
@@ -13,9 +13,9 @@ platforms           {darwin any}
 license             MIT
 supported_archs     noarch
 
-python.versions     27 35 36 37 38 39 310 311 312
+python.versions     27 35 36 37 38 39 310 311 312 313
 
-maintainers         {stromnov @stromnov} {@catap korins.ky:kirill} openmaintainer
+maintainers         {stromnov @stromnov} openmaintainer
 
 description         py.test: simple powerful testing with Python
 
@@ -25,20 +25,18 @@ long_description    The pytest framework makes it easy to write small tests, \
 
 homepage            https://pytest.org
 
-checksums           rmd160  fd0e868774ffc7cc5e1b7e49b09fd505927ac9fa \
-                    sha256  d989d136982de4e3b29dabcc838ad581c64e8ed52c11fbe86ddebd9da0818cd5 \
-                    size    1356179
+checksums           rmd160  cc7048ac4eaab62802bef73d6af938bd5036ba71 \
+                    sha256  965370d062bce11e73868e0335abac31b4d3de0e82f4007408d242b4f8610761 \
+                    size    1445919
 
 if {${name} ne ${subport}} {
     depends_build-append \
                         port:py${python.version}-setuptools_scm
 
     depends_lib-append  port:py${python.version}-setuptools \
-                        port:py${python.version}-attrs \
                         port:py${python.version}-iniconfig \
                         port:py${python.version}-packaging \
-                        port:py${python.version}-pluggy \
-                        port:py${python.version}-py
+                        port:py${python.version}-pluggy
 
     if {${python.version} < 38} {
         depends_lib-append \
@@ -80,6 +78,15 @@ if {${name} ne ${subport}} {
         checksums           rmd160  530488f483b32848f0650ad490ce4e74e85263f8 \
                             sha256  e30905a0c131d3d94b89624a1cc5afec3e0ba2fbdb151867d8e0ebd49850f171 \
                             size    1249154
+        # "py" was added for 6.0.0 then vendored in 7.2.0
+        depends_lib-append  port:py${python.version}-py
+    } elseif {${python.version} eq 37} {
+        version             7.4.4
+        revision            0
+        distname            ${python.rootname}-${version}
+        checksums           rmd160  12d1be2172489516e510471f581f0391c1937dcb \
+                            sha256  2cf0005922c6ace4a3e2ec8b4080eb0d9753fdc93107415332f50ce9e7994280 \
+                            size    1357116
     }
 
     if {${python.version} <= 35} {
@@ -90,6 +97,8 @@ if {${name} ne ${subport}} {
     }
 
     if {${python.version} <= 36} {
+        # attrs was dropped in 7.3.0
+        depends_lib-append  port:py${python.version}-attrs
         depends_lib-delete  port:py${python.version}-exceptiongroup
     }
 

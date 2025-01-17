@@ -35,7 +35,7 @@ depends_lib         port:desktop-file-utils \
                     port:libxml2 \
                     port:libxslt \
                     port:sqlite3 \
-                    path:lib/pkgconfig/libsoup-2.4.pc:libsoup \
+                    port:libsoup-2.4 \
                     port:json-glib \
                     port:gsettings-desktop-schemas \
                     port:libpeas \
@@ -57,7 +57,7 @@ configure.args      --disable-schemas-compile \
 
 post-activate {
     system "${prefix}/bin/update-desktop-database ${prefix}/share/applications"
-    system "${prefix}/bin/gtk-update-icon-cache-3.0 -f -t ${prefix}/share/icons/hicolor"
+    system "${prefix}/bin/gtk-update-icon-cache -f -t ${prefix}/share/icons/hicolor"
     system "${prefix}/bin/glib-compile-schemas ${prefix}/share/glib-2.0/schemas"
 }
 

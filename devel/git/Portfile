@@ -10,7 +10,7 @@ legacysupport.newest_darwin_requires_legacy 11
 name                git
 # NOTE: Update the DEVEL version first before updating this RELEASE version,
 #       to verify that the intended version builds on all platforms.
-version             2.46.0
+version             2.48.0
 revision            0
 
 description         A fast version control system
@@ -22,9 +22,9 @@ long_description    Git is a fast, scalable, distributed open source version \
 subport ${name}-devel {
     PortGroup           github  1.0
 
-    github.setup        git git 2.46.0 v
+    github.setup        git git 2.48.1 v
     github.tarball_from archive
-    revision            1
+    revision            0
 
     description     \
         {*}${description} (Development Version)
@@ -43,6 +43,8 @@ categories          devel
 license             GPL-2 LGPL-2.1+
 installs_libs       no
 
+patch.pre_args-replace  -p0 -p1
+
 if {${name} eq ${subport}} {
     # RELEASE VERSION
 
@@ -58,18 +60,25 @@ if {${name} eq ${subport}} {
                     git-manpages-${version}${extract.suffix}
 
     checksums       git-${version}${extract.suffix} \
-                    rmd160  700669ddacf7fe2e2bc1acf0df78fb3e93f98841 \
-                    sha256  7f123462a28b7ca3ebe2607485f7168554c2b10dfc155c7ec46300666ac27f95 \
-                    size    7577180 \
+                    rmd160  da6286aefed2b37c2e3bc099a3f229c24eb0462a \
+                    sha256  4803b809c42696b3b8cce6b0ba6de26febe1197f853daf930a484db93c1ad0d5 \
+                    size    7723336 \
                     git-manpages-${version}${extract.suffix} \
-                    rmd160  53fa19cf1132e9caf924f5e1059f27f75248b562 \
-                    sha256  dc118b1d4036e58d5cc4f4e804d903e1e137dac3e9826a246a7e517afd877bd3 \
-                    size    585072
+                    rmd160  cc3d33ca4dc316f780c4d49eaf998aee93707b08 \
+                    sha256  1590a164e733b5cc83e59d51e6b323b46e2fdd3dec94ea5bf1fbbd0c129ed0d3 \
+                    size    590480
 
     extract.only    git-${version}${extract.suffix} \
                     git-manpages-${version}${extract.suffix}
 
     conflicts       git-devel
+
+    # Reverts breakage introduced by 51c15ac1b6ab15d8e29651d0bd364d8f62dc6509
+    # and later commits.
+    # TODO: consider convising upstream to restore fallback code.
+    if {${os.platform} eq "darwin" && ${os.major} < 11} {
+        patchfiles-append patch-Revert-breaking-osxkeychain.diff
+    }
 
     livecheck.type  regexm
     livecheck.regex {<span class="version">.*?(\d+\.\d+\.\d+).*?</span>}
@@ -77,10 +86,9 @@ if {${name} eq ${subport}} {
     # DEVELOPMENT VERSION
 
     checksums       ${distname}${extract.suffix} \
-                    rmd160  980b1e2d918e45dec285fe0bcf27cdd4c52391d9 \
-                    sha256  d9a72f1648406806d2cb3049b4a73f357e2dc8df5d2962ce6d24220f3861a221 \
-                    size    11255537
-
+                    rmd160  0d51c99a552f5777470e28d7568240c74b237d86 \
+                    sha256  89b94928cc3bcc70f942407e026da287415263869a360598c8095030c64d4a59 \
+                    size    11471245
 
     depends_build-append \
                     port:asciidoc \
@@ -89,6 +97,13 @@ if {${name} eq ${subport}} {
     build.target    all man html
 
     conflicts       git
+
+    # Reverts breakage introduced by 51c15ac1b6ab15d8e29651d0bd364d8f62dc6509
+    # and later commits.
+    # TODO: consider convising upstream to restore fallback code.
+    if {${os.platform} eq "darwin" && ${os.major} < 11} {
+        patchfiles-append patch-git-devel-Revert-breaking-osxkeychain.diff
+    }
 }
 
 perl5.require_variant   false
@@ -110,16 +125,7 @@ depends_run-append  path:bin/rsync:rsync
 
 patchfiles-append   patch-Makefile.diff \
                     patch-git-subtree.1.diff \
-                    patch-sha1dc-older-apple-gcc-versions.diff \
-                    patch-gitk-git-gitk.diff
-
-patch.pre_args-replace  -p0 -p1
-
-# Reverts breakage introduced by:
-# https://github.com/git/git/commit/51c15ac1b6ab15d8e29651d0bd364d8f62dc6509
-if {${os.platform} eq "darwin" && ${os.major} < 11} {
-    patchfiles-append patch-Revert-breaking-osxkeychain.diff
-}
+                    patch-sha1dc-older-apple-gcc-versions.diff
 
 # Git 2.36.0 implements a new FSEvent listener that uses
 # the API available in Yosemite and newer.
@@ -272,9 +278,9 @@ variant doc description {Install HTML and plaintext documentation} {
         # RELEASE
         distfiles-append    git-htmldocs-${version}${extract.suffix}
         checksums-append    git-htmldocs-${version}${extract.suffix} \
-                            rmd160  1517778d69ff7da3974675417ab5fa2f0b02ee8c \
-                            sha256  175d756b9d5eda6656c8067c7f8f80f15bd0cd9f908c3c4995ee6fe8a4182104 \
-                            size    1594172
+                            rmd160  cb1c9934a823fb50c6fa1c2e854a05ca3d7a98f5 \
+                            sha256  ae8427989f8d0ca4b74521a75630737e5e3e0512ec99cab93f8e682c99a42fef \
+                            size    1579956
 
         patchfiles-append   patch-git-subtree.html.diff
 

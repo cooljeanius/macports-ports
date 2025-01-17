@@ -4,19 +4,19 @@ PortSystem          1.0
 PortGroup           perl5 1.0
 
 perl5.branches      5.28 5.30 5.32 5.34
-perl5.setup         DateTime-Format-Flexible 0.34
+perl5.setup         DateTime-Format-Flexible 0.37
 revision            0
 license             {Artistic-1 GPL}
 maintainers         {devans @dbevans} openmaintainer
 description         DateTime::Format::Flexible - Flexibly parse strings and turn them into DateTime objects.
-long_description    ${description}
+long_description    {*}${description}
 
 platforms           {darwin any}
 supported_archs     noarch
 
-checksums           rmd160  9578488b5f30c2c1ca967cbe4d65f083eee28a3d \
-                    sha256  836aef5d25e6ff8827308a43bff74191e5d20220daa3d2120050bcc34148fcf1 \
-                    size    76347
+checksums           rmd160  7e20b1973e17d63889927d36c0f518571c591e2c \
+                    sha256  d30ba7f2ce512f5820d6dd51c6e2d02bbc1bf7d3ee07a0b7282b1cef9a2e72cd \
+                    size    75724
 
 if {${perl5.major} != ""} {
     depends_build-append \
@@ -28,6 +28,5 @@ if {${perl5.major} != ""} {
     depends_lib-append \
                     port:p${perl5.major}-datetime \
                     port:p${perl5.major}-datetime-format-builder \
-                    port:p${perl5.major}-datetime-timezone \
-                    port:p${perl5.major}-list-moreutils
+                    port:p${perl5.major}-datetime-timezone
 }

@@ -5,7 +5,7 @@ PortGroup           python 1.0
 
 name                py-imagecodecs
 epoch               1
-version             2024.6.1
+version             2024.12.30
 revision            0
 
 categories-append   graphics
@@ -17,20 +17,19 @@ long_description    {*}${description}
 
 homepage            https://github.com/cgohlke/imagecodecs/
 
-checksums           rmd160  28d1e721b64713eb4c4e98540bc9df8a0dc78c61 \
-                    sha256  0f3e94b7f51e2f78287b7ffae82cd850b1007639148894538274fa50bd179886 \
-                    size    9459867
+checksums           rmd160  d9cf49479dc60d09c543ff916fecec40073f3f27 \
+                    sha256  4c88f745719313cabea6dd5f1e69c9f93346de91c0f1e770eb969f2232247f21 \
+                    size    9502615
 
-python.versions     39 310 311 312
+python.versions     39 310 311 312 313
 
 if {${name} ne ${subport}} {
     platforms {darwin >= 17}
 
     depends_build-append \
-                    path:bin/cython-${python.branch}:py${python.version}-cython \
-                    port:py${python.version}-setuptools
+                    path:bin/cython-${python.branch}:py${python.version}-cython
 
-     depends_lib-append \
+    depends_lib-append \
                     port:blosc \
                     port:brotli \
                     port:brunsli \
@@ -51,7 +50,6 @@ if {${name} ne ${subport}} {
                     port:zstd
 
     post-patch {
-        reinplace "s|%PREFIX%|${prefix}|g" \
-            ${worksrcpath}/setup.py
+        reinplace "s|%PREFIX%|${prefix}|g" ${worksrcpath}/setup.py
     }
 }

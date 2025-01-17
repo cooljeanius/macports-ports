@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           github 1.0
 
-github.setup        denoland deno 1.45.5 v
+github.setup        denoland deno 2.1.5 v
 github.tarball_from releases
 revision            0
 
@@ -30,13 +30,13 @@ maintainers         {gmail.com:herby.gillot @herbygillot} \
 supported_archs     arm64 x86_64
 
 checksums           ${name}-x86_64-apple-darwin.zip \
-                    rmd160  8884099bc92ad1cf6ea2508a45e5b01651d495f2 \
-                    sha256  edd8a3d04526b2e06faba8527dfe50f718b422cb03949900a60eabd368669ded \
-                    size    42189720 \
+                    rmd160  9937232f6f6ade6263a5d82ccd8ee01c9a1177ff \
+                    sha256  2630506ff57667d6b264a0e067cb2a4cf84e5c4ce22a00aa5f200e24b77a991a \
+                    size    43846059 \
                     ${name}-aarch64-apple-darwin.zip \
-                    rmd160  7fe01bd2a823b6c08476d258193b5bc38ceec46a \
-                    sha256  36a37289ceaf1cf52df3c748dab47bf31dfb374fe5485125732de66a859b3589 \
-                    size    40797326
+                    rmd160  980c4506ef28994a3fbc8d593bdb86ed3a520703 \
+                    sha256  7385b6bc48f0579d6740c9216b16263c2313fef84f9681607a34d2618e6b8a90 \
+                    size    42600445
 
 if {${build_arch} eq "arm64"} {
     set release_arch aarch64
