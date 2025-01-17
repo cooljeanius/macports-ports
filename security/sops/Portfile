@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/mozilla/sops 3.9.1 v
+go.setup            github.com/mozilla/sops 3.9.3 v
 go.package          go.mozilla.org/sops/v3
 go.offline_build    no
 github.tarball_from archive
@@ -21,11 +21,15 @@ license             MPL-2
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  a72a99cffb3417eb231ac8d390139a1d8b42dea7 \
-                    sha256  d79e8caaef3134d00f759231e8ef587b791996e2e45319ffe83dee1ab01aebda \
-                    size    247345
+checksums           rmd160  d849a9bdafdd2fbbe12cf6569d63ad6e74a34036 \
+                    sha256  07f21ad574df8153d28f9bcd0a6e5d03c436cb9a45664a9af767a70a7d7662b9 \
+                    size    250004
 
 build.target        ./cmd/sops
+
+pre-build {
+    system -W ${worksrcpath} "${go.bin} mod tidy"
+}
 
 destroot {
     xinstall -m 0755 ${worksrcpath}/${name} ${destroot}${prefix}/bin/

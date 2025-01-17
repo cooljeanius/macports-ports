@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-aiohttp
-version             3.11.8
+version             3.11.11
 categories-append   devel
 license             Apache-2
 
@@ -20,9 +20,9 @@ long_description    aiohttp key futures are the support for both client and \
 
 homepage            https://github.com/aio-libs/aiohttp
 
-checksums           rmd160  96cb54175b9228c1bc57531b75ac5ce781952afe \
-                    sha256  7bc9d64a2350cbb29a9732334e1a0743cbb6844de1731cbdf5949b235653f3fd \
-                    size    7667904
+checksums           rmd160  0215514e01393e9b482704f7a963d69cd86a2a83 \
+                    sha256  bb49c7f1e6ebf3821a42d81d494f538107610c3a705987f53068546b0e90303e \
+                    size    7669618
 
 if {${name} ne ${subport}} {
     depends_lib-append      port:py${python.version}-aiodns \
