@@ -4,12 +4,12 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-statsmodels
-version             0.14.1
+version             0.14.6
 revision            0
 categories-append   science math
 license             BSD
 
-python.versions     39 310 311 312
+python.versions     310 311 312 313 314
 
 maintainers         {stromnov @stromnov} openmaintainer
 
@@ -22,15 +22,17 @@ long_description    Statsmodels is  a  Python  package  that  provides \
 
 homepage            https://www.statsmodels.org/
 
-checksums           md5 4e0f1ecd898349d9f23ee496bb6ba7ba \
-                    rmd160 f117d4bb034d5078e401ebb8a1bed6b65956c53a \
-                    sha256 2260efdc1ef89f39c670a0bd8151b1d0843567781bcafec6cda0534eb47a94f6 \
-                    size   20309647
+checksums           rmd160  c7c2c9d080eeed536524da94d7c51b8e0abd64bd \
+                    sha256  4d17873d3e607d398b85126cd4ed7aad89e4e9d89fc744cdab1af3189a996c2a \
+                    size    20689085
 
 if {${name} ne ${subport}} {
+    patchfiles      patch-setuptools_scm-pyproject.toml.diff
+
     depends_build-append \
                         port:py${python.version}-setuptools_scm \
                         port:py${python.version}-cython
+
     depends_lib-append  port:py${python.version}-numpy \
                         port:py${python.version}-scipy \
                         port:py${python.version}-pandas \

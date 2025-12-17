@@ -2,10 +2,9 @@
 
 PortSystem          1.0
 PortGroup           gitlab 1.0
-PortGroup           compiler_blacklist_versions 1.0
 
 gitlab.instance     https://code.uplex.de
-gitlab.setup        stefan audiowmark 0.6.3
+gitlab.setup        stefan audiowmark 0.6.5
 revision            0
 
 categories          audio
@@ -27,9 +26,9 @@ long_description    {*}${description} A sound file is read by the software, \
 
 homepage            https://uplex.de/audiowmark/
 
-checksums           rmd160  9d541594a6392fc6752faaec0786fc59f3129207 \
-                    sha256  a465a45eb25be7057b24607e988b38d7a60e554fecf881f75a74fa45256e5cfa \
-                    size    117205
+checksums           rmd160  5a4490ff7ce0f90b1d78461be1fe16e65afa0482 \
+                    sha256  6480f7db8cbb8db415344c5e92faf0d31425a77c745b0ce500bf2941c9a11c13 \
+                    size    144685
 
 set ffmpeg_ver      7
 

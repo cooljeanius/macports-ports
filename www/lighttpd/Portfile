@@ -5,11 +5,11 @@ PortGroup                   legacysupport 1.0
 PortGroup                   lua 1.0
 
 name                        lighttpd
-version                     1.4.77
+version                     1.4.82
 revision                    0
-checksums                   rmd160  0de64e49751d399fa9a90d186b70c6d298d81013 \
-                            sha256  acafabdbfa2267d8b6452d03d85fdd2a66525f3f05a36a79b6645c017f1562ce \
-                            size    857872
+checksums                   rmd160  e00380a566929bc574aa7cdd8948ab45d5bd6745 \
+                            sha256  abfe74391f9cbd66ab154ea07e64f194dbe7e906ef4ed47eb3b0f3b46246c962 \
+                            size    883352
 
 set branch                  [join [lrange [split ${version} .] 0 1] .]
 categories                  www

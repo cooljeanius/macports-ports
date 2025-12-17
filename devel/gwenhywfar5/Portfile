@@ -7,14 +7,13 @@ PortGroup           legacysupport 1.1
 # strndup
 legacysupport.newest_darwin_requires_legacy 10
 
-github.setup        aqbanking gwenhywfar 5.10.2
-# Change github.tarball_from to 'releases' or 'archive' next update
-github.tarball_from tarball
+github.setup        aqbanking gwenhywfar 5.13.0
+github.tarball_from archive
 name                gwenhywfar5
 
-checksums           rmd160  195d2ac600be4e5caa4f9dc18558fd4aa0908937 \
-                    sha256  70e9dea57a0d9c80847e1fa14aadcc15a4fcee9b4506dc8f9154f2917b40094e \
-                    size    1757672
+checksums           rmd160  2333009294b7ee7c8f0d9df8c13601aab7a669a9 \
+                    sha256  2c3564e7a327c483a69a85b9d563f0408fb32c21765a9c992a04a892ac05dab5 \
+                    size    1796154
 
 categories          devel net finance
 maintainers         {dports @drkp} openmaintainer
@@ -52,7 +51,7 @@ subport gwenhywfar5-gtk3 {
         configure.args-append   --with-guis="gtk3 cpp" --disable-qt4 --disable-qt5
 }
 
-patchfiles          configure.ac.patch 
+patchfiles          configure.ac.patch
 
 pre-configure {
     system -W ${worksrcpath} "\

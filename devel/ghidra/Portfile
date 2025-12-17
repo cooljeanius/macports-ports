@@ -5,12 +5,11 @@ PortGroup           github 1.0
 PortGroup           java 1.0
 PortGroup           app 1.0
 
-github.setup        NationalSecurityAgency ghidra 11.2.1 Ghidra_ _build
-# Change github.tarball_from to 'releases' or 'archive' next update
-github.tarball_from tarball
-checksums           rmd160  387011c078775375144aedfc8001d45d6e3c9f97 \
-                    sha256  dd4271dbe7c646bc8f3824f8dd44d66a700c22e389881ea4de4ada345525bd07 \
-                    size    70364666
+github.setup        NationalSecurityAgency ghidra 12.0 Ghidra_ _build
+github.tarball_from archive
+checksums           rmd160  65dbc2d15229e45de206d006f21f19f28f8efa41 \
+                    sha256  32742f938c9225137ae0a22cc00307f81a396bcbd661626ac3177a3628920648 \
+                    size    78508855
 
 categories          devel
 license             Apache
@@ -24,7 +23,8 @@ java.version        21
 java.fallback       openjdk21
 
 universal_variant   no
-depends_build-append    port:gradle
+depends_build-append    port:gradle port:py313-pip port:python313
+depends_run-append      port:python313
 
 set javadest        ${prefix}/share/java/${name}-${version}
 configure.env-append    GRADLE_USER_HOME=${worksrcpath}
@@ -56,7 +56,6 @@ destroot {
     foreach item ${ghidra_copy_list} {
         copy ${worksrcpath}/ghbuild/ghidra_${version}_DEV/${item} ${destroot}${javadest}/
     }
-    system "javac -d ${destroot}${javadest}/Ghidra/patch/ -cp \"\$(find ${destroot}${javadest}/ | egrep '.jar\$' | tr '\n' ':')\" ${filespath}/docking/widgets/filechooser/GhidraFileChooser.java"
 }
 
 # app settings

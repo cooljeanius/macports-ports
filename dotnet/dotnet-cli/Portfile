@@ -24,12 +24,11 @@
 PortSystem          1.0
 
 name                dotnet-cli
-version             8.0.7
+version             10.0.1
 revision            0
 categories          dotnet
 license             MIT
-maintainers         {@tsabirgaliev gmail.com:tair.sabirgaliev} \
-                    {@judaew judaew} openmaintainer
+maintainers         @BjarneDMat {@judaew judaew} openmaintainer
 
 description         The .NET command-line interface (CLI) is a cross-platform toolchain \
                     for developing, building, running, and publishing .NET applications.
@@ -47,20 +46,20 @@ homepage            https://dotnet.microsoft.com/
 platforms           {darwin any} {darwin >= 19}
 supported_archs     x86_64 arm64
 
-master_sites        https://dotnetcli.azureedge.net/dotnet/Runtime/${version}/
+master_sites        https://builds.dotnet.microsoft.com/dotnet/Runtime/${version}/
 
 switch ${build_arch} {
     x86_64 {
         distname            dotnet-runtime-${version}-osx-x64
-        checksums           rmd160  203e44d81ed9febb1c6f898dad897776578c8264 \
-                            sha256  dea6a6c2b964ea7305d702324081738853b25d26f9659909e467c79bf4c41f13 \
-                            size    30803633
+        checksums           rmd160  5d1a67d45b4bcf6ee406310cd9b049fc2748969b \
+                            sha256  50319c87ed9c9985b0d9b1c209bbdfc8de59355782515d706c5b2d78c215c309 \
+                            size    35573405
     }
     arm64 {
         distname            dotnet-runtime-${version}-osx-arm64
-        checksums           rmd160  283c5d86a0e6afefacab3737f344aed872682eb3 \
-                            sha256  1542510e85570700f3b1ba7b338d5296b416cea3bf6928cedcc40ddbe55226a6 \
-                            size    29130595
+        checksums           rmd160  54e9541f2989cd016c0d087e85133d907e1b5fe9 \
+                            sha256  cd0fdaeff18b56590bd8b7c6d254f9737000c456d337cfb1dc9ce464734dd3d1 \
+                            size    33204846
     }
     default {
         known_fail yes

@@ -4,14 +4,14 @@ PortSystem          1.0
 PortGroup           python 1.0
 PortGroup           github 1.0
 
-github.setup        openslide openslide-python 1.4.1 v
+github.setup        openslide openslide-python 1.4.3 v
 name                py-openslide
 revision            0
 categories-append   graphics
 license             LGPL-2.1 MIT BSD
 maintainers         {bgilbert @bgilbert}
 
-python.versions     39 310 311 312
+python.versions     310 311 312 313
 
 description         Python binding for the OpenSlide library.
 
@@ -33,9 +33,9 @@ github.tarball_from releases
 distname            openslide_python-${version}
 use_xz              yes
 
-checksums           rmd160  bda8c5aff6aaebef8253f67f21bf8b121967d1d2 \
-                    sha256  228081c99740f7304a411a49a6d1337d7771001134388f80d1403ab748f8431b \
-                    size    309912
+checksums           rmd160  17a464994bf352f11cf4ba28ec653aa251511025 \
+                    sha256  86f96a8195b0fd874bd67847f52435ac3c6bdbbfb8cb9a10a626711e6c9f616a \
+                    size    310920
 
 if {${name} ne ${subport}} {
     depends_build       port:py${python.version}-sphinx

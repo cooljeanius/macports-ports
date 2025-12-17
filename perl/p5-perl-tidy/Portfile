@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           perl5 1.0
 
 perl5.branches      5.28 5.30 5.32 5.34
-perl5.setup         Perl-Tidy 20250105 ../../authors/id/S/SH/SHANCOCK
+perl5.setup         Perl-Tidy 20250912 ../../authors/id/S/SH/SHANCOCK
 revision            0
 license             GPL-2+
 maintainers         nomaintainer
@@ -14,6 +14,6 @@ long_description    {*}${description}
 platforms           {darwin any}
 supported_archs     noarch
 
-checksums           rmd160  ec5c9d0d97a20d28dae7abb1a7b6022385c64ae1 \
-                    sha256  d2cea2b909da69ab6d09f00dcb27cd9551184a5e4267d825da15d2f52e228632 \
-                    size    1142977
+checksums           rmd160  717c13619885074e1c6405f6d26c7bcaecd66150 \
+                    sha256  b48ee48835fbceab2fde0f1c59c5a539f046e3bb236fa34d8b60871fd79cf0a4 \
+                    size    1212139

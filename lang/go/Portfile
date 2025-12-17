@@ -7,7 +7,6 @@ PortGroup           legacysupport 1.1
 legacysupport.newest_darwin_requires_legacy 16
 
 name                go
-epoch               3
 
 # IMPORTANT:
 #
@@ -21,6 +20,9 @@ if {$subport eq $name} {
 # However past 1.11.x everything is broken.
 # FIXME: consider implementing support for PowerPC.
 if {${os.platform} eq "darwin" && ${os.major} < 17} {
+
+    epoch 3
+
     if {${build_arch} eq "i386"} {
         version     1.11.13
         revision    0
@@ -33,20 +35,48 @@ if {${os.platform} eq "darwin" && ${os.major} < 17} {
         set unsupported_macos_386 false
     }
 } else {
-    version         1.23.4
-    set unsupported_macos false
-    set unsupported_macos_386 false
-    revision        0
+
+    # macOS 10.13 - 10.15, 11's most recently supported major version is 1.24
+    if {${os.platform} eq "darwin" && ${os.major} <= 20} {
+        version         1.24.8
+        set unsupported_macos false
+        set unsupported_macos_386 false
+        revision        0
+        epoch           4
+
+    # macOS 12 and up - latest version
+    } else {
+        version         1.25.5
+        set unsupported_macos false
+        set unsupported_macos_386 false
+        revision        0
+        epoch           3
+    }
 }
+
 platforms           {darwin >= 10} freebsd linux
 }
 
 # Subport for Go Unstable Version
 subport ${name}-devel {
-    version         1.24rc2
-    revision        0
-    epoch           1
+
+    # No go-devel for 10.12 and earlier
     platforms       {darwin >= 17} freebsd linux
+
+    # macOS 10.13 - 10.15, 11's most recently supported major version is 1.24
+    if {${os.platform} eq "darwin" && ${os.major} <= 20} {
+        version         1.24.8
+        set unsupported_macos false
+        set unsupported_macos_386 false
+        revision        0
+        epoch           2
+
+    # macOS 12 and up - latest version
+    } else {
+        version         1.25.5
+        revision        0
+        epoch           1
+    }
 }
 
 if {${os.platform} eq "darwin" \
@@ -82,19 +112,37 @@ livecheck.type      regex
 livecheck.url       ${homepage}/dl/
 
 if {$subport eq "${name}-devel"} {
-    # Go (DEVEL / UNSTABLE)
-    checksums       ${go_src_dist} \
-                    rmd160  e32be298130c08f7d6c68f7f2e7c1d59e34a426d \
-                    sha256  ba07b6863f208160e8f09f11c8b9582729b51cfeb752ce6ba79a379b4fbcac6d \
-                    size    30043161 \
+
+    # Go (DEVEL / UNSTABLE) - macOS 10.13 - 10.15, 11
+    if {${os.platform} eq "darwin" && ${os.major} <= 20} {
+        checksums   ${go_src_dist} \
+                    rmd160  f0b0a7fe7867dc9ea9c7f662332dcaf954728625 \
+                    sha256  b1ff32c5c4a50ddfa1a1cb78b60dd5a362aeb2184bb78f008b425b62095755fb \
+                    size    30797581 \
                     ${go_armbin_dist} \
-                    rmd160  753bb8bc7aa9848f40c6b5d82c78de064f3b101a \
-                    sha256  66c0299808cb02555031f6bf0a9bb9d57419178c4d182caebee126e53d906a58 \
-                    size    75458927 \
+                    rmd160  2d1d9eb6decfa110168acbda9ccf3962a704bf5d \
+                    sha256  0db27ff8c3e35fd93ccf9d31dd88a0f9c6454e8d9b30c28bd88a70b930cc4240 \
+                    size    76429684 \
                     ${go_amdbin_dist} \
-                    rmd160  1c94cb01e44fc994a23bc5139f0dc230dc1e931c \
-                    sha256  52e4be7607e6de43379b9161cc313bd5042b669e16a68f90f88b8206d7d117a8 \
-                    size    79141357
+                    rmd160  86fdbaddbb31cfc967f8cb60adb918689e94700a \
+                    sha256  ecb3cecb1e0bcfb24e50039701f9505b09744cc4730a8b9fc512b0a3b47cf232 \
+                    size    80113551
+
+    # Go (DEVEL / UNSTABLE) - LATEST
+     } else {
+         checksums  ${go_src_dist} \
+                    rmd160  790e23978ab7c0adf806b56292468fd711bc6a7d \
+                    sha256  22a5fd0a91efcd28a1b0537106b9959b2804b61f59c3758b51e8e5429c1a954f \
+                    size    31983405 \
+                    ${go_armbin_dist} \
+                    rmd160  1445540af556f41c1c4c0a7d1b5a28f980cd0695 \
+                    sha256  bed8ebe824e3d3b27e8471d1307f803fc6ab8e1d0eb7a4ae196979bd9b801dd3 \
+                    size    58028091 \
+                    ${go_amdbin_dist} \
+                    rmd160  6f153b1cee3b9a7d6b7f52c0c72a720e305196a0 \
+                    sha256  b69d51bce599e5381a94ce15263ae644ec84667a5ce23d58dc2e63e2c12a9f56 \
+                    size    60495242
+     }
 
     livecheck.regex {go([0-9.A-z]+)\.src\.tar\.gz}
 } else {
@@ -129,25 +177,44 @@ if {$subport eq "${name}-devel"} {
             Please note: Go 1.22 does not build on macOS 10.12 and older, so Go ${version} has been installed.
         "
     } else {
-        # 1.23
-        checksums   ${go_src_dist} \
-                    rmd160  d82045b98cd7d28a2195a3aa7608cecdbb4c3f89 \
-                    sha256  ad345ac421e90814293a9699cca19dd5238251c3f687980bbcae28495b263531 \
-                    size    28177188 \
-                    ${go_armbin_dist} \
-                    rmd160  b8fee5d3d0e1e92675975535b6cef975773474fa \
-                    sha256  87d2bb0ad4fe24d2a0685a55df321e0efe4296419a9b3de03369dbe60b8acd3a \
-                    size    71655205 \
-                    ${go_amdbin_dist} \
-                    rmd160  16d1e126fa38be97574235db021763e2b9794897 \
-                    sha256  6700067389a53a1607d30aa8d6e01d198230397029faa0b109e89bc871ab5a0e \
-                    size    74979002
+
+        # GO RELEASE - macOS 10.13 - 10.15, 11 - Go 1.24
+        if {${os.platform} eq "darwin" && ${os.major} <= 20} {
+            checksums   ${go_src_dist} \
+                        rmd160  f0b0a7fe7867dc9ea9c7f662332dcaf954728625 \
+                        sha256  b1ff32c5c4a50ddfa1a1cb78b60dd5a362aeb2184bb78f008b425b62095755fb \
+                        size    30797581 \
+                        ${go_armbin_dist} \
+                        rmd160  2d1d9eb6decfa110168acbda9ccf3962a704bf5d \
+                        sha256  0db27ff8c3e35fd93ccf9d31dd88a0f9c6454e8d9b30c28bd88a70b930cc4240 \
+                        size    76429684 \
+                        ${go_amdbin_dist} \
+                        rmd160  86fdbaddbb31cfc967f8cb60adb918689e94700a \
+                        sha256  ecb3cecb1e0bcfb24e50039701f9505b09744cc4730a8b9fc512b0a3b47cf232 \
+                        size    80113551
+
+        # GO RELEASE - macOS 12+ - Latest version
+        } else {
+
+            checksums   ${go_src_dist} \
+                        rmd160  790e23978ab7c0adf806b56292468fd711bc6a7d \
+                        sha256  22a5fd0a91efcd28a1b0537106b9959b2804b61f59c3758b51e8e5429c1a954f \
+                        size    31983405 \
+                        ${go_armbin_dist} \
+                        rmd160  1445540af556f41c1c4c0a7d1b5a28f980cd0695 \
+                        sha256  bed8ebe824e3d3b27e8471d1307f803fc6ab8e1d0eb7a4ae196979bd9b801dd3 \
+                        size    58028091 \
+                        ${go_amdbin_dist} \
+                        rmd160  6f153b1cee3b9a7d6b7f52c0c72a720e305196a0 \
+                        sha256  b69d51bce599e5381a94ce15263ae644ec84667a5ce23d58dc2e63e2c12a9f56 \
+                        size    60495242
+        }
     }
 
     livecheck.regex {go([0-9.]+)\.src\.tar\.gz}
 }
 
-master_sites        https://storage.googleapis.com/golang/
+master_sites        ${homepage}/dl/
 distfiles           ${go_src_dist}
 worksrcdir          ${name}
 

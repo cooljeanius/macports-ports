@@ -4,17 +4,14 @@ PortSystem          1.0
 PortGroup           github 1.0
 PortGroup           python 1.0
 
-github.setup        xonsh xonsh 0.19.1
+github.setup        xonsh xonsh 0.21.2
+github.tarball_from archive
 revision            0
 categories          shells
-supported_archs     noarch
-platforms           {darwin any}
 maintainers         {mps @Schamschula} openmaintainer
 license             Permissive
-
 description         Xonsh is a Python-ish, BASHwards-looking shell language \
                     and command prompt.
-
 long_description    {*}${description} \
                     The language is a superset of Python 3.4+ with additional \
                     shell primitives that you are used to from Bash and \
@@ -22,20 +19,25 @@ long_description    {*}${description} \
                     macOS, and Windows. Xonsh is meant for the daily use of \
                     experts and novices alike.
 
-checksums           rmd160  3677043aa10c975fa00413062ea21e887dd82ec0 \
-                    sha256  ab659bda6c5b95c1642a68a3f0ba5daa28dfbe3ff5c57220f785f3af556023db \
-                    size    12757629
+supported_archs     noarch
+platforms           {darwin any}
 
-variant python39 conflicts python310 python311 python312 description {Use Python 3.9} {}
-variant python310 conflicts python39 python311 python312 description {Use Python 3.10} {}
-variant python311 conflicts python39 python310 python312 description {Use Python 3.11} {}
-variant python312 conflicts python39 python310 python311 description {Use Python 3.12} {}
+checksums           rmd160  6f180eb7230f411fff7ae8bef706f5ebb5e42924 \
+                    sha256  dfa1fa02f3e7fad9aba8f652b5825240c8d5975037ebf344f8d020bc47f48128 \
+                    size    12832870
 
-if {![variant_isset python39] && ![variant_isset python310] && ![variant_isset python310]} {
-        default_variants +python312
+variant python310 conflicts python311 python312 python313 python314 description {Use Python 3.10} {}
+variant python311 conflicts python310 python312 python313 python314 description {Use Python 3.11} {}
+variant python312 conflicts python310 python311 python313 python314 description {Use Python 3.12} {}
+variant python313 conflicts python310 python311 python312 python314 description {Use Python 3.13} {}
+variant python314 conflicts python310 python311 python312 python313 description {Use Python 3.14} {}
+
+if {![variant_isset python310] && ![variant_isset python311] \
+        && ![variant_isset python312] && ![variant_isset python314]} {
+            default_variants +python313
 }
 
-foreach pv {312 311 310 39} {
+foreach pv {314 313 312 311 310} {
     if {[variant_isset python${pv}]} {
         python.default_version ${pv}
         break

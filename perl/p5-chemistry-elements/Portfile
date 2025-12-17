@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           perl5 1.0
 
 perl5.branches      5.28 5.30 5.32 5.34
-perl5.setup         Chemistry-Elements 1.078 ../../authors/id/B/BR/BRIANDFOY
+perl5.setup         Chemistry-Elements 1.081 ../../authors/id/B/BR/BRIANDFOY
 revision            0
 epoch               1
 license             Artistic-2
@@ -15,6 +15,6 @@ long_description    {*}${description}
 platforms           {darwin any}
 supported_archs     noarch
 
-checksums           rmd160  1c2a18b4055e5ae3b490c6ac4f407c63692ba473 \
-                    sha256  e717b2b7973ade3ac3b566026c250fcd2eafc5f0d31e6e97b40e7519a23735a3 \
-                    size    24854
+checksums           rmd160  1eed37d8c5a8e9f48f3039c05c8a11acccf7219d \
+                    sha256  1b171e128392c67d63beb120a6e93a34a377e89dc5eca8aa844f412072074c7f \
+                    size    25463

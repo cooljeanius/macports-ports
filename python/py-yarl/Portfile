@@ -4,12 +4,12 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-yarl
-version             1.18.3
+version             1.22.0
 revision            0
 categories-append   devel
 license             Apache-2
 
-python.versions     39 310 311 312 313
+python.versions     310 311 312 313 314
 
 maintainers         {ipglider.org:miguel @ipglider} openmaintainer
 
@@ -18,9 +18,9 @@ long_description    URL library with immutable URL objects.
 
 homepage            https://github.com/aio-libs/yarl
 
-checksums           rmd160  746de64174dda5db414741a54084d923e53ada0d \
-                    sha256  ac1801c45cbf77b6c99242eeff4fffb5e4e73a800b5c4ad4fc0be5def634d2e1 \
-                    size    181062
+checksums           rmd160  92c661c9560ab029d0ecbf88b8ff330857e32f55 \
+                    sha256  bebf8557577d4401ba8bd9ff33906f1376c877aa78d1fe216ad01b4d6745af71 \
+                    size    187169
 
 if {${name} ne ${subport}} {
     depends_build-append    port:py${python.version}-cython \

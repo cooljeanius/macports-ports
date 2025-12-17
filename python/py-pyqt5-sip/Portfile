@@ -5,7 +5,7 @@ PortGroup           python 1.0
 
 name                py-pyqt5-sip
 python.rootname     PyQt5-sip
-version             12.16.1
+version             12.17.2
 revision            0
 
 categories-append   devel
@@ -19,11 +19,11 @@ homepage            https://www.riverbankcomputing.com/software/sip/
 
 distname            pyqt5_sip-${version}
 
-checksums           rmd160  b0c01935eec0e51b0796899861a3ca61f5e875d7 \
-                    sha256  8c831f8b619811a32369d72339faa50ae53a963f5fdfa4d71f845c63e9673125 \
-                    size    103975
+checksums           rmd160  360dc2667273da927f0baaf81c597d2f18d7bcbf \
+                    sha256  7f66565c2a13d34d8ad6aad08e953d355ea3fe466d991d51aa5a0966a5289f05 \
+                    size    104246
 
-python.versions     39 310 311 312 313
+python.versions     39 310 311 312 313 314
 
 if {${name} ne ${subport}} {
     post-destroot {

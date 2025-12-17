@@ -5,7 +5,7 @@ PortGroup           python 1.0
 
 name                py-curl
 python.rootname     pycurl
-version             7.45.4
+version             7.45.7
 revision            0
 
 categories-append   net devel
@@ -19,11 +19,11 @@ long_description    Python module interface to the cURL library which \
 
 homepage            http://pycurl.io/
 
-checksums           rmd160  d2509abe6f6c4e30143c4658577e45480725805e \
-                    sha256  32c8e237069273f4260b6ae13d1e0f99daae938977016021565dc6e11050e803 \
-                    size    238427
+checksums           rmd160  49ac3a0052267f2e2b0259e3105ce686ba2ea1e9 \
+                    sha256  9d43013002eab2fd6d0dcc671cd1e9149e2fc1c56d5e796fad94d076d6cb69ef \
+                    size    241098
 
-python.versions     27 39 310 311 312 313
+python.versions     27 310 311 312 313
 
 if {${name} ne ${subport}} {
     if {${python.version} == 27} {

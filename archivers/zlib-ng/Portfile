@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           cmake   1.1
 PortGroup           github  1.0
 
-github.setup        zlib-ng zlib-ng 2.2.3
+github.setup        zlib-ng zlib-ng 2.3.1
 github.tarball_from archive
 revision            0
 
@@ -33,11 +33,13 @@ license             Zlib
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  5a8ffad17b096f8289528c1773325595e36274d7 \
-                    sha256  f2fb245c35082fe9ea7a22b332730f63cf1d42f04d84fe48294207d033cba4dd \
-                    size    2413008
+checksums           rmd160  bc484ff7a7f56dde13d9d6b0f71f1def2ea3d31f \
+                    sha256  94cfa0a53a8265c813c8369d3963bf09ac6a357824ad1f93aee13486176e152e \
+                    size    2446619
 
-# Target "cmTC_bb7a2" requires the language dialect "C11" 
+depends_build-append    path:bin/git:git
+
+# Target "cmTC_bb7a2" requires the language dialect "C11"
 compiler.c_standard     2011
 # Undefined symbols: "__ZN7testing8internal23InsertSyntheticTestCaseERKNSt7__cxx1112basic_stringIcSt11char_traitsIcESaIcEEENS0_12CodeLocationEb"
 compiler.cxx_standard   2011

@@ -3,9 +3,8 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/charmbracelet/vhs 0.8.0 v
+go.setup            github.com/charmbracelet/vhs 0.10.0 v
 go.offline_build    no
-github.tarball_from archive
 revision            0
 
 description         Your CLI home video recorder
@@ -20,6 +19,10 @@ license             MIT
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
+checksums           rmd160  6030a752572942f8b4fe8979f2530264e0c431dc \
+                    sha256  ae37fe7e52ade753f850ab81c7d5344f8e540ab6886f877bf5b613620c909893 \
+                    size    135426
+
 depends_run-append  path:bin/ffmpeg:ffmpeg \
                     path:bin/ttyd:ttyd
 
@@ -29,7 +32,3 @@ build.pre_args-append \
 destroot {
     xinstall -m 0755 ${worksrcpath}/${name} ${destroot}${prefix}/bin/
 }
-
-checksums           rmd160  86b619bec1376cc48d9ca2ece25efa588c19dade \
-                    sha256  ff89dba4d40109ffc87d4201f46ec1e9b8dcc02242e32ffc94a5379241b56ef8 \
-                    size    132955

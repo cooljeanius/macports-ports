@@ -4,15 +4,14 @@ PortSystem          1.0
 PortGroup           github 1.0
 PortGroup           legacysupport 1.0
 PortGroup           app 1.0
-PortGroup           compiler_blacklist_versions 1.0
 PortGroup           muniversal 1.0
 
-github.setup        joncampbell123 dosbox-x 2025.01.01 dosbox-x-v
+github.setup        joncampbell123 dosbox-x 2025.10.07 dosbox-x-v
 revision            0
 
-checksums           rmd160  80c87a6dcd276d7f961d513c7e7d98ae7b8fc73d \
-                    sha256  40290a073f6b8894d9c2b8c3d9c39a410f84fe89837c87148653ea03e89cf7b2 \
-                    size    121975330
+checksums           rmd160  d4b2a2bb1d499a6bba10f7aadc376444796c51d2 \
+                    sha256  fed630dba74f1ad1552bc5ec94cb68f70737e67a7ca1768f6071b255426ce117 \
+                    size    124274305
 
 categories          emulators
 license             GPL-2+

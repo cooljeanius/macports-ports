@@ -5,12 +5,12 @@ PortGroup           python 1.0
 PortGroup           compiler_wrapper 1.0
 
 name                py-rapidfuzz
-version             3.11.0
+version             3.14.3
 revision            0
 categories-append   textproc
 license             MIT
 
-python.versions     39 310 311 312 313
+python.versions     310 311 312 313 314
 
 maintainers         {stromnov @stromnov} openmaintainer
 
@@ -19,9 +19,9 @@ long_description    {*}${description}
 
 homepage            https://github.com/maxbachmann/RapidFuzz
 
-checksums           rmd160  09ef740179c54fea68a208beb12df6458cbc5785 \
-                    sha256  a53ca4d3f52f00b393fab9b5913c5bafb9afc27d030c8a1db1283da6917a860f \
-                    size    57983000
+checksums           rmd160  30df5d3773ac17ba655e2553a5d3be91493519a3 \
+                    sha256  2491937177868bc4b1e469087601d53f925e8d270ccc21e07404b4b5814b7b5f \
+                    size    57863900
 
 if {${name} ne ${subport}} {
     compiler.cxx_standard 2017

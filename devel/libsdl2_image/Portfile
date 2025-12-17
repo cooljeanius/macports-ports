@@ -4,7 +4,7 @@ PortSystem      1.0
 PortGroup       github 1.0
 
 name            libsdl2_image
-github.setup    libsdl-org SDL_image 2.8.4 release-
+github.setup    libsdl-org SDL_image 2.8.8 release-
 categories      devel graphics
 license         zlib
 maintainers     {jmr @jmroot} openmaintainer
@@ -16,11 +16,9 @@ long_description \
 
 github.tarball_from releases
 distname        SDL2_image-${version}
-# stealth update of 2.8.4
-dist_subdir     ${name}/${version}_1
 
-checksums       rmd160 771030df60815bc150ee2d591004aaa466d96241 \
-                sha256 f7c06a8783952cfe960adccdd3d8472b63ab31475b4390d10cfdcc1aea61238f
+checksums       rmd160 10f9fd44dd317351ffa58bda4de8ccc7cf9fbaa5 \
+                sha256 2213b56fdaff2220d0e38c8e420cbe1a83c87374190cba8c70af2156097ce30a
 
 depends_build   path:bin/pkg-config:pkgconfig
 depends_lib     port:libsdl2 \
@@ -49,3 +47,5 @@ variant jxl description {Enable JPEG XL support (experimental)} {
                             --enable-jxl
     configure.args-append   --disable-jxl-shared
 }
+
+github.livecheck.regex  {(2\.[^"]+)}

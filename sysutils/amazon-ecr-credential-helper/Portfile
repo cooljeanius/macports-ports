@@ -3,7 +3,7 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/awslabs/amazon-ecr-credential-helper 0.9.0 v
+go.setup            github.com/awslabs/amazon-ecr-credential-helper 0.11.0 v
 github.tarball_from archive
 revision            0
 
@@ -20,9 +20,9 @@ license             Apache-2
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  1fd1d767fd7491ebfb1d64c53997690f7850d052 \
-                    sha256  6067a2cb36f8b451878b4336e4bef202999281b6c31727bcda97f62cfb4aa19a \
-                    size    1934543
+checksums           rmd160  9939db096b4db0ab155b9f7d9188e5fbe124daf4 \
+                    sha256  d4b5e4e08d444530726ec59e09057fc1558876ba62d9aa8a2a44c04fd5dffb71 \
+                    size    2011701
 
 build.cmd           make
 build.pre_args-append \

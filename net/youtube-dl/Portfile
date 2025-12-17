@@ -37,16 +37,21 @@ if {${subport} eq ${name}} {
 }
 
 subport yt-dlp {
-    github.setup    yt-dlp ${subport} 2025.01.12
+    github.setup    yt-dlp ${subport} 2025.11.12
     revision        0
-    checksums       rmd160  bbaeb0ddb38278dac9985d29209de242864c94ed \
-                    sha256  6f7e9f10bd952d5eab9c96581066a439dc1196beb995344cbd81601013464b43 \
-                    size    5821087
-
+    checksums       rmd160  b204b191aa2c5abd0bb2f66a1e75d70b112837b7 \
+                    sha256  561ead2e2991f11789d3cd9f9b5a2eee2641a587e2cfc1ee9631c7c1d851c0ec \
+                    size    6139146
     dist_subdir     ${subport}/${version}
     distname        ${subport}
 
     python.pep517_backend hatch
+
+    variant js_runtime description {add yt-dlp-ejs and javascript runtime dependency} {
+        depends_run-append port:yt-dlp-ejs
+    }
+
+    default_variants +js_runtime
 
     set symlinks [list \
         share/bash-completion/completions/${subport} \
@@ -103,22 +108,16 @@ variant ffmpeg description {Add ffmpeg dependency, used to extract audio} {
 
 default_variants    +ffmpeg
 
-variant python38 conflicts python39 python310 python311 python312 python313 description {Use Python 3.8} {}
-variant python39 conflicts python38 python310 python311 python312 python313 description {Use Python 3.9} {}
-variant python310 conflicts python38 python39 python311 python312 python313 description {Use Python 3.10} {}
-variant python311 conflicts python38 python39 python310 python312 python313 description {Use Python 3.11} {}
-variant python312 conflicts python38 python39 python310 python311 python313 description {Use Python 3.12} {}
-variant python313 conflicts python38 python39 python310 python311 python312 description {Use Python 3.13} {}
+variant python310 conflicts python311 python312 python313 description {Use Python 3.10} {}
+variant python311 conflicts python310 python312 python313 description {Use Python 3.11} {}
+variant python312 conflicts python310 python311 python313 description {Use Python 3.12} {}
+variant python313 conflicts python310 python311 python312 description {Use Python 3.13} {}
 
-if {![variant_isset python38] && ![variant_isset python39] && ![variant_isset python310] && ![variant_isset python311] && ![variant_isset python312] && ![variant_isset python313]} {
+if {![variant_isset python310] && ![variant_isset python311] && ![variant_isset python312] && ![variant_isset python313]} {
     default_variants +python313
 }
 
-if {[variant_isset python38]} {
-    python.default_version  38
-} elseif {[variant_isset python39]} {
-    python.default_version  39
-} elseif {[variant_isset python310]} {
+if {[variant_isset python310]} {
     python.default_version  310
 } elseif {[variant_isset python311]} {
     python.default_version  311

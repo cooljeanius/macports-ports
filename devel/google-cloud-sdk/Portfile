@@ -4,11 +4,11 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                google-cloud-sdk
-version             506.0.0
+version             550.0.0
 revision            0
 categories          devel python
 license             Apache-2
-maintainers         {breun.nl:nils @breun} openmaintainer
+maintainers         {breun @breun} openmaintainer
 description         Command-line interface for Google Cloud Platform products and services
 long_description    Google Cloud SDK is a set of tools for Google Cloud Platform. \
                     It contains gcloud, gsutil, and bq command-line tools, which you can \
@@ -20,31 +20,35 @@ platforms           {darwin any}
 supported_archs     i386 x86_64 arm64
 
 if { ${configure.build_arch} eq "i386" } {
-    distname        ${name}-${version}-darwin-x86
-    checksums       rmd160  45ffd0c83823de108e48b7ad517f1e8b509cbbad \
-                    sha256  28fa6360cc7ff4394a065f0bb2aa10591a4f7fb0ff1e6fab9a80c53593e0181d \
-                    size    53417128
+    set arch_classifier x86
+    checksums       rmd160  f4b80da38d94b571ee952bf15713e237201a1583 \
+                    sha256  50ef579ba7a2d7becc0c482e55148dfe9bb5bab20b63cbc5d90260ebd0d4cad9 \
+                    size    56539446
 } elseif { ${configure.build_arch} eq "x86_64" } {
-    distname        ${name}-${version}-darwin-x86_64
-    checksums       rmd160  e6398cb85078a7658237ef984d12dbe017ae8ab0 \
-                    sha256  ba858537ca7c00d6d131935593321bcb4af457501398954a0f5b9673a8f570d7 \
-                    size    54883799
+    set arch_classifier x86_64
+    checksums       rmd160  74ca2018c238e4a7a6fb3743d078c3646cc83d5b \
+                    sha256  63f264d8555b3da815354dea45cd6131bee2635fa2694c5fc41d2420cee11aeb \
+                    size    58119978
 } elseif { ${configure.build_arch} eq "arm64" } {
-    distname        ${name}-${version}-darwin-arm
-    checksums       rmd160  db34582a6d3ea133d2905d5a17c41faa46ed768f \
-                    sha256  15a50df6b58c5b27b159e84cef87b9b477419feb5edd8d987a2b8707c907fb42 \
-                    size    54825568
+    set arch_classifier arm
+    checksums       rmd160  cb1685ac9a8737ce4345a3de01a5ec4024044106 \
+                    sha256  07452aca10117e458380f8fa069dfa3db2e0462dcac0bdf44335ec71462907d1 \
+                    size    58041466
+} else {
+    set arch_classifier invalid
 }
+
+distname            ${name}-${version}-darwin-${arch_classifier}
 
 homepage            https://cloud.google.com/sdk/
 master_sites        https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/
 
 worksrcdir          ${name}
 
-# Most recent Python version that supports to both
+# Most recent Python version that is compatible with both
 # glcoud (https://cloud.google.com/sdk/docs/install#mac) and
-# gsutil (https://cloud.google.com/storage/docs/gsutil_install#specifications)
-python.default_version 312
+# gsutil (https://cloud.google.com/storage/docs/gsutil_install#before_you_begin)
+python.default_version 313
 
 post-patch {
     # Default to the MacPorts Python binary
@@ -76,7 +80,6 @@ variant alpha description {Add gcloud CLI Alpha Commands} { dict set variant_to_
 variant anthos_auth description {Add Anthos auth} { dict set variant_to_component anthos_auth anthos-auth }
 variant app_engine_go description {Add App Engine Go Extensions} { dict set variant_to_component app_engine_go app-engine-go }
 variant app_engine_java description {Add gcloud app Java Extensions} { dict set variant_to_component app_engine_java app-engine-java }
-variant app_engine_php description {Add gcloud app PHP Extensions} { dict set variant_to_component app_engine_php app-engine-php }
 variant app_engine_python description {Add gcloud app Python Extensions} { dict set variant_to_component app_engine_python app-engine-python }
 variant app_engine_python_extras description {Add gcloud app Python Extensions (Extra Libraries)} { dict set variant_to_component app_engine_python_extras app-engine-python-extras }
 variant appctl description {Add Appctl} { dict set variant_to_component appctl appctl }
@@ -86,9 +89,8 @@ variant cbt description {Add Cloud Bigtable Command Line Tool} { dict set varian
 variant cloud_datastore_emulator description {Add Cloud Datastore Emulator} { dict set variant_to_component cloud_datastore_emulator cloud-datastore-emulator }
 variant cloud_firestore_emulator description {Add Cloud Firestore Emulator} { dict set variant_to_component cloud_firestore_emulator cloud-firestore-emulator }
 variant cloud_run_proxy description {Add Cloud Run Proxy} { dict set variant_to_component cloud_run_proxy cloud-run-proxy }
-variant cloud_sql_proxy description {Add Cloud SQL Proxy} { dict set variant_to_component cloud_sql_proxy cloud_sql_proxy }
+variant cloud_sql_proxy description {Add Cloud SQL Proxy} { dict set variant_to_component cloud_sql_proxy cloud-sql-proxy }
 variant config_connector description {Add config connector} { dict set variant_to_component config_connector config-connector }
-variant datalab description {Add Cloud Datalab Command Line Tool} { dict set variant_to_component datalab datalab }
 variant docker_credential_gcr description {Add Google Container Registry's Docker credential helper} { dict set variant_to_component docker_credential_gcr docker-credential-gcr }
 variant enterprise_certificate_proxy description {Add Enterprise certificate proxy} { dict set variant_to_component enterprise_certificate_proxy enterprise-certificate-proxy }
 variant gke_gcloud_auth_plugin description {Add GKE Google Cloud auth plugin} { dict set variant_to_component gke_gcloud_auth_plugin gke-gcloud-auth-plugin }
@@ -105,10 +107,18 @@ variant nomos description {Add Nomos CLI} { dict set variant_to_component nomos 
 variant package_go_module description {Add Artifact Registry Go Module Package Helper} { dict set variant_to_component package_go_module package-go-module }
 variant pkg description {Add pkg} { dict set variant_to_component pkg pkg }
 variant pubsub_emulator description {Add Cloud Pub/Sub Emulator} { dict set variant_to_component pubsub_emulator pubsub-emulator }
+variant spanner_cli description {Add Spanner CLI} { dict set variant_to_component spanner_cli spanner-cli }
 variant skaffold description {Add Skaffold} { dict set variant_to_component skaffold skaffold }
 variant terraform_tools description {Add Terraform Tools} { dict set variant_to_component terraform_tools terraform-tools }
 
 patch {
+    # Make sure the installer script will not attempt to install its own Python,
+    # even though `--install-python false` is passed to it.
+    # This is a workaround for https://issuetracker.google.com/issues/422318565
+    reinplace "s|python_manager.PromptAndInstallPythonOnMac|#python_manager.PromptAndInstallPythonOnMac|" \
+        ${worksrcpath}/lib/googlecloudsdk/core/updater/update_manager.py
+
+    # Define the basic installation command
     set install_command "CLOUDSDK_CONFIG=${worksrcpath}/.config CLOUDSDK_PYTHON=${python.bin} ./install.sh \
         --usage-reporting false \
         --command-completion false \
@@ -116,13 +126,13 @@ patch {
         --quiet \
         --install-python false"
 
+    # Determine flags for installation of additional components
     set additional_components {}
     foreach component_variant [dict keys ${variant_to_component}] {
         if {[variant_isset ${component_variant}]} {
             lappend additional_components [dict get ${variant_to_component} ${component_variant}]
         }
     }
-
     if { [llength ${additional_components}] > 0 } {
         append install_command " --additional-components"
         foreach additional_component ${additional_components} {
@@ -130,6 +140,7 @@ patch {
         }
     }
 
+    # Run installer script
     system -W ${worksrcpath} ${install_command}
 }
 
@@ -164,8 +175,8 @@ destroot {
 
 notes "
     google-cloud-sdk zsh completions aren't loaded automatically.
-    You must source them manually in your .zshrc:
+    You must source them manually in your ~/.zshrc:
         source '${prefix}/libexec/google-cloud-sdk/completion.zsh.inc'"
 
-livecheck.url       https://cloud.google.com/sdk/docs/install-sdk
-livecheck.regex     {google-cloud-cli-([\d\.]+)-darwin}
+livecheck.url       https://cloud.google.com/sdk/docs/release-notes
+livecheck.regex     {([\d\.]+) \(\d{4}-\d{2}-\d{2}\)}

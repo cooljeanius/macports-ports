@@ -3,6 +3,7 @@
 PortSystem          1.0
 PortGroup           legacysupport   1.1
 PortGroup           perl5           1.0
+PortGroup           conflicts_build 1.0
 
 legacysupport.newest_darwin_requires_legacy 11
 
@@ -10,7 +11,7 @@ legacysupport.newest_darwin_requires_legacy 11
 name                git
 # NOTE: Update the DEVEL version first before updating this RELEASE version,
 #       to verify that the intended version builds on all platforms.
-version             2.48.0
+version             2.52.0
 revision            0
 
 description         A fast version control system
@@ -22,7 +23,7 @@ long_description    Git is a fast, scalable, distributed open source version \
 subport ${name}-devel {
     PortGroup           github  1.0
 
-    github.setup        git git 2.48.1 v
+    github.setup        git git 2.52.0 v
     github.tarball_from archive
     revision            0
 
@@ -60,13 +61,13 @@ if {${name} eq ${subport}} {
                     git-manpages-${version}${extract.suffix}
 
     checksums       git-${version}${extract.suffix} \
-                    rmd160  da6286aefed2b37c2e3bc099a3f229c24eb0462a \
-                    sha256  4803b809c42696b3b8cce6b0ba6de26febe1197f853daf930a484db93c1ad0d5 \
-                    size    7723336 \
+                    rmd160  2cc7283f8e9ee453b658a2c6309f9751f62f1089 \
+                    sha256  3cd8fee86f69a949cb610fee8cd9264e6873d07fa58411f6060b3d62729ed7c5 \
+                    size    7957064 \
                     git-manpages-${version}${extract.suffix} \
-                    rmd160  cc3d33ca4dc316f780c4d49eaf998aee93707b08 \
-                    sha256  1590a164e733b5cc83e59d51e6b323b46e2fdd3dec94ea5bf1fbbd0c129ed0d3 \
-                    size    590480
+                    rmd160  a0f5aa8c561291735b862c38e50ec2c6d8581678 \
+                    sha256  23186deddb3083bbaa9eb947cde26a5c7322d7fdb75bb4b3d60795db38221ac5 \
+                    size    607864
 
     extract.only    git-${version}${extract.suffix} \
                     git-manpages-${version}${extract.suffix}
@@ -86,9 +87,9 @@ if {${name} eq ${subport}} {
     # DEVELOPMENT VERSION
 
     checksums       ${distname}${extract.suffix} \
-                    rmd160  0d51c99a552f5777470e28d7568240c74b237d86 \
-                    sha256  89b94928cc3bcc70f942407e026da287415263869a360598c8095030c64d4a59 \
-                    size    11471245
+                    rmd160  0bb54d1abb31381e972c64810bf59d6a6454609d \
+                    sha256  da8be57afb73a2370a5a891405b5e5624562f07a5c041f9e827e75320dc61114 \
+                    size    11894765
 
     depends_build-append \
                     port:asciidoc \
@@ -111,6 +112,8 @@ perl5.conflict_variants yes
 perl5.branches          5.28 5.30 5.32 5.34
 perl5.default_branch    5.34
 perl5.create_variants   ${perl5.branches}
+
+conflicts_build     libuuid
 
 depends_build-append \
                     port:gettext
@@ -278,9 +281,9 @@ variant doc description {Install HTML and plaintext documentation} {
         # RELEASE
         distfiles-append    git-htmldocs-${version}${extract.suffix}
         checksums-append    git-htmldocs-${version}${extract.suffix} \
-                            rmd160  cb1c9934a823fb50c6fa1c2e854a05ca3d7a98f5 \
-                            sha256  ae8427989f8d0ca4b74521a75630737e5e3e0512ec99cab93f8e682c99a42fef \
-                            size    1579956
+                            rmd160  02f5cbfbb86b31a2b6dd1034da84816585b6f609 \
+                            sha256  e6efd0da47a15b6a59401c8c5c8944e4315b18a176b89bb57812778d6307be84 \
+                            size    1657524
 
         patchfiles-append   patch-git-subtree.html.diff
 

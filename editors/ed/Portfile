@@ -1,7 +1,7 @@
 PortSystem      1.0
 
 name            ed
-version         1.21
+version         1.22.3
 revision        0
 categories      editors
 license         GPL-3+
@@ -22,9 +22,9 @@ master_sites    gnu
 
 use_lzip        yes
 
-checksums       rmd160  652ce625a391d328aab280c0ba0635afc33a883c \
-                sha256  60e24998727d453a5cf02c54664b97536de46a2b34cd1f4f67c1c1a61bbbad75 \
-                size    69718
+checksums       rmd160  e58a4f93c8d90eba2e9ae3251069ac4ea96d749f \
+                sha256  47a55ddfc52d4a1ff6f7559fbd00cf948a16b6cf151ec520392761aeae4e97be \
+                size    71167
 
 configure.args-append       \
     CC=\"\$CC\"             \

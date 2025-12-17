@@ -15,7 +15,7 @@ name                mkvtoolnix-devel
 conflicts           mkvtoolnix mkvtoolnix-legacy
 set my_name         mkvtoolnix
 
-version             89.0
+version             96.0
 revision            0
 categories          multimedia
 maintainers         {ryandesign @ryandesign} {mascguy @mascguy} {i0ntempest @i0ntempest} openmaintainer
@@ -30,14 +30,14 @@ homepage            https://mkvtoolnix.download
 master_sites        ${homepage}/sources/
 use_xz              yes
 
-checksums           rmd160  2b1245b7dcd00e2ddbd2659091e9711a1e0cb9f5 \
-                    sha256  6127b694b088e53270a946c178b6816da756200bdf672abdf65cfe0b50b260b2 \
-                    size    11253572
+checksums           rmd160  c4d74182aa15f27d0cce3ad063ded27576af1c8a \
+                    sha256  509a1e3aca1f63fe5cc96b4c7272ba533dbcbb69c61d1c5114dccf610fd405cb \
+                    size    11749168
 
 distname            ${my_name}-${version}
 dist_subdir         ${my_name}
 
-set version_ruby    3.3
+set version_ruby    3.4
 set version_ruby_mp [join [split $version_ruby "."] ""]
 
 qt6.depends_lib     qtmultimedia \
@@ -69,7 +69,7 @@ depends_run         port:ruby${version_ruby_mp}
 
 depends_test        port:gtest
 
-boost.version       1.81
+boost.version       1.87
 
 post-patch {
     fs-traverse f ${worksrcpath} {

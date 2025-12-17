@@ -4,7 +4,7 @@ PortSystem                  1.0
 PortGroup                   github 1.0
 PortGroup                   cmake  1.1
 
-github.setup                WebAssembly binaryen 119 version_
+github.setup                WebAssembly binaryen 125 version_
 github.tarball_from         archive
 revision                    0
 
@@ -13,14 +13,13 @@ license                     Apache-2
 maintainers                 {mcalhoun @MarcusCalhoun-Lopez} openmaintainer
 description                 compiler and toolchain infrastructure library for WebAssembly
 long_description            Binaryen is a compiler and toolchain infrastructure library for WebAssembly.
-platforms                   darwin
 
-checksums                   rmd160  4fa9ae601add837d3c032bbde5ed661efcd4c119 \
-                            sha256  9c2614212f628fad451b847ffa0ce2fc59339453f4ea1bacf4417590caa5fc71 \
-                            size    5017814
+checksums                   rmd160  e229aa56d179f0ae9f3af7ca5bc2054d0a86d1e5 \
+                            sha256  36177034ef0f0d826fd7dc9ab9d92ef20190a79d69856f764151ffe9c11d7350 \
+                            size    5700706
 
-depends_build-append        port:python312
-configure.args-append       -DPYTHON_EXECUTABLE=${prefix}/bin/python3.12 \
+depends_build-append        port:python313
+configure.args-append       -DPYTHON_EXECUTABLE=${prefix}/bin/python3.13 \
                             -DBUILD_TESTS=OFF -DENABLE_WERROR=OFF
 
 compiler.cxx_standard       2017

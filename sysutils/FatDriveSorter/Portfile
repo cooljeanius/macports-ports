@@ -4,7 +4,8 @@ PortSystem          1.0
 PortGroup           github 1.0
 PortGroup           xcode 1.0
 
-github.setup        lwouis fat-drive-sorter 1.2.0 v
+github.setup        lwouis fat-drive-sorter 1.4.0 v
+github.tarball_from archive
 name                FatDriveSorter
 revision            0
 categories          sysutils aqua
@@ -15,9 +16,9 @@ description         Actually sort files on your FAT drives
 long_description    FatDriveSorter is a graphical front end for fatsort and helps you \
                     actually sort files on your FAT12, FAT16, FAT32, and exFAT drives.
 
-checksums           rmd160  d645233a5a937bf099ed0f2f3dabdac713253a03 \
-                    sha256  eb24f50d052521934504912c55f6af5a5897d389620b0e6fa8bede8cbabde6a1 \
-                    size    62261570
+checksums           rmd160  1fcfa7ee3f6c354f5a8ef05ba74ffd78b4f4c03a \
+                    sha256  0694aa8679aa9d8506623848743afb9c272550794657591cb34edf462db8e71e \
+                    size    62261127
 
 depends_run-append  port:fatsort
 

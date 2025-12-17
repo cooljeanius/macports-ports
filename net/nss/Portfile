@@ -2,10 +2,9 @@
 
 PortSystem          1.0
 PortGroup           muniversal 1.0
-PortGroup           compiler_blacklist_versions 1.0
 
 name                nss
-version             3.107
+version             3.119.1
 revision            0
 set NSS_VMAJOR      [lindex [split ${version} .] 0]
 set NSS_VMINOR      [lindex [split ${version} .] 1]
@@ -25,12 +24,15 @@ homepage            https://developer.mozilla.org/en-US/docs/Mozilla/Projects/NS
 
 set my_release      NSS_[string map {. _} ${version}]_RTM
 
+# remove for next update
+distname            ${name}-[string map {. _} ${version}]
+
 master_sites        https://ftp.mozilla.org/pub/security/nss/releases/${my_release}/src/ \
                     ftp://ftp.mozilla.org/pub/security/nss/releases/${my_release}/src/
 
-checksums           rmd160  f119375d39339a16efdb41001b71d7717d603337 \
-                    sha256  7f7e96473e38150771a615f5d40e8c41ba3a19385301ae0c525091f2fc9d6729 \
-                    size    76617725
+checksums           rmd160  e7cd3c93aee574e927c23cbfa4a15fcf6e77cb98 \
+                    sha256  1387b8478e6c681c533b1f7b0f4d4ef7f58307c1f7e3a353622ddbf841328283 \
+                    size    77633121
 
 # build fails with gcc-4.2 on Intel, but succeeds with gcc-4.2 on PPC
 # cc1: error: unrecognized command line option "-mpclmul"
@@ -127,6 +129,9 @@ compiler.c_standard 1999
 configure.cflags-append -std=c99
 
 # mimic nss/coreconf/Darwin.mk
+#   Revert for the next release
+#   See: https://bugzilla.mozilla.org/show_bug.cgi?id=2005516
+patchfiles-append   patch-nss-coreconf-Darwin.mk.diff
 
 array set cpu_arch_map [list \
     arm64   aarch64 \

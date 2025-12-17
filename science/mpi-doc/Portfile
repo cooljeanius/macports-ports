@@ -4,7 +4,7 @@ PortSystem          1.0
 
 # make sure to keep in sync with mpich
 name                mpi-doc
-version             4.2.3
+version             4.3.2
 revision            0
 
 license             BSD
@@ -22,9 +22,9 @@ master_sites        ${homepage}static/downloads/${version}/
 distname            mpich-${version}
 
 checksums \
-    rmd160  2863f87760058f23e7598ad851af177a666b987c \
-    sha256  7a019180c51d1738ad9c5d8d452314de65e828ee240bcb2d1f80de9a65be88a8 \
-    size    40268629
+                    rmd160  b7e1a2b1e3914bad58bfb238339a64a5c42494c6 \
+                    sha256  47d774587a7156a53752218c811c852e70ac44db9c502dc3f399b4cb817e3818 \
+                    size    37697007
 
 dist_subdir         mpich
 

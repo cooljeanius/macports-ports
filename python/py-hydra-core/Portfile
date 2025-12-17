@@ -5,6 +5,8 @@ PortGroup           github 1.0
 PortGroup           python 1.0
 
 github.setup        facebookresearch hydra 1.2.0 v
+# Change github.tarball_from to 'releases' or 'archive' next update
+github.tarball_from tarball
 revision            0
 name                py-${github.project}-core
 
@@ -31,7 +33,7 @@ checksums           rmd160  3b883e65ba382aeaf72f831b2635097f0b1e6472 \
                     sha256  3f96761ab786103be7dff8a09c3747be13bc0105e9e2a501895bf6954bb1c0bf \
                     size    4230033
 
-python.versions     39 310
+python.versions     310
 
 if {${name} ne ${subport}} {
     depends_run-append \

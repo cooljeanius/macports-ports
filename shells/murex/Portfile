@@ -3,9 +3,8 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/lmorg/murex 6.4.2063 v
+go.setup            github.com/lmorg/murex 7.1.4143 v
 go.offline_build    no
-github.tarball_from archive
 revision            0
 
 homepage            https://murex.rocks
@@ -31,9 +30,9 @@ license             GPL-2
 maintainers         {gmail.com:herby.gillot @herbygillot} \
                     openmaintainer
 
-checksums           rmd160  26f6b7ee05cfccdd8beec0f8201c5a8ebab0306d \
-                    sha256  e980fdb8d822bf9ad8f26aa412b2771bdf154561e2dba4c30cc040db19232dd2 \
-                    size    9289839
+checksums           rmd160  25d9d623ace761a32af44d7b27f15c438cb1bc82 \
+                    sha256  f3620e00dc431ce202216c935d8e509cf0fdf0dd1e363eee9ec6cb64b0b182f4 \
+                    size    31684643
 
 depends_run-append  port:aspell \
                     port:aspell-dict-en

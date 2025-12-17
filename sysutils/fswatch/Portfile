@@ -2,8 +2,15 @@
 
 PortSystem          1.0
 PortGroup           github 1.0
+PortGroup           legacysupport 1.1
 
-github.setup        emcrisostomo fswatch 1.18.0
+# On <10.15 built-in libc++ has no support for std::filesystem
+legacysupport.newest_darwin_requires_legacy \
+                    18
+legacysupport.use_mp_libcxx \
+                    yes
+
+github.setup        emcrisostomo fswatch 1.18.3
 github.tarball_from releases
 
 categories          sysutils
@@ -19,9 +26,9 @@ long_description    A cross-platform file change monitor with multiple \
 
 homepage            https://emcrisostomo.github.io/fswatch/
 
-checksums           rmd160  155337c5de05e2ca7ff8ae97925519b466460812 \
-                    sha256  aa7454d1fc4e8f5eb0e9bd4711473c8c7c2b257e2fdea62527e86f7afaef091b \
-                    size    813482
+checksums           rmd160  ce1de769ff3b4fd5b4690c1f534c92395b7d034e \
+                    sha256  08b13c0e0f92bd5eee5a310bb58fc373f0cda8304f9decc34cfabc42adf8e9ca \
+                    size    815588
 
 compiler.cxx_standard   2017
 configure.args      ac_cv_prog_AWK=/usr/bin/awk

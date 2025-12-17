@@ -7,11 +7,11 @@ PortGroup           legacysupport 1.1
 legacysupport.newest_darwin_requires_legacy 15
 
 name                wolfssl
-version             5.7.6
+version             5.8.4
 categories          devel security
 maintainers         {wolfssl.com:facts @JacobBarthelmeh} openmaintainer
 homepage            https://wolfssl.com/wolfSSL/Products-wolfssl.html
-license             GPL-2
+license             GPL-3
 description         wolfSSL Embedded SSL Library
 
 long_description    \
@@ -27,9 +27,9 @@ long_description    \
 master_sites        https://www.wolfssl.com/
 use_zip             yes
 
-checksums           rmd160  e219a662b428ff72ff0ee48401927048c69f03fa \
-                    sha256  cbb9da98a678156b1b294301ffd0139cfae19c60b46dff397418940690291a20 \
-                    size    26109443
+checksums           rmd160  6fdfb071f2cf38949e95deaa7d3abab88d792f74 \
+                    sha256  6531a01075594d412ceb6afd435f85fc8054551b6f1ae8cc0fba920974927f47 \
+                    size    27409830
 
 configure.args      --enable-all \
                     --disable-jobserver \

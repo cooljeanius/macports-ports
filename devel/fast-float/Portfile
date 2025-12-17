@@ -4,9 +4,8 @@ PortSystem              1.0
 PortGroup               github 1.0
 PortGroup               cmake 1.1
 
-github.setup            fastfloat fast_float 7.0.0 v
-# Change github.tarball_from to 'releases' or 'archive' next update
-github.tarball_from     tarball
+github.setup            fastfloat fast_float 8.1.0 v
+github.tarball_from     archive
 name                    fast-float
 revision                0
 categories-append       devel
@@ -20,6 +19,6 @@ long_description        The ${github.project} library provides fast header-only 
                         functions for float and double types. These functions convert ASCII strings representing decimal values \
                         (e.g., 1.3e10) into binary types.
 
-checksums               rmd160  d3a1b10c046d4b8337469fba7ee5f0b63b00e456 \
-                        sha256  8f1dc06ac2ea1a39343c1bfbd8319134f295677ed04f0a4e63c296f5bd4d20d6 \
-                        size    103351
+checksums               rmd160  1e06b320e42bcf4cac6b0efe65d66d2193937746 \
+                        sha256  4bfabb5979716995090ce68dce83f88f99629bc17ae280eae79311c5340143e1 \
+                        size    125830

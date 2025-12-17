@@ -4,7 +4,8 @@ PortSystem          1.0
 PortGroup           cargo   1.0
 PortGroup           github  1.0
 
-github.setup        typst typst 0.12.0 v
+github.setup        typst typst 0.14.2 v
+github.tarball_from archive
 revision            0
 epoch               1
 
@@ -22,7 +23,9 @@ long_description    \
     compile times thanks to incremental compilatioa, as well as friendly \
     error messages in case something goes wrong.
 
-fetch.type          git
+checksums           rmd160  7ed6b348ee94a3e708ad1219d236e682f69c7e86 \
+                    sha256  70a56445020ca05efc571c7b07a1a9f52eb93842d420518693c077ae74e54142 \
+                    size    4124613
 
 categories          textproc
 installs_libs       no

@@ -3,8 +3,8 @@
 PortSystem          1.0
 PortGroup           golang 1.0
 
-go.setup            github.com/digitalocean/doctl 1.117.0 v
-github.tarball_from archive
+go.setup            github.com/digitalocean/doctl 1.148.0 v
+go.offline_build    no
 revision            0
 
 categories          www devel
@@ -15,9 +15,9 @@ maintainers         {@kritr gmail.com:krdevmail} \
 description         A command line interface for the DigitalOcean API
 long_description    ${description}
 
-checksums           rmd160  a4be64e8f161e79dc8978bd7eb8f6dc5820e49b7 \
-                    sha256  2ff734465d45a95a1e31032ea607d05c2582ef28406d7f64142705339a58f3da \
-                    size    8173803
+checksums           rmd160  762f3b7827b5f635255fe3e01248f7be179dcd75 \
+                    sha256  be347ed111b3e0a2987cb492e2bf1fb7ce8d06e215b6130797fd235934d21779 \
+                    size    8284718
 
 set doctl_ver [split ${version} "."]
 set doctl_major [lindex ${doctl_ver} 0]
@@ -33,9 +33,7 @@ append ld_flags     " ${base_flag}.Patch=${doctl_patch}"
 build.cmd-append    " -ldflags \"${ld_flags}\""
 build.cmd-append    " -o ${name}"
 
-build.env-delete    GO111MODULE=off
-build.env-append    GO111MODULE=on \
-                    CGO_ENABLED=0
+build.env-append    CGO_ENABLED=0
 
 build.target        ${worksrcpath}/cmd/${name}
 

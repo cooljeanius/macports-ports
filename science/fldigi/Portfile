@@ -4,8 +4,8 @@ PortSystem          1.0
 PortGroup           muniversal 1.0
 
 name                fldigi
-version             4.2.00
-revision            0
+version             4.2.10
+revision            1
 # same sources but with different version
 set version_flarq   4.3.9
 categories          science
@@ -18,11 +18,11 @@ long_description    Fldigi (Fast Light Digital Modem Application), is a \
     cross-platform modem program that supports most of the peer-to-peer \
     (live keyboard) digital modes used on the amateur radio bands.
 homepage            http://www.w1hkj.com
-master_sites        http://www.w1hkj.com/files/${name}/
+master_sites        sourceforge:project/fldigi/${name}
 
-checksums           rmd160  a823dca04d5b85a5a3b1e7486fed805025cb25c1 \
-                    sha256  174f42e91de6120615852eff32a1011737ea18a6f2ac07a6e7ff900e5c08fbd9 \
-                    size    4973115
+checksums           rmd160  a0a803a2cf26be6dac3c0af5299aae1578bb4dec \
+                    sha256  e08f894ac0f9d78ddc520f701e20ecb319dec5a7f8d444d77edd51d96e16a85d \
+                    size    5283268
 
 depends_build-append \
     port:pkgconfig \
@@ -106,3 +106,4 @@ livecheck.regex     ${name}-(\[0-9.\]+)${extract.suffix}
 
 test.run            yes
 test.cmd            ./src/fldigi --version
+

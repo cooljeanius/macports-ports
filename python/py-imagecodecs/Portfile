@@ -5,7 +5,7 @@ PortGroup           python 1.0
 
 name                py-imagecodecs
 epoch               1
-version             2024.12.30
+version             2025.11.11
 revision            0
 
 categories-append   graphics
@@ -17,11 +17,11 @@ long_description    {*}${description}
 
 homepage            https://github.com/cgohlke/imagecodecs/
 
-checksums           rmd160  d9cf49479dc60d09c543ff916fecec40073f3f27 \
-                    sha256  4c88f745719313cabea6dd5f1e69c9f93346de91c0f1e770eb969f2232247f21 \
-                    size    9502615
+checksums           rmd160  7ac270b76b4c1482936e24d5fc53b47e243efd7d \
+                    sha256  a836d329f91c890d17b9dc3f3a2bba944a198ae741592c3cb0c4b9b097d10d34 \
+                    size    9505589
 
-python.versions     39 310 311 312 313
+python.versions     310 311 312 313 314
 
 if {${name} ne ${subport}} {
     platforms {darwin >= 17}

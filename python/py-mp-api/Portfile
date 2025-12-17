@@ -4,7 +4,7 @@ PortSystem          1.0
 PortGroup           python 1.0
 
 name                py-mp-api
-version             0.43.0
+version             0.45.13
 revision            0
 
 categories-append   science devel
@@ -20,11 +20,11 @@ homepage            https://github.com/materialsproject/api
 
 distname            mp_api-${version}
 
-checksums           rmd160  bfd74bf8d283f0d51603f872b6c93180551f5c31 \
-                    sha256  9bb7e97790f91c6ae082c73f1a43307b480247c0885772724b52eeba1b117afe \
-                    size    702889
+checksums           rmd160  6821a0088a81568f6d4e09634b30ba1c0f85975e \
+                    sha256  716c944e72a7e01739b79e2bc4c28c9aff88990be5d524b683c588a4c2546236 \
+                    size    715391
 
-python.versions     39 310 311 312
+python.versions     310 311 312 313
 
 if {${name} ne ${subport}} {
     depends_lib-append \
@@ -35,6 +35,6 @@ if {${name} ne ${subport}} {
                     port:py${python.version}-pymatgen \
                     port:py${python.version}-requests \
                     port:py${python.version}-setuptools \
-                    port:py${python.version}-smart-open \
+                    port:py${python.version}-smart_open \
                     port:py${python.version}-typing_extensions
 }
